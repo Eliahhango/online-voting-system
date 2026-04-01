@@ -706,26 +706,39 @@
       return;
     }
 
-    var res = await fetchJson("voters/get-public-elections.php", { status: "upcoming", limit: 3 }, false);
-    var items = res.ok && res.json && res.json.success && res.json.data && Array.isArray(res.json.data.items)
-      ? res.json.data.items
-      : [];
+    var responses = await Promise.all([
+      fetchJson("voters/get-public-elections.php", { status: "upcoming", limit: 6 }, false),
+      fetchJson("voters/get-public-elections.php", { status: "active", limit: 6 }, false)
+    ]);
 
-    if (!items.length) {
-      var fallback = await fetchJson("voters/get-public-elections.php", { status: "all", limit: 3 }, false);
-      var fallbackItems = fallback.ok && fallback.json && fallback.json.success && fallback.json.data && Array.isArray(fallback.json.data.items)
-        ? fallback.json.data.items
+    function extractItems(res) {
+      return res && res.ok && res.json && res.json.success && res.json.data && Array.isArray(res.json.data.items)
+        ? res.json.data.items
         : [];
-      items = fallbackItems.filter(function (row) {
-        var phase = String(row.phase || "").toLowerCase();
-        return phase === "upcoming" || phase === "active";
-      }).slice(0, 3);
     }
+
+    var upcomingItems = extractItems(responses[0]).filter(function (row) {
+      return String(row && row.phase ? row.phase : "").toLowerCase() === "upcoming";
+    });
+    var activeItems = extractItems(responses[1]).filter(function (row) {
+      return String(row && row.phase ? row.phase : "").toLowerCase() === "active";
+    });
+
+    var seenIds = {};
+    var items = upcomingItems
+      .concat(activeItems)
+      .filter(function (row) {
+        var id = String(row && row.id ? row.id : "");
+        if (!id || seenIds[id]) return false;
+        seenIds[id] = true;
+        return true;
+      })
+      .slice(0, 3);
 
     if (!items.length) {
       grid.innerHTML =
         '<div class="col-span-full bg-white p-8 border border-outline-variant/15 paper-on-paper">' +
-        '<h3 class="text-xl font-bold mb-2">No upcoming elections scheduled</h3>' +
+        '<h3 class="text-xl font-bold mb-2">No upcoming or live elections scheduled</h3>' +
         '<p class="text-on-surface-variant text-sm leading-relaxed">Please check back later for official election announcements.</p>' +
         "</div>";
       return;

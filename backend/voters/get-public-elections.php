@@ -19,13 +19,23 @@ if (!in_array($statusFilter, $allowed, true)) {
 try {
     $pdo = db();
 
+    $nowExpr = "julianday('now')";
+    $startExpr = "julianday(replace(replace(e.start_at, 'T', ' '), 'Z', ''))";
+    $endExpr = "julianday(replace(replace(e.end_at, 'T', ' '), 'Z', ''))";
+
     $where = "WHERE e.visibility = 'public' AND e.status IN ('published', 'closed')";
     if ($statusFilter === 'active') {
-        $where .= " AND e.status = 'published' AND CURRENT_TIMESTAMP >= e.start_at AND CURRENT_TIMESTAMP <= e.end_at";
+        $where .= " AND e.status = 'published'
+            AND $startExpr IS NOT NULL
+            AND $endExpr IS NOT NULL
+            AND $nowExpr >= $startExpr
+            AND $nowExpr <= $endExpr";
     } elseif ($statusFilter === 'upcoming') {
-        $where .= " AND e.status = 'published' AND CURRENT_TIMESTAMP < e.start_at";
+        $where .= " AND e.status = 'published'
+            AND $startExpr IS NOT NULL
+            AND $nowExpr < $startExpr";
     } elseif ($statusFilter === 'closed') {
-        $where .= " AND (e.status = 'closed' OR CURRENT_TIMESTAMP > e.end_at)";
+        $where .= " AND (e.status = 'closed' OR ($endExpr IS NOT NULL AND $nowExpr > $endExpr))";
     }
 
     $countStmt = $pdo->query("SELECT COUNT(*) AS total FROM elections e $where");
@@ -42,8 +52,9 @@ try {
             e.visibility,
             CASE
                 WHEN e.status = 'closed' THEN 'closed'
-                WHEN CURRENT_TIMESTAMP < e.start_at THEN 'upcoming'
-                WHEN CURRENT_TIMESTAMP > e.end_at THEN 'closed'
+                WHEN $startExpr IS NULL OR $endExpr IS NULL THEN 'closed'
+                WHEN $nowExpr < $startExpr THEN 'upcoming'
+                WHEN $nowExpr > $endExpr THEN 'closed'
                 ELSE 'active'
             END AS phase,
             (SELECT COUNT(*) FROM positions p WHERE p.election_id = e.id) AS positions_count,
@@ -74,4 +85,3 @@ try {
     app_log('error', 'Get public elections failed', ['error' => $e->getMessage()]);
     json_error('Unable to fetch elections', 500);
 }
-
