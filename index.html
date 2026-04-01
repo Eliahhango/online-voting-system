@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Voting System</title>
+  <meta http-equiv="refresh" content="0; url=./frontend/index.html">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0b1f3b;
+      --muted: #64748b;
+      --primary: #1d4ed8;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Manrope, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      display: grid;
+      place-items: center;
+      padding: 20px;
+    }
+    .box {
+      width: min(720px, 100%);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-family: Poppins, Manrope, sans-serif;
+      font-size: 1.5rem;
+    }
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .links {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #0f172a;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0 12px;
+    }
+    a.primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+    footer {
+      margin-top: 14px;
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Redirecting to Main Home Page...</h1>
+    <p>
+      Main page is <code>frontend/index.html</code>. If redirect does not happen automatically, use the links below.
+    </p>
+    <div class="links">
+      <a class="primary" href="./frontend/index.html">Open Main Home Page</a>
+      <a href="./frontend/login.html?portal=voter">Voter Login</a>
+      <a href="./frontend/login.html?portal=admin">Admin Login</a>
+      <a href="./frontend/voter/dashboard.html">Voter Dashboard</a>
+      <a href="./frontend/admin/dashboard.html">Admin Dashboard</a>
+    </div>
+    <footer>&copy; <span id="year"></span> Civic Ledger. National Election Authority.</footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+    window.location.replace("./frontend/index.html");
+  </script>
+</body>
+</html>

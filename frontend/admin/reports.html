@@ -1,0 +1,348 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Election Reports | CivicAdmin Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&amp;family=Manrope:wght@200..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#e5eeff",
+                        "secondary": "#0760a7",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-container": "#006a38",
+                        "outline-variant": "#c4c5d7",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#9af6b5",
+                        "surface-bright": "#f8f9ff",
+                        "primary": "#0037b0",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#d3e4fe",
+                        "on-tertiary-container": "#8ce8a7",
+                        "tertiary-fixed-dim": "#7eda9a",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "on-background": "#0b1c30",
+                        "on-secondary-fixed-variant": "#004881",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary-fixed": "#001551",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "on-tertiary-fixed-variant": "#00522a",
+                        "primary-container": "#1d4ed8",
+                        "surface-container-low": "#eff4ff",
+                        "on-surface-variant": "#434655",
+                        "on-secondary-container": "#004378",
+                        "surface-dim": "#cbdbf5",
+                        "surface-tint": "#2151da",
+                        "on-primary-container": "#cad3ff",
+                        "on-tertiary-fixed": "#00210e",
+                        "tertiary": "#004f29",
+                        "surface": "#f8f9ff",
+                        "secondary-container": "#72b1fe",
+                        "outline": "#747686",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#0b1c30",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#dce1ff",
+                        "background": "#f8f9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "inverse-primary": "#b7c4ff",
+                        "on-secondary-fixed": "#001c38",
+                        "on-error-container": "#93000a"
+                    },
+                    fontFamily: {
+                        "headline": ["Public Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3 { font-family: 'Public Sans', sans-serif; }
+    </style>
+<link rel="stylesheet" href="../../assets/css/global.css"/>
+<link rel="stylesheet" href="../../assets/css/components.css"/>
+<link rel="stylesheet" href="../../assets/css/admin.css"/>
+</head>
+<body class="bg-surface">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 bottom-0 flex flex-col w-64 p-4 z-40 bg-slate-50 dark:bg-slate-950 border-r border-slate-200/30 dark:border-slate-800/30">
+<div class="mb-10 px-2">
+<h1 class="text-lg font-black text-blue-900 dark:text-blue-100 tracking-tight">Election Command</h1>
+<p class="text-[10px] tracking-widest uppercase font-bold text-slate-500">Official Ledger Node</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="font-label text-sm uppercase font-semibold tracking-wide">Voter Registry</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3">person_check</span>
+<span class="font-label text-sm uppercase font-semibold tracking-wide">Candidate Management</span>
+</a>
+<a class="flex items-center px-4 py-3 bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-400 shadow-sm border-l-4 border-blue-700 group" href="#">
+<span class="material-symbols-outlined mr-3">analytics</span>
+<span class="font-label text-sm uppercase font-semibold tracking-wide">Election Reports</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3">verified_user</span>
+<span class="font-label text-sm uppercase font-semibold tracking-wide">System Audit</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="font-label text-sm uppercase font-semibold tracking-wide">Settings</span>
+</a>
+</nav>
+<button class="mt-4 mb-8 bg-gradient-to-r from-primary to-primary-container text-white py-3 px-4 font-bold text-sm uppercase tracking-tighter flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+            New Election Cycle
+        </button>
+<div class="border-t border-slate-200/50 pt-4 space-y-1">
+<a class="flex items-center px-4 py-2 text-slate-500 text-xs uppercase font-bold tracking-widest hover:text-blue-600 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg mr-3">security</span>
+                Security Logs
+            </a>
+<a class="flex items-center px-4 py-2 text-slate-500 text-xs uppercase font-bold tracking-widest hover:text-blue-600 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg mr-3">contact_support</span>
+                Support
+            </a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 min-h-screen pb-12">
+<!-- TopNavBar Shell -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-8 w-full h-16 bg-white/80 backdrop-blur-md border-b border-slate-200/50">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="bg-surface-container-low border-none focus:ring-2 focus:ring-primary-container text-sm w-64 pl-10 h-10" placeholder="Search archives..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+<div class="flex items-center gap-3 border-l border-slate-200 pl-6">
+<div class="text-right">
+<p class="text-xs font-bold text-on-background leading-none">Admin Profile</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter">Chief Auditor</p>
+</div>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border-2 border-primary-container" data-alt="Close up professional headshot of a middle aged man in a suit with a clean office background and soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi0aFs5ZfKore7ebKFdiBggDdNwExMi6f-5i4Y7vRP_J9E4kZ_dKhLUHxUDDZyOyinxYiUsjA82BqbxdMAUFywExq0a2RivFQ89_weciCwrJoFk_JzLyRI9W1Zupo0L0maeI18f5B9otwsn1LAYDcPKjchsbrR57rODqINYinjvMtKAxKWqx4rXYgLoYwmwXOy-xIQHon1pfY1T8vbcFNOBJJg8NJjP-S0q5cPH9r6WJ3HFY4ZTmvbbHJMyqqDnk2f0NBuW-D6l2A"/>
+</div>
+</div>
+</header>
+<!-- Content Body -->
+<div class="px-10 py-8">
+<!-- Breadcrumbs & Heading -->
+<div class="mb-10">
+<p class="font-label text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">Systems Intelligence</p>
+<h2 class="text-4xl font-black text-on-background tracking-tight">Election Reports</h2>
+</div>
+<!-- Filters Bar (Asymmetric Layout) -->
+<section class="bg-surface-container-low p-6 mb-10 grid grid-cols-12 gap-6 items-end">
+<div class="col-span-4">
+<label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Election Reference</label>
+<select class="w-full bg-surface-container-lowest border-none h-12 px-4 text-sm focus:ring-primary-container">
+<option>2024 General Municipal Election</option>
+<option>2023 Special Referendum</option>
+<option>2022 Primary Election</option>
+</select>
+</div>
+<div class="col-span-3">
+<label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Date Range</label>
+<div class="flex items-center bg-surface-container-lowest h-12 px-4">
+<span class="material-symbols-outlined text-slate-400 text-lg mr-2">calendar_today</span>
+<input class="bg-transparent border-none text-sm w-full focus:ring-0 p-0" type="text" value="Jan 01 - Nov 05, 2024"/>
+</div>
+</div>
+<div class="col-span-3">
+<label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Output Format</label>
+<div class="flex gap-2">
+<button class="flex-1 h-12 bg-white text-on-surface-variant font-bold text-xs uppercase border border-outline-variant/20 hover:bg-slate-50 transition-colors">PDF Document</button>
+<button class="flex-1 h-12 bg-white text-on-surface-variant font-bold text-xs uppercase border border-outline-variant/20 hover:bg-slate-50 transition-colors">CSV Ledger</button>
+</div>
+</div>
+<div class="col-span-2">
+<button class="w-full h-12 bg-primary text-white font-black text-sm uppercase tracking-tighter shadow-lg hover:-translate-y-1 transition-all">Generate</button>
+</div>
+</section>
+<!-- Report Cards Bento Grid -->
+<div class="grid grid-cols-12 gap-8 mb-16">
+<!-- Main Featured Report -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-lowest p-8 border-l-4 border-primary shadow-sm group hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="inline-block bg-primary-fixed-dim text-on-primary-fixed-variant px-2 py-1 text-[10px] font-bold uppercase tracking-widest mb-4">Official Aggregate</span>
+<h3 class="text-2xl font-extrabold text-on-background">Voter Turnout Analysis</h3>
+<p class="text-slate-500 text-sm mt-2 max-w-md">Comprehensive breakdown of demographic participation, geographic trends, and historical comparison for the active cycle.</p>
+</div>
+<div class="bg-surface-container-low p-4">
+<span class="material-symbols-outlined text-3xl text-primary">analytics</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-slate-100">
+<span class="text-xs text-slate-400 italic">Last updated 2 hours ago</span>
+<button class="text-primary font-bold text-xs uppercase flex items-center gap-2 group">
+                            Configure Report
+                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Financial Report -->
+<div class="col-span-12 md:col-span-6 lg:col-span-5 bg-surface-container-lowest p-8 border-l-4 border-tertiary-container shadow-sm hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-tertiary-container mb-4">payments</span>
+<h3 class="text-xl font-extrabold text-on-background">Candidate Financials</h3>
+<p class="text-slate-500 text-xs mt-2 mb-8">Audit of campaign contributions, expenditures, and compliance verification status.</p>
+<button class="w-full py-3 bg-tertiary text-white font-bold text-xs uppercase tracking-widest">Execute Audit</button>
+</div>
+<!-- System Audit -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 bg-surface-container-lowest p-6 border-l-4 border-secondary shadow-sm">
+<div class="flex items-center gap-3 mb-4 text-secondary">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Security Suite</span>
+</div>
+<h3 class="text-lg font-extrabold text-on-background mb-2">Ledger Audit Log</h3>
+<p class="text-slate-500 text-xs mb-6">Trace every modification, entry, and verification step across the election lifecycle.</p>
+<a class="text-secondary font-bold text-xs border-b-2 border-secondary pb-0.5" href="#">Access Logs</a>
+</div>
+<!-- Demographic Insights -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 bg-surface-container-lowest p-6 border-l-4 border-outline shadow-sm">
+<div class="flex items-center gap-3 mb-4 text-outline">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Citizenship</span>
+</div>
+<h3 class="text-lg font-extrabold text-on-background mb-2">Voter Demographics</h3>
+<p class="text-slate-500 text-xs mb-6">Visual segmentation by age, ward, and registration tenure.</p>
+<a class="text-outline font-bold text-xs border-b-2 border-outline pb-0.5" href="#">View Statistics</a>
+</div>
+<!-- Incident Reports -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 bg-surface-container-lowest p-6 border-l-4 border-error shadow-sm">
+<div class="flex items-center gap-3 mb-4 text-error">
+<span class="material-symbols-outlined">report_problem</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Anomalies</span>
+</div>
+<h3 class="text-lg font-extrabold text-on-background mb-2">Polling Incidents</h3>
+<p class="text-slate-500 text-xs mb-6">Real-time and historic tracking of reported issues at physical polling stations.</p>
+<a class="text-error font-bold text-xs border-b-2 border-error pb-0.5" href="#">Review Queue</a>
+</div>
+</div>
+<!-- Recent Reports Table (Ledger Style) -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-extrabold text-on-background tracking-tight">Recent Activity Ledger</h3>
+<button class="text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">history</span>
+                        Full Generation History
+                    </button>
+</div>
+<div class="bg-surface-container-lowest shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Report Identifier</th>
+<th class="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Generated On</th>
+<th class="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Admin User</th>
+<th class="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<p class="text-sm font-bold text-on-background">Turnout_Final_Ward7_2024</p>
+<p class="text-[10px] text-slate-400 uppercase">PDF â€¢ 4.2 MB</p>
+</td>
+<td class="px-6 py-5 text-sm text-slate-600">Nov 04, 2024 14:22</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2 py-0.5 text-[10px] font-bold bg-tertiary-fixed text-on-tertiary-fixed-variant uppercase tracking-tighter">Verified</span>
+</td>
+<td class="px-6 py-5 text-sm font-medium text-on-background">J. Harrison</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-primary-fixed-dim hover:text-primary transition-colors text-slate-400"><span class="material-symbols-outlined text-lg">download</span></button>
+<button class="p-2 hover:bg-primary-fixed-dim hover:text-primary transition-colors text-slate-400"><span class="material-symbols-outlined text-lg">visibility</span></button>
+<button class="p-2 hover:bg-error-container hover:text-error transition-colors text-slate-400"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<p class="text-sm font-bold text-on-background">Fin_Audit_SmithCampaign_Q4</p>
+<p class="text-[10px] text-slate-400 uppercase">CSV â€¢ 1.1 MB</p>
+</td>
+<td class="px-6 py-5 text-sm text-slate-600">Nov 04, 2024 11:05</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2 py-0.5 text-[10px] font-bold bg-tertiary-fixed text-on-tertiary-fixed-variant uppercase tracking-tighter">Verified</span>
+</td>
+<td class="px-6 py-5 text-sm font-medium text-on-background">J. Harrison</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-primary-fixed-dim hover:text-primary transition-colors text-slate-400"><span class="material-symbols-outlined text-lg">download</span></button>
+<button class="p-2 hover:bg-primary-fixed-dim hover:text-primary transition-colors text-slate-400"><span class="material-symbols-outlined text-lg">visibility</span></button>
+<button class="p-2 hover:bg-error-container hover:text-error transition-colors text-slate-400"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<p class="text-sm font-bold text-on-background">Incident_Log_General_Muni</p>
+<p class="text-[10px] text-slate-400 uppercase">PDF â€¢ 8.7 MB</p>
+</td>
+<td class="px-6 py-5 text-sm text-slate-600">Nov 03, 2024 18:45</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2 py-0.5 text-[10px] font-bold bg-surface-variant text-on-surface-variant uppercase tracking-tighter">Archived</span>
+</td>
+<td class="px-6 py-5 text-sm font-medium text-on-background">M. Chen</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-primary-fixed-dim hover:text-primary transition-colors text-slate-400"><span class="material-symbols-outlined text-lg">download</span></button>
+<button class="p-2 hover:bg-primary-fixed-dim hover:text-primary transition-colors text-slate-400"><span class="material-symbols-outlined text-lg">visibility</span></button>
+<button class="p-2 hover:bg-error-container hover:text-error transition-colors text-slate-400"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Stats Chip (Tonal Elevation) -->
+<div class="fixed bottom-8 right-8 bg-surface-container-lowest shadow-2xl p-4 border border-outline-variant/10 flex items-center gap-4 animate-pulse">
+<div class="w-2 h-2 bg-tertiary rounded-full"></div>
+<div>
+<p class="text-[10px] font-black uppercase text-slate-400 tracking-widest">Real-time Ledger</p>
+<p class="text-xs font-bold text-on-background">Synchronized â€¢ 4.1ms latency</p>
+</div>
+</div>
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../../assets/js/utils.js"></script>
+<script defer src="../../assets/js/admin.js"></script>
+<script defer src="../../assets/js/charts.js"></script>
+<script defer src="../../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>

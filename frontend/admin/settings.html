@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Settings | CivicAdmin Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#e5eeff",
+                        "secondary": "#0760a7",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-container": "#006a38",
+                        "outline-variant": "#c4c5d7",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#9af6b5",
+                        "surface-bright": "#f8f9ff",
+                        "primary": "#0037b0",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#d3e4fe",
+                        "on-tertiary-container": "#8ce8a7",
+                        "tertiary-fixed-dim": "#7eda9a",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "on-background": "#0b1c30",
+                        "on-secondary-fixed-variant": "#004881",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary-fixed": "#001551",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "on-tertiary-fixed-variant": "#00522a",
+                        "primary-container": "#1d4ed8",
+                        "surface-container-low": "#eff4ff",
+                        "on-surface-variant": "#434655",
+                        "on-secondary-container": "#004378",
+                        "surface-dim": "#cbdbf5",
+                        "surface-tint": "#2151da",
+                        "on-primary-container": "#cad3ff",
+                        "on-tertiary-fixed": "#00210e",
+                        "tertiary": "#004f29",
+                        "surface": "#f8f9ff",
+                        "secondary-container": "#72b1fe",
+                        "outline": "#747686",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#0b1c30",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#dce1ff",
+                        "background": "#f8f9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "inverse-primary": "#b7c4ff",
+                        "on-secondary-fixed": "#001c38",
+                        "on-error-container": "#93000a"
+                    },
+                    fontFamily: {
+                        "headline": ["Public Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3 { font-family: 'Public Sans', sans-serif; }
+        .label-caps { font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.75rem; font-weight: 600; }
+        
+        /* Custom Focus State */
+        .custom-focus:focus-within {
+            outline: 3px solid #1D4ED8;
+            outline-offset: 2px;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: 3px solid #1D4ED8;
+            outline-offset: 2px;
+            background-color: #ffffff !important;
+        }
+    </style>
+<link rel="stylesheet" href="../../assets/css/global.css"/>
+<link rel="stylesheet" href="../../assets/css/components.css"/>
+<link rel="stylesheet" href="../../assets/css/admin.css"/>
+</head>
+<body class="bg-surface-bright text-on-surface flex min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 bottom-0 flex flex-col w-64 p-4 z-40 bg-slate-50 dark:bg-slate-950 border-r border-slate-200/30 dark:border-slate-800/30">
+<div class="mb-8 px-2">
+<h2 class="text-lg font-black text-blue-900 dark:text-blue-100">Election Command</h2>
+<p class="text-xs text-slate-500 font-medium">Official Ledger Node</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:translate-x-0.5 transition-transform">group</span>
+<span class="font-medium">Voter Registry</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:translate-x-0.5 transition-transform">person_check</span>
+<span class="font-medium">Candidate Management</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:translate-x-0.5 transition-transform">analytics</span>
+<span class="font-medium">Election Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:translate-x-0.5 transition-transform">verified_user</span>
+<span class="font-medium">System Audit</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-400 shadow-sm border-l-4 border-blue-700 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:translate-x-0.5 transition-transform">settings</span>
+<span class="font-semibold">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-200/50 space-y-1">
+<button class="w-full bg-primary text-on-primary py-3 font-bold text-sm tracking-wide mb-6 hover:-translate-y-0.5 transition-transform">
+                New Election Cycle
+            </button>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-all" href="#">
+<span class="material-symbols-outlined text-xl">security</span>
+<span class="font-medium text-sm">Security Logs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-all" href="#">
+<span class="material-symbols-outlined text-xl">contact_support</span>
+<span class="font-medium text-sm">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-64 min-h-screen">
+<!-- TopNavBar Shell -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-8 w-full h-16 bg-white/80 backdrop-blur-md border-b border-slate-200/50">
+<div class="flex items-center gap-6">
+<span class="text-xl font-bold tracking-tight text-blue-800 dark:text-blue-300 uppercase">CivicAdmin Ledger</span>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-container-low border-none w-64 text-sm focus:ring-0" placeholder="Search settings..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="h-8 w-8 bg-surface-variant overflow-hidden">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="professional headshot of a mature government official in a blue suit with neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOHUGDLXdkA3J_M15vfpUEysWWy7fPtR0XQQ5yqaNSbx4EvfVgIZx1sq1_hgPrCyVIregx8hI1NwRIYC1x4JuZuLCzmM1N-dqzm5nOpXvVjyimhBbX4x1i21ECpZE0WeY34Oo9e_SiEAD65SGGY1yF2m_pKPqNqFNcmlLWcLlLRBAqztdqEVjXnkvccfp8tRIcuZkKc1OoSvWMebB_wL2UGhrGzidxwXtQ3lkX3km4F2ypJB8vU8n94gA8tn1nwoCEi3BbINy-BwM"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-12 max-w-6xl mx-auto">
+<!-- Hero Title -->
+<div class="mb-12">
+<span class="label-caps text-primary block mb-2">System Configuration</span>
+<h1 class="text-5xl font-extrabold tracking-tight text-on-background mb-4">Core Platform Settings</h1>
+<p class="text-on-surface-variant max-w-2xl text-lg leading-relaxed">
+                    Manage your organization's digital presence, governing rules, and security protocols. All changes are cryptographically logged to the system audit trail.
+                </p>
+</div>
+<!-- Bento Grid Layout for Sections -->
+<div class="space-y-12">
+<!-- Organization Profile Section -->
+<section class="bg-surface-container-lowest p-8 border-l-4 border-primary shadow-sm">
+<div class="flex justify-between items-start mb-8">
+<div>
+<span class="label-caps text-slate-500">Section 01</span>
+<h2 class="text-2xl font-bold mt-1">Organization Profile</h2>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-surface-container-low transition-colors">Reset</button>
+<button class="px-6 py-2 text-sm font-bold bg-primary text-white hover:-translate-y-0.5 transition-transform">Save Changes</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface">Organization Name</label>
+<input class="w-full bg-surface-container-low border-none px-4 py-3 text-on-surface focus:bg-white transition-colors" type="text" value="National Election Commission"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface">Official Domain</label>
+<input class="w-full bg-surface-container-low border-none px-4 py-3 text-on-surface focus:bg-white transition-colors" type="text" value="ledger.nec-gov.io"/>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="text-sm font-bold text-on-surface">Compliance Footer Text</label>
+<textarea class="w-full bg-surface-container-low border-none px-4 py-3 text-on-surface focus:bg-white transition-colors" rows="3">This platform is governed by the Digital Voting Act of 2024. All interactions are subject to node verification.</textarea>
+</div>
+</div>
+</section>
+<!-- Global Election Rules Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-1 py-4">
+<span class="label-caps text-slate-500">Section 02</span>
+<h2 class="text-2xl font-bold mt-1">Global Election Rules</h2>
+<p class="mt-4 text-on-surface-variant text-sm leading-relaxed">
+                            Define the standard operating parameters for all election cycles within this node.
+                        </p>
+</div>
+<div class="lg:col-span-2 space-y-px bg-surface-container-low p-1">
+<!-- Rule Item -->
+<div class="bg-surface-container-lowest p-6 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary mt-1">verified</span>
+<div>
+<h3 class="font-bold text-on-surface">Biometric ID Verification</h3>
+<p class="text-sm text-on-surface-variant">Require fingerprint or facial scan for ballot submission.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Rule Item -->
+<div class="bg-surface-container-lowest p-6 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary mt-1">schedule</span>
+<div>
+<h3 class="font-bold text-on-surface">Mandatory Cooling-off Period</h3>
+<p class="text-sm text-on-surface-variant">24-hour pause between registration and eligibility to vote.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Rule Item -->
+<div class="bg-surface-container-lowest p-6 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary mt-1">public</span>
+<div>
+<h3 class="font-bold text-on-surface">Anonymous Tabulation</h3>
+<p class="text-sm text-on-surface-variant">Separate identity metadata from ballot choices in real-time.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Security & Compliance Section -->
+<section class="bg-slate-900 text-white p-8 shadow-xl">
+<div class="flex items-center gap-4 mb-10">
+<span class="material-symbols-outlined text-4xl text-blue-400">shield_lock</span>
+<div>
+<span class="label-caps text-blue-400">Section 03</span>
+<h2 class="text-2xl font-bold tracking-tight">Security &amp; Compliance</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="space-y-6">
+<div class="border-l-2 border-blue-800 pl-6">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4">Multi-Factor Authentication</h3>
+<div class="flex items-center justify-between p-4 bg-slate-800">
+<span class="text-sm">Enforce for all Admin Users</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-slate-600 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-500"></div>
+</label>
+</div>
+</div>
+<div class="border-l-2 border-blue-800 pl-6">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4">IP Restriction (Allowlist)</h3>
+<textarea class="w-full bg-slate-800 border-none text-sm p-4 focus:ring-1 focus:ring-blue-500" placeholder="Enter IP ranges (CIDR format)..." rows="2">192.168.1.0/24, 10.0.0.1/32</textarea>
+</div>
+</div>
+<div class="space-y-6">
+<div class="border-l-2 border-blue-800 pl-6">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4">Cryptographic Hash Type</h3>
+<select class="w-full bg-slate-800 border-none text-sm p-4 focus:ring-1 focus:ring-blue-500">
+<option>SHA-256 (Standard)</option>
+<option>SHA-512 (Advanced)</option>
+<option>BLAKE3 (High Performance)</option>
+</select>
+</div>
+<div class="border-l-2 border-blue-800 pl-6">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4">Session Timeout</h3>
+<div class="flex items-center gap-4">
+<input class="w-24 bg-slate-800 border-none text-sm p-4 focus:ring-1 focus:ring-blue-500" type="number" value="30"/>
+<span class="text-sm text-slate-400 font-medium">Minutes of inactivity</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- User Permissions Section -->
+<section class="bg-surface-container-low p-8">
+<div class="mb-8">
+<span class="label-caps text-slate-500">Section 04</span>
+<h2 class="text-2xl font-bold mt-1">User Permissions &amp; Roles</h2>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-sm font-bold text-on-surface border-b border-outline-variant/30">
+<th class="pb-4">Role Designation</th>
+<th class="pb-4">Active Accounts</th>
+<th class="pb-4">Access Level</th>
+<th class="pb-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-white/50 transition-colors">
+<td class="py-5">
+<div class="flex items-center gap-3">
+<div class="h-2 w-2 rounded-full bg-primary"></div>
+<span class="font-bold">System Administrator</span>
+</div>
+</td>
+<td class="py-5 text-sm">3 Admins</td>
+<td class="py-5">
+<span class="bg-blue-100 text-blue-800 text-[10px] font-black px-2 py-0.5 uppercase tracking-tighter">Full Read/Write</span>
+</td>
+<td class="py-5 text-right">
+<button class="text-primary font-bold text-sm hover:underline">Edit Policy</button>
+</td>
+</tr>
+<tr class="hover:bg-white/50 transition-colors">
+<td class="py-5">
+<div class="flex items-center gap-3">
+<div class="h-2 w-2 rounded-full bg-tertiary-container"></div>
+<span class="font-bold">Election Auditor</span>
+</div>
+</td>
+<td class="py-5 text-sm">12 Observers</td>
+<td class="py-5">
+<span class="bg-emerald-100 text-emerald-800 text-[10px] font-black px-2 py-0.5 uppercase tracking-tighter">Read Only + Export</span>
+</td>
+<td class="py-5 text-right">
+<button class="text-primary font-bold text-sm hover:underline">Edit Policy</button>
+</td>
+</tr>
+<tr class="hover:bg-white/50 transition-colors">
+<td class="py-5">
+<div class="flex items-center gap-3">
+<div class="h-2 w-2 rounded-full bg-secondary"></div>
+<span class="font-bold">Registry Clerk</span>
+</div>
+</td>
+<td class="py-5 text-sm">45 Users</td>
+<td class="py-5">
+<span class="bg-slate-200 text-slate-700 text-[10px] font-black px-2 py-0.5 uppercase tracking-tighter">Limited Input</span>
+</td>
+<td class="py-5 text-right">
+<button class="text-primary font-bold text-sm hover:underline">Edit Policy</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Support/Help Footer -->
+<div class="flex items-center justify-between p-12 bg-surface-container border-t border-primary/10">
+<div class="flex gap-8">
+<div>
+<p class="font-bold text-sm uppercase text-primary">Need Help?</p>
+<p class="text-sm text-on-surface-variant">Access the technical documentation for advanced CLI configuration.</p>
+</div>
+<div>
+<p class="font-bold text-sm uppercase text-primary">Last Audit</p>
+<p class="text-sm text-on-surface-variant">Verified on Oct 24, 2023 - 14:22 UTC</p>
+</div>
+</div>
+<button class="flex items-center gap-2 font-bold text-primary group">
+<span>Documentation Portal</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../../assets/js/utils.js"></script>
+<script defer src="../../assets/js/admin.js"></script>
+<script defer src="../../assets/js/charts.js"></script>
+<script defer src="../../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>

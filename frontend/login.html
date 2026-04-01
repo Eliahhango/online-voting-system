@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Civic Ledger | Secure Voter Authentication</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&amp;family=Public+Sans:wght@400;700&amp;family=Manrope:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#00522a",
+              "tertiary-fixed-dim": "#7eda9a",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#001c38",
+              "outline": "#747686",
+              "error": "#ba1a1a",
+              "primary-container": "#1d4ed8",
+              "primary-fixed": "#dce1ff",
+              "surface-tint": "#2151da",
+              "on-secondary-fixed-variant": "#004881",
+              "on-secondary-container": "#004378",
+              "secondary-container": "#72b1fe",
+              "tertiary-fixed": "#9af6b5",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#0b1c30",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed": "#00210e",
+              "error-container": "#ffdad6",
+              "on-error-container": "#93000a",
+              "surface-dim": "#cbdbf5",
+              "primary": "#0037b0",
+              "inverse-primary": "#b7c4ff",
+              "on-secondary": "#ffffff",
+              "surface": "#f8f9ff",
+              "surface-bright": "#f8f9ff",
+              "primary-fixed-dim": "#b7c4ff",
+              "on-background": "#0b1c30",
+              "tertiary": "#004f29",
+              "surface-container-low": "#eff4ff",
+              "surface-variant": "#d3e4fe",
+              "outline-variant": "#c4c5d7",
+              "background": "#f8f9ff",
+              "surface-container-highest": "#d3e4fe",
+              "inverse-surface": "#213145",
+              "secondary": "#0760a7",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#0039b5",
+              "secondary-fixed": "#d3e4ff",
+              "on-tertiary-container": "#8ce8a7",
+              "secondary-fixed-dim": "#a2c9ff",
+              "surface-container-high": "#dce9ff",
+              "tertiary-container": "#006a38",
+              "on-surface-variant": "#434655",
+              "on-primary-fixed": "#001551",
+              "on-primary-container": "#cad3ff",
+              "surface-container": "#e5eeff",
+              "inverse-on-surface": "#eaf1ff"
+            },
+            fontFamily: {
+              "headline": ["Poppins"],
+              "body": ["Manrope"],
+              "label": ["Public Sans"],
+              "inter": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .btn-gradient {
+            background: linear-gradient(to bottom right, #0037b0, #1d4ed8);
+        }
+    </style>
+<link rel="stylesheet" href="../assets/css/global.css"/>
+<link rel="stylesheet" href="../assets/css/components.css"/>
+<link rel="stylesheet" href="../assets/css/auth.css"/>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col">
+<!-- TopNavBar Suppression: Page is Linear/Transactional (Login) -->
+<main class="flex-grow flex items-center justify-center px-4 py-12">
+<!-- Main Login Canvas -->
+<div class="w-full max-w-[480px] bg-surface-container-lowest shadow-[0_4px_20px_-10px_rgba(11,28,48,0.1)] border border-outline-variant/15 rounded-lg overflow-hidden">
+<!-- Branding Header -->
+<div class="pt-10 px-8 pb-4 text-center">
+<h1 class="font-headline text-3xl font-black text-primary tracking-tight mb-2">Civic Ledger</h1>
+<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-8">Verified National Identity Portal</p>
+</div>
+<!-- Form Content -->
+<div class="px-8 pb-10">
+<div class="mb-8">
+<h2 class="font-headline text-xl font-bold mb-2">Sign In to Vote</h2>
+<p class="text-on-surface-variant text-sm">Enter your government-issued credentials to access your secure ballot dashboard.</p>
+</div>
+<form class="space-y-6">
+<!-- Voter ID Input Group -->
+<div class="space-y-2">
+<label class="block font-label text-sm font-bold uppercase tracking-tight text-on-surface" for="voter-id">Voter Identification Number</label>
+<input class="w-full h-14 bg-surface-container-low border-outline-variant border rounded px-4 text-on-surface font-inter font-medium focus:ring-0 focus:border-on-surface focus:bg-surface-container-lowest transition-all duration-200 outline-none" id="voter-id" placeholder="e.g. AB12345678" type="text"/>
+<div class="pt-1">
+<a class="text-primary-container text-sm font-semibold underline hover:text-primary transition-colors decoration-2 underline-offset-4" href="#">How to find your Voter ID</a>
+</div>
+</div>
+<!-- Security Badge -->
+<div class="flex items-center gap-3 py-3 px-4 bg-tertiary-fixed/10 border border-tertiary/20 rounded">
+<span class="material-symbols-outlined text-[#10B981]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="text-[#10B981] text-xs font-bold font-label uppercase tracking-wide">256-bit Encrypted Connection</span>
+</div>
+<!-- Action Button -->
+<button class="w-full h-14 btn-gradient text-white font-headline font-bold uppercase tracking-widest rounded-lg shadow-sm hover:-translate-y-0.5 active:scale-95 transition-all duration-200" type="submit">
+                        Authenticate Access
+                    </button>
+</form>
+<!-- Help Links -->
+<div class="mt-8 pt-8 border-t border-outline-variant/15 flex flex-col gap-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">info</span>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                            By continuing, you agree to the National Election Authority's secure protocol. Every authentication attempt is logged for audit purposes.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-8 px-8 flex flex-col md:flex-row justify-between items-center gap-4 mt-auto bg-surface dark:bg-[#08121f] border-t border-outline-variant/15">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-bold text-on-surface font-body text-sm">Civic Ledger</span>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant text-xs font-medium tracking-tight hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant text-xs font-medium tracking-tight hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant text-xs font-medium tracking-tight hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+<p class="text-on-surface-variant text-xs font-medium tracking-tight">
+            Â© 2024 National Election Authority. Secure Blockchain Verification Active.
+        </p>
+</footer>
+<!-- Image for Context (Visual Backdrop) -->
+<div class="fixed inset-0 -z-10 opacity-5 pointer-events-none overflow-hidden">
+<img alt="" class="w-full h-full object-cover grayscale" data-alt="abstract architectural geometry with strong shadows and clean lines in a high-contrast civic building setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxWNOo2JgaVFKVFzyGmZnlGgwCESO8O5PZch6tFSX4aMXUv0AGLFkz29QnTIeXJGDaRoQKPhVn1hb1DUYwrL_QLDjkZgQw-0AFLBTmoQ2pbwytppvcJQgWNNQdaEVz7p2mgZpsYyh9SVFiXVLtVCPp-mRqEsjAi6A6n-9839it9IZpdRVUgbC9tRj-AubO5deYJDlvCSr_ga-D-t_LluN25sybSRo4Q1Zii4XmzOUSldsXs7W4c7v4IWPvytLTbgnxjMFejmmNz0A"/>
+</div>
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../assets/js/utils.js"></script>
+<script defer src="../assets/js/auth.js"></script>
+<script defer src="../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>

@@ -1,0 +1,413 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Candidates Management | Civic Ledger Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#e5eeff",
+              "on-secondary-container": "#004378",
+              "surface-variant": "#d3e4fe",
+              "secondary": "#0760a7",
+              "inverse-on-surface": "#eaf1ff",
+              "primary-fixed-dim": "#b7c4ff",
+              "background": "#f8f9ff",
+              "primary-container": "#1d4ed8",
+              "surface-container-highest": "#d3e4fe",
+              "secondary-fixed-dim": "#a2c9ff",
+              "on-secondary-fixed": "#001c38",
+              "on-primary-fixed": "#001551",
+              "surface-container-lowest": "#ffffff",
+              "on-background": "#0b1c30",
+              "tertiary": "#004f29",
+              "outline-variant": "#c4c5d7",
+              "error": "#ba1a1a",
+              "primary-fixed": "#dce1ff",
+              "on-surface-variant": "#434655",
+              "inverse-primary": "#b7c4ff",
+              "surface": "#f8f9ff",
+              "inverse-surface": "#213145",
+              "surface-container-high": "#dce9ff",
+              "on-primary-fixed-variant": "#0039b5",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#9af6b5",
+              "on-tertiary-container": "#8ce8a7",
+              "on-secondary-fixed-variant": "#004881",
+              "surface-dim": "#cbdbf5",
+              "tertiary-fixed-dim": "#7eda9a",
+              "primary": "#0037b0",
+              "secondary-container": "#72b1fe",
+              "on-primary": "#ffffff",
+              "secondary-fixed": "#d3e4ff",
+              "outline": "#747686",
+              "on-primary-container": "#cad3ff",
+              "on-error": "#ffffff",
+              "surface-tint": "#2151da",
+              "error-container": "#ffdad6",
+              "on-error-container": "#93000a",
+              "on-tertiary-fixed-variant": "#00522a",
+              "on-tertiary-fixed": "#00210e",
+              "tertiary-container": "#006a38",
+              "on-surface": "#0b1c30",
+              "surface-container-low": "#eff4ff",
+              "surface-bright": "#f8f9ff"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Manrope"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body { font-family: 'Manrope', sans-serif; }
+      h1, h2, h3 { font-family: 'Public Sans', sans-serif; }
+    </style>
+<link rel="stylesheet" href="../../assets/css/global.css"/>
+<link rel="stylesheet" href="../../assets/css/components.css"/>
+<link rel="stylesheet" href="../../assets/css/admin.css"/>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-slate-200 dark:border-slate-800 bg-[#eff4ff] dark:bg-slate-950 flex flex-col h-full py-6 z-50">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-white" data-icon="account_balance" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<h2 class="text-lg font-black text-[#0b1c30] dark:text-white leading-tight">Civic Authority</h2>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Election Control Room</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center px-3 py-3 text-slate-600 dark:text-slate-400 hover:bg-[#ffffff]/50 dark:hover:bg-slate-800 transition-all group font-public-sans text-sm font-semibold tracking-wide uppercase" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="ballot">ballot</span>
+                Elections
+            </a>
+<a class="flex items-center px-3 py-3 text-slate-600 dark:text-slate-400 hover:bg-[#ffffff]/50 dark:hover:bg-slate-800 transition-all group font-public-sans text-sm font-semibold tracking-wide uppercase" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="assignment_ind">assignment_ind</span>
+                Positions
+            </a>
+<!-- Active Tab: Candidates -->
+<a class="flex items-center px-3 py-3 bg-white dark:bg-slate-900 text-[#1D4ED8] border-l-4 border-[#1D4ED8] transition-all group font-public-sans text-sm font-semibold tracking-wide uppercase translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="person_search" style="font-variation-settings: 'FILL' 1;">person_search</span>
+                Candidates
+            </a>
+<a class="flex items-center px-3 py-3 text-slate-600 dark:text-slate-400 hover:bg-[#ffffff]/50 dark:hover:bg-slate-800 transition-all group font-public-sans text-sm font-semibold tracking-wide uppercase" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="group">group</span>
+                Voter Registry
+            </a>
+<a class="flex items-center px-3 py-3 text-slate-600 dark:text-slate-400 hover:bg-[#ffffff]/50 dark:hover:bg-slate-800 transition-all group font-public-sans text-sm font-semibold tracking-wide uppercase" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+                System Settings
+            </a>
+</nav>
+<div class="px-3 pt-6 border-t border-slate-200/50">
+<button class="w-full py-3 bg-primary text-white font-bold rounded flex items-center justify-center gap-2 hover:translate-y-[-2px] transition-transform shadow-md">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                Create New Election
+            </button>
+</div>
+<div class="mt-auto px-3 space-y-1">
+<a class="flex items-center px-3 py-2 text-slate-500 hover:text-primary transition-colors text-xs font-bold uppercase tracking-tighter" href="#">
+<span class="material-symbols-outlined mr-3 text-sm" data-icon="verified_user">verified_user</span>
+                Security Logs
+            </a>
+<a class="flex items-center px-3 py-2 text-error hover:opacity-80 transition-colors text-xs font-bold uppercase tracking-tighter" href="#">
+<span class="material-symbols-outlined mr-3 text-sm" data-icon="logout">logout</span>
+                Sign Out
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full h-16 border-b border-slate-100 dark:border-slate-800 bg-[#ffffff] dark:bg-slate-900 flex justify-between items-center px-8 sticky top-0 z-40 shadow-sm dark:shadow-none">
+<div class="flex items-center gap-6">
+<h1 class="text-xl font-black text-[#0037b0] dark:text-blue-500 font-public-sans tracking-tighter">
+                    Civic Ledger Admin
+                </h1>
+<div class="relative group">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="search">search</span>
+</span>
+<input class="bg-surface-container-low border-none h-10 w-64 pl-10 rounded text-sm focus:ring-2 focus:ring-primary-container focus:bg-white transition-all" placeholder="Search global records..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 transition-colors rounded">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 transition-colors rounded">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-xs font-bold text-on-background">Admin User</p>
+<p class="text-[10px] text-slate-500 font-semibold uppercase tracking-widest">Support</p>
+</div>
+<img alt="Admin Avatar" class="w-10 h-10 rounded-full border-2 border-primary-fixed" data-alt="Close up professional headshot of a person in business attire with a neutral friendly expression and soft office lighting background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSWaw20q5Stmym9BTttUA0HBY3Ltg5342TJ5mEPWM_lKFHjihSi7Xe2vL1FJhDI0vvXHA8f1Zx7U1oIlqSKSiN_KSCDvb6PkbkqKMtcf0RVWkjrCfLFUUzhfwAkvUlfUvPpo3LqOD9kbojB8gSpSJ0wrpj5Ar7x8tq89KEZJ8Ptp88xXR2MTYD1COckGXsihByVs5WjnVY66bgN3CqNqXyDc90Yihz8-jbLEQt7QMg4-s8FE_nNDQlMYzhYKh4vIgC7MSV0uZ0R5s"/>
+</div>
+</div>
+</header>
+<!-- Ledger Canvas -->
+<div class="flex-1 p-8 bg-background">
+<!-- Header Section -->
+<div class="mb-8 flex justify-between items-end">
+<div>
+<span class="text-[11px] font-bold uppercase tracking-[0.2em] text-primary mb-2 block">Electoral Intelligence</span>
+<h2 class="text-4xl font-black tracking-tight text-on-background leading-none">Candidates Directory</h2>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 bg-white text-primary border border-primary-fixed hover:bg-primary-fixed/20 transition-all font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="file_download">file_download</span>
+                        Export Audit Log
+                    </button>
+<button class="px-6 py-3 bg-gradient-to-r from-primary to-primary-container text-white font-bold flex items-center gap-2 shadow-lg hover:-translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined text-lg" data-icon="person_add">person_add</span>
+                        Onboard Candidate
+                    </button>
+</div>
+</div>
+<!-- Filter Ledger (Paper-on-Paper) -->
+<div class="bg-surface-container-low p-1 mb-8">
+<div class="bg-white p-6 grid grid-cols-12 gap-6 items-center">
+<div class="col-span-4">
+<label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">Filter by Election</label>
+<select class="w-full bg-surface-container-low border-none h-11 text-sm font-semibold focus:ring-3 focus:ring-primary-container">
+<option>General Presidential Election 2024</option>
+<option>Municipal Council Primary 2023</option>
+<option>State Senate Special Election</option>
+</select>
+</div>
+<div class="col-span-3">
+<label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">Electoral Position</label>
+<select class="w-full bg-surface-container-low border-none h-11 text-sm font-semibold focus:ring-3 focus:ring-primary-container">
+<option>All Positions</option>
+<option>Chief Executive</option>
+<option>Legislative Member</option>
+<option>Judicial Oversight</option>
+</select>
+</div>
+<div class="col-span-3">
+<label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">Party Affiliation</label>
+<select class="w-full bg-surface-container-low border-none h-11 text-sm font-semibold focus:ring-3 focus:ring-primary-container">
+<option>All Parties</option>
+<option>National Unity Party</option>
+<option>Progressive Alliance</option>
+<option>Independent Collective</option>
+</select>
+</div>
+<div class="col-span-2 flex items-end h-full">
+<button class="w-full h-11 bg-slate-100 hover:bg-slate-200 text-on-background font-bold transition-colors text-sm uppercase tracking-tighter">
+                            Clear Filters
+                        </button>
+</div>
+</div>
+</div>
+<!-- Bento Grid Candidates Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Candidate Card 1 -->
+<div class="bg-white p-6 group hover:bg-surface-container-low transition-all border-l-4 border-primary">
+<div class="flex justify-between items-start mb-6">
+<div class="relative">
+<img alt="Candidate Avatar" class="w-20 h-24 object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Professional portrait of a mature man in a grey suit and blue tie with a confident smile, high-end photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8MQcdGpe8PHheXXGTWuov59QWaxlLsNgzdyz6nB4fMYSZ3WfA05YPIU00_ghbIuxdE5jU5aoEij-08G0Ex_tvY7MVXWMrnbXmzY_ux-WpilavZS94h6TKpOA9vmQioVID9zUmVPasvk1NudWRzpY-jZ-FnQfXfQvHSFhmRILzvogO619iWeEVPQC7oy5DHSqfer83uWzuPOEsrOlGUsaSYdpiw7qWdkaFHEeunmrXJEN-l-1s0i9FA3iXTqdRB7N_RD5kOF5LP7o"/>
+<div class="absolute -bottom-2 -right-2 bg-primary text-white p-1 rounded-sm">
+<span class="material-symbols-outlined text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-black uppercase tracking-widest bg-primary-fixed text-primary px-2 py-1">Incumbent</span>
+<p class="text-[10px] text-slate-400 font-bold uppercase mt-2">ID: CL-2948-B</p>
+</div>
+</div>
+<h3 class="text-xl font-black text-on-background tracking-tighter leading-tight mb-1">Dr. Alistair Vance</h3>
+<p class="text-sm font-bold text-primary mb-4">National Unity Party</p>
+<div class="space-y-2 mb-6">
+<div class="flex justify-between text-xs border-b border-slate-100 pb-1">
+<span class="text-slate-400 font-medium">Position</span>
+<span class="text-on-background font-bold">Chief Executive</span>
+</div>
+<div class="flex justify-between text-xs border-b border-slate-100 pb-1">
+<span class="text-slate-400 font-medium">Status</span>
+<span class="text-tertiary font-bold uppercase">Cleared</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 bg-surface-container-low text-primary font-bold text-xs uppercase hover:bg-primary hover:text-white transition-all">Edit Profile</button>
+<button class="py-2 bg-on-background text-white font-bold text-xs uppercase hover:opacity-90 transition-all">View Dossier</button>
+</div>
+</div>
+<!-- Candidate Card 2 -->
+<div class="bg-white p-6 group hover:bg-surface-container-low transition-all border-l-4 border-slate-300">
+<div class="flex justify-between items-start mb-6">
+<div class="relative">
+<img alt="Candidate Avatar" class="w-20 h-24 object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="A focused woman in corporate attire standing in a modern office with natural light, professional editorial look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBM-rAI5-T8mdlGl6-VRE88BD0y5VjXkZfIvgqfoCQhFOG06BdmqBRaalbztofxiisCqeEwvwdNwdb105lLKSnbdxiLSiRtw-S22QkcTjTUGRUxgZfYL8xYSAS5DMjWI5ZTF50tvCsTTylenzhhBd0iFHvURADKHe0_ie6Vd9fKCb_oz6W2pGIObma38pW-9ipWktyef1Y2NtMh64N4ZIfjqmP1GyWhkHw1X4SatKH3Fz9xpLvsMVU_h95jTO42k-gSuL7EPu15SM"/>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-black uppercase tracking-widest bg-surface-container text-on-surface-variant px-2 py-1">Challenger</span>
+<p class="text-[10px] text-slate-400 font-bold uppercase mt-2">ID: CL-1033-A</p>
+</div>
+</div>
+<h3 class="text-xl font-black text-on-background tracking-tighter leading-tight mb-1">Helena Moretti</h3>
+<p class="text-sm font-bold text-on-secondary-container mb-4">Progressive Alliance</p>
+<div class="space-y-2 mb-6">
+<div class="flex justify-between text-xs border-b border-slate-100 pb-1">
+<span class="text-slate-400 font-medium">Position</span>
+<span class="text-on-background font-bold">Chief Executive</span>
+</div>
+<div class="flex justify-between text-xs border-b border-slate-100 pb-1">
+<span class="text-slate-400 font-medium">Status</span>
+<span class="text-tertiary font-bold uppercase">Cleared</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 bg-surface-container-low text-primary font-bold text-xs uppercase hover:bg-primary hover:text-white transition-all">Edit Profile</button>
+<button class="py-2 bg-on-background text-white font-bold text-xs uppercase hover:opacity-90 transition-all">View Dossier</button>
+</div>
+</div>
+<!-- Candidate Card 3 -->
+<div class="bg-white p-6 group hover:bg-surface-container-low transition-all border-l-4 border-slate-300">
+<div class="flex justify-between items-start mb-6">
+<div class="relative">
+<img alt="Candidate Avatar" class="w-20 h-24 object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Young male candidate in casual business attire leaning against a glass wall in a sunlit atrium" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIle0xOrDIA5c6woPxVTJMnmU0NPtKN03zHLMp0_qpZAsSqoXcJ4dNs_yKxnoYfKyY76DUX5a_tXxitLG6-AdtsWMh55WlJ-McMRFXV76JMZ22V9TN5RecmxBVw4-4is4HBHRR6P6MiQvVNNsKmooumzUg32-7sc6HEVrj20PYMiwnDmHNGQeKMzcpfNtKcMpn0GzeigS2rDKd9KWNbroLkDB5CRe2RZZ6xFRLWbT6Ix-WTM_wk0kzFLHNobJ6j_mL8V8t-44Dmn8"/>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-black uppercase tracking-widest bg-surface-container text-on-surface-variant px-2 py-1">Challenger</span>
+<p class="text-[10px] text-slate-400 font-bold uppercase mt-2">ID: CL-8854-C</p>
+</div>
+</div>
+<h3 class="text-xl font-black text-on-background tracking-tighter leading-tight mb-1">Marcus Thorne</h3>
+<p class="text-sm font-bold text-slate-500 mb-4">Independent Collective</p>
+<div class="space-y-2 mb-6">
+<div class="flex justify-between text-xs border-b border-slate-100 pb-1">
+<span class="text-slate-400 font-medium">Position</span>
+<span class="text-on-background font-bold">Legislative Member</span>
+</div>
+<div class="flex justify-between text-xs border-b border-slate-100 pb-1">
+<span class="text-slate-400 font-medium">Status</span>
+<span class="text-error font-bold uppercase">Review Pending</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 bg-surface-container-low text-primary font-bold text-xs uppercase hover:bg-primary hover:text-white transition-all">Edit Profile</button>
+<button class="py-2 bg-on-background text-white font-bold text-xs uppercase hover:opacity-90 transition-all">View Dossier</button>
+</div>
+</div>
+<!-- Candidate Card 4 -->
+<div class="bg-white p-6 group hover:bg-surface-container-low transition-all border-l-4 border-slate-300">
+<div class="flex justify-between items-start mb-6">
+<div class="relative">
+<img alt="Candidate Avatar" class="w-20 h-24 object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Professional woman with a warm expression wearing glasses and a formal navy blazer in a studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCak0ViYBegzvOM2Yi1V5lB0LXNBe4bNwS5yy_GzpTuwKVVKWQ1K6gxJj9_94WOEpKFSXwk-pIHQ_y5tsN6CB9Wcq6qaHaGzJc3rj0scXmkKxYEbxf1XxtwIdcOcSDRHzFz98SHxl9zp1-xIQxo9ARnYQ_QRSS6hf62VWe-CdoGLaVoH0U5JJBqlGq-A1_sIphFX2CqoORZoefnjKMu-OS01ddnQpqipF6wBrAXB9YbK3mP4C95LbLhyaOA375Uw6pzqN12dT6g5Zo"/>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-black uppercase tracking-widest bg-surface-container text-on-surface-variant px-2 py-1">New Entry</span>
+<p class="text-[10px] text-slate-400 font-bold uppercase mt-2">ID: CL-5012-D</p>
+</div>
+</div>
+<h3 class="text-xl font-black text-on-background tracking-tighter leading-tight mb-1">Sarah Jenkins</h3>
+<p class="text-sm font-bold text-primary mb-4">National Unity Party</p>
+<div class="space-y-2 mb-6">
+<div class="flex justify-between text-xs border-b border-slate-100 pb-1">
+<span class="text-slate-400 font-medium">Position</span>
+<span class="text-on-background font-bold">Judicial Oversight</span>
+</div>
+<div class="flex justify-between text-xs border-b border-slate-100 pb-1">
+<span class="text-slate-400 font-medium">Status</span>
+<span class="text-tertiary font-bold uppercase">Cleared</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 bg-surface-container-low text-primary font-bold text-xs uppercase hover:bg-primary hover:text-white transition-all">Edit Profile</button>
+<button class="py-2 bg-on-background text-white font-bold text-xs uppercase hover:opacity-90 transition-all">View Dossier</button>
+</div>
+</div>
+<!-- Candidate Card 5 -->
+<div class="bg-white p-6 group hover:bg-surface-container-low transition-all border-l-4 border-slate-300">
+<div class="flex justify-between items-start mb-6">
+<div class="relative">
+<img alt="Candidate Avatar" class="w-20 h-24 object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Middle aged man with short hair and thoughtful expression, wearing a tailored charcoal suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn0g4pATjwtjT7wQ8Vp8K3veLhme6zYAJpS6Sjp7zZWUDDAFhHiwfYiDIIJRYEeMFeKVcYXDgUYTwmXav9RxGW4GDKedGfxAqbwCJZGgyoV7R6Cksf9a43XLpteFIp6mUb96we0CE_RkJTU-ypwbtCg-ZAZmDygu1zCQZI4G10IpnRK-3GA6AQQcqLzXcHPIfhtkcPgp3Nt9BtjERwCdM7C_2WruBzqml4JnS-1dD49M4ysIkCIhZp2s978VUygI4GAT3_EHwc85w"/>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-black uppercase tracking-widest bg-surface-container text-on-surface-variant px-2 py-1">Challenger</span>
+<p class="text-[10px] text-slate-400 font-bold uppercase mt-2">ID: CL-3329-E</p>
+</div>
+</div>
+<h3 class="text-xl font-black text-on-background tracking-tighter leading-tight mb-1">Julian Brooks</h3>
+<p class="text-sm font-bold text-on-secondary-container mb-4">Progressive Alliance</p>
+<div class="space-y-2 mb-6">
+<div class="flex justify-between text-xs border-b border-slate-100 pb-1">
+<span class="text-slate-400 font-medium">Position</span>
+<span class="text-on-background font-bold">Legislative Member</span>
+</div>
+<div class="flex justify-between text-xs border-b border-slate-100 pb-1">
+<span class="text-slate-400 font-medium">Status</span>
+<span class="text-tertiary font-bold uppercase">Cleared</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 bg-surface-container-low text-primary font-bold text-xs uppercase hover:bg-primary hover:text-white transition-all">Edit Profile</button>
+<button class="py-2 bg-on-background text-white font-bold text-xs uppercase hover:opacity-90 transition-all">View Dossier</button>
+</div>
+</div>
+<!-- Empty State / Add New Placeholder -->
+<div class="bg-surface-container-low border-2 border-dashed border-slate-200 flex flex-col items-center justify-center p-8 group cursor-pointer hover:border-primary transition-all">
+<div class="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl text-slate-300 group-hover:text-primary" data-icon="add_circle">add_circle</span>
+</div>
+<p class="text-sm font-bold text-slate-400 uppercase tracking-widest group-hover:text-primary">New Candidate Record</p>
+<p class="text-[11px] text-slate-400 mt-1">Manual entry for paper filers</p>
+</div>
+</div>
+<!-- Footer Pagination Ledger -->
+<div class="mt-12 flex justify-between items-center border-t border-slate-200 pt-6">
+<div class="text-xs font-bold text-slate-500 uppercase tracking-tighter">
+                    Showing <span class="text-on-background">5</span> of <span class="text-on-background">48</span> verified candidates
+                </div>
+<div class="flex gap-1">
+<button class="w-10 h-10 flex items-center justify-center border border-slate-200 text-slate-400 hover:border-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-white font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center border border-slate-200 text-on-background font-bold hover:bg-slate-50">2</button>
+<button class="w-10 h-10 flex items-center justify-center border border-slate-200 text-on-background font-bold hover:bg-slate-50">3</button>
+<button class="w-10 h-10 flex items-center justify-center border border-slate-200 text-slate-400 hover:border-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Audit FAB -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="flex items-center gap-3 bg-on-background text-white pl-4 pr-6 py-3 rounded-full shadow-2xl hover:bg-primary transition-all group">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="text-xs font-black uppercase tracking-[0.1em]">View Integrity Logs</span>
+</button>
+</div>
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../../assets/js/utils.js"></script>
+<script defer src="../../assets/js/admin.js"></script>
+<script defer src="../../assets/js/charts.js"></script>
+<script defer src="../../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>

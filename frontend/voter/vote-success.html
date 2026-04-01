@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vote Success | Civic Ledger</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&amp;family=Public+Sans:wght@700;800&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#004f29",
+              "on-tertiary-fixed-variant": "#00522a",
+              "on-tertiary-container": "#8ce8a7",
+              "on-primary": "#ffffff",
+              "error-container": "#ffdad6",
+              "inverse-primary": "#b7c4ff",
+              "on-primary-fixed-variant": "#0039b5",
+              "inverse-on-surface": "#eaf1ff",
+              "on-secondary-container": "#004378",
+              "inverse-surface": "#213145",
+              "secondary-fixed-dim": "#a2c9ff",
+              "secondary-fixed": "#d3e4ff",
+              "error": "#ba1a1a",
+              "on-surface": "#0b1c30",
+              "primary-fixed-dim": "#b7c4ff",
+              "on-error": "#ffffff",
+              "surface": "#f8f9ff",
+              "secondary": "#0760a7",
+              "tertiary-fixed-dim": "#7eda9a",
+              "on-error-container": "#93000a",
+              "surface-container": "#e5eeff",
+              "surface-bright": "#f8f9ff",
+              "on-secondary-fixed-variant": "#004881",
+              "surface-container-highest": "#d3e4fe",
+              "secondary-container": "#72b1fe",
+              "primary": "#0037b0",
+              "on-secondary-fixed": "#001c38",
+              "tertiary-container": "#006a38",
+              "surface-dim": "#cbdbf5",
+              "on-primary-fixed": "#001551",
+              "surface-variant": "#d3e4fe",
+              "on-background": "#0b1c30",
+              "surface-tint": "#2151da",
+              "tertiary-fixed": "#9af6b5",
+              "primary-fixed": "#dce1ff",
+              "on-secondary": "#ffffff",
+              "background": "#f8f9ff",
+              "surface-container-high": "#dce9ff",
+              "on-tertiary-fixed": "#00210e",
+              "on-primary-container": "#cad3ff",
+              "primary-container": "#1d4ed8",
+              "outline-variant": "#c4c5d7",
+              "surface-container-low": "#eff4ff",
+              "outline": "#747686",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#434655",
+              "surface-container-lowest": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Poppins"],
+              "body": ["Manrope"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body { font-family: 'Manrope', sans-serif; }
+      h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+    </style>
+<link rel="stylesheet" href="../../assets/css/global.css"/>
+<link rel="stylesheet" href="../../assets/css/components.css"/>
+<link rel="stylesheet" href="../../assets/css/voter.css"/>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-white dark:bg-slate-900 shadow-sm border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-bold tracking-tight text-blue-700 dark:text-blue-400">Civic Ledger</span>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors" href="#">Elections</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors" href="#">Security</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors" href="#">Help</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-600 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-600 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 flex flex-col py-4 bg-slate-50 dark:bg-slate-950 tonal-shift bg-slate-50 dark:bg-slate-900">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-high rounded-full overflow-hidden flex items-center justify-center border border-outline-variant/20">
+<img alt="Voter Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfsfYncW_RkpVP95Bd0-JYeDO6eOt0cZW0sPRtf5JhMn7FZgGGeHn7Lr6V5HVR1SfobAbQIFhjynvFIW1JgLBzKNkIQ52ZN9zRrBNFXhqzbpzlpXHprIDwVc0qk2kRTKJX1Wg6F4iDGLcs0yAqCCN9CWCNiOWoTdXOgZm7epfz3B1CpnoNhatBkshYRBgr1xtprQumq9R6L-8_BmwBD9nhmpbqXJSlUxW8ARFrQSLwiFkUPGMx0yAwGT-OkXevml1Fivn68_nwmU0"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Voter Portal</p>
+<p class="text-[10px] uppercase tracking-wider text-outline font-semibold">Verified Citizen</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-700 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 bg-white dark:bg-slate-800 text-blue-700 dark:text-blue-400 font-bold rounded-l-none border-l-4 border-blue-700 translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="ballot" style="font-variation-settings: 'FILL' 1;">ballot</span>
+<span class="font-bold">Active Ballots</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-700 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-medium">Results</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-700 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-medium">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-700 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="px-6 py-4">
+<button class="w-full py-3 bg-primary text-on-primary font-bold rounded shadow-lg transition-transform active:scale-95 duration-200">
+                Cast Ballot
+            </button>
+</div>
+<div class="mt-auto px-6 py-4 border-t border-slate-200/50">
+<a class="flex items-center gap-3 text-slate-500 hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-medium">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 pt-24 min-h-screen p-8 bg-surface-container-low">
+<div class="max-w-4xl mx-auto">
+<!-- Header Section (Oversized Typography) -->
+<div class="mb-12 text-center md:text-left">
+<p class="label-md uppercase tracking-[0.05em] font-bold text-primary mb-2">Transaction Finalized</p>
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-4">Ballot Successfully Cast.</h1>
+<p class="text-on-surface-variant max-w-xl text-lg leading-relaxed">
+                    Your civic participation has been recorded in the secure digital ledger. Your voice is now part of the immutable record.
+                </p>
+</div>
+<!-- Confirmation Card (The Primary Ledger) -->
+<div class="bg-surface-container-lowest border-l-4 border-primary p-8 md:p-12 shadow-[0_32px_64px_-12px_rgba(11,28,48,0.04)] mb-10 relative overflow-hidden">
+<!-- Success Background Texture -->
+<div class="absolute top-0 right-0 p-8 opacity-5">
+<span class="material-symbols-outlined text-[160px]" data-icon="verified">verified</span>
+</div>
+<div class="flex flex-col md:flex-row items-start md:items-center gap-8 relative z-10">
+<!-- Success Icon -->
+<div class="w-20 h-20 bg-emerald-50 text-[#10B981] flex items-center justify-center rounded-lg border border-emerald-100">
+<span class="material-symbols-outlined text-5xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1 space-y-6">
+<div>
+<h2 class="text-2xl font-bold text-on-surface">Confirmation Receipt</h2>
+<p class="text-on-surface-variant text-sm">Issued by the Central Election Authority</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-6 border-y border-outline-variant/10">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-1">Receipt Reference</p>
+<p class="text-xl font-mono font-bold text-primary">CX-9842-KL</p>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-1">Submission Time</p>
+<p class="text-lg font-bold text-on-surface">Oct 24, 2024 â€” 14:32:01 UTC</p>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-1">Digital Signature</p>
+<p class="text-sm font-mono text-on-surface-variant break-all">f7a8...9c2d1b00e24f</p>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-1">Status</p>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                                    IMMUTABLE
+                                </span>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-primary text-white px-8 py-3 font-bold flex items-center gap-2 hover:-translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                                Download Receipt (PDF)
+                            </button>
+<button class="bg-surface-container-low text-on-primary-fixed-variant px-8 py-3 font-bold hover:bg-surface-container-high transition-colors">
+                                Back to Dashboard
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Info Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 bg-surface-container-lowest p-6 border border-outline-variant/10 shadow-sm">
+<p class="text-xs font-bold uppercase tracking-widest text-primary mb-3">Verification Process</p>
+<h3 class="text-xl font-bold mb-4">How is your vote protected?</h3>
+<div class="space-y-4">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+<p class="text-sm text-on-surface-variant">Your vote is encrypted at the point of submission and stripped of all personal identifiers before being added to the public ledger.</p>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="history_edu">history_edu</span>
+<p class="text-sm text-on-surface-variant">The Civic Ledger uses homomorphic encryption, allowing your vote to be counted while remaining private forever.</p>
+</div>
+</div>
+</div>
+<div class="bg-primary-container text-on-primary-container p-6 relative group overflow-hidden">
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="share">share</span>
+<h3 class="text-lg font-bold mb-2">Spread the Word</h3>
+<p class="text-sm text-blue-100 opacity-80">Encourage your community to participate in the democratic process.</p>
+</div>
+<button class="text-white font-bold flex items-center gap-2 mt-6 hover:underline">
+                            Share Participation <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Decorative Graphic -->
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl group-hover:bg-white/20 transition-all"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-6 flex flex-col md:flex-row justify-between items-center ml-64 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 text-sm">
+<div class="text-slate-500 dark:text-slate-400 mb-4 md:mb-0">
+            Â© 2024 Civic Ledger Platform. All rights reserved.
+        </div>
+<div class="flex gap-6">
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300" href="#">Legal</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300" href="#">Accessibility</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300" href="#">Support</a>
+</div>
+</footer>
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../../assets/js/utils.js"></script>
+<script defer src="../../assets/js/voter.js"></script>
+<script defer src="../../assets/js/charts.js"></script>
+<script defer src="../../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>

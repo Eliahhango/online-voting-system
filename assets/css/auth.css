@@ -1,0 +1,71 @@
+body.ovs-section-public {
+  --auth-bg-a: rgba(29, 78, 216, 0.12);
+  --auth-bg-b: rgba(16, 185, 129, 0.1);
+}
+
+body.ovs-section-public main {
+  position: relative;
+}
+
+body.ovs-section-public main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 6%, var(--auth-bg-a), transparent 36%),
+    radial-gradient(circle at 88% 8%, var(--auth-bg-b), transparent 32%);
+}
+
+body.ovs-section-public main > * {
+  position: relative;
+}
+
+body.ovs-section-public form {
+  border: 1px solid #dbe4f2;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 18px 36px -30px rgba(15, 35, 74, 0.75);
+}
+
+body.ovs-section-public form input,
+body.ovs-section-public form select,
+body.ovs-section-public form textarea {
+  border-radius: 6px;
+  border-color: #cbd5e1;
+}
+
+body.ovs-section-public form input:focus,
+body.ovs-section-public form select:focus,
+body.ovs-section-public form textarea:focus {
+  border-color: #1d4ed8;
+  outline: 3px solid rgba(29, 78, 216, 0.26);
+  outline-offset: 1px;
+}
+
+body.ovs-section-public form button[type="submit"] {
+  min-height: 44px;
+  font-weight: 800;
+}
+
+[data-auth-message] {
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  border-width: 1px;
+  border-style: solid;
+}
+
+[data-auth-message].bg-red-50 {
+  border-color: #fecaca;
+}
+
+[data-auth-message].bg-emerald-50 {
+  border-color: #a7f3d0;
+}
+
+@media (max-width: 768px) {
+  body.ovs-section-public form {
+    box-shadow: none;
+  }
+}

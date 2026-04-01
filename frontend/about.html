@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About | Civic Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;family=Poppins:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "error-container": "#ffdad6",
+                "on-background": "#0b1c30",
+                "outline-variant": "#c4c5d7",
+                "surface-dim": "#cbdbf5",
+                "surface-bright": "#f8f9ff",
+                "on-tertiary": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "secondary-fixed-dim": "#a2c9ff",
+                "on-secondary-fixed-variant": "#004881",
+                "on-primary": "#ffffff",
+                "secondary-fixed": "#d3e4ff",
+                "inverse-surface": "#213145",
+                "primary-container": "#1d4ed8",
+                "on-secondary-container": "#004378",
+                "on-primary-fixed-variant": "#0039b5",
+                "error": "#ba1a1a",
+                "background": "#f8f9ff",
+                "on-error-container": "#93000a",
+                "on-tertiary-container": "#8ce8a7",
+                "inverse-primary": "#b7c4ff",
+                "surface-tint": "#2151da",
+                "on-primary-container": "#cad3ff",
+                "tertiary-container": "#006a38",
+                "on-error": "#ffffff",
+                "surface": "#f8f9ff",
+                "surface-container": "#e5eeff",
+                "primary-fixed-dim": "#b7c4ff",
+                "primary": "#0037b0",
+                "on-surface-variant": "#434655",
+                "on-secondary": "#ffffff",
+                "inverse-on-surface": "#eaf1ff",
+                "tertiary-fixed": "#9af6b5",
+                "surface-container-high": "#dce9ff",
+                "on-tertiary-fixed-variant": "#00522a",
+                "surface-container-low": "#eff4ff",
+                "surface-variant": "#d3e4fe",
+                "tertiary": "#004f29",
+                "outline": "#747686",
+                "primary-fixed": "#dce1ff",
+                "on-secondary-fixed": "#001c38",
+                "on-surface": "#0b1c30",
+                "tertiary-fixed-dim": "#7eda9a",
+                "surface-container-highest": "#d3e4fe",
+                "on-tertiary-fixed": "#00210e",
+                "secondary": "#0760a7",
+                "secondary-container": "#72b1fe",
+                "on-primary-fixed": "#001551"
+              },
+              fontFamily: {
+                "headline": ["Public Sans"],
+                "body": ["Manrope"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 32px 64px -12px rgba(11, 28, 48, 0.04);
+        }
+    </style>
+<link rel="stylesheet" href="../assets/css/global.css"/>
+<link rel="stylesheet" href="../assets/css/components.css"/>
+<link rel="stylesheet" href="../assets/css/public.css"/>
+</head>
+<body class="bg-background text-on-surface font-body antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-white shadow-[0_4px_20px_-10px_rgba(11,28,48,0.1)]">
+<div class="text-2xl font-black text-[#0037b0]">Civic Ledger</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#5a6b87] hover:text-[#0b1c30] text-sm font-medium uppercase tracking-wider transition-transform duration-200 hover:translate-y-[-2px]" href="#">Elections</a>
+<a class="text-[#1d4ed8] border-b-2 border-[#1d4ed8] font-bold text-sm uppercase tracking-wider transition-transform duration-200 hover:translate-y-[-2px]" href="#">About</a>
+<a class="text-[#5a6b87] hover:text-[#0b1c30] text-sm font-medium uppercase tracking-wider transition-transform duration-200 hover:translate-y-[-2px]" href="#">How It Works</a>
+<a class="text-[#5a6b87] hover:text-[#0b1c30] text-sm font-medium uppercase tracking-wider transition-transform duration-200 hover:translate-y-[-2px]" href="#">Contact</a>
+</nav>
+<button class="bg-primary text-white px-6 py-2 font-bold hover:translate-y-[-2px] transition-all duration-200 active:scale-[0.98]">Voter Login</button>
+</header>
+<main class="pt-16">
+<!-- Hero Section: The Digital Ledger -->
+<section class="relative min-h-[716px] flex items-center overflow-hidden bg-surface-container-low px-8">
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center w-full">
+<div class="z-10">
+<span class="label-md uppercase tracking-[0.05em] text-primary font-bold mb-4 block">The Digital Ledger</span>
+<h1 class="font-headline text-6xl md:text-7xl font-black text-on-background tracking-tighter leading-[0.95] mb-6">
+                        Authority in every <span class="text-primary-container">byte.</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-xl leading-relaxed mb-8">
+                        The Civic Ledger is the nation's premier infrastructure for immutable democratic participation. Built on transparency, secured by cryptography, and governed by the citizens.
+                    </p>
+</div>
+<div class="relative hidden lg:block h-[500px]">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-lg opacity-10"></div>
+<img alt="Blockchain Concept" class="w-full h-full object-cover rounded-lg editorial-shadow" data-alt="Abstract visualization of a digital ledger with glowing nodes and interconnected data points in deep blue and silver tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvpIatcg_hw4t47ub6VunQkldgTNSXxNapmkaLkXQpPIZDTOkpL6mK8M0pEni74s4nE8cFQCdipQ60IJwBrrkyLt05D-4Zvy_lKgO2AVa5D9E9X5VIRcqt1XDgcWrmFb-fkdzmCCqRJbQKxGDyOpHjzco54fm4mrQagXp9pntMiJhrGwB5R_wV9H_nkpVIbIA-ybScDAokuswIR73uZpNXBfXTyrJTO4663ljyHLkqLhOWJJ76AW9WUhFj-IE7brGp1YE_VCDV-vI"/>
+</div>
+</div>
+</section>
+<!-- Mission & Vision -->
+<section class="py-24 px-8 bg-surface-container-lowest">
+<div class="max-w-5xl mx-auto">
+<div class="grid md:grid-cols-2 gap-16">
+<div>
+<h2 class="font-headline text-3xl font-bold mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">flag</span>
+                            Our Mission
+                        </h2>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                            To modernize the foundational infrastructure of democracy by ensuring every vote is counted, every citizen is verified, and the democratic process remains impenetrable to interference.
+                        </p>
+</div>
+<div>
+<h2 class="font-headline text-3xl font-bold mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">visibility</span>
+                            Our Vision
+                        </h2>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                            A world where civic participation is effortless, where trust in elections is absolute, and where technology serves as the ultimate guardian of public sovereignty.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Core Value Cards: Bento Grid Style -->
+<section class="py-24 px-8 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16">
+<span class="label-md uppercase tracking-wider text-primary font-bold">Principles</span>
+<h2 class="font-headline text-4xl font-black mt-2">Core Foundations</h2>
+</div>
+<div class="grid md:grid-cols-3 gap-6">
+<!-- Security Card -->
+<div class="bg-white p-10 border-l-4 border-primary editorial-shadow">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Security</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                            Hardened by military-grade encryption and decentralized protocols. Our systems are audited 24/7 to prevent any unauthorized alteration of records.
+                        </p>
+</div>
+<!-- Transparency Card -->
+<div class="bg-white p-10 border-l-4 border-primary editorial-shadow">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Transparency</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                            Publicly verifiable proof of record. Every ledger entry is timestamped and immutable, allowing for independent third-party verification without compromising privacy.
+                        </p>
+</div>
+<!-- Accessibility Card -->
+<div class="bg-white p-10 border-l-4 border-primary editorial-shadow">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="universal_currency_alt" style="font-variation-settings: 'FILL' 1;">universal_currency_alt</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Accessibility</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                            Democratizing the vote through high-legibility interfaces and multi-platform access. We ensure no citizen is left behind due to technical barriers.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Civic Impact Timeline -->
+<section class="py-24 px-8 bg-surface-container-lowest overflow-hidden">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
+<div class="md:w-1/3">
+<h2 class="font-headline text-4xl font-black sticky top-32 leading-[1.1]">Milestones in Modernizing Democracy</h2>
+<p class="mt-6 text-on-surface-variant">Since our inception, we have scaled to secure national elections and verify millions of digital identities.</p>
+</div>
+<div class="md:w-2/3 border-l-2 border-surface-container-high pl-12 space-y-20 relative">
+<!-- Milestone 1 -->
+<div class="relative">
+<div class="absolute -left-[57px] top-2 w-4 h-4 bg-primary border-4 border-white rounded-full"></div>
+<span class="font-headline font-black text-6xl text-surface-container-highest absolute -left-28 -top-8 -z-10 opacity-50">2020</span>
+<h4 class="text-xl font-bold mb-2">Genesis of the Ledger</h4>
+<p class="text-on-surface-variant">Launched the first blockchain-verified municipal pilot program in three major metropolitan hubs, achieving 99.9% verification accuracy.</p>
+</div>
+<!-- Milestone 2 -->
+<div class="relative">
+<div class="absolute -left-[57px] top-2 w-4 h-4 bg-primary border-4 border-white rounded-full"></div>
+<span class="font-headline font-black text-6xl text-surface-container-highest absolute -left-28 -top-8 -z-10 opacity-50">2022</span>
+<h4 class="text-xl font-bold mb-2">National Identity Expansion</h4>
+<p class="text-on-surface-variant">Integrated with National ID systems to provide secure, biometric-backed voter registration for 15 million citizens.</p>
+</div>
+<!-- Milestone 3 -->
+<div class="relative">
+<div class="absolute -left-[57px] top-2 w-4 h-4 bg-primary border-4 border-white rounded-full"></div>
+<span class="font-headline font-black text-6xl text-surface-container-highest absolute -left-28 -top-8 -z-10 opacity-50">2024</span>
+<h4 class="text-xl font-bold mb-2">Full Spectrum Integrity</h4>
+<p class="text-on-surface-variant">Current state: Serving as the official verification layer for all federal and state-level elections with zero downtime.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Leadership Team -->
+<section class="py-24 px-8 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline text-4xl font-black">Guided by Experience</h2>
+<p class="text-on-surface-variant mt-4">A team of cryptographers, policy experts, and civic designers.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<!-- Member 1 -->
+<div class="group">
+<div class="aspect-square bg-surface-container-highest mb-4 overflow-hidden relative">
+<img alt="Director Profile" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Professional headshot of a man in his 40s with a confident smile, wearing a modern charcoal suit against a clean studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCTRBr5qFH418wsRXOQPOT_sr9F_N_F1CvN86qHgTfkVdNPq1-AF55zPK0EdBo2YXtgxLkmoUlXPa7gwdFbjBAz43mcv-UAXBmh5acHDEnAm8ATWF9oeoSb8E9nZGF0AIiV1kJaq2iJ6DwKqRkQ4Qn7J_rZS1jhPZEEC-bBTSsMYmXW_y5O7k6C4cCwPqV7KqDouOZYLupJMnQBuOfEnBhn1wSd9B98nwbRYlKrmtQHYIWg4tse0UUasrtPjzxZRRQ1SrsVYtS5Ks"/>
+</div>
+<h4 class="font-bold text-lg">Dr. Aris Thorne</h4>
+<p class="text-sm text-primary uppercase font-bold tracking-wider">Chief Cryptographer</p>
+</div>
+<!-- Member 2 -->
+<div class="group">
+<div class="aspect-square bg-surface-container-highest mb-4 overflow-hidden relative">
+<img alt="Executive Profile" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Professional headshot of a woman with glasses and dark hair, wearing a navy blazer, looking directly into camera with poise" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDejDo1js4cM0iPm6EASPVHdr3syBQ2xFSIsZzO2slDDTBhtP-qZgz-UYSlNTTiab5QrwF77dER5SGClVXtIwrgWTsghOQ6I9kMCztHdJf77d8BM4K-8FEZYhK6g-CSuETig4Ba6LfVQNWPK2DkECRtCaGL8sGoHbyT_Tsr5Z_kach8NEsJt_HKhuRq6C6dx1qXiR9H0QX7RS6VyMAyMGxcBBJCM3v5N86KpRbnr4vkjWxn6VK2wVyXBr9nLo58m33rTzaf4t_qa-A"/>
+</div>
+<h4 class="font-bold text-lg">Elena Vance</h4>
+<p class="text-sm text-primary uppercase font-bold tracking-wider">Director of Policy</p>
+</div>
+<!-- Member 3 -->
+<div class="group">
+<div class="aspect-square bg-surface-container-highest mb-4 overflow-hidden relative">
+<img alt="CTO Profile" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Portrait of a male engineer in a light blue shirt, minimal office environment in soft focus background, clean lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChdMAOuD4KrY7bzpkArmNRe7NQBCGh4-bvOgeN2IoKlewBls63-G3-L8pc2QKwCN7CVagAHqW0H1VuXvaWZNngqCLN20AH7PVwMdnsZqiZyliSpcccU-MOz6UdtQO5oI9eZYhhVV37QS3cPKHZsDI6Ew9YaZjiSumrH71Mkwb1CBfL8hEqJ0JYZTZ7Cj0kvy-Ni0u7XF7MtnlNLK6toMlaXgDFQ5Vd0G5mOblnvNb-RhbGcuiTsMpvHairMVvk9o8PnLgo2BGdVM8"/>
+</div>
+<h4 class="font-bold text-lg">Marcus Chen</h4>
+<p class="text-sm text-primary uppercase font-bold tracking-wider">Chief Technology Officer</p>
+</div>
+<!-- Member 4 (Fallback/Empty State Design) -->
+<div class="border-2 border-dashed border-outline-variant flex flex-col items-center justify-center p-8 text-center bg-surface-container-low opacity-60">
+<span class="material-symbols-outlined text-4xl mb-2">person_add</span>
+<p class="text-xs font-bold uppercase tracking-widest">Joining Soon</p>
+<p class="text-[10px] mt-1">Expanding Our Board</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Badges -->
+<section class="py-16 px-8 border-t border-outline-variant/15">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-wrap justify-center items-center gap-12 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+<div class="flex items-center gap-2 font-black text-xl"><span class="material-symbols-outlined text-primary">security</span> AES-256</div>
+<div class="flex items-center gap-2 font-black text-xl"><span class="material-symbols-outlined text-primary">verified</span> SOC2 TYPE II</div>
+<div class="flex items-center gap-2 font-black text-xl"><span class="material-symbols-outlined text-primary">public</span> ISO 27001</div>
+<div class="flex items-center gap-2 font-black text-xl"><span class="material-symbols-outlined text-primary">gavel</span> GDPR COMPLIANT</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-24 px-8 bg-primary text-white text-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<div class="absolute top-0 left-0 w-64 h-64 border-8 border-white/20 -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
+<div class="absolute bottom-0 right-0 w-96 h-96 border-8 border-white/20 translate-x-1/2 translate-y-1/2 rotate-12"></div>
+</div>
+<div class="relative z-10 max-w-3xl mx-auto">
+<h2 class="font-headline text-5xl font-black mb-8 leading-tight">Secure your place in the <br/>next election.</h2>
+<button class="bg-white text-primary px-10 py-4 font-black text-lg hover:translate-y-[-4px] transition-all duration-300 editorial-shadow">
+                    Register to Vote Now
+                </button>
+<p class="mt-8 text-white/70 text-sm font-medium">Verification takes less than 2 minutes with a valid National ID.</p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-8 flex flex-col md:flex-row justify-between items-center gap-4 mt-auto bg-[#f8f9ff] border-t border-[#c4c5d7]/15">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-bold text-[#0b1c30] text-lg">Civic Ledger</span>
+<p class="text-[#5a6b87] text-[10px] font-medium tracking-tight mt-1 uppercase">Â© 2024 National Election Authority. Secure Blockchain Verification Active.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-[#5a6b87] hover:text-[#1d4ed8] text-[10px] font-medium tracking-tight uppercase transition-colors" href="#">Accessibility Statement</a>
+<a class="text-[#5a6b87] hover:text-[#1d4ed8] text-[10px] font-medium tracking-tight uppercase transition-colors" href="#">Privacy Policy</a>
+<a class="text-[#5a6b87] hover:text-[#1d4ed8] text-[10px] font-medium tracking-tight uppercase transition-colors" href="#">Terms of Service</a>
+<a class="text-[#5a6b87] hover:text-[#1d4ed8] text-[10px] font-medium tracking-tight uppercase transition-colors" href="#">Contact Support</a>
+</div>
+</footer>
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../assets/js/utils.js"></script>
+<script defer src="../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>

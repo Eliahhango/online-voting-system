@@ -1,0 +1,325 @@
+:root {
+  --ovs-admin-side-width: 300px;
+  --ovs-admin-top-height: 76px;
+}
+
+body.ovs-section-admin.ovs-admin-shell {
+  background: #e5e8ef;
+  color: #0b1f3b;
+}
+
+.ovs-admin-top {
+  position: fixed;
+  top: 0;
+  left: var(--ovs-admin-side-width);
+  right: 0;
+  height: var(--ovs-admin-top-height);
+  background: #ffffff;
+  border-bottom: 1px solid #d7deea;
+  z-index: 120;
+}
+
+.ovs-admin-top-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 24px;
+}
+
+.ovs-admin-brand {
+  font-family: Poppins, "Public Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #0b1f3b;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ovs-admin-top-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.ovs-admin-top-link {
+  text-decoration: none;
+  color: #334155;
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.ovs-admin-top-link:hover,
+.ovs-admin-top-link:focus {
+  color: #0b1f3b;
+  border-color: #d7deea;
+  background: #f7f9fd;
+  outline: none;
+}
+
+.ovs-admin-top-link.is-active {
+  color: #0f43c8;
+  border-color: #bfd3ff;
+  background: #eff4ff;
+}
+
+.ovs-admin-top-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ovs-admin-user-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 16px;
+  border: 1px solid #bfd3ff;
+  border-radius: 999px;
+  color: #0b1f3b;
+  background: #eaf2ff;
+  font-family: Manrope, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.ovs-admin-logout-btn {
+  border: 1px solid #bfd3ff;
+  border-radius: 6px;
+  height: 36px;
+  padding: 0 14px;
+  color: #0f43c8;
+  background: #dce9ff;
+  font-family: Manrope, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.ovs-admin-logout-btn:hover,
+.ovs-admin-logout-btn:focus {
+  background: #c8dcff;
+  outline: none;
+}
+
+.ovs-admin-side {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: var(--ovs-admin-side-width);
+  height: 100vh;
+  border-right: 1px solid #d7deea;
+  background: #eef1f7;
+  display: flex;
+  flex-direction: column;
+  z-index: 130;
+}
+
+.ovs-admin-side-head {
+  border-bottom: 1px solid #d7deea;
+  padding: 24px 22px 14px;
+}
+
+.ovs-admin-side-title {
+  font-family: Poppins, "Public Sans", sans-serif;
+  color: #123fbe;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+}
+
+.ovs-admin-side-subtitle {
+  margin-top: 8px;
+  color: #3d5d94;
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.ovs-admin-side-nav {
+  padding: 16px 18px;
+  display: grid;
+  gap: 4px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.ovs-admin-side-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #334e73;
+  padding: 12px 12px;
+  border-radius: 0;
+  border-left: 4px solid transparent;
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.ovs-admin-side-link .material-symbols-outlined {
+  font-size: 1.3rem;
+}
+
+.ovs-admin-side-link:hover,
+.ovs-admin-side-link:focus {
+  background: #ffffff;
+  color: #0b1f3b;
+  outline: none;
+}
+
+.ovs-admin-side-link.is-active {
+  border-left-color: #1d4ed8;
+  color: #1246cb;
+  background: #ffffff;
+}
+
+.ovs-admin-side-foot {
+  margin-top: auto;
+  border-top: 1px solid #d7deea;
+  padding: 16px 18px 18px;
+}
+
+.ovs-admin-side-mini {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  color: #4d6287;
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 8px 4px;
+}
+
+.ovs-admin-side-mini:hover,
+.ovs-admin-side-mini:focus {
+  color: #0f43c8;
+  outline: none;
+}
+
+.ovs-admin-side-mini .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.ovs-admin-cycle-card {
+  margin-top: 14px;
+  background: linear-gradient(180deg, #1e4fd6 0%, #1240be 100%);
+  border-radius: 2px;
+  color: #ffffff;
+  padding: 14px 12px 12px;
+}
+
+.ovs-admin-cycle-label {
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.ovs-admin-cycle-title {
+  margin-top: 8px;
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 1.04rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.ovs-admin-cycle-btn {
+  margin-top: 12px;
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  min-height: 38px;
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ovs-admin-cycle-btn:hover,
+.ovs-admin-cycle-btn:focus {
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+body.ovs-section-admin.ovs-admin-shell main.ovs-admin-main {
+  margin-left: var(--ovs-admin-side-width) !important;
+  width: calc(100% - var(--ovs-admin-side-width)) !important;
+  min-height: 100vh;
+  padding-top: calc(var(--ovs-admin-top-height) + 20px) !important;
+}
+
+@media (max-width: 1200px) {
+  .ovs-admin-top-inner {
+    padding: 0 16px;
+    gap: 14px;
+  }
+
+  .ovs-admin-brand {
+    font-size: 1.65rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --ovs-admin-side-width: 100%;
+  }
+
+  .ovs-admin-top {
+    left: 0;
+    height: auto;
+    min-height: var(--ovs-admin-top-height);
+  }
+
+  .ovs-admin-top-inner {
+    min-height: var(--ovs-admin-top-height);
+    flex-wrap: wrap;
+    padding: 10px 12px;
+  }
+
+  .ovs-admin-top-nav {
+    order: 3;
+    width: 100%;
+    padding-bottom: 4px;
+  }
+
+  .ovs-admin-side {
+    top: var(--ovs-admin-top-height);
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .ovs-admin-side-foot {
+    margin-top: 0;
+  }
+
+  body.ovs-section-admin.ovs-admin-shell main.ovs-admin-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding-top: 24px !important;
+  }
+}

@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>How It Works | Civic Ledger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&amp;family=Public+Sans:wght@400;600;700&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error-container": "#ffdad6",
+              "on-background": "#0b1c30",
+              "outline-variant": "#c4c5d7",
+              "surface-dim": "#cbdbf5",
+              "surface-bright": "#f8f9ff",
+              "on-tertiary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed-dim": "#a2c9ff",
+              "on-secondary-fixed-variant": "#004881",
+              "on-primary": "#ffffff",
+              "secondary-fixed": "#d3e4ff",
+              "inverse-surface": "#213145",
+              "primary-container": "#1d4ed8",
+              "on-secondary-container": "#004378",
+              "on-primary-fixed-variant": "#0039b5",
+              "error": "#ba1a1a",
+              "background": "#f8f9ff",
+              "on-error-container": "#93000a",
+              "on-tertiary-container": "#8ce8a7",
+              "inverse-primary": "#b7c4ff",
+              "surface-tint": "#2151da",
+              "on-primary-container": "#cad3ff",
+              "tertiary-container": "#006a38",
+              "on-error": "#ffffff",
+              "surface": "#f8f9ff",
+              "surface-container": "#e5eeff",
+              "primary-fixed-dim": "#b7c4ff",
+              "primary": "#0037b0",
+              "on-surface-variant": "#434655",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#eaf1ff",
+              "tertiary-fixed": "#9af6b5",
+              "surface-container-high": "#dce9ff",
+              "on-tertiary-fixed-variant": "#00522a",
+              "surface-container-low": "#eff4ff",
+              "surface-variant": "#d3e4fe",
+              "tertiary": "#004f29",
+              "outline": "#747686",
+              "primary-fixed": "#dce1ff",
+              "on-secondary-fixed": "#001c38",
+              "on-surface": "#0b1c30",
+              "tertiary-fixed-dim": "#7eda9a",
+              "surface-container-highest": "#d3e4fe",
+              "on-tertiary-fixed": "#00210e",
+              "secondary": "#0760a7",
+              "secondary-container": "#72b1fe",
+              "on-primary-fixed": "#001551"
+            },
+            fontFamily: {
+              "headline": ["Poppins"],
+              "body": ["Manrope"],
+              "label": ["Public Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active .step-line { background-color: #0037b0; }
+        .ledger-gradient { background: linear-gradient(135deg, #0037b0 0%, #1d4ed8 100%); }
+    </style>
+<link rel="stylesheet" href="../assets/css/global.css"/>
+<link rel="stylesheet" href="../assets/css/components.css"/>
+<link rel="stylesheet" href="../assets/css/public.css"/>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-white">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-white shadow-[0_4px_20px_-10px_rgba(11,28,48,0.1)]">
+<div class="text-2xl font-black text-[#0037b0] font-headline tracking-tight">Civic Ledger</div>
+<div class="hidden md:flex items-center space-gap-8 gap-8">
+<a class="text-[#5a6b87] hover:text-[#0b1c30] font-label text-sm uppercase tracking-wider transition-all duration-200 hover:translate-y-[-2px]" href="#">Elections</a>
+<a class="text-[#5a6b87] hover:text-[#0b1c30] font-label text-sm uppercase tracking-wider transition-all duration-200 hover:translate-y-[-2px]" href="#">About</a>
+<a class="text-[#1d4ed8] border-b-2 border-[#1d4ed8] font-bold font-label text-sm uppercase tracking-wider" href="#">How It Works</a>
+<a class="text-[#5a6b87] hover:text-[#0b1c30] font-label text-sm uppercase tracking-wider transition-all duration-200 hover:translate-y-[-2px]" href="#">Contact</a>
+</div>
+<button class="ledger-gradient text-white px-6 py-2 rounded font-bold text-sm transition-all duration-200 hover:translate-y-[-2px] active:scale-95 shadow-sm">Voter Login</button>
+</nav>
+<main class="pt-24 pb-20 max-w-7xl mx-auto px-6">
+<!-- Hero Section -->
+<header class="mb-20 text-center md:text-left">
+<span class="font-label text-sm uppercase tracking-[0.2em] text-primary font-bold mb-4 block">Process Blueprint</span>
+<h1 class="font-headline text-5xl md:text-7xl font-black text-on-background leading-tight tracking-tighter mb-6">Democratic Integrity, <br/><span class="text-primary">Step by Step.</span></h1>
+<p class="max-w-2xl text-on-surface-variant text-lg leading-relaxed">Civic Ledger utilizes advanced blockchain protocols to ensure your vote is immutable, transparent, and absolutely private. Here is how we verify your voice.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left: Sticky Vertical Stepper -->
+<aside class="lg:col-span-4 h-fit sticky top-24 hidden lg:block">
+<div class="bg-surface-container-low p-8 rounded-lg">
+<h3 class="font-headline text-xl font-bold mb-8">The Voting Journey</h3>
+<nav class="flex flex-col gap-0">
+<div class="flex gap-6 items-start pb-8 border-l-2 border-primary relative ml-3">
+<div class="absolute -left-[11px] top-0 w-5 h-5 bg-primary rounded-full ring-4 ring-white"></div>
+<div class="flex flex-col">
+<span class="font-label text-xs uppercase tracking-widest text-primary font-bold">Step 1</span>
+<span class="font-headline text-lg font-bold">Register</span>
+</div>
+</div>
+<div class="flex gap-6 items-start pb-8 border-l-2 border-outline-variant relative ml-3">
+<div class="absolute -left-[11px] top-0 w-5 h-5 bg-white border-2 border-outline-variant rounded-full"></div>
+<div class="flex flex-col text-on-surface-variant">
+<span class="font-label text-xs uppercase tracking-widest">Step 2</span>
+<span class="font-headline text-lg font-bold">Verify Identity</span>
+</div>
+</div>
+<div class="flex gap-6 items-start pb-8 border-l-2 border-outline-variant relative ml-3">
+<div class="absolute -left-[11px] top-0 w-5 h-5 bg-white border-2 border-outline-variant rounded-full"></div>
+<div class="flex flex-col text-on-surface-variant">
+<span class="font-label text-xs uppercase tracking-widest">Step 3</span>
+<span class="font-headline text-lg font-bold">Select Ballot</span>
+</div>
+</div>
+<div class="flex gap-6 items-start pb-8 border-l-2 border-outline-variant relative ml-3">
+<div class="absolute -left-[11px] top-0 w-5 h-5 bg-white border-2 border-outline-variant rounded-full"></div>
+<div class="flex flex-col text-on-surface-variant">
+<span class="font-label text-xs uppercase tracking-widest">Step 4</span>
+<span class="font-headline text-lg font-bold">Review</span>
+</div>
+</div>
+<div class="flex gap-6 items-start relative ml-3">
+<div class="absolute -left-[11px] top-0 w-5 h-5 bg-white border-2 border-outline-variant rounded-full"></div>
+<div class="flex flex-col text-on-surface-variant">
+<span class="font-label text-xs uppercase tracking-widest">Step 5</span>
+<span class="font-headline text-lg font-bold">Submit Securely</span>
+</div>
+</div>
+</nav>
+</div>
+</aside>
+<!-- Right: Content Ledger -->
+<div class="lg:col-span-8 space-y-16">
+<!-- Step 1 Card -->
+<section class="bg-surface-container-lowest p-8 md:p-12 border-l-4 border-primary shadow-sm hover:translate-y-[-4px] transition-transform duration-200">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="app_registration">app_registration</span>
+<h2 class="font-headline text-3xl font-bold">1. Register</h2>
+</div>
+<p class="text-on-surface-variant text-lg mb-8 leading-relaxed">Initiate your participation by creating a verified account on the Civic Ledger network. This step generates your unique, encrypted identity token used for all subsequent interactions.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-container-low p-6 rounded-lg">
+<span class="font-bold text-primary mb-2 block">Eligibility Check</span>
+<p class="text-sm">Automated cross-referencing with national voter rolls to confirm your active status.</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg">
+<span class="font-bold text-primary mb-2 block">Encryption Pair</span>
+<p class="text-sm">Generate your private cryptographic key, stored locally and never on our servers.</p>
+</div>
+</div>
+</section>
+<!-- Step 2 Card -->
+<section class="bg-surface-container-lowest p-8 md:p-12 border-l-4 border-primary shadow-sm hover:translate-y-[-4px] transition-transform duration-200">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="fingerprint">fingerprint</span>
+<h2 class="font-headline text-3xl font-bold">2. Verify Identity</h2>
+</div>
+<p class="text-on-surface-variant text-lg mb-8 leading-relaxed">Multi-factor authentication ensures that only the rightful citizen can access the ballot box. We use a combination of biometric and document-based verification.</p>
+<div class="aspect-video w-full overflow-hidden bg-surface-dim rounded-lg mb-8">
+<img class="w-full h-full object-cover" data-alt="Close-up of a high-tech biometric fingerprint scanner glowing with blue light in a clean modern security office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZHRqqVXX01Y3DpE5wAmkGvRpLy87Qf3eYhd80992XCTA7tzc0_MZ89LZdcPMz-fMwBy-knX1bSRsUXDxKvji-hJqBgGnQohKsPZB55X5DKyyN4zrB1Rka2v6yeijgTFiBj5yo2nXqirKhoZfEn-87t-sqshKM4sjaItytvFi5Wx8_KXKZSXQjbWaWsIPYF6oa_6vqoSksKBxJTrMNSi_fbGQZ5pYuLhQ6rOnWjSOIRvQtR6522IwKa8r1dB4in2NN3dcrBM7Af4s"/>
+</div>
+</section>
+<!-- Step 3 Card -->
+<section class="bg-surface-container-lowest p-8 md:p-12 border-l-4 border-primary shadow-sm hover:translate-y-[-4px] transition-transform duration-200">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="ballot">ballot</span>
+<h2 class="font-headline text-3xl font-bold">3. Select Ballot</h2>
+</div>
+<p class="text-on-surface-variant text-lg mb-6 leading-relaxed">Access the elections relevant to your jurisdiction. Our clean editorial interface makes complex candidate lists and policy measures easy to read and understand.</p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 bg-surface-container-low p-4 rounded">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-medium">Localized candidates automatically populated</span>
+</li>
+<li class="flex items-center gap-3 bg-surface-container-low p-4 rounded">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-medium">Impartial informational guides provided for all measures</span>
+</li>
+</ul>
+</section>
+<!-- Step 4 Card -->
+<section class="bg-surface-container-lowest p-8 md:p-12 border-l-4 border-primary shadow-sm hover:translate-y-[-4px] transition-transform duration-200">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="rule">rule</span>
+<h2 class="font-headline text-3xl font-bold">4. Review</h2>
+</div>
+<p class="text-on-surface-variant text-lg mb-8 leading-relaxed">One final check. Before your vote is committed to the ledger, you have the opportunity to review all selections. Once submitted, the cryptographic seal cannot be broken.</p>
+</section>
+<!-- Step 5 Card -->
+<section class="bg-surface-container-lowest p-8 md:p-12 border-l-4 border-primary shadow-sm hover:translate-y-[-4px] transition-transform duration-200">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="shield_lock">shield_lock</span>
+<h2 class="font-headline text-3xl font-bold">5. Submit Securely</h2>
+</div>
+<div class="ledger-gradient p-1 w-full rounded mb-8">
+<div class="bg-white p-8 rounded-[3px]">
+<p class="text-on-surface-variant text-lg leading-relaxed mb-6">Your selections are hashed and injected into the global blockchain. You receive a 64-character <strong>Transaction ID</strong> to verify your vote was counted without revealing how you voted.</p>
+<div class="flex justify-between items-center bg-surface-container-low p-4 rounded-lg font-mono text-sm break-all">
+<span>0x4f2a...e91b</span>
+<span class="material-symbols-outlined text-primary" data-icon="content_copy">content_copy</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Security Checkpoint Section -->
+<section class="bg-on-background text-white p-8 md:p-12 rounded-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[100px]"></div>
+<span class="font-label text-xs uppercase tracking-[0.3em] text-primary-container font-bold mb-4 block">Security Protocol</span>
+<h2 class="font-headline text-4xl font-bold mb-8">Blockchain Integrity</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div>
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4" data-icon="visibility_off">visibility_off</span>
+<h4 class="font-bold mb-2">Anonymity</h4>
+<p class="text-sm text-surface-dim">Your identity is decoupled from your ballot using Zero-Knowledge Proofs.</p>
+</div>
+<div>
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4" data-icon="history_edu">history_edu</span>
+<h4 class="font-bold mb-2">Immutability</h4>
+<p class="text-sm text-surface-dim">Once recorded, a vote cannot be altered by any authority or entity.</p>
+</div>
+<div>
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4" data-icon="hub">hub</span>
+<h4 class="font-bold mb-2">Decentralized</h4>
+<p class="text-sm text-surface-dim">Results are validated by thousands of nodes, eliminating a single point of failure.</p>
+</div>
+</div>
+</section>
+<!-- FAQ Accordion -->
+<section>
+<h2 class="font-headline text-3xl font-bold mb-8">Common Questions</h2>
+<div class="space-y-4">
+<details class="group bg-white rounded-lg shadow-sm">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<span class="font-bold">Is my vote really secret?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="p-6 pt-0 border-t border-outline-variant/15 text-on-surface-variant">
+                                Yes. Civic Ledger uses cryptographic blinding. The authority can verify that you are a registered voter who has cast one ballot, but they have no technical way to link your identity to the specific choices inside that ballot.
+                            </div>
+</details>
+<details class="group bg-white rounded-lg shadow-sm">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<span class="font-bold">What if I lose my private key?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="p-6 pt-0 border-t border-outline-variant/15 text-on-surface-variant">
+                                During registration, you are provided with a recovery phrase. If both are lost, you must visit a local verification center in person to reset your biometric profile.
+                            </div>
+</details>
+<details class="group bg-white rounded-lg shadow-sm">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<span class="font-bold">Can I change my vote after submitting?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="p-6 pt-0 border-t border-outline-variant/15 text-on-surface-variant">
+                                No. To maintain the integrity of the ledger, once a block is confirmed, it is permanent. This prevents "vote manipulation" and ensures the count is final.
+                            </div>
+</details>
+</div>
+</section>
+<!-- Help Center CTA -->
+<section class="bg-surface-container p-12 text-center rounded-lg">
+<h2 class="font-headline text-3xl font-bold mb-4">Still have questions?</h2>
+<p class="text-on-surface-variant mb-8 max-w-xl mx-auto">Our citizen support team is available 24/7 to help you navigate the digital ledger and ensure your voice is heard.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="ledger-gradient text-white px-8 py-3 rounded font-bold transition-all hover:translate-y-[-2px]">Visit Help Center</button>
+<button class="bg-white border border-outline-variant text-on-surface px-8 py-3 rounded font-bold hover:bg-surface-container-low transition-all">Chat with Support</button>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-8 flex flex-col md:flex-row justify-between items-center gap-4 mt-auto bg-[#f8f9ff] border-t border-[#c4c5d7]/15">
+<div class="flex flex-col md:flex-row items-center gap-6">
+<span class="font-bold text-[#0b1c30] text-lg">Civic Ledger</span>
+<span class="text-[#5a6b87] font-body text-xs font-medium tracking-tight">Â© 2024 National Election Authority. Secure Blockchain Verification Active.</span>
+</div>
+<div class="flex gap-6">
+<a class="text-[#5a6b87] hover:text-[#1d4ed8] font-body text-xs font-medium tracking-tight transition-colors" href="#">Accessibility Statement</a>
+<a class="text-[#5a6b87] hover:text-[#1d4ed8] font-body text-xs font-medium tracking-tight transition-colors" href="#">Privacy Policy</a>
+<a class="text-[#5a6b87] hover:text-[#1d4ed8] font-body text-xs font-medium tracking-tight transition-colors" href="#">Terms of Service</a>
+</div>
+</footer>
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../assets/js/utils.js"></script>
+<script defer src="../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>

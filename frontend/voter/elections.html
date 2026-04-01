@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Elections | Civic Ledger</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@700;800&amp;family=Manrope:wght@400;500;600;700&amp;family=Poppins:wght@600;700&amp;family=Inter:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "tertiary": "#004f29",
+                "on-tertiary-fixed-variant": "#00522a",
+                "on-tertiary-container": "#8ce8a7",
+                "on-primary": "#ffffff",
+                "error-container": "#ffdad6",
+                "inverse-primary": "#b7c4ff",
+                "on-primary-fixed-variant": "#0039b5",
+                "inverse-on-surface": "#eaf1ff",
+                "on-secondary-container": "#004378",
+                "inverse-surface": "#213145",
+                "secondary-fixed-dim": "#a2c9ff",
+                "secondary-fixed": "#d3e4ff",
+                "error": "#ba1a1a",
+                "on-surface": "#0b1c30",
+                "primary-fixed-dim": "#b7c4ff",
+                "on-error": "#ffffff",
+                "surface": "#f8f9ff",
+                "secondary": "#0760a7",
+                "tertiary-fixed-dim": "#7eda9a",
+                "on-error-container": "#93000a",
+                "surface-container": "#e5eeff",
+                "surface-bright": "#f8f9ff",
+                "on-secondary-fixed-variant": "#004881",
+                "surface-container-highest": "#d3e4fe",
+                "secondary-container": "#72b1fe",
+                "primary": "#0037b0",
+                "on-secondary-fixed": "#001c38",
+                "tertiary-container": "#006a38",
+                "surface-dim": "#cbdbf5",
+                "on-primary-fixed": "#001551",
+                "surface-variant": "#d3e4fe",
+                "on-background": "#0b1c30",
+                "surface-tint": "#2151da",
+                "tertiary-fixed": "#9af6b5",
+                "primary-fixed": "#dce1ff",
+                "on-secondary": "#ffffff",
+                "background": "#f8f9ff",
+                "surface-container-high": "#dce9ff",
+                "on-tertiary-fixed": "#00210e",
+                "on-primary-container": "#cad3ff",
+                "primary-container": "#1d4ed8",
+                "outline-variant": "#c4c5d7",
+                "surface-container-low": "#eff4ff",
+                "outline": "#747686",
+                "on-tertiary": "#ffffff",
+                "on-surface-variant": "#434655",
+                "surface-container-lowest": "#ffffff"
+              },
+              fontFamily: {
+                "headline": ["Poppins"],
+                "body": ["Manrope"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+    </style>
+<link rel="stylesheet" href="../../assets/css/global.css"/>
+<link rel="stylesheet" href="../../assets/css/components.css"/>
+<link rel="stylesheet" href="../../assets/css/voter.css"/>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tight text-blue-700 dark:text-blue-400">Civic Ledger</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-blue-700 dark:text-blue-400 font-semibold border-b-2 border-blue-700 h-16 flex items-center" href="#">Elections</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 transition-colors h-16 flex items-center" href="#">Security</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 transition-colors h-16 flex items-center" href="#">Help</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 flex flex-col py-4 bg-slate-50 dark:bg-slate-950 tonal-shift hidden md:flex">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Voter Portal</p>
+<p class="text-xs text-slate-500">Verified Citizen</p>
+</div>
+</div>
+</div>
+<nav class="flex-1">
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 bg-white dark:bg-slate-800 text-blue-700 dark:text-blue-400 font-bold border-l-4 border-blue-700 translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="ballot">ballot</span>
+<span class="font-medium">Active Ballots</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-medium">Results</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-medium">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-primary-container text-white font-bold py-3 px-4 rounded hover:-translate-y-0.5 transition-transform">
+                Cast Ballot
+            </button>
+<button class="flex items-center gap-3 mt-4 text-slate-500 hover:text-error transition-colors">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-medium">Log Out</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="pt-24 pb-12 px-6 md:ml-64 min-h-screen">
+<div class="max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<span class="text-xs font-bold tracking-widest text-primary uppercase mb-2 block">Civic Duty</span>
+<h1 class="text-5xl font-black tracking-tight text-on-surface leading-tight">Election Ledger</h1>
+<p class="text-on-surface-variant max-w-xl mt-4">Browse, track, and participate in local and national democratic processes. Your vote is recorded on the immutable ledger.</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-low text-primary border border-transparent hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+</button>
+<button class="p-2 bg-white text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="view_list">view_list</span>
+</button>
+</div>
+</div>
+<!-- Filter Bar -->
+<section class="bg-surface-container-low p-1 mb-8 flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-wrap gap-1 p-1">
+<button class="px-6 py-2 bg-white text-primary font-bold shadow-sm">All Elections</button>
+<button class="px-6 py-2 text-on-surface-variant font-medium hover:bg-surface-container transition-colors">Active</button>
+<button class="px-6 py-2 text-on-surface-variant font-medium hover:bg-surface-container transition-colors">Upcoming</button>
+<button class="px-6 py-2 text-on-surface-variant font-medium hover:bg-surface-container transition-colors">Closed</button>
+</div>
+<div class="flex-1 max-w-md px-4 py-2 bg-surface-container-lowest flex items-center gap-2 group focus-within:ring-2 ring-primary-container transition-all">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-sm font-body" placeholder="Search by name, type or region..." type="text"/>
+</div>
+</section>
+<!-- Elections Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Election Card 1 -->
+<div class="bg-surface-container-lowest p-6 border-l-4 border-primary shadow-sm hover:-translate-y-1 transition-transform group">
+<div class="flex justify-between items-start mb-6">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 text-[10px] font-bold uppercase tracking-widest">In Progress</span>
+<span class="text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-2">2024 Presidential General Election</h3>
+<p class="text-sm text-on-surface-variant font-medium mb-6">National â€¢ Federal Office</p>
+<div class="flex items-center gap-4 text-xs text-outline mb-8">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+                            Nov 5, 2024
+                        </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="how_to_reg">how_to_reg</span>
+                            12.4M Voted
+                        </div>
+</div>
+<button class="w-full bg-primary-container text-white font-bold py-3 flex items-center justify-center gap-2 group-hover:bg-primary transition-colors">
+                        Access Ballot
+                        <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Election Card 2 -->
+<div class="bg-surface-container-lowest p-6 border-l-4 border-secondary shadow-sm hover:-translate-y-1 transition-transform group">
+<div class="flex justify-between items-start mb-6">
+<span class="bg-secondary-fixed text-on-secondary-fixed px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Scheduled</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-2">Municipal Infrastructure Bond</h3>
+<p class="text-sm text-on-surface-variant font-medium mb-6">Local â€¢ City Council</p>
+<div class="flex items-center gap-4 text-xs text-outline mb-8">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+                            Dec 12, 2024
+                        </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="timer">timer</span>
+                            14 Days Left
+                        </div>
+</div>
+<button class="w-full bg-surface-container-low text-primary font-bold py-3 flex items-center justify-center gap-2 hover:bg-surface-container transition-colors">
+                        View Details
+                    </button>
+</div>
+<!-- Election Card 3 -->
+<div class="bg-surface-container-lowest p-6 border-l-4 border-slate-300 shadow-sm hover:-translate-y-1 transition-transform group opacity-80">
+<div class="flex justify-between items-start mb-6">
+<span class="bg-surface-dim text-on-surface-variant px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Ended</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-2">School Board Primary</h3>
+<p class="text-sm text-on-surface-variant font-medium mb-6">District â€¢ Education</p>
+<div class="flex items-center gap-4 text-xs text-outline mb-8">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+                            Closed Oct 20
+                        </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="bar_chart">bar_chart</span>
+                            Final Results Ready
+                        </div>
+</div>
+<button class="w-full bg-surface-container-low text-on-surface-variant font-bold py-3 flex items-center justify-center gap-2 hover:bg-surface-container transition-colors">
+                        View Results
+                    </button>
+</div>
+</div>
+<!-- Table View Section -->
+<div class="mt-16">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-2xl font-bold">Ledger Archive</h2>
+<button class="text-primary text-sm font-bold flex items-center gap-1">
+                        Download Report <span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-6 py-4 text-xs font-black uppercase tracking-wider text-on-surface-variant">Election Name</th>
+<th class="px-6 py-4 text-xs font-black uppercase tracking-wider text-on-surface-variant">Type</th>
+<th class="px-6 py-4 text-xs font-black uppercase tracking-wider text-on-surface-variant">Registration Deadline</th>
+<th class="px-6 py-4 text-xs font-black uppercase tracking-wider text-on-surface-variant">Status</th>
+<th class="px-6 py-4 text-xs font-black uppercase tracking-wider text-on-surface-variant">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 font-bold text-on-surface">State Senate District 4</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">Regional</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">Oct 30, 2024</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 py-0.5 px-2 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                        Open
+                                    </span>
+</td>
+<td class="px-6 py-4 text-primary font-bold text-sm">Register</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4 font-bold text-on-surface">Climate Action Referendum</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">Statewide</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">Nov 15, 2024</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 py-0.5 px-2 bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                        Upcoming
+                                    </span>
+</td>
+<td class="px-6 py-4 text-primary font-bold text-sm">Notify Me</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Empty State (Hidden by Default) -->
+<div class="hidden flex-col items-center justify-center py-24 text-center">
+<div class="w-24 h-24 bg-surface-container-low rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-4xl text-outline" data-icon="search_off">search_off</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface">No Elections Found</h3>
+<p class="text-on-surface-variant max-w-sm mt-2">We couldn't find any results matching your search terms. Try adjusting your filters or search keywords.</p>
+<button class="mt-8 text-primary font-bold underline">Clear All Filters</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-6 flex flex-col md:flex-row justify-between items-center md:ml-64 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+<div class="text-slate-500 dark:text-slate-400 text-sm mb-4 md:mb-0">
+            Â© 2024 Civic Ledger Platform. All rights reserved.
+        </div>
+<div class="flex gap-8">
+<a class="text-slate-500 dark:text-slate-400 text-sm hover:text-blue-600 transition-colors" href="#">Legal</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm hover:text-blue-600 transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm hover:text-blue-600 transition-colors" href="#">Accessibility</a>
+<a class="text-slate-500 dark:text-slate-400 text-sm hover:text-blue-600 transition-colors" href="#">Support</a>
+</div>
+</footer>
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../../assets/js/utils.js"></script>
+<script defer src="../../assets/js/voter.js"></script>
+<script defer src="../../assets/js/charts.js"></script>
+<script defer src="../../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>

@@ -1,0 +1,5 @@
+Options -Indexes
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^([A-Za-z0-9\-]+)\.html$ ../../backend/middleware/protected-page.php?scope=voter&page=$1 [QSA,L]

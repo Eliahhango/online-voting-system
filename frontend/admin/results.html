@@ -1,0 +1,390 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CivicAdmin Ledger | Election Results Command</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#e5eeff",
+                        "secondary": "#0760a7",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-container": "#006a38",
+                        "outline-variant": "#c4c5d7",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#9af6b5",
+                        "surface-bright": "#f8f9ff",
+                        "primary": "#0037b0",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#d3e4fe",
+                        "on-tertiary-container": "#8ce8a7",
+                        "tertiary-fixed-dim": "#7eda9a",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "on-background": "#0b1c30",
+                        "on-secondary-fixed-variant": "#004881",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary-fixed": "#001551",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "on-tertiary-fixed-variant": "#00522a",
+                        "primary-container": "#1d4ed8",
+                        "surface-container-low": "#eff4ff",
+                        "on-surface-variant": "#434655",
+                        "on-secondary-container": "#004378",
+                        "surface-dim": "#cbdbf5",
+                        "surface-tint": "#2151da",
+                        "on-primary-container": "#cad3ff",
+                        "on-tertiary-fixed": "#00210e",
+                        "tertiary": "#004f29",
+                        "surface": "#f8f9ff",
+                        "secondary-container": "#72b1fe",
+                        "outline": "#747686",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#0b1c30",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#dce1ff",
+                        "background": "#f8f9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "inverse-primary": "#b7c4ff",
+                        "on-secondary-fixed": "#001c38",
+                        "on-error-container": "#93000a"
+                    },
+                    fontFamily: {
+                        "headline": ["Public Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .heading-font { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-border { border-left-width: 4px; }
+        .ledger-gradient { background: linear-gradient(135deg, #0037b0 0%, #1d4ed8 100%); }
+    </style>
+<link rel="stylesheet" href="../../assets/css/global.css"/>
+<link rel="stylesheet" href="../../assets/css/components.css"/>
+<link rel="stylesheet" href="../../assets/css/admin.css"/>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 bottom-0 flex flex-col w-64 p-4 z-40 bg-slate-50 dark:bg-slate-950 border-r border-slate-200/30 dark:border-slate-800/30">
+<div class="mb-10 px-2">
+<h1 class="text-lg font-black text-blue-900 dark:text-blue-100 uppercase tracking-tighter">Election Command</h1>
+<p class="text-[10px] font-bold text-blue-700/60 dark:text-blue-400/60 uppercase tracking-widest">Official Ledger Node</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="label-md font-medium">Voter Registry</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3">person_check</span>
+<span class="label-md font-medium">Candidate Management</span>
+</a>
+<a class="flex items-center px-4 py-3 bg-white dark:bg-slate-900 text-blue-700 dark:text-blue-400 shadow-sm border-l-4 border-blue-700 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3">analytics</span>
+<span class="label-md font-semibold">Election Reports</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3">verified_user</span>
+<span class="label-md font-medium">System Audit</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="label-md font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto space-y-1 pt-4 border-t border-slate-200/50">
+<button class="w-full text-left flex items-center px-4 py-2 text-xs font-bold text-slate-500 uppercase tracking-widest hover:text-blue-700 transition-colors">
+<span class="material-symbols-outlined text-sm mr-2">security</span>
+                Security Logs
+            </button>
+<button class="w-full text-left flex items-center px-4 py-2 text-xs font-bold text-slate-500 uppercase tracking-widest hover:text-blue-700 transition-colors">
+<span class="material-symbols-outlined text-sm mr-2">contact_support</span>
+                Support
+            </button>
+<div class="mt-4 p-4 bg-primary text-white rounded-sm ledger-gradient">
+<p class="text-[10px] font-bold uppercase tracking-widest opacity-80 mb-2">Active Cycle</p>
+<p class="text-sm font-bold leading-tight">2024 General Municipal Election</p>
+<button class="mt-3 w-full py-2 bg-white/10 hover:bg-white/20 text-xs font-bold uppercase tracking-widest transition-colors rounded-sm">New Election Cycle</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-8 w-full h-16 bg-white/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50">
+<div class="flex items-center gap-6">
+<span class="text-xl font-extrabold tracking-tight text-blue-800 dark:text-blue-300">CivicAdmin Ledger</span>
+<div class="h-6 w-[1px] bg-slate-300"></div>
+<div class="flex items-center gap-2">
+<label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Context:</label>
+<div class="relative">
+<select class="appearance-none bg-surface-container-low border-none text-xs font-bold text-primary py-1.5 pl-3 pr-8 rounded-sm focus:ring-2 focus:ring-primary outline-none">
+<option>2024 General Municipal Election</option>
+<option>2023 Midterm Legislative</option>
+<option>2022 Special Referendum</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-sm pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="flex items-center gap-3 ml-2 pl-4 border-l border-slate-200">
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">Admin_Alpha_9</p>
+<p class="text-[10px] text-slate-500 font-medium">Node Validator</p>
+</div>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full border border-slate-200 object-cover" data-alt="Professional male administrator headshot in a suit with neutral background, clean lighting and sharp focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfOBpV3wmka9akHNYpGpO2oZlcoGW0qbHhS3TKGD1wXQxGcP9JABuPpPnzUetBbrRGxRRS4Z4xpVK5Bd24ZX2w5xBRkcUTHybK56oD0GYIxuHdn4SlgqrZzaXJr5jmPRlerhTxmonN52idQoLsFyiarA5lYM1zi2GNPvzvCHAdSufDL-pi_m80OnFDLmYwErjykFTP8a829T1AQsQXrKm8B_T6DjhoSTjXEL4KGOmhrBx5TU-Mu1IZWzy7nM8pkkYHrnCoiMecbyY"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 space-y-8 max-w-7xl mx-auto">
+<!-- Header & Turnout KPI Section -->
+<section class="grid grid-cols-12 gap-6">
+<div class="col-span-12">
+<p class="text-[11px] font-bold text-primary uppercase tracking-[0.2em] mb-1">REAL-TIME DATA STREAM</p>
+<h2 class="text-4xl font-extrabold text-on-surface tracking-tight">Election Results Ledger</h2>
+</div>
+<div class="col-span-12 md:col-span-3 bg-surface-container-lowest p-6 border-l-4 border-primary shadow-[0_4px_20px_-4px_rgba(11,28,48,0.04)]">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary bg-surface-container-low p-2">how_to_reg</span>
+<span class="text-[10px] font-bold text-tertiary-container bg-tertiary-fixed px-2 py-1 uppercase tracking-wider">Live</span>
+</div>
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Total Turnout</p>
+<p class="text-3xl font-black text-on-surface">68.4%</p>
+<div class="mt-4 w-full bg-surface-container-low h-1.5 overflow-hidden">
+<div class="bg-primary h-full w-[68.4%]"></div>
+</div>
+<p class="text-[10px] mt-2 text-slate-400">124,402 of 181,874 Registered</p>
+</div>
+<div class="col-span-12 md:col-span-3 bg-surface-container-lowest p-6 border-l-4 border-secondary shadow-[0_4px_20px_-4px_rgba(11,28,48,0.04)]">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-secondary bg-surface-container-low p-2">verified</span>
+</div>
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Validated Ballots</p>
+<p class="text-3xl font-black text-on-surface">124,398</p>
+<p class="text-[10px] mt-6 text-slate-400">99.99% Node Consensus</p>
+</div>
+<div class="col-span-12 md:col-span-3 bg-surface-container-lowest p-6 border-l-4 border-tertiary shadow-[0_4px_20px_-4px_rgba(11,28,48,0.04)]">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-tertiary bg-surface-container-low p-2">update</span>
+</div>
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Reporting Precincts</p>
+<p class="text-3xl font-black text-on-surface">142/145</p>
+<p class="text-[10px] mt-6 text-slate-400">Estimated completion: 22m</p>
+</div>
+<div class="col-span-12 md:col-span-3 bg-surface-container-lowest p-6 border-l-4 border-error shadow-[0_4px_20px_-4px_rgba(11,28,48,0.04)]">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-error bg-error-container p-2">warning</span>
+</div>
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Anomaly Alerts</p>
+<p class="text-3xl font-black text-error">03</p>
+<p class="text-[10px] mt-6 text-error font-bold uppercase tracking-tighter">Requires Urgent Review</p>
+</div>
+</section>
+<!-- Results Charts Grid -->
+<section class="grid grid-cols-12 gap-8 bg-surface-container-low p-8">
+<div class="col-span-12 lg:col-span-8 space-y-6">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-bold tracking-tight text-on-surface">Per-Position Results Breakdown</h3>
+<div class="flex gap-2">
+<button class="bg-surface-container-lowest p-2 border border-outline-variant/30 hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+</button>
+<button class="bg-surface-container-lowest p-2 border border-outline-variant/30 hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-sm">file_download</span>
+</button>
+</div>
+</div>
+<!-- Position Card 1 -->
+<div class="bg-surface-container-lowest p-6 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h4 class="text-lg font-bold text-on-surface">Municipal Mayor</h4>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Total Votes: 120,442</p>
+</div>
+<span class="text-[10px] font-bold text-primary border border-primary px-2 py-1 uppercase tracking-widest">Projected Winner</span>
+</div>
+<div class="space-y-6">
+<!-- Candidate 1 -->
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-slate-200 rounded-sm">
+<img class="w-full h-full object-cover" data-alt="Portrait of a female candidate in formal attire, professional studio lighting, authoritative yet approachable look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtzqJ2uOtVe0TCUiqRy8ivcvs-H3h6QldZwv9jKRUyxmWtkIxgbkjjJMoidf0qDu8IdvnWBV7PDqKTx1qGzp28KzMwqsq32Xkg7X58Z_phg4UEGLYkvpQ9tMfWSBHQgSaATOZMmFIYHhZhS8CaHXlUWh4pthfUXmDHorCQfh1Xf9xN2vVQ6XFt9orWoj2Nso7R3Y8E5UI4Ct3nf0KixliCsYIDQ-y3JDVM1dC9ycLZsvdPJenQ92Tmpp6NOXItSKHS4m7LG5godvg"/>
+</div>
+<span class="text-sm font-bold">Alexandra Vance (Civic Unity)</span>
+</div>
+<span class="text-sm font-bold text-primary">52,401 (43.5%)</span>
+</div>
+<div class="w-full h-4 bg-surface-container-low overflow-hidden">
+<div class="h-full bg-primary" style="width: 43.5%"></div>
+</div>
+</div>
+<!-- Candidate 2 -->
+<div class="space-y-2 opacity-80">
+<div class="flex justify-between items-end">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-slate-200 rounded-sm">
+<img class="w-full h-full object-cover" data-alt="Portrait of a male candidate wearing glasses and a formal suit, high-end corporate photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAALMuaQHE4Zgwzz19H33sDItTZmY2Thz4hw9T39kcBEUUns6NQIaopWiTy6EQH4XIrY1H_TbRQUnJu-xxZxZDyZtcS6FTYx6F4FUGR3lG0Od4RIrbC0OIJi3LOurpFx8aI07vovpoQiksPA8FIaS74wPI9VSeywnRgjNa0AzMk5VbX--RAoOr8e2GsY36O8aZA4xOd15jzWkt2xfye4bitUDmQtjBRodjL6O66a_zrw-eDipJqBP-Cip0hf8Bo1EhfBiAtWwCSj0"/>
+</div>
+<span class="text-sm font-bold">Michael Chen (Progressive Frontier)</span>
+</div>
+<span class="text-sm font-bold">48,220 (40.1%)</span>
+</div>
+<div class="w-full h-4 bg-surface-container-low overflow-hidden">
+<div class="h-full bg-slate-400" style="width: 40.1%"></div>
+</div>
+</div>
+<!-- Candidate 3 -->
+<div class="space-y-2 opacity-60">
+<div class="flex justify-between items-end">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-slate-200 rounded-sm">
+<img class="w-full h-full object-cover" data-alt="Middle-aged woman candidate portrait, clean background, soft lighting, professional advocacy style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7YW_-RuBAfZXNmHtIb8bVKjhRrWIIY8YZnZ8SPWvL5PYiQMjGcXNqot77tq4jYaRly11tR3aCta5TgsZJNvVUSXx9DxoJUWMKWSSsuCYPBQZvg6WTSjV_rT3195LHA9jIBTGxQ0xuROtmCXjXBJrClDs2X5qVbVSOTFaR-I4d40IcVveGIIHZgm4I4vQj8EMcBofvoj6CwhNnJ9gkplQKHjdcQGxoIPNzpUUfpfeUJIGH5JFMhS1OKWknahhi8EG_c_m2FPLsnV8"/>
+</div>
+<span class="text-sm font-bold">Elena Rodriguez (Independent)</span>
+</div>
+<span class="text-sm font-bold">19,821 (16.4%)</span>
+</div>
+<div class="w-full h-4 bg-surface-container-low overflow-hidden">
+<div class="h-full bg-slate-300" style="width: 16.4%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Position Card 2 (Compact) -->
+<div class="bg-surface-container-lowest p-6 shadow-sm border-t-2 border-outline-variant/20">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h4 class="text-lg font-bold text-on-surface">City Council District 4</h4>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Total Votes: 42,109</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="flex items-center justify-between text-xs font-bold">
+<span>James Porter</span>
+<span>62%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-low">
+<div class="h-full bg-secondary" style="width: 62%"></div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between text-xs font-bold">
+<span>Sarah Wu</span>
+<span>38%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-low">
+<div class="h-full bg-slate-300" style="width: 38%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Audit Sidebar -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<h3 class="text-xl font-bold tracking-tight text-on-surface mb-4">Ledger Integrity &amp; Auditing</h3>
+<div class="space-y-4">
+<!-- Audit Item -->
+<div class="bg-surface-container-lowest p-4 border-l-4 border-tertiary shadow-sm">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div>
+<p class="text-sm font-bold text-on-surface">Consensus Validated</p>
+<p class="text-xs text-slate-500 mt-1">All 12 validator nodes have matched ballot hashes for the current batch.</p>
+<div class="mt-3 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="text-[10px] font-black tracking-widest text-slate-400 uppercase">Batch #992-AZ</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Anomaly Item -->
+<div class="bg-error-container/20 p-4 border-l-4 border-error shadow-sm">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">error</span>
+<div>
+<p class="text-sm font-bold text-error">Unusual Surge Detected</p>
+<p class="text-xs text-on-error-container mt-1">Precinct 14-B reported 400% higher turnout than 10-year historical average between 14:00 and 15:00.</p>
+<button class="mt-3 px-3 py-1.5 bg-error text-white text-[10px] font-bold uppercase tracking-widest transition-transform hover:-translate-y-0.5">Initiate Manual Audit</button>
+</div>
+</div>
+</div>
+<!-- Info Item -->
+<div class="bg-white p-4 border border-outline-variant/30 shadow-sm">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-slate-400">info</span>
+<div>
+<p class="text-sm font-bold text-on-surface">Public Transparency Key</p>
+<p class="text-xs text-slate-500 mt-1">Results published to public observers are currently on a 15-minute verification delay.</p>
+<p class="text-[10px] font-bold text-primary uppercase mt-2 cursor-pointer hover:underline">View Observer Logs</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Integrity Dashboard Mini -->
+<div class="bg-on-surface text-white p-6 rounded-sm">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">System Health Status</p>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-xs">
+<span class="text-slate-300">Cryptography (SHA-256)</span>
+<span class="text-tertiary-fixed font-bold">STABLE</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-slate-300">P2P Network Latency</span>
+<span class="text-tertiary-fixed font-bold">12ms</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-slate-300">Storage Shard Status</span>
+<span class="text-secondary-fixed font-bold">REDUNDANT</span>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-slate-700">
+<img alt="Data Streams" class="w-full h-24 object-cover opacity-50 grayscale contrast-125 mb-4" data-alt="Technical dashboard screen showing complex data streams, abstract wave patterns, and flickering code in deep blue and white hues" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJzt0WPIA9aUvYesXGJ_JdyTmRYkP6RrnrbP3own7cK9ivb-lvEq2g70ZzUOF3RyL-gxf7SigMnctUIjOuWYMmrFcRhK7WdCeheJLIO8QOutpaZgoWNQoU_MqsyCL3TKGCxhVw51g9G0SjJEBNmkxDe2UELsgjORTlTewoINbsRyNGNd2j0o6Yy9OoJEJUPpLGR_fxqusUNy4yMOX8ttDFvVT5_Npbrs6www2Q7MBVS0P4HwUYpEnaxNWlCplVB3ObZChZ_S3lwV4"/>
+<p class="text-[9px] text-slate-500 leading-tight">Last full chain validation: 2024-11-05 18:42:01 UTC. Primary node: Node-Alpha-Main-Vault.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- FAB for Contextual Action -->
+<!-- Suppressed based on "Settings/Details/Transactional" rule as this is an Admin Results Detail screen -->
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../../assets/js/utils.js"></script>
+<script defer src="../../assets/js/admin.js"></script>
+<script defer src="../../assets/js/charts.js"></script>
+<script defer src="../../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>

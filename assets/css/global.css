@@ -1,0 +1,365 @@
+:root {
+  --color-primary: #1d4ed8;
+  --color-bg: #f8fafc;
+  --color-text: #0b1f3b;
+  --color-border: #e2e8f0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+body.ovs-pending-auth {
+  visibility: hidden;
+}
+
+body.ovs-auth-ready {
+  visibility: visible;
+}
+
+.ovs-header {
+  border-bottom: 1px solid var(--color-border);
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.ovs-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 64px;
+  padding: 12px clamp(12px, 3vw, 20px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ovs-brand {
+  font-family: Poppins, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ovs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-left: 10px;
+  max-width: 100%;
+}
+
+.ovs-nav-link {
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 0.9rem;
+  color: #334155;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 6px 10px;
+}
+
+.ovs-nav-link:hover,
+.ovs-nav-link:focus {
+  color: var(--color-text);
+  border-color: var(--color-border);
+  background: #eff6ff;
+  outline: none;
+}
+
+.ovs-header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ovs-user-badge {
+  display: inline-block;
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 0.8rem;
+  color: #0f172a;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  padding: 4px 10px;
+  max-width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ovs-btn-link {
+  appearance: none;
+  border: 1px solid #bfdbfe;
+  background: #dbeafe;
+  color: #1e3a8a;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.ovs-btn-link:hover,
+.ovs-btn-link:focus {
+  background: #bfdbfe;
+  outline: none;
+}
+
+.ovs-footer {
+  border-top: 1px solid var(--color-border);
+  background: #ffffff;
+  margin-top: 20px;
+}
+
+.ovs-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px clamp(12px, 3vw, 20px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ovs-footer-left {
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 0.82rem;
+  color: #475569;
+}
+
+.ovs-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ovs-footer-links a {
+  font-family: Manrope, Arial, sans-serif;
+  color: #334155;
+  text-decoration: none;
+  font-size: 0.82rem;
+}
+
+.ovs-footer-links a:hover,
+.ovs-footer-links a:focus {
+  color: var(--color-primary);
+}
+
+@media (max-width: 900px) {
+  .ovs-header-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    row-gap: 8px;
+    column-gap: 10px;
+  }
+
+  .ovs-nav {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-left: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+  }
+
+  .ovs-header-right {
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+}
+
+/* Hide legacy generated fixed nav/header once shared layout is ready */
+body.ovs-auth-ready > nav[class*="fixed"],
+body.ovs-auth-ready > header[class*="fixed"]:not(.ovs-header),
+body.ovs-auth-ready > header[class*="sticky"]:not(.ovs-header) {
+  display: none !important;
+}
+
+/* Generic responsive hardening for stitched pages */
+main,
+section,
+article {
+  max-width: 100%;
+}
+
+.overflow-x-auto {
+  max-width: 100%;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+input,
+select,
+textarea,
+button {
+  max-width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .px-8 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .px-10 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .py-24 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .py-20 {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  body.ovs-section-admin aside[class*="fixed"],
+  body.ovs-section-voter aside[class*="fixed"] {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 0 12px 0 !important;
+    padding: 10px 12px !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--color-border) !important;
+    z-index: 1 !important;
+    overflow: auto !important;
+  }
+
+  body.ovs-section-admin [class*="ml-64"],
+  body.ovs-section-voter [class*="ml-64"],
+  body.ovs-section-admin [class*="w-[calc(100%-16rem)]"],
+  body.ovs-section-voter [class*="w-[calc(100%-16rem)]"] {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  body.ovs-section-admin main,
+  body.ovs-section-voter main {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .grid-cols-12 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+
+  [class*="col-span-"] {
+    grid-column: span 1 / span 1 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-cols-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+
+  .text-7xl {
+    font-size: 2.25rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .text-6xl {
+    font-size: 2rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .text-5xl {
+    font-size: 1.75rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .text-4xl {
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .p-8 {
+    padding: 1rem !important;
+  }
+
+  .p-12 {
+    padding: 1rem !important;
+  }
+
+  .gap-12 {
+    gap: 1rem !important;
+  }
+
+  .gap-10 {
+    gap: 0.875rem !important;
+  }
+
+  .gap-8 {
+    gap: 0.75rem !important;
+  }
+
+  [class*="fixed bottom-"] {
+    display: none !important;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  .ovs-user-badge {
+    max-width: 140px;
+  }
+}

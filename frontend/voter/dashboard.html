@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Civic Ledger | Citizen Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;family=Public+Sans:wght@700;800;900&amp;family=Inter:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#00522a",
+              "tertiary-fixed-dim": "#7eda9a",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#001c38",
+              "outline": "#747686",
+              "error": "#ba1a1a",
+              "primary-container": "#1d4ed8",
+              "primary-fixed": "#dce1ff",
+              "surface-tint": "#2151da",
+              "on-secondary-fixed-variant": "#004881",
+              "on-secondary-container": "#004378",
+              "secondary-container": "#72b1fe",
+              "tertiary-fixed": "#9af6b5",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#0b1c30",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed": "#00210e",
+              "error-container": "#ffdad6",
+              "on-error-container": "#93000a",
+              "surface-dim": "#cbdbf5",
+              "primary": "#0037b0",
+              "inverse-primary": "#b7c4ff",
+              "on-secondary": "#ffffff",
+              "surface": "#f8f9ff",
+              "surface-bright": "#f8f9ff",
+              "primary-fixed-dim": "#b7c4ff",
+              "on-background": "#0b1c30",
+              "tertiary": "#004f29",
+              "surface-container-low": "#eff4ff",
+              "surface-variant": "#d3e4fe",
+              "outline-variant": "#c4c5d7",
+              "background": "#f8f9ff",
+              "surface-container-highest": "#d3e4fe",
+              "inverse-surface": "#213145",
+              "secondary": "#0760a7",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#0039b5",
+              "secondary-fixed": "#d3e4ff",
+              "on-tertiary-container": "#8ce8a7",
+              "secondary-fixed-dim": "#a2c9ff",
+              "surface-container-high": "#dce9ff",
+              "tertiary-container": "#006a38",
+              "on-surface-variant": "#434655",
+              "on-primary-fixed": "#001551",
+              "on-primary-container": "#cad3ff",
+              "surface-container": "#e5eeff",
+              "inverse-on-surface": "#eaf1ff"
+            },
+            fontFamily: {
+              "headline": ["Poppins", "Public Sans"],
+              "body": ["Manrope"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .paper-stack {
+            box-shadow: 0 4px 0 0 #dce1ff, 0 8px 0 0 #f0f3ff;
+        }
+    </style>
+<link rel="stylesheet" href="../../assets/css/global.css"/>
+<link rel="stylesheet" href="../../assets/css/components.css"/>
+<link rel="stylesheet" href="../../assets/css/voter.css"/>
+</head>
+<body class="bg-background text-on-surface font-body">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-white dark:bg-[#0b1c30] shadow-[0_4px_20px_-10px_rgba(11,28,48,0.1)]">
+<div class="flex items-center gap-2">
+<span class="text-2xl font-black text-[#0037b0] dark:text-[#ffffff] tracking-tight">Civic Ledger</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#5a6b87] hover:text-[#0b1c30] font-label text-sm uppercase tracking-wider hover:translate-y-[-2px] transition-transform duration-200" href="../voter/elections.html">Elections</a>
+<a class="text-[#5a6b87] hover:text-[#0b1c30] font-label text-sm uppercase tracking-wider hover:translate-y-[-2px] transition-transform duration-200" href="../how-it-works.html">Security</a>
+<a class="text-[#5a6b87] hover:text-[#0b1c30] font-label text-sm uppercase tracking-wider hover:translate-y-[-2px] transition-transform duration-200" href="../contact.html">Help</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] z-40 bg-[#eff4ff] dark:bg-[#0b1c30] w-64 border-r-0">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-white overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="close up headshot of a professional man in his 40s with a neutral expression and clean studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx_Uz0gmDYO5kfHZL5Jx1iTCR_okG3CH0ndu_b4wSj4nPTIUSNoZbgDk8WU9vzlEvibIDPJjvAL1Dny-b6KMvbQdtee7vBTnCyHTejJkaRGVzd5pJlwdUFE0EBAGJNrf_t5KF6XKu8d89SCBJvBAYAVJe5XzDSN2kpjN3hGBjOELtgYscnoJT9y2Rb9Aq8-uwuFEW2u8f_GqFZ20BqtIgsdxouL0cBFAENJ25x75WfH0NVaorI8Q7tHDK43D0lj1CGPN2V4BOlae0"/>
+</div>
+<div>
+<p class="font-headline font-bold text-sm text-[#0037b0] leading-none">Citizen Portal</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter mt-1 font-bold">Verified Status: Active</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-[#1d4ed8] text-[#1d4ed8] dark:text-white font-bold rounded-r-none border-l-4 border-[#1d4ed8] transition-colors duration-200" href="dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#5a6b87] hover:bg-[#ffffff] hover:text-[#0b1c30] transition-colors duration-200" href="elections.html">
+<span class="material-symbols-outlined" data-icon="how_to_vote">how_to_vote</span>
+<span class="text-sm">Active Ballots</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#5a6b87] hover:bg-[#ffffff] hover:text-[#0b1c30] transition-colors duration-200" href="results.html">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="text-sm">History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#5a6b87] hover:bg-[#ffffff] hover:text-[#0b1c30] transition-colors duration-200" href="settings.html">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="text-sm">Security Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#5a6b87] hover:bg-[#ffffff] hover:text-[#0b1c30] transition-colors duration-200" href="../contact.html">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span class="text-sm">Support</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="lg:ml-64 pt-16 min-h-screen">
+<div class="max-w-[800px] mx-auto px-6 py-8">
+<!-- Status Banner -->
+<div class="bg-[#F59E0B] text-white p-4 mb-10 flex items-center gap-4 rounded shadow-sm">
+<span class="material-symbols-outlined flex-shrink-0" data-icon="priority_high">priority_high</span>
+<p class="font-bold text-sm tracking-tight">Action Required: Complete your municipal ballot by Nov 5.</p>
+</div>
+<!-- Dashboard Hero Section -->
+<header class="mb-12">
+<p class="font-label text-xs font-bold uppercase tracking-widest text-primary mb-2">Citizen Overview</p>
+<h1 class="font-headline text-4xl font-extrabold text-on-surface tracking-tight leading-tight">Welcome back, <br/>Alexander Sterling</h1>
+</header>
+<!-- Active Ballot Card (The Primary Ledger) -->
+<section class="mb-12">
+<div class="bg-surface-container-low p-1 rounded-lg">
+<div class="bg-white border-l-4 border-primary p-8 rounded shadow-sm hover:translate-y-[-2px] transition-transform duration-200">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="flex-1">
+<span class="bg-primary-container/10 text-primary-container px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest mb-4 inline-block">Current Election</span>
+<h2 class="font-headline text-2xl font-black text-[#0B1F3B] mb-2 leading-tight">2024 Municipal General Election</h2>
+<p class="text-on-surface-variant text-sm max-w-md">Cast your vote for City Council, District Attorney, and local infrastructure propositions.</p>
+</div>
+<button class="bg-gradient-to-r from-[#0037b0] to-[#1d4ed8] text-white px-8 py-4 font-bold text-sm rounded shadow-lg hover:translate-y-[-2px] active:scale-95 transition-all duration-200 flex items-center gap-2">
+                                Open Ballot
+                                <span class="material-symbols-outlined text-base" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Voter Stats / Asymmetric Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+<div class="bg-surface-container-low p-6 rounded flex flex-col justify-between h-40">
+<div>
+<span class="material-symbols-outlined text-primary mb-2" data-icon="verified">verified</span>
+<p class="font-label text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Voter Identity</p>
+</div>
+<p class="font-headline text-xl font-bold">Blockchain Verified</p>
+</div>
+<div class="bg-primary-container text-white p-6 rounded flex flex-col justify-between h-40">
+<div>
+<span class="material-symbols-outlined mb-2" data-icon="event_available">event_available</span>
+<p class="font-label text-[10px] font-bold uppercase tracking-wider opacity-80">Next Registration Renewal</p>
+</div>
+<p class="font-headline text-xl font-bold">October 2026</p>
+</div>
+</div>
+<!-- Voting History Table -->
+<section class="mb-12">
+<div class="flex items-end justify-between mb-6">
+<div>
+<p class="font-label text-xs font-bold uppercase tracking-widest text-primary mb-1">Audit Log</p>
+<h3 class="font-headline text-2xl font-bold text-on-surface">Voting History</h3>
+</div>
+<button class="text-sm font-bold text-primary hover:underline flex items-center gap-1">
+                        Download All Receipts
+                        <span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+</button>
+</div>
+<div class="overflow-hidden bg-white border border-[#E2E8F0] rounded">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-[#E2E8F0]">
+<th class="p-4 font-label text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Date</th>
+<th class="p-4 font-label text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Election Name</th>
+<th class="p-4 font-label text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Status</th>
+<th class="p-4 font-label text-[10px] font-black uppercase tracking-widest text-on-surface-variant text-right">Receipt</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#E2E8F0]">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-4 text-sm font-medium">Nov 08, 2023</td>
+<td class="p-4 text-sm font-bold text-[#0B1F3B]">State Midterm Elections</td>
+<td class="p-4">
+<div class="flex items-center gap-2 text-[#10B981]">
+<span class="material-symbols-outlined text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-xs font-bold uppercase tracking-tighter">Verified</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="description">description</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-4 text-sm font-medium">May 12, 2023</td>
+<td class="p-4 text-sm font-bold text-[#0B1F3B]">Local School Board Ballot</td>
+<td class="p-4">
+<div class="flex items-center gap-2 text-[#10B981]">
+<span class="material-symbols-outlined text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-xs font-bold uppercase tracking-tighter">Verified</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="description">description</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-4 text-sm font-medium">Nov 05, 2022</td>
+<td class="p-4 text-sm font-bold text-[#0B1F3B]">2022 Presidential Primaries</td>
+<td class="p-4">
+<div class="flex items-center gap-2 text-[#10B981]">
+<span class="material-symbols-outlined text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-xs font-bold uppercase tracking-tighter">Verified</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="description">description</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Support & Security Section (Paper on Paper) -->
+<section class="bg-surface-container-low p-8 rounded-lg mb-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-white p-6 rounded shadow-sm">
+<h4 class="font-headline font-bold text-lg mb-2">Need Assistance?</h4>
+<p class="text-sm text-on-surface-variant mb-4">Our civic agents are available 24/7 to help you with the digital voting process.</p>
+<a class="text-primary font-bold text-sm flex items-center gap-2" href="../contact.html">
+                            Contact Support
+                            <span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+<div class="bg-white p-6 rounded shadow-sm">
+<h4 class="font-headline font-bold text-lg mb-2">Security Audit</h4>
+<p class="text-sm text-on-surface-variant mb-4">Your voter ID is protected by end-to-end encryption and decentralized verification.</p>
+<a class="text-primary font-bold text-sm flex items-center gap-2" href="../how-it-works.html">
+                            View Security Protocol
+                            <span class="material-symbols-outlined text-sm" data-icon="shield">shield</span>
+</a>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Component -->
+<footer class="w-full py-8 px-8 flex flex-col md:flex-row justify-between items-center gap-4 mt-auto bg-[#f8f9ff] dark:bg-[#08121f] border-t border-[#c4c5d7]/15">
+<div class="flex flex-col items-center md:items-start gap-1">
+<span class="font-bold text-[#0b1c30] text-sm">Civic Ledger</span>
+<p class="font-body text-xs font-medium tracking-tight text-[#5a6b87]">Â© 2024 National Election Authority. Secure Blockchain Verification Active.</p>
+</div>
+<div class="flex gap-6">
+<a class="font-body text-xs font-medium tracking-tight text-[#5a6b87] hover:text-[#1d4ed8] transition-colors" href="#">Privacy Policy</a>
+<a class="font-body text-xs font-medium tracking-tight text-[#5a6b87] hover:text-[#1d4ed8] transition-colors" href="#">Accessibility</a>
+<a class="font-body text-xs font-medium tracking-tight text-[#5a6b87] hover:text-[#1d4ed8] transition-colors" href="#">Terms of Service</a>
+</div>
+</footer>
+</main>
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../../assets/js/utils.js"></script>
+<script defer src="../../assets/js/voter.js"></script>
+<script defer src="../../assets/js/charts.js"></script>
+<script defer src="../../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>

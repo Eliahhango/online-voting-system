@@ -1,0 +1,2 @@
+﻿(function(){ /* Chart rendering placeholder. */ })();
+

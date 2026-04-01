@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Civic Ledger | Secure Ballot</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&amp;family=Public+Sans:wght@400;600;700&amp;family=Manrope:wght@400;500;600&amp;family=Inter:wght@500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "on-tertiary-fixed-variant": "#00522a",
+                "tertiary-fixed-dim": "#7eda9a",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary-fixed": "#001c38",
+                "outline": "#747686",
+                "error": "#ba1a1a",
+                "primary-container": "#1d4ed8",
+                "primary-fixed": "#dce1ff",
+                "surface-tint": "#2151da",
+                "on-secondary-fixed-variant": "#004881",
+                "on-secondary-container": "#004378",
+                "secondary-container": "#72b1fe",
+                "tertiary-fixed": "#9af6b5",
+                "on-tertiary": "#ffffff",
+                "on-surface": "#0b1c30",
+                "on-primary": "#ffffff",
+                "on-tertiary-fixed": "#00210e",
+                "error-container": "#ffdad6",
+                "on-error-container": "#93000a",
+                "surface-dim": "#cbdbf5",
+                "primary": "#0037b0",
+                "inverse-primary": "#b7c4ff",
+                "on-secondary": "#ffffff",
+                "surface": "#f8f9ff",
+                "surface-bright": "#f8f9ff",
+                "primary-fixed-dim": "#b7c4ff",
+                "on-background": "#0b1c30",
+                "tertiary": "#004f29",
+                "surface-container-low": "#eff4ff",
+                "surface-variant": "#d3e4fe",
+                "outline-variant": "#c4c5d7",
+                "background": "#f8f9ff",
+                "surface-container-highest": "#d3e4fe",
+                "inverse-surface": "#213145",
+                "secondary": "#0760a7",
+                "on-error": "#ffffff",
+                "on-primary-fixed-variant": "#0039b5",
+                "secondary-fixed": "#d3e4ff",
+                "on-tertiary-container": "#8ce8a7",
+                "secondary-fixed-dim": "#a2c9ff",
+                "surface-container-high": "#dce9ff",
+                "tertiary-container": "#006a38",
+                "on-surface-variant": "#434655",
+                "on-primary-fixed": "#001551",
+                "on-primary-container": "#cad3ff",
+                "surface-container": "#e5eeff",
+                "inverse-on-surface": "#eaf1ff"
+              },
+              fontFamily: {
+                "headline": ["Poppins"],
+                "body": ["Manrope"],
+                "label": ["Public Sans"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab { border-left-width: 4px; }
+        .glass-header { backdrop-filter: blur(20px); background: rgba(255, 255, 255, 0.8); }
+        body { background-color: #f8f9ff; font-family: 'Manrope', sans-serif; }
+    </style>
+<link rel="stylesheet" href="../../assets/css/global.css"/>
+<link rel="stylesheet" href="../../assets/css/components.css"/>
+<link rel="stylesheet" href="../../assets/css/voter.css"/>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar Execution from JSON -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-white shadow-[0_4px_20px_-10px_rgba(11,28,48,0.1)]">
+<div class="flex items-center gap-6">
+<span class="text-2xl font-black text-primary">Civic Ledger</span>
+<div class="hidden md:flex gap-6 ml-8">
+<a class="text-[#5a6b87] hover:text-[#0b1c30] font-label uppercase tracking-wider text-xs font-bold transition-transform hover:translate-y-[-2px]" href="#">Elections</a>
+<a class="text-[#5a6b87] hover:text-[#0b1c30] font-label uppercase tracking-wider text-xs font-bold transition-transform hover:translate-y-[-2px]" href="#">Security</a>
+<a class="text-[#5a6b87] hover:text-[#0b1c30] font-label uppercase tracking-wider text-xs font-bold transition-transform hover:translate-y-[-2px]" href="#">Help</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Verified Citizen</span>
+</div>
+</nav>
+<!-- SideNavBar Execution from JSON (Filtered for Sub-page context but maintained for structure as per user requirements) -->
+<aside class="hidden lg:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-surface-container-low z-40 transition-all">
+<div class="p-6 border-b border-outline-variant/15">
+<p class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Citizen Portal</p>
+<p class="text-sm text-on-surface-variant font-medium">Verified Status: Active</p>
+</div>
+<nav class="flex-1 py-4">
+<div class="px-3 mb-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+</div>
+<div class="px-3 mb-2">
+<a class="flex items-center gap-3 px-4 py-3 bg-white text-primary font-bold border-l-4 border-primary" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_vote">how_to_vote</span>
+<span class="font-medium text-sm">Active Ballots</span>
+</a>
+</div>
+<div class="px-3 mb-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-medium text-sm">History</span>
+</a>
+</div>
+<div class="px-3 mb-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-medium text-sm">Security Center</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="lg:ml-64 mt-16 min-h-[calc(100vh-64px)] flex flex-col md:flex-row">
+<!-- Left Area: Candidates (70%) -->
+<section class="flex-1 p-8 md:p-12 bg-background border-r border-outline-variant/15">
+<div class="max-w-4xl mx-auto">
+<header class="mb-10">
+<div class="flex items-center gap-2 text-primary font-label text-xs font-extrabold uppercase tracking-[0.2em] mb-3">
+<span class="material-symbols-outlined text-sm" data-icon="gavel">gavel</span>
+                        General Election 2024
+                    </div>
+<h1 class="text-4xl md:text-5xl font-black font-headline text-on-surface tracking-tight leading-none mb-4">
+                        Presidential Seat Selection
+                    </h1>
+<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                        Please review the candidates below and select one individual to cast your official vote. Your selection is cryptographically secured.
+                    </p>
+</header>
+<!-- Candidate Grid/List -->
+<div class="space-y-4">
+<!-- Candidate Card 1 (Selected State Example) -->
+<label class="group relative flex items-center p-6 bg-surface-container-lowest border-2 border-primary ring-2 ring-primary-container ring-offset-2 cursor-pointer transition-all">
+<input checked="" class="hidden" name="candidate" type="radio"/>
+<div class="w-8 h-8 rounded-full border-2 border-primary flex items-center justify-center mr-6 transition-all group-hover:scale-105">
+<div class="w-4 h-4 bg-primary rounded-full"></div>
+</div>
+<div class="flex items-center gap-6">
+<img alt="Candidate 1" class="w-16 h-16 rounded object-cover grayscale-0" data-alt="professional portrait of a middle-aged woman in a formal navy suit with a neutral studio background, high-end lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPD3aR3TttqMch0zVA46_-Iy94T79Ede7QzG3hesPLQzcsltkdlbybddG26ih7TGYCi4VmUA93BbOmi-3UPyvHcqM1vQuo_fEzQupOBO4kXXkDz5ZaHAwmeB3B-6GspSf6UI_zG5ZedWKz1VzNJR6_UoCyq7Yng3VEv1gc9cM3y9aZFWCo8exVc6NjQF3YS6Zij5j_C2e6yjgNLoYIJE9lfq4qkHYFdTlhA84bBH5yUs96Ctp5AeQagy9rPzR0hpYpre0SA3sQgBo"/>
+<div>
+<h3 class="text-xl font-bold text-on-surface font-headline">Dr. Elena Rodriguez</h3>
+<p class="text-sm font-label uppercase tracking-widest text-primary font-bold">Democratic Alliance</p>
+</div>
+</div>
+<div class="ml-auto">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest">Active Choice</span>
+</div>
+</label>
+<!-- Candidate Card 2 -->
+<label class="group relative flex items-center p-6 bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 cursor-pointer transition-all hover:translate-y-[-2px]">
+<input class="hidden" name="candidate" type="radio"/>
+<div class="w-8 h-8 rounded-full border-2 border-outline-variant flex items-center justify-center mr-6 group-hover:border-primary transition-all">
+<div class="w-4 h-4 bg-transparent rounded-full"></div>
+</div>
+<div class="flex items-center gap-6">
+<img alt="Candidate 2" class="w-16 h-16 rounded object-cover grayscale" data-alt="close-up portrait of a senior man with grey hair in a charcoal blazer, clean minimalist background, soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPzDw9z1RieUinaRRpJuRnZlFjw76liStD6Rs_uZSr9ckU45HvaBnUunfycNSQGne9gmiqpFMJslkHs7q7i7XDarGCLaY1-PntqxnlOZMO-OlE3Tv8zoVL470fOniF9kLOCpyIKA0vYZQz6-EiSejQBDFg8kF4Zznwy37Zi0KkqKpr-eewufIwIYdSUQ5kowkT8A4ob8Q1loY6ZE1aRkP9nW6J-Rv9cq-6ciBxtEmb8M5BCwT4tF49IzQh8aEkfuN5p30aA6CoyG4"/>
+<div>
+<h3 class="text-xl font-bold text-on-surface font-headline">Marcus Thorne</h3>
+<p class="text-sm font-label uppercase tracking-widest text-on-surface-variant font-medium">Unity Coalition</p>
+</div>
+</div>
+</label>
+<!-- Candidate Card 3 -->
+<label class="group relative flex items-center p-6 bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 cursor-pointer transition-all hover:translate-y-[-2px]">
+<input class="hidden" name="candidate" type="radio"/>
+<div class="w-8 h-8 rounded-full border-2 border-outline-variant flex items-center justify-center mr-6 group-hover:border-primary transition-all">
+<div class="w-4 h-4 bg-transparent rounded-full"></div>
+</div>
+<div class="flex items-center gap-6">
+<img alt="Candidate 3" class="w-16 h-16 rounded object-cover grayscale" data-alt="headshot of a young professional man wearing glasses and a crisp white shirt, bright modern office background in bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwj_Mh2o9VfgGp82ZnaHL2WfWP5FBN8WHUwcyL9UcmjGe8yhy7c0NG_e4p05-ks0Jz0TB_KZlFjuq4H4_q2VnJuob1AiPmciJVpIomqZSuVLzQgeMBH7xrictZ6yyEZ10L-Wp-oEl966fe35y47eDtlFwL_aiHXaP55uE-t2mug_-zGZ-HxzxV7wUZFUJzSwTzIt1rwzEYO2aTGhJHhOk1YDj8FIu8hrgomUiXeZ-KrFdLc9n07G034TtB-dXiNO1tWEIoRDYo-jE"/>
+<div>
+<h3 class="text-xl font-bold text-on-surface font-headline">Jordan P. Sinclair</h3>
+<p class="text-sm font-label uppercase tracking-widest text-on-surface-variant font-medium">Progressive Front</p>
+</div>
+</div>
+</label>
+<!-- Candidate Card 4 -->
+<label class="group relative flex items-center p-6 bg-surface-container-lowest border border-outline-variant/30 hover:border-primary/50 cursor-pointer transition-all hover:translate-y-[-2px]">
+<input class="hidden" name="candidate" type="radio"/>
+<div class="w-8 h-8 rounded-full border-2 border-outline-variant flex items-center justify-center mr-6 group-hover:border-primary transition-all">
+<div class="w-4 h-4 bg-transparent rounded-full"></div>
+</div>
+<div class="flex items-center gap-6">
+<img alt="Candidate 4" class="w-16 h-16 rounded object-cover grayscale" data-alt="professional portrait of a woman with braided hair wearing a maroon blazer, warm lighting, elegant professional setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuNtg1jpnyDLtXu-yMCYeCrYT7ZM6CHQj9c0cyDVzzx0pgo3KDW_rgx-4CYMSG74e_SM2NG-9SziJKnEtTn8hxvisccvnk7saby_LhjUOFR9PLdqPsunF-LlzDLT6JdYJ9UXOjorgu5etmIhvbjfYwHgY5A81U_71VAlhQLcDQ38hEJvRNI-TEBDVG7fYT6sTnEIznCzoXzugoLeUnROHSPO-wEJG4r1jhFnzfVaaonOO_ZzGukyPC-P3iRCxBwKWKdd7B6RtilSY"/>
+<div>
+<h3 class="text-xl font-bold text-on-surface font-headline">Amara Okafor</h3>
+<p class="text-sm font-label uppercase tracking-widest text-on-surface-variant font-medium">Independent</p>
+</div>
+</div>
+</label>
+</div>
+<div class="mt-12 flex justify-between items-center">
+<button class="flex items-center gap-2 px-6 py-3 bg-surface-container-low text-on-surface-variant font-bold text-sm tracking-widest uppercase hover:bg-white transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                        Previous Office
+                    </button>
+<button class="bg-gradient-to-r from-primary to-primary-container text-white px-10 py-4 font-black uppercase tracking-[0.15em] text-sm hover:translate-y-[-2px] transition-transform shadow-lg">
+                        Confirm Selection &amp; Continue
+                    </button>
+</div>
+</div>
+</section>
+<!-- Right Sidebar: Progress/Summary (30%) -->
+<aside class="w-full md:w-[350px] lg:w-[400px] p-8 bg-surface-container-low flex flex-col gap-10">
+<div>
+<h2 class="text-xs font-extrabold text-primary uppercase tracking-[0.25em] mb-6">Civic Progress</h2>
+<!-- Vertical Stepper (Custom Component per DS) -->
+<div class="space-y-0 relative">
+<!-- Step 1 -->
+<div class="relative pl-10 pb-10 border-l-2 border-primary">
+<div class="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-primary flex items-center justify-center shadow-[0_0_0_4px_white]">
+<span class="material-symbols-outlined text-white text-[12px] font-bold" data-icon="check">check</span>
+</div>
+<p class="text-[10px] font-black text-on-surface-variant uppercase tracking-widest">Completed</p>
+<h4 class="text-sm font-bold text-on-surface leading-tight">Identity Verification</h4>
+</div>
+<!-- Step 2 -->
+<div class="relative pl-10 pb-10 border-l-2 border-primary">
+<div class="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-primary flex items-center justify-center shadow-[0_0_0_4px_white]">
+<div class="w-2 h-2 bg-white rounded-full"></div>
+</div>
+<p class="text-[10px] font-black text-primary uppercase tracking-widest">Step 2 of 4</p>
+<h4 class="text-sm font-black text-on-surface leading-tight">Ballot Selection</h4>
+</div>
+<!-- Step 3 -->
+<div class="relative pl-10 pb-10 border-l-2 border-outline-variant/30">
+<div class="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-outline-variant/30 flex items-center justify-center shadow-[0_0_0_4px_#eff4ff]"></div>
+<p class="text-[10px] font-black text-outline uppercase tracking-widest">Pending</p>
+<h4 class="text-sm font-bold text-on-surface-variant leading-tight">Ballot Review</h4>
+</div>
+<!-- Step 4 -->
+<div class="relative pl-10">
+<div class="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-outline-variant/30 flex items-center justify-center shadow-[0_0_0_4px_#eff4ff]"></div>
+<p class="text-[10px] font-black text-outline uppercase tracking-widest">Final Step</p>
+<h4 class="text-sm font-bold text-on-surface-variant leading-tight">Blockchain Finalization</h4>
+</div>
+</div>
+</div>
+<!-- Summary Card -->
+<div class="bg-white p-6 shadow-sm border border-outline-variant/15">
+<h3 class="text-xs font-black text-on-surface uppercase tracking-widest mb-4 border-b border-outline-variant/10 pb-3">Selection Summary</h3>
+<div class="space-y-4">
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Office</p>
+<p class="text-sm font-bold text-on-surface">Presidential Seat</p>
+</div>
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Current Choice</p>
+<p class="text-sm font-black text-primary underline underline-offset-4">Dr. Elena Rodriguez</p>
+</div>
+<div class="pt-4 mt-4 border-t border-dashed border-outline-variant/30">
+<div class="flex items-center gap-2 text-[10px] font-medium text-on-tertiary-fixed-variant bg-tertiary-fixed/30 p-2">
+<span class="material-symbols-outlined text-sm" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+                            Encrypted Vote Preview Only
+                        </div>
+</div>
+</div>
+</div>
+<!-- Help/Security Note -->
+<div class="mt-auto">
+<div class="flex gap-4 p-4 bg-surface-container-highest/20 rounded">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">
+                        Your vote is end-to-end encrypted. Once submitted, your selection will be stored on the decentralized ledger and cannot be altered or deleted.
+                    </p>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer Execution from JSON -->
+<footer class="w-full py-8 px-8 flex flex-col md:flex-row justify-between items-center gap-4 mt-auto bg-[#f8f9ff] border-t border-[#c4c5d7]/15">
+<div class="flex flex-col items-center md:items-start gap-1">
+<span class="font-bold text-[#0b1c30]">Civic Ledger</span>
+<p class="text-[#5a6b87] font-body text-xs font-medium tracking-tight">Â© 2024 National Election Authority. Secure Blockchain Verification Active.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-[#5a6b87] hover:text-[#1d4ed8] text-xs font-medium tracking-tight transition-colors" href="#">Accessibility Statement</a>
+<a class="text-[#5a6b87] hover:text-[#1d4ed8] text-xs font-medium tracking-tight transition-colors" href="#">Privacy Policy</a>
+<a class="text-[#5a6b87] hover:text-[#1d4ed8] text-xs font-medium tracking-tight transition-colors" href="#">Terms of Service</a>
+<a class="text-[#5a6b87] hover:text-[#1d4ed8] text-xs font-medium tracking-tight transition-colors" href="#">Contact Support</a>
+</div>
+</footer>
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../../assets/js/utils.js"></script>
+<script defer src="../../assets/js/voter.js"></script>
+<script defer src="../../assets/js/charts.js"></script>
+<script defer src="../../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>

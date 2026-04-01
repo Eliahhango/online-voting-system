@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Election | Civic Ledger Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=Poppins:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#e5eeff",
+                        "on-secondary-container": "#004378",
+                        "surface-variant": "#d3e4fe",
+                        "secondary": "#0760a7",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "background": "#f8f9ff",
+                        "primary-container": "#1d4ed8",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "on-secondary-fixed": "#001c38",
+                        "on-primary-fixed": "#001551",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "tertiary": "#004f29",
+                        "outline-variant": "#c4c5d7",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dce1ff",
+                        "on-surface-variant": "#434655",
+                        "inverse-primary": "#b7c4ff",
+                        "surface": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#9af6b5",
+                        "on-tertiary-container": "#8ce8a7",
+                        "on-secondary-fixed-variant": "#004881",
+                        "surface-dim": "#cbdbf5",
+                        "tertiary-fixed-dim": "#7eda9a",
+                        "primary": "#0037b0",
+                        "secondary-container": "#72b1fe",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#d3e4ff",
+                        "outline": "#747686",
+                        "on-primary-container": "#cad3ff",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#2151da",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#00522a",
+                        "on-tertiary-fixed": "#00210e",
+                        "tertiary-container": "#006a38",
+                        "on-surface": "#0b1c30",
+                        "surface-container-low": "#eff4ff",
+                        "surface-bright": "#f8f9ff"
+                    },
+                    fontFamily: {
+                        "headline": ["Public Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .paper-on-paper {
+            background-color: #eff4ff;
+        }
+        .ledger-card {
+            background-color: #ffffff;
+            border-left: 4px solid #0037b0;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+<link rel="stylesheet" href="../../assets/css/global.css"/>
+<link rel="stylesheet" href="../../assets/css/components.css"/>
+<link rel="stylesheet" href="../../assets/css/admin.css"/>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-6 w-full sticky top-0 z-50 bg-[#ffffff] dark:bg-slate-900 h-16 border-b border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none font-public-sans tracking-tighter">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold text-[#0037b0] dark:text-blue-500 uppercase tracking-tighter">Civic Ledger Admin</span>
+<div class="hidden md:flex items-center bg-surface-container-low rounded px-3 py-1.5 border border-outline-variant/10">
+<span class="material-symbols-outlined text-slate-400 mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-64" placeholder="Search records..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors rounded">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors rounded">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="h-8 w-8 rounded bg-primary-container flex items-center justify-center text-white overflow-hidden">
+<img alt="Admin Avatar" data-alt="A professional headshot of a government official in a sharp navy suit, soft studio lighting, high-end corporate photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBywgfHXXBfRrHvpdkxQ1eEe8YUWQP55ZbrOCBx2tWeAojU2_uWLYFDCg5jsVw21b1qznflRt62H7BuHxRW7GZiPZLugJ9oM780nwqU-xnfAofFKbTDXZHzH4Vu6pQHJVj7hgoqelgCxPGePPy2wDBqlgAlv4A5dd5E3a5UNGg1FKVeI_gmlyM3S3hP6wA_cUlQEM97gsJ53EKG8zDh0FlKvKLBM_KP4pgVx8CcXnSDoC7byb7RwkM1yuL6eCkBViRi0bBhODju0kw"/>
+</div>
+</div>
+</header>
+<div class="flex">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-slate-200 dark:border-slate-800 bg-[#eff4ff] dark:bg-slate-950 flex flex-col h-full py-6 z-40 mt-16">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<div class="text-lg font-black text-[#0b1c30] dark:text-white leading-none">Civic Authority</div>
+<div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">Election Control Room</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-900 text-[#1D4ED8] border-l-4 border-[#1D4ED8] font-public-sans text-sm font-semibold tracking-wide uppercase" href="#">
+<span class="material-symbols-outlined">ballot</span>
+<span>Elections</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-[#ffffff]/50 dark:hover:bg-slate-800 transition-all font-public-sans text-sm font-semibold tracking-wide uppercase" href="#">
+<span class="material-symbols-outlined">assignment_ind</span>
+<span>Positions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-[#ffffff]/50 dark:hover:bg-slate-800 transition-all font-public-sans text-sm font-semibold tracking-wide uppercase" href="#">
+<span class="material-symbols-outlined">person_search</span>
+<span>Candidates</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-[#ffffff]/50 dark:hover:bg-slate-800 transition-all font-public-sans text-sm font-semibold tracking-wide uppercase" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Voter Registry</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-[#ffffff]/50 dark:hover:bg-slate-800 transition-all font-public-sans text-sm font-semibold tracking-wide uppercase" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>System Settings</span>
+</a>
+</nav>
+<div class="px-4 py-4 mt-auto border-t border-slate-200">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:bg-[#ffffff]/50 transition-all text-sm font-semibold" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span>Security Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:bg-[#ffffff]/50 transition-all text-sm font-semibold" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 flex-1 p-12 max-w-7xl">
+<!-- Breadcrumbs & Header -->
+<div class="mb-10">
+<div class="flex items-center gap-2 text-label text-xs font-bold uppercase tracking-widest text-secondary mb-3">
+<span>Admin Console</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span>Elections</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-on-surface">Edit EL-2024-001</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-headline text-5xl font-extrabold tracking-tighter text-on-background mb-2">General Assembly 2024</h1>
+<p class="text-on-surface-variant font-body max-w-2xl">Modify election parameters, adjust timelines, or pause voting operations. All changes are logged to the immutable audit trail.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 bg-surface-container-low text-on-primary-fixed-variant font-bold text-sm uppercase tracking-wider rounded border border-outline-variant/20 hover:bg-surface-container-high transition-all">
+                            Discard Changes
+                        </button>
+<button class="px-8 py-3 bg-gradient-to-r from-primary to-primary-container text-white font-bold text-sm uppercase tracking-wider rounded shadow-lg hover:-translate-y-0.5 transition-all active:translate-y-0">
+                            Save Changes
+                        </button>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Primary Ledger: Core Information -->
+<section class="col-span-8 space-y-6">
+<div class="ledger-card p-8 shadow-sm">
+<h2 class="text-label text-xs font-bold uppercase tracking-widest text-primary mb-6">Core Parameters</h2>
+<div class="grid grid-cols-2 gap-8">
+<div class="col-span-2">
+<label class="block text-xs font-black text-slate-500 uppercase mb-2">Election Title</label>
+<input class="w-full bg-surface-container-low border-none p-4 font-headline text-lg focus:ring-2 focus:ring-primary-container focus:bg-white transition-all" type="text" value="General Assembly 2024 - Metropolitan District"/>
+</div>
+<div>
+<label class="block text-xs font-black text-slate-500 uppercase mb-2">Jurisdiction</label>
+<select class="w-full bg-surface-container-low border-none p-4 focus:ring-2 focus:ring-primary-container focus:bg-white transition-all">
+<option selected="">Metropolitan North</option>
+<option>Metropolitan South</option>
+<option>Suburban West</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-black text-slate-500 uppercase mb-2">Voting Method</label>
+<select class="w-full bg-surface-container-low border-none p-4 focus:ring-2 focus:ring-primary-container focus:bg-white transition-all">
+<option selected="">Ranked Choice (RCV)</option>
+<option>First Past the Post</option>
+<option>Proportional Representation</option>
+</select>
+</div>
+<div class="col-span-2">
+<label class="block text-xs font-black text-slate-500 uppercase mb-2">Public Description</label>
+<textarea class="w-full bg-surface-container-low border-none p-4 focus:ring-2 focus:ring-primary-container focus:bg-white transition-all" rows="4">The 2024 General Assembly election will determine the leadership for the Metropolitan District over the next quadrennial period. All registered voters are eligible.</textarea>
+</div>
+</div>
+</div>
+<!-- Voter Access Rules -->
+<div class="bg-surface-container-lowest p-8 border-l-4 border-tertiary shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-label text-xs font-bold uppercase tracking-widest text-tertiary">Voter Eligibility &amp; Access</h2>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 text-[10px] font-bold rounded uppercase">Active Constraint</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-low">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary">how_to_reg</span>
+<div>
+<div class="font-bold text-sm">Tanzanian Citizenship Required</div>
+<div class="text-xs text-slate-500">Voter must be a citizen of the United Republic of Tanzania</div>
+</div>
+</div>
+<div class="w-12 h-6 bg-tertiary rounded-full relative cursor-pointer">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary">badge</span>
+<div>
+<div class="font-bold text-sm">Minimum Age: 18 Years</div>
+<div class="text-xs text-slate-500">Voter must be 18 years or older on election day</div>
+</div>
+</div>
+<div class="w-12 h-6 bg-tertiary rounded-full relative cursor-pointer">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary">fact_check</span>
+<div>
+<div class="font-bold text-sm">Registered Voter Roll Required</div>
+<div class="text-xs text-slate-500">Must appear on INEC or ZEC voter register for this jurisdiction</div>
+</div>
+</div>
+<div class="w-12 h-6 bg-tertiary rounded-full relative cursor-pointer">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sidebar: Status & Controls -->
+<aside class="col-span-4 space-y-6">
+<!-- Status Widget -->
+<div class="bg-white p-6 shadow-sm border border-outline-variant/10">
+<label class="block text-xs font-black text-slate-500 uppercase mb-4">Election Status</label>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-3 h-3 bg-green-500 rounded-full"></div>
+<span class="font-bold text-lg">Currently Live</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-low hover:bg-surface-container-high transition-colors rounded">
+<span class="material-symbols-outlined text-amber-600 mb-2">pause_circle</span>
+<span class="text-[10px] font-bold uppercase">Pause Voting</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-low hover:bg-error-container hover:text-on-error-container transition-colors rounded">
+<span class="material-symbols-outlined text-error mb-2">cancel</span>
+<span class="text-[10px] font-bold uppercase">Terminate</span>
+</button>
+</div>
+</div>
+<!-- Timeline Control -->
+<div class="bg-white p-6 shadow-sm border border-outline-variant/10">
+<label class="block text-xs font-black text-slate-500 uppercase mb-4">Timeline Control</label>
+<div class="space-y-4">
+<div>
+<div class="text-xs text-slate-400 font-bold uppercase mb-1">Starts</div>
+<div class="flex items-center justify-between text-sm font-bold">
+<span>Oct 12, 2024 Â· 08:00 AM</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">edit_calendar</span>
+</div>
+</div>
+<div>
+<div class="text-xs text-slate-400 font-bold uppercase mb-1">Ends</div>
+<div class="flex items-center justify-between text-sm font-bold">
+<span>Oct 14, 2024 Â· 08:00 PM</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">edit_calendar</span>
+</div>
+</div>
+<button class="w-full mt-4 py-3 bg-secondary text-white text-xs font-bold uppercase tracking-widest rounded flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                Extend Deadline
+                            </button>
+</div>
+</div>
+<!-- Security Audit Mini-Log -->
+<div class="bg-surface-container-low p-6">
+<label class="block text-xs font-black text-slate-500 uppercase mb-4">History</label>
+<div class="space-y-4">
+<div class="flex gap-3">
+<div class="w-1 bg-primary/20 rounded-full"></div>
+<div>
+<div class="text-xs font-bold">Election Created</div>
+<div class="text-[10px] text-slate-500 uppercase">Sep 20 Â· 09:12 AM</div>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-1 bg-primary/20 rounded-full"></div>
+<div>
+<div class="text-xs font-bold">Rules Modified</div>
+<div class="text-[10px] text-slate-500 uppercase">Sep 22 Â· 02:45 PM</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Danger Zone Section -->
+<div class="mt-12 p-8 border-2 border-dashed border-error/20 bg-error-container/10 rounded">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-headline text-xl font-bold text-error mb-2">Danger Zone</h3>
+<p class="text-sm text-slate-600">Irreversible actions that will impact the integrity of the election record. Exercise extreme caution.</p>
+</div>
+<button class="px-6 py-2 border-2 border-error text-error font-bold text-xs uppercase tracking-widest hover:bg-error hover:text-white transition-all">
+                        Delete Election
+                    </button>
+</div>
+</div>
+</main>
+</div>
+<!-- Floating Quick Actions (FAB) Suppressed as per Task Logic - Shell Context Focused -->
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../../assets/js/utils.js"></script>
+<script defer src="../../assets/js/admin.js"></script>
+<script defer src="../../assets/js/charts.js"></script>
+<script defer src="../../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>

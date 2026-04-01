@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Civic Ledger - Election Details</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@700;800&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@500;600&amp;family=Poppins:wght@600;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#004f29",
+              "on-tertiary-fixed-variant": "#00522a",
+              "on-tertiary-container": "#8ce8a7",
+              "on-primary": "#ffffff",
+              "error-container": "#ffdad6",
+              "inverse-primary": "#b7c4ff",
+              "on-primary-fixed-variant": "#0039b5",
+              "inverse-on-surface": "#eaf1ff",
+              "on-secondary-container": "#004378",
+              "inverse-surface": "#213145",
+              "secondary-fixed-dim": "#a2c9ff",
+              "secondary-fixed": "#d3e4ff",
+              "error": "#ba1a1a",
+              "on-surface": "#0b1c30",
+              "primary-fixed-dim": "#b7c4ff",
+              "on-error": "#ffffff",
+              "surface": "#f8f9ff",
+              "secondary": "#0760a7",
+              "tertiary-fixed-dim": "#7eda9a",
+              "on-error-container": "#93000a",
+              "surface-container": "#e5eeff",
+              "surface-bright": "#f8f9ff",
+              "on-secondary-fixed-variant": "#004881",
+              "surface-container-highest": "#d3e4fe",
+              "secondary-container": "#72b1fe",
+              "primary": "#0037b0",
+              "on-secondary-fixed": "#001c38",
+              "tertiary-container": "#006a38",
+              "surface-dim": "#cbdbf5",
+              "on-primary-fixed": "#001551",
+              "surface-variant": "#d3e4fe",
+              "on-background": "#0b1c30",
+              "surface-tint": "#2151da",
+              "tertiary-fixed": "#9af6b5",
+              "primary-fixed": "#dce1ff",
+              "on-secondary": "#ffffff",
+              "background": "#f8f9ff",
+              "surface-container-high": "#dce9ff",
+              "on-tertiary-fixed": "#00210e",
+              "on-primary-container": "#cad3ff",
+              "primary-container": "#1d4ed8",
+              "outline-variant": "#c4c5d7",
+              "surface-container-low": "#eff4ff",
+              "outline": "#747686",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#434655",
+              "surface-container-lowest": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Poppins"],
+              "body": ["Manrope"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+    </style>
+<link rel="stylesheet" href="../../assets/css/global.css"/>
+<link rel="stylesheet" href="../../assets/css/components.css"/>
+<link rel="stylesheet" href="../../assets/css/voter.css"/>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="text-2xl font-bold tracking-tight text-blue-700 dark:text-blue-400">Civic Ledger</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors" href="#">Elections</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors" href="#">Security</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 transition-colors" href="#">Help</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 text-slate-600 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-600 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 flex flex-col py-4 bg-slate-50 dark:bg-slate-950 tonal-shift">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-high rounded-full flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="voter profile headshot of a middle-aged man with a friendly expression in a formal suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzUTLQwzMTn5mYfqwsw2Mf74rXGqDXf_9myj9HKI3M5cVG1gYSEOCqtUJajn9m2fc2dq04ezw1Y5CnDPVLk-0Gqei5jVjXLv0dzXLCo5_jQBZQKYvsK0QVyv1wom-q9lq41vi8Mri-J3oCB4mK1NFNGhVyOx_jiSzgkrDA1KCifRjn_QgIcBgXYC9pjwZv7XJ0WE9HO-7rj4uvYe7bng2wq4Ww3nhX1I1KsZa8OGHH935e5LLbnHbitotQzQJSM4igKZh7KYFJS6o"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Voter Portal</p>
+<p class="text-xs text-slate-500">Verified Citizen</p>
+</div>
+</div>
+</div>
+<nav class="flex-1">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 bg-white dark:bg-slate-800 text-blue-700 dark:text-blue-400 font-bold border-l-4 border-blue-700 translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="ballot">ballot</span>
+<span class="font-bold">Active Ballots</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-medium">Results</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-medium">Profile</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="px-6 py-4">
+<button class="w-full bg-primary-container text-on-primary py-3 px-4 rounded font-bold hover:translate-y-[-2px] transition-all shadow-sm">
+                Cast Ballot
+            </button>
+</div>
+<div class="mt-auto px-6 border-t border-slate-100 pt-4">
+<a class="flex items-center gap-3 text-slate-500 hover:text-red-600 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-sm font-medium">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-8 min-h-screen">
+<div class="max-w-6xl mx-auto">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div class="flex-1">
+<span class="inline-block py-1 px-3 bg-tertiary text-on-tertiary text-[10px] uppercase tracking-widest font-bold mb-3 rounded">Official Election</span>
+<h1 class="text-5xl font-black tracking-tight text-on-surface mb-2 leading-tight">2024 General Municipal Election</h1>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-primary font-semibold">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span>Tuesday, Nov 5, 2024</span>
+</div>
+<span class="h-4 w-px bg-outline-variant"></span>
+<div class="flex items-center gap-2 text-tertiary font-bold">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-tertiary"></span>
+</span>
+<span>Status: Registration Open</span>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0">
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-10 py-5 rounded font-black text-lg tracking-wide hover:-translate-y-0.5 transition-transform shadow-lg">
+                        START BALLOT
+                    </button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Schedule & Info (Left Column) -->
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<!-- Schedule Ledger -->
+<section class="bg-surface-container-lowest p-8 border-l-4 border-primary">
+<h3 class="text-xs font-bold text-outline uppercase tracking-[0.2em] mb-6">Schedule</h3>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-sm font-bold">1</div>
+<div class="w-px h-full bg-outline-variant my-1"></div>
+</div>
+<div class="pb-6">
+<p class="font-bold text-on-surface">Voter Registration</p>
+<p class="text-sm text-on-surface-variant">Ends: Oct 21, 2024</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full border-2 border-primary text-primary flex items-center justify-center text-sm font-bold">2</div>
+<div class="w-px h-full bg-outline-variant my-1"></div>
+</div>
+<div class="pb-6">
+<p class="font-bold text-on-surface">Early Voting</p>
+<p class="text-sm text-on-surface-variant">Oct 26 â€” Nov 3, 2024</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full border-2 border-outline-variant text-outline flex items-center justify-center text-sm font-bold">3</div>
+</div>
+<div>
+<p class="font-bold text-outline">Election Day</p>
+<p class="text-sm text-on-surface-variant">Nov 5, 2024 (7AM - 8PM)</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Voting Rules -->
+<section class="bg-surface-container-low p-8">
+<h3 class="text-xs font-bold text-outline uppercase tracking-[0.2em] mb-6">Voting Rules</h3>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span class="text-sm leading-relaxed text-on-surface-variant">Valid Government-issued photo ID required at polling stations.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span class="text-sm leading-relaxed text-on-surface-variant">One person, one vote. Ballot remains anonymous once cast.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span class="text-sm leading-relaxed text-on-surface-variant">Mail-in ballots must be postmarked by Nov 4.</span>
+</li>
+</ul>
+<div class="mt-8 pt-6 border-t border-outline-variant/20">
+<a class="text-primary font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all" href="#">
+                                View Full Voter Guide
+                                <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</section>
+</div>
+<!-- Position Summary & Candidates (Right Column) -->
+<div class="col-span-12 lg:col-span-8 space-y-8">
+<!-- Position 1: Mayor -->
+<section class="bg-surface-container-lowest p-8 border-l-4 border-primary">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="text-xs font-bold text-outline uppercase tracking-[0.2em] mb-1">Position Summary</h3>
+<h2 class="text-3xl font-black tracking-tight text-on-surface">City Mayor</h2>
+</div>
+<span class="text-xs font-bold bg-surface-container-high py-1 px-3">Term: 4 Years</span>
+</div>
+<p class="text-on-surface-variant mb-10 leading-relaxed max-w-2xl">
+                            The Mayor serves as the chief executive officer of the city, overseeing all municipal departments and legislative initiatives. They are responsible for proposing the annual budget and representing the city in intergovernmental affairs.
+                        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Candidate Card 1 -->
+<div class="group relative bg-surface p-6 hover:bg-surface-container-low transition-colors duration-300">
+<div class="flex items-center gap-5">
+<div class="w-20 h-20 bg-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="professional portrait of a confident woman candidate with short dark hair in a professional navy blazer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUGkpP0_lEJ3-uf7ejaaaaD8Lj29vRS_d3ZcBToyP-WnA4l3KnYZvLJY78Y9v94LhtuVXLqT4PdPj0hwFi0fQBnEtQ--rViZL5mymAiAdbdVEG7Cjh2DRIKpsZDCylnesm9ED9Ce3ISpTkF1wAka8U1JWeHsmxa5wZynToHlEEOXN0Nli_RYlm-Ro6NfY9f-Dw3tvWQSOnIfL1QSQkhDvBCLIS7D2KCsDlkHacIjvv2LhyqprL1lpwSIfDuJsYiOGPzgk-dO9mP7s"/>
+</div>
+<div>
+<h4 class="font-bold text-lg text-on-surface">Sarah J. Wellington</h4>
+<p class="text-sm font-semibold text-primary">Progressive Unity Party</p>
+<button class="mt-2 text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:text-primary transition-colors">
+                                            View Platform
+                                            <span class="material-symbols-outlined text-xs" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Candidate Card 2 -->
+<div class="group relative bg-surface p-6 hover:bg-surface-container-low transition-colors duration-300">
+<div class="flex items-center gap-5">
+<div class="w-20 h-20 bg-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="professional portrait of a man candidate in a grey suit looking forward with a serious leadership expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtl0X4JUnfOYGXf7OzBXYMuntvF8-03wvQazqoUd4zS9N1OLvuYjH3RyP2G2UDOdswbb7OY-ut156cOJRX4yInG2D9FZL9-Pi-mh4Im5osbe4HGvmPX36gdCB2BvxZmQCMFaJsCy2-CoyMJxEZONyc5L24FkbCkAlFTHoSgnjAqSYIWMru5jp-2FGP2p36CKzc31wQ4RpMPy-z1Ud10YvtehNmQD8sNPoeMO98XHIUP2LkimYXXSa_TSoZcXSpjSeVoGvtuv7DFMs"/>
+</div>
+<div>
+<h4 class="font-bold text-lg text-on-surface">Robert "Bob" Chen</h4>
+<p class="text-sm font-semibold text-secondary">Conservative League</p>
+<button class="mt-2 text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:text-primary transition-colors">
+                                            View Platform
+                                            <span class="material-symbols-outlined text-xs" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Position 2: City Council -->
+<section class="bg-surface-container-lowest p-8 border-l-4 border-primary">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="text-xs font-bold text-outline uppercase tracking-[0.2em] mb-1">Position Summary</h3>
+<h2 class="text-3xl font-black tracking-tight text-on-surface">City Council, Ward 4</h2>
+</div>
+<span class="text-xs font-bold bg-surface-container-high py-1 px-3">Term: 2 Years</span>
+</div>
+<p class="text-on-surface-variant mb-10 leading-relaxed max-w-2xl">
+                            The City Council is the legislative body of the city, responsible for creating ordinances, zoning laws, and approving municipal contracts. Ward 4 representatives specifically focus on the urban redevelopment and transit sectors.
+                        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Candidate Card 3 -->
+<div class="group relative bg-surface p-6 hover:bg-surface-container-low transition-colors duration-300">
+<div class="flex items-center gap-5">
+<div class="w-20 h-20 bg-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="portrait of a young woman candidate with glasses and an approachable smile in business casual attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYMVMcyTHiOYIrfLa5kZ56hy_D5X6vUT4vtA85qwbGAzf6wdWikiu3n5RmUq_eO8BuEkjA3ZEtOzL2YoeL7fP0VU5nc_SOcRN7J8Xiol7zDv5QMmPm3ijrRK0eYqfilGoBiHgDuNRbrVIO0uRT3TYHsSh5cHkgoKmz2XDICyvBBAv6xGuhJcLxr9IkRpCG4sW34uMGBGTYvfrTzynFR4ublEK1tv8jSyNb2cdWtjsm90peTN-mZ0W0AGrbXIj5ctgrCCy9OtA-dio"/>
+</div>
+<div>
+<h4 class="font-bold text-lg text-on-surface">Maya Rodriguez</h4>
+<p class="text-sm font-semibold text-primary">Independent</p>
+<button class="mt-2 text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:text-primary transition-colors">
+                                            View Platform
+                                            <span class="material-symbols-outlined text-xs" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Candidate Card 4 -->
+<div class="group relative bg-surface p-6 hover:bg-surface-container-low transition-colors duration-300">
+<div class="flex items-center gap-5">
+<div class="w-20 h-20 bg-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="portrait of a middle-aged man candidate with a kind and experienced face in a white shirt and glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3cfJBK40ZSAyUvzBhSOfpv8qzkfotZP6eAtaPtdp9ACg4jb9l4Cw-1TWpmSjpdwOD72zymQUEG3n4uVgYGOnKUtdCyELmZKmIBT_s9gmKJjKxk7pPf1XEXW4E2cHmZriMLES2y6X1oyOfdkfCUTaNj5U2xYjwpb6UzwfY6ZfdNdZdxmxmOaeZAywNgIiQHU0-HomnM3QFvWZz0ZgFtLfdvOJ9uqMet8JyL2lj3-AUTsefZQun1sGk3Cc2XbKt-knwmfOGeGuNWGY"/>
+</div>
+<div>
+<h4 class="font-bold text-lg text-on-surface">David Vance</h4>
+<p class="text-sm font-semibold text-tertiary">Green Earth Party</p>
+<button class="mt-2 text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:text-primary transition-colors">
+                                            View Platform
+                                            <span class="material-symbols-outlined text-xs" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-6 flex flex-col md:flex-row justify-between items-center ml-64 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+<div class="text-sm text-slate-500 dark:text-slate-400 mb-4 md:mb-0">
+            Â© 2024 Civic Ledger Platform. All rights reserved.
+        </div>
+<div class="flex items-center space-x-6">
+<a class="text-sm text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors" href="#">Legal</a>
+<a class="text-sm text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors" href="#">Privacy Policy</a>
+<a class="text-sm text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors" href="#">Accessibility</a>
+<a class="text-sm text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors" href="#">Support</a>
+</div>
+</footer>
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../../assets/js/utils.js"></script>
+<script defer src="../../assets/js/voter.js"></script>
+<script defer src="../../assets/js/charts.js"></script>
+<script defer src="../../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>

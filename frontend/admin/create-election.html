@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#e5eeff",
+                        "on-secondary-container": "#004378",
+                        "surface-variant": "#d3e4fe",
+                        "secondary": "#0760a7",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "background": "#f8f9ff",
+                        "primary-container": "#1d4ed8",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "on-secondary-fixed": "#001c38",
+                        "on-primary-fixed": "#001551",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "tertiary": "#004f29",
+                        "outline-variant": "#c4c5d7",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dce1ff",
+                        "on-surface-variant": "#434655",
+                        "inverse-primary": "#b7c4ff",
+                        "surface": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#9af6b5",
+                        "on-tertiary-container": "#8ce8a7",
+                        "on-secondary-fixed-variant": "#004881",
+                        "surface-dim": "#cbdbf5",
+                        "tertiary-fixed-dim": "#7eda9a",
+                        "primary": "#0037b0",
+                        "secondary-container": "#72b1fe",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#d3e4ff",
+                        "outline": "#747686",
+                        "on-primary-container": "#cad3ff",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#2151da",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#00522a",
+                        "on-tertiary-fixed": "#00210e",
+                        "tertiary-container": "#006a38",
+                        "on-surface": "#0b1c30",
+                        "surface-container-low": "#eff4ff",
+                        "surface-bright": "#f8f9ff"
+                    },
+                    fontFamily: {
+                        "headline": ["Public Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .paper-stack {
+            box-shadow: 4px 4px 0px 0px #d3e4fe;
+        }
+    </style>
+<link rel="stylesheet" href="../../assets/css/global.css"/>
+<link rel="stylesheet" href="../../assets/css/components.css"/>
+<link rel="stylesheet" href="../../assets/css/admin.css"/>
+</head>
+<body class="bg-background font-body text-on-background antialiased">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-slate-200 bg-[#eff4ff] flex flex-col py-6 z-50">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-white" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<h1 class="text-lg font-black text-[#0b1c30] font-headline leading-none">Civic Authority</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mt-1">Election Control Room</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center gap-3 px-4 py-3 bg-white text-[#1D4ED8] border-l-4 border-[#1D4ED8] transition-all translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="ballot">ballot</span>
+<span class="font-headline text-sm font-semibold tracking-wide uppercase">Elections</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-[#ffffff]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_ind">assignment_ind</span>
+<span class="font-headline text-sm font-semibold tracking-wide uppercase">Positions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-[#ffffff]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person_search">person_search</span>
+<span class="font-headline text-sm font-semibold tracking-wide uppercase">Candidates</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-[#ffffff]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-headline text-sm font-semibold tracking-wide uppercase">Voter Registry</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-[#ffffff]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-headline text-sm font-semibold tracking-wide uppercase">System Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-3 pt-6 border-t border-slate-200">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-[#ffffff]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-headline text-sm font-semibold tracking-wide uppercase">Security Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-[#ffffff]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-headline text-sm font-semibold tracking-wide uppercase">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar Shell -->
+<header class="flex justify-between items-center px-8 w-full sticky top-0 z-40 h-16 bg-[#ffffff] shadow-sm border-b border-slate-100">
+<div class="flex items-center">
+<span class="label-md uppercase tracking-[0.05em] text-outline font-bold text-xs mr-4">Creation Suite</span>
+<h2 class="text-xl font-bold text-[#0037b0] font-headline tracking-tighter">Civic Ledger Admin</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-slate-500">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</div>
+<div class="h-8 w-[1px] bg-slate-200"></div>
+<div class="flex items-center gap-3">
+<button class="text-sm font-semibold text-primary hover:underline">Support</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="professional portrait of a middle-aged male administrator in a light blue shirt with a clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDokC4PviflKUF8Pziszi6PECCoTCjUMSfDuUu-KDoR9u7M_DT92DOgK8jxNAwdDLWrrO0O7Pmucbd9YTgBfobiyY87swmdShzwgmUQEdMGR4mAjLz_c1hVNPtEyONVx2AHWkPnnUiCIXjySRSZ8xQC-L08HhxtEv5TEmaIA17bpJMDMNdTr92kIfdx-L02LmKjAKGv3SqjIMOiMptlxFmCa2BSUBf__9SQvwbyKvVmca2_3nCbPOT8z3yndgnuLR_52fvC_aO72Bw"/>
+</div>
+</div>
+</div>
+</header>
+<div class="p-12 max-w-6xl mx-auto">
+<!-- Breadcrumbs & Editorial Header -->
+<div class="mb-12">
+<div class="flex items-center gap-2 mb-4">
+<span class="text-xs font-bold uppercase tracking-widest text-primary">Elections</span>
+<span class="material-symbols-outlined text-xs text-outline" data-icon="chevron_right">chevron_right</span>
+<span class="text-xs font-bold uppercase tracking-widest text-outline">New Registry</span>
+</div>
+<h3 class="text-5xl font-black font-headline tracking-tighter text-on-background mb-4">Initiate New Election</h3>
+<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">Define the parameters, eligibility, and scheduling for the upcoming democratic process. All entries are logged to the immutable ledger.</p>
+</div>
+<!-- The Ledger Form -->
+<form class="grid grid-cols-12 gap-8">
+<!-- Primary Ledger Column -->
+<div class="col-span-8 space-y-8">
+<!-- Basic Information Section -->
+<section class="bg-surface-container-low p-8 rounded-lg relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="mb-8">
+<span class="label-md uppercase tracking-[0.05em] text-primary font-bold text-xs mb-1 block">Step 01</span>
+<h4 class="text-2xl font-bold font-headline text-on-background tracking-tight">Core Identity</h4>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="block text-sm font-bold text-on-surface uppercase tracking-wide">Election Title</label>
+<input class="w-full bg-surface-container-lowest border-0 focus:ring-primary focus:ring-2 py-4 px-4 text-on-background font-medium shadow-sm" placeholder="e.g. 2024 Municipal Council General Election" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-bold text-on-surface uppercase tracking-wide">Detailed Description</label>
+<div class="bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-4 px-4 py-2 border-b border-slate-100">
+<button class="material-symbols-outlined text-slate-500 hover:text-primary" data-icon="format_bold" type="button">format_bold</button>
+<button class="material-symbols-outlined text-slate-500 hover:text-primary" data-icon="format_italic" type="button">format_italic</button>
+<button class="material-symbols-outlined text-slate-500 hover:text-primary" data-icon="format_list_bulleted" type="button">format_list_bulleted</button>
+<button class="material-symbols-outlined text-slate-500 hover:text-primary" data-icon="link" type="button">link</button>
+</div>
+<textarea class="w-full bg-transparent border-0 focus:ring-0 py-4 px-4 text-on-background leading-relaxed" placeholder="Provide comprehensive context for the citizens..." rows="6"></textarea>
+</div>
+</div>
+</div>
+</section>
+<!-- Scheduling Section -->
+<section class="bg-surface-container-low p-8 rounded-lg relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="mb-8">
+<span class="label-md uppercase tracking-[0.05em] text-primary font-bold text-xs mb-1 block">Step 02</span>
+<h4 class="text-2xl font-bold font-headline text-on-background tracking-tight">Temporal Bounds</h4>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block text-sm font-bold text-on-surface uppercase tracking-wide">Polls Open</label>
+<div class="flex gap-2">
+<input class="flex-1 bg-surface-container-lowest border-0 focus:ring-primary focus:ring-2 py-4 px-4 font-medium shadow-sm" type="date"/>
+<input class="w-32 bg-surface-container-lowest border-0 focus:ring-primary focus:ring-2 py-4 px-4 font-medium shadow-sm" type="time"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-bold text-on-surface uppercase tracking-wide">Polls Close</label>
+<div class="flex gap-2">
+<input class="flex-1 bg-surface-container-lowest border-0 focus:ring-primary focus:ring-2 py-4 px-4 font-medium shadow-sm" type="date"/>
+<input class="w-32 bg-surface-container-lowest border-0 focus:ring-primary focus:ring-2 py-4 px-4 font-medium shadow-sm" type="time"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Eligibility Section -->
+<section class="bg-surface-container-low p-8 rounded-lg relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="mb-8">
+<span class="label-md uppercase tracking-[0.05em] text-primary font-bold text-xs mb-1 block">Step 03</span>
+<h4 class="text-2xl font-bold font-headline text-on-background tracking-tight">Eligibility Criteria</h4>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block text-sm font-bold text-on-surface uppercase tracking-wide">Citizenship Requirement</label>
+<select class="w-full bg-surface-container-lowest border-0 focus:ring-primary focus:ring-2 py-4 px-4 font-medium shadow-sm appearance-none">
+<option selected="">Must be a citizen of the United Republic of Tanzania</option>
+<option>Citizen by birth</option>
+<option>Citizen by naturalization</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-bold text-on-surface uppercase tracking-wide">Age &amp; Register Requirement</label>
+<select class="w-full bg-surface-container-lowest border-0 focus:ring-primary focus:ring-2 py-4 px-4 font-medium shadow-sm appearance-none">
+<option selected="">18 years and above, listed on INEC Permanent Voters Register</option>
+<option>18 years and above, listed on ZEC Voters Register (Zanzibar elections)</option>
+<option>Must hold valid voter registration details for assigned polling area</option>
+</select>
+</div>
+</div>
+</section>
+</div>
+<!-- Sidebar / Status Column -->
+<div class="col-span-4 space-y-8">
+<!-- Status & Governance -->
+<section class="bg-surface-container-lowest p-8 border border-slate-100 paper-stack rounded-lg">
+<div class="mb-6">
+<h5 class="text-lg font-bold font-headline text-on-background mb-4">Governance Action</h5>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-low">
+<span class="text-sm font-bold text-on-surface-variant uppercase tracking-wide">Initial Status</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-outline animate-pulse"></div>
+<span class="font-bold text-xs uppercase tracking-widest text-outline">Draft</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-4 border-2 border-primary-fixed bg-primary-fixed/10">
+<span class="material-symbols-outlined text-primary" data-icon="verified">verified</span>
+<p class="text-xs text-on-primary-fixed-variant leading-tight">This election will be encrypted upon publishing and logged to the public chain.</p>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-white font-bold py-4 rounded-sm flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-transform" type="submit">
+<span class="material-symbols-outlined" data-icon="publish">publish</span>
+                                Publish Election
+                            </button>
+<button class="w-full bg-surface-container-low text-on-primary-fixed-variant font-bold py-4 rounded-sm hover:bg-surface-container transition-colors" type="button">
+                                Save as Draft
+                            </button>
+<button class="w-full text-error font-bold py-4 text-sm hover:underline" type="button">
+                                Cancel Operation
+                            </button>
+</div>
+</section>
+<!-- Quick Preview Card -->
+<div class="bg-inverse-surface p-8 rounded-lg text-inverse-on-surface">
+<h5 class="text-sm font-black uppercase tracking-widest text-primary-fixed-dim mb-4">Ballot Preview</h5>
+<div class="border-l-2 border-primary-fixed-dim pl-4 space-y-2">
+<p class="text-xl font-headline font-bold leading-tight">Untitled Election</p>
+<p class="text-xs text-slate-400">Scheduled for: Pending Selection</p>
+</div>
+<div class="mt-8 flex justify-center">
+<img alt="Election Preview" class="rounded grayscale contrast-125 opacity-50" data-alt="dramatic wide angle shot of a large neo-classical government hall with marble columns and soft overhead lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn0tBjqx7VfA5zY82n6jZhcj0Zvl_ViCicQPVhJGnyfftRTvP1g2e4jk9gMDkTcGz25TqklSYhNKirVXqNBXta5lrCGtPKhWoCLycVy6O9905E20x75aEGPLkGIapZm6HQIIpGHHhhC2Rq4tqGc2XocE9dcUGQ_wAOIKIPKLXrV-yFF5fdXynfTl5wI2R670MzTtkloEfpKNxzjQdE-O3hDCzTLowgi6tdlEBn71rzhnc2JHIkOyeTEBQtB6uRV2PHWSmwX3QCroU"/>
+</div>
+</div>
+<!-- Ledger Sidebar Steps (Custom Component) -->
+<div class="space-y-4 pt-4">
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[14px]" data-icon="check" data-weight="fill">check</span>
+</div>
+<div class="w-[2px] h-full bg-primary mt-1"></div>
+</div>
+<div class="pb-6">
+<p class="text-xs font-bold text-primary uppercase tracking-widest">Configuration</p>
+<h6 class="text-sm font-bold text-on-background">Identity &amp; Description</h6>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-6 h-6 rounded-full border-2 border-outline flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+</div>
+<div class="w-[2px] h-full bg-slate-200 mt-1"></div>
+</div>
+<div class="pb-6">
+<p class="text-xs font-bold text-outline uppercase tracking-widest">Temporal</p>
+<h6 class="text-sm font-bold text-outline">Scheduling Polls</h6>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-6 h-6 rounded-full border-2 border-slate-100 flex items-center justify-center"></div>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-300 uppercase tracking-widest">Verification</p>
+<h6 class="text-sm font-bold text-slate-300">Final Audit</h6>
+</div>
+</div>
+</div>
+</div>
+</form>
+</div>
+</main>
+<!-- Floating Action Button Contextual (Hidden as per suppression rule for details/transactional screens) -->
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../../assets/js/utils.js"></script>
+<script defer src="../../assets/js/admin.js"></script>
+<script defer src="../../assets/js/charts.js"></script>
+<script defer src="../../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>

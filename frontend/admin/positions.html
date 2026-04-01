@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Positions Management | Civic Ledger Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#e5eeff",
+                        "on-secondary-container": "#004378",
+                        "surface-variant": "#d3e4fe",
+                        "secondary": "#0760a7",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "background": "#f8f9ff",
+                        "primary-container": "#1d4ed8",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "on-secondary-fixed": "#001c38",
+                        "on-primary-fixed": "#001551",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "tertiary": "#004f29",
+                        "outline-variant": "#c4c5d7",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dce1ff",
+                        "on-surface-variant": "#434655",
+                        "inverse-primary": "#b7c4ff",
+                        "surface": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary-fixed-variant": "#0039b5",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#9af6b5",
+                        "on-tertiary-container": "#8ce8a7",
+                        "on-secondary-fixed-variant": "#004881",
+                        "surface-dim": "#cbdbf5",
+                        "tertiary-fixed-dim": "#7eda9a",
+                        "primary": "#0037b0",
+                        "secondary-container": "#72b1fe",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#d3e4ff",
+                        "outline": "#747686",
+                        "on-primary-container": "#cad3ff",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#2151da",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#00522a",
+                        "on-tertiary-fixed": "#00210e",
+                        "tertiary-container": "#006a38",
+                        "on-surface": "#0b1c30",
+                        "surface-container-low": "#eff4ff",
+                        "surface-bright": "#f8f9ff"
+                    },
+                    fontFamily: {
+                        "headline": ["Public Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .paper-on-paper {
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+    </style>
+<link rel="stylesheet" href="../../assets/css/global.css"/>
+<link rel="stylesheet" href="../../assets/css/components.css"/>
+<link rel="stylesheet" href="../../assets/css/admin.css"/>
+</head>
+<body class="bg-background text-on-background font-body">
+<!-- SideNavBar (Authority Source: JSON) -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-slate-200 bg-[#eff4ff] flex flex-col py-6 z-50">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-1">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<h1 class="text-lg font-black text-[#0b1c30] font-headline tracking-tight">Civic Authority</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Election Control Room</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center px-3 py-3 gap-3 text-slate-600 font-headline text-sm font-semibold tracking-wide uppercase hover:bg-[#ffffff]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="ballot">ballot</span>
+<span>Elections</span>
+</a>
+<!-- Active Navigation Logic: "Positions" is active -->
+<a class="flex items-center px-3 py-3 gap-3 bg-white text-[#1D4ED8] border-l-4 border-[#1D4ED8] font-headline text-sm font-semibold tracking-wide uppercase transition-all translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_ind">assignment_ind</span>
+<span>Positions</span>
+</a>
+<a class="flex items-center px-3 py-3 gap-3 text-slate-600 font-headline text-sm font-semibold tracking-wide uppercase hover:bg-[#ffffff]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person_search">person_search</span>
+<span>Candidates</span>
+</a>
+<a class="flex items-center px-3 py-3 gap-3 text-slate-600 font-headline text-sm font-semibold tracking-wide uppercase hover:bg-[#ffffff]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Voter Registry</span>
+</a>
+<a class="flex items-center px-3 py-3 gap-3 text-slate-600 font-headline text-sm font-semibold tracking-wide uppercase hover:bg-[#ffffff]/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>System Settings</span>
+</a>
+</nav>
+<div class="px-3 mb-6">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-white py-4 px-4 rounded font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-sm hover:-translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+                Create New Election
+            </button>
+</div>
+<div class="mt-auto px-3 border-t border-slate-200/50 pt-4">
+<a class="flex items-center px-3 py-2 gap-3 text-slate-500 font-headline text-[10px] font-bold tracking-widest uppercase hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="verified_user">verified_user</span>
+                Security Logs
+            </a>
+<a class="flex items-center px-3 py-2 gap-3 text-slate-500 font-headline text-[10px] font-bold tracking-widest uppercase hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="logout">logout</span>
+                Sign Out
+            </a>
+</div>
+</aside>
+<!-- TopNavBar (Authority Source: JSON) -->
+<header class="flex justify-between items-center px-6 w-full h-16 border-b border-slate-100 bg-[#ffffff] sticky top-0 z-40 ml-64 w-[calc(100%-16rem)]">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary-container text-sm h-10 pl-10 rounded" placeholder="Search positions or mappings..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-slate-500">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">help_outline</span>
+</div>
+<div class="h-6 w-px bg-slate-200"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-xs font-bold text-on-background">Admin User</p>
+<p class="text-[10px] text-slate-500">Support</p>
+</div>
+<img alt="Admin Avatar" class="w-8 h-8 rounded-full border border-slate-200" data-alt="Close up portrait of a professional administrator in a neutral studio setting with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlqJaEKFsGgWGu4SKQ_DMt3NoiwBon_5_agSkBRoQ4t7KkCvYTj7bf7F--kuIszNcwJsNIrD5oT3McOk6K-IrC2JFNmcID7-N6Q9H45VmQ_dbGYyAdtItWHXfjwfmFp2BS8QdcD7amZuBVzCI08fcV8QnMOAH0hbUYcDLTONWFznnXLsZNvX3JOo62ilHJB4vJs-qYIJDQWpePfAu8y2yu0U_Pirt-Rc_wxcm824ijkcxB_HqQ3zLos5yQTJtbmhBlGMItvJg93k0"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 p-8 min-h-[calc(100vh-4rem)]">
+<!-- Header Section with Editorial Flair -->
+<div class="mb-10 flex justify-between items-end">
+<div>
+<span class="label-md uppercase tracking-[0.05em] text-primary font-bold text-xs mb-2 block">Management Ledger</span>
+<h2 class="text-4xl font-extrabold tracking-tighter text-on-background font-headline leading-none">Elective Positions</h2>
+<p class="text-on-surface-variant mt-3 max-w-lg font-medium">Define and audit the structural hierarchy of civic representative roles for upcoming electoral cycles.</p>
+</div>
+<div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-white px-8 py-4 rounded font-bold text-sm tracking-tight flex items-center gap-3 hover:-translate-y-1 transition-transform">
+<span class="material-symbols-outlined">add</span>
+                    Create New Position
+                </button>
+</div>
+</div>
+<!-- Bento Stats Grid (Custom Component) -->
+<div class="grid grid-cols-12 gap-6 mb-8">
+<div class="col-span-12 md:col-span-4 bg-surface-container-low p-6 border-l-4 border-primary">
+<p class="text-xs uppercase font-bold tracking-widest text-slate-500 mb-1">Active Positions</p>
+<p class="text-3xl font-black font-headline">24</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-low p-6">
+<p class="text-xs uppercase font-bold tracking-widest text-slate-500 mb-1">Total Seats</p>
+<p class="text-3xl font-black font-headline">58</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-low p-6">
+<p class="text-xs uppercase font-bold tracking-widest text-slate-500 mb-1">Election Cycles</p>
+<p class="text-3xl font-black font-headline">04</p>
+</div>
+</div>
+<!-- The Primary Ledger Card (Table Container) -->
+<div class="bg-surface-container-lowest paper-on-paper rounded shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center">
+<h3 class="font-headline font-bold text-lg">Position Directory</h3>
+<div class="flex gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">filter_list</span></button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors"><span class="material-symbols-outlined">download</span></button>
+</div>
+</div>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-6 py-4 text-[11px] font-black uppercase tracking-[0.05em] text-slate-500">Position Title</th>
+<th class="px-6 py-4 text-[11px] font-black uppercase tracking-[0.05em] text-slate-500">Mapping</th>
+<th class="px-6 py-4 text-[11px] font-black uppercase tracking-[0.05em] text-slate-500 text-center">Seat Count</th>
+<th class="px-6 py-4 text-[11px] font-black uppercase tracking-[0.05em] text-slate-500 text-center">Ballot Order</th>
+<th class="px-6 py-4 text-[11px] font-black uppercase tracking-[0.05em] text-slate-500 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-50">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<p class="font-bold text-on-background">City Mayor</p>
+<p class="text-xs text-slate-400">Executive Branch</p>
+</td>
+<td class="px-6 py-5">
+<div class="inline-flex items-center gap-2 bg-blue-50 text-primary-container px-3 py-1 rounded text-xs font-bold">
+<span class="material-symbols-outlined text-[14px]">public</span>
+                                2024 General Municipal
+                            </div>
+</td>
+<td class="px-6 py-5 text-center font-bold text-on-background">01</td>
+<td class="px-6 py-5 text-center">
+<span class="text-xs bg-slate-100 px-2 py-1 rounded font-mono font-bold">01</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-primary hover:scale-110 transition-transform"><span class="material-symbols-outlined">edit</span></button>
+<button class="text-error hover:scale-110 transition-transform"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<p class="font-bold text-on-background">Ward 4 Council Member</p>
+<p class="text-xs text-slate-400">Legislative Council</p>
+</td>
+<td class="px-6 py-5">
+<div class="inline-flex items-center gap-2 bg-blue-50 text-primary-container px-3 py-1 rounded text-xs font-bold">
+<span class="material-symbols-outlined text-[14px]">public</span>
+                                2024 General Municipal
+                            </div>
+</td>
+<td class="px-6 py-5 text-center font-bold text-on-background">01</td>
+<td class="px-6 py-5 text-center">
+<span class="text-xs bg-slate-100 px-2 py-1 rounded font-mono font-bold">02</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-primary hover:scale-110 transition-transform"><span class="material-symbols-outlined">edit</span></button>
+<button class="text-error hover:scale-110 transition-transform"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<p class="font-bold text-on-background">School Board Trustee</p>
+<p class="text-xs text-slate-400">Education Authority</p>
+</td>
+<td class="px-6 py-5">
+<div class="inline-flex items-center gap-2 bg-surface-container text-on-secondary-container px-3 py-1 rounded text-xs font-bold">
+<span class="material-symbols-outlined text-[14px]">school</span>
+                                District Special Election
+                            </div>
+</td>
+<td class="px-6 py-5 text-center font-bold text-on-background">03</td>
+<td class="px-6 py-5 text-center">
+<span class="text-xs bg-slate-100 px-2 py-1 rounded font-mono font-bold">01</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-primary hover:scale-110 transition-transform"><span class="material-symbols-outlined">edit</span></button>
+<button class="text-error hover:scale-110 transition-transform"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5">
+<p class="font-bold text-on-background">City Treasurer</p>
+<p class="text-xs text-slate-400">Financial Oversight</p>
+</td>
+<td class="px-6 py-5">
+<div class="inline-flex items-center gap-2 bg-blue-50 text-primary-container px-3 py-1 rounded text-xs font-bold">
+<span class="material-symbols-outlined text-[14px]">public</span>
+                                2024 General Municipal
+                            </div>
+</td>
+<td class="px-6 py-5 text-center font-bold text-on-background">01</td>
+<td class="px-6 py-5 text-center">
+<span class="text-xs bg-slate-100 px-2 py-1 rounded font-mono font-bold">03</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-primary hover:scale-110 transition-transform"><span class="material-symbols-outlined">edit</span></button>
+<button class="text-error hover:scale-110 transition-transform"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination/Footer of Table -->
+<div class="bg-surface px-6 py-4 flex items-center justify-between border-t border-slate-100">
+<span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Showing 1-4 of 24 entries</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded bg-white border border-slate-200 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white font-bold text-xs">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 font-bold text-xs transition-colors">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-white border border-slate-200 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Ledger Context Bar (Footer Help) -->
+<div class="mt-12 p-6 bg-[#eff4ff] rounded border-l-4 border-primary-container flex items-start gap-4">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">info</span>
+<div>
+<h4 class="font-bold text-sm text-primary-container uppercase tracking-tight mb-1">Administrative Protocol</h4>
+<p class="text-xs text-on-secondary-fixed-variant leading-relaxed max-w-3xl">Positions defined here will automatically propagate to the candidate registration forms and final ballot generation. Ensure ballot order indices are sequential to avoid visual discrepancies in the citizen interface.</p>
+</div>
+</div>
+</main>
+<!-- Background Texture for editorial depth -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.02] z-[-1]" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDt430C0aA0F9cGDhVTWXWIHNeitwWQW33ojaiXueU8RI1oJ7obFNB_CCI5uCq35LVjcxRvfcuoxWmfYUPE_zuHbs4182IW1kY07sAZ4SkHwh1ZWwSeNgQm2Uso6i5XrziLBgeBEUtfl4N_1nN9cnJUaXQ2kIlQiONNLWld4JVzBxZMQb4b2-GL1fCjHSqKmUpPCfKT3XR8AmXcjKJKjD0SvybDfEcFZxqBlnW_LKt8XqkCNXeCA_c1KqrnxErALfXOP6qbGLvcmHU');"></div>
+<!-- OVS_SCRIPTS_START -->
+<script defer src="../../assets/js/utils.js"></script>
+<script defer src="../../assets/js/admin.js"></script>
+<script defer src="../../assets/js/charts.js"></script>
+<script defer src="../../assets/js/main.js"></script>
+<!-- OVS_SCRIPTS_END -->
+</body></html>
