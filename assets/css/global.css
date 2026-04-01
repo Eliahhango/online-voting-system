@@ -64,6 +64,36 @@ body.ovs-auth-ready {
   white-space: nowrap;
 }
 
+.ovs-nav-toggle {
+  display: none;
+  appearance: none;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 6px;
+  min-height: 34px;
+  padding: 0 10px;
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ovs-nav-toggle:hover,
+.ovs-nav-toggle:focus {
+  border-color: #94a3b8;
+  background: #f8fafc;
+  outline: none;
+}
+
+.ovs-header-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
 .ovs-nav {
   display: flex;
   flex-wrap: wrap;
@@ -175,28 +205,67 @@ body.ovs-auth-ready {
 
 @media (max-width: 900px) {
   .ovs-header-inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
     align-items: center;
-    row-gap: 8px;
-    column-gap: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .ovs-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+  }
+
+  .ovs-header-menu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    border-top: 1px solid var(--color-border);
+    padding-top: 10px;
+  }
+
+  .ovs-header.is-menu-open .ovs-header-menu {
+    display: flex;
   }
 
   .ovs-nav {
-    grid-column: 1 / -1;
     width: 100%;
     margin-left: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    overflow: visible;
+    white-space: normal;
     flex-wrap: nowrap;
-    padding-bottom: 4px;
-    scrollbar-width: thin;
+    padding-bottom: 0;
+  }
+
+  .ovs-nav-link {
+    display: block;
+    width: 100%;
+    min-height: 38px;
+    padding: 9px 12px;
   }
 
   .ovs-header-right {
     margin-left: 0;
-    justify-content: flex-end;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .ovs-header-right .ovs-nav-link,
+  .ovs-header-right .ovs-btn-link {
+    min-height: 38px;
+    padding: 8px 12px;
+  }
+
+  .ovs-user-badge {
+    max-width: 100%;
   }
 }
 
@@ -297,6 +366,8 @@ button {
 }
 
 @media (max-width: 768px) {
+  .grid-cols-4,
+  .grid-cols-3,
   .grid-cols-2 {
     grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
   }
@@ -345,7 +416,7 @@ button {
     display: none !important;
   }
 
-  table {
+  table:not(.ovs-table) {
     display: block;
     overflow-x: auto;
     white-space: nowrap;

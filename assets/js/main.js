@@ -314,8 +314,11 @@
       '<header class="ovs-header">' +
       '<div class="ovs-header-inner">' +
       '<a class="ovs-brand" href="' + toPath("index.html") + '">Civic Ledger</a>' +
+      '<button type="button" class="ovs-nav-toggle" data-ovs-nav-toggle aria-expanded="false" aria-label="Toggle navigation">Menu</button>' +
+      '<div class="ovs-header-menu" data-ovs-header-menu>' +
       '<nav class="ovs-nav">' + nav + "</nav>" +
       '<div class="ovs-header-right">' + badge + right + "</div>" +
+      "</div>" +
       "</div>" +
       "</header>"
     );
@@ -370,6 +373,7 @@
       '<header class="ovs-admin-top">' +
       '<div class="ovs-admin-top-inner">' +
       '<a class="ovs-admin-brand" href="' + toPath("admin/dashboard.html") + '">Civic Ledger</a>' +
+      '<button type="button" class="ovs-admin-menu-toggle" data-ovs-admin-menu-toggle aria-expanded="false" aria-label="Toggle admin navigation">Menu</button>' +
       '<nav class="ovs-admin-top-nav">' +
       adminTopLink("Dashboard", toPath("admin/dashboard.html"), active === "dashboard") +
       adminTopLink("Elections", toPath("admin/elections.html"), active === "elections") +
@@ -615,6 +619,82 @@
     });
   }
 
+  function bindResponsiveMenus(info) {
+    var publicToggle = document.querySelector("[data-ovs-nav-toggle]");
+    var publicHeader = document.querySelector(".ovs-header");
+    if (publicToggle && publicHeader) {
+      var closePublicMenu = function () {
+        publicHeader.classList.remove("is-menu-open");
+        publicToggle.setAttribute("aria-expanded", "false");
+      };
+
+      publicToggle.addEventListener("click", function () {
+        var open = publicHeader.classList.toggle("is-menu-open");
+        publicToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      publicHeader.addEventListener("click", function (event) {
+        var target = event.target;
+        if (target && target.closest && target.closest("a")) {
+          closePublicMenu();
+        }
+      });
+
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 900) {
+          closePublicMenu();
+        }
+      });
+    }
+
+    if (String(info.section || "").toLowerCase() !== "admin") {
+      return;
+    }
+
+    var adminToggle = document.querySelector("[data-ovs-admin-menu-toggle]");
+    var closeAdminMenu = function () {
+      document.body.classList.remove("ovs-admin-menu-open");
+      if (adminToggle) adminToggle.setAttribute("aria-expanded", "false");
+    };
+    var openAdminMenu = function () {
+      document.body.classList.add("ovs-admin-menu-open");
+      if (adminToggle) adminToggle.setAttribute("aria-expanded", "true");
+    };
+
+    if (adminToggle) {
+      adminToggle.addEventListener("click", function () {
+        if (document.body.classList.contains("ovs-admin-menu-open")) {
+          closeAdminMenu();
+        } else {
+          openAdminMenu();
+        }
+      });
+    }
+
+    document.addEventListener("click", function (event) {
+      var side = document.querySelector(".ovs-admin-side");
+      if (!side || !document.body.classList.contains("ovs-admin-menu-open")) {
+        return;
+      }
+      if (event.target && event.target.closest && event.target.closest(".ovs-admin-side-link")) {
+        closeAdminMenu();
+        return;
+      }
+      if (adminToggle && event.target && event.target.closest && event.target.closest("[data-ovs-admin-menu-toggle]")) {
+        return;
+      }
+      if (!side.contains(event.target)) {
+        closeAdminMenu();
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 1024) {
+        closeAdminMenu();
+      }
+    });
+  }
+
   function bindLogout() {
     var logoutButtons = document.querySelectorAll("[data-ovs-logout]");
     logoutButtons.forEach(function (btn) {
@@ -802,6 +882,7 @@
     }
 
     applySharedLayout(info, guarded.state);
+    bindResponsiveMenus(info);
     wirePlaceholderAnchors(info);
     wireSafeButtons(info);
     await hydrateIndexUpcomingElections(info);

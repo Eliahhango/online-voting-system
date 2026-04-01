@@ -32,6 +32,8 @@ function app_config(): array
         'app_name' => env_value('APP_NAME', 'Online Voting System'),
         'app_timezone' => env_value('APP_TIMEZONE', 'UTC'),
         'session_name' => env_value('SESSION_NAME', 'ovs_session'),
+        'session_secure' => env_value('SESSION_SECURE', 'auto'),
+        'session_samesite' => env_value('SESSION_SAMESITE', 'Lax'),
 
         'db_driver' => env_value('DB_DRIVER', 'sqlite'),
         'db_host' => env_value('DB_HOST', '127.0.0.1'),
@@ -68,14 +70,30 @@ function ensure_session_started(): void
     }
 
     $cfg = app_config();
+    $secureCfg = strtolower((string) ($cfg['session_secure'] ?? 'auto'));
+    if (in_array($secureCfg, ['1', 'true', 'yes'], true)) {
+        $secure = true;
+    } elseif (in_array($secureCfg, ['0', 'false', 'no'], true)) {
+        $secure = false;
+    } else {
+        $secure = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+    }
+
+    $sameSite = ucfirst(strtolower((string) ($cfg['session_samesite'] ?? 'Lax')));
+    if (!in_array($sameSite, ['Lax', 'Strict', 'None'], true)) {
+        $sameSite = 'Lax';
+    }
+    if ($sameSite === 'None') {
+        $secure = true; // Required by modern browsers for SameSite=None.
+    }
 
     session_name($cfg['session_name']);
     session_set_cookie_params([
         'lifetime' => 0,
         'path' => '/',
-        'secure' => !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off',
+        'secure' => $secure,
         'httponly' => true,
-        'samesite' => 'Lax',
+        'samesite' => $sameSite,
     ]);
 
     session_start();

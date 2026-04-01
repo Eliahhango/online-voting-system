@@ -76,9 +76,12 @@
       body: JSON.stringify(payload || {})
     });
 
+    var contentType = String(res.headers.get("content-type") || "");
+    var rawText = "";
     var json = null;
     try {
-      json = await res.json();
+      rawText = await res.text();
+      json = rawText ? JSON.parse(rawText) : null;
     } catch (e) {
       json = null;
     }
@@ -86,8 +89,39 @@
     return {
       ok: res.ok,
       status: res.status,
-      json: json
+      json: json,
+      rawText: rawText,
+      contentType: contentType
     };
+  }
+
+  function authErrorMessage(response, fallback) {
+    if (response && response.json && response.json.message) {
+      return String(response.json.message);
+    }
+
+    var status = response && response.status ? Number(response.status) : 0;
+    var contentType = String(response && response.contentType ? response.contentType : "").toLowerCase();
+    var raw = String(response && response.rawText ? response.rawText : "").trim();
+    var looksHtml = contentType.indexOf("text/html") !== -1 || /^<!doctype html/i.test(raw) || /^<html/i.test(raw);
+    var host = String((window.location && window.location.hostname) || "").toLowerCase();
+
+    if (status === 404 && looksHtml) {
+      if (host.indexOf("vercel.app") !== -1) {
+        return "Backend API not found on Vercel. Deploy the PHP backend separately and set OVS_API_BASE to that backend URL.";
+      }
+      return "Backend endpoint was not found (404). Check backend deployment path.";
+    }
+    if (status >= 500) {
+      return "Server error from backend (" + status + "). Check backend logs.";
+    }
+    if (!response || status === 0) {
+      return "Network error. Backend may be offline or blocked by CORS.";
+    }
+    if (looksHtml) {
+      return "Unexpected HTML response from backend. Confirm PHP API is deployed and reachable.";
+    }
+    return fallback;
   }
 
   function findInput(selectors) {
@@ -252,7 +286,7 @@
       setButtonLoading(submitBtn, false);
 
       if (!response.ok || !response.json || response.json.success !== true) {
-        var msg = response && response.json && response.json.message ? response.json.message : "Login failed.";
+        var msg = authErrorMessage(response, "Login failed.");
         showMessage(form, msg, "error");
         return;
       }
@@ -345,7 +379,7 @@
 
       if (!response.ok || !response.json || response.json.success !== true) {
         setButtonLoading(submitBtn, false);
-        showMessage(form, (response.json && response.json.message) || "Registration failed.", "error");
+        showMessage(form, authErrorMessage(response, "Registration failed."), "error");
         return;
       }
 
@@ -399,7 +433,7 @@
       setButtonLoading(submitBtn, false);
 
       if (!response.ok || !response.json || response.json.success !== true) {
-        showMessage(form, (response.json && response.json.message) || "Unable to process request.", "error");
+        showMessage(form, authErrorMessage(response, "Unable to process request."), "error");
         return;
       }
 
@@ -467,7 +501,7 @@
       setButtonLoading(submitBtn, false);
 
       if (!response.ok || !response.json || response.json.success !== true) {
-        showMessage(form, (response.json && response.json.message) || "Password reset failed.", "error");
+        showMessage(form, authErrorMessage(response, "Password reset failed."), "error");
         return;
       }
 
