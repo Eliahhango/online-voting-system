@@ -3,18 +3,20 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../middleware/admin-auth.php';
 require_once __DIR__ . '/../helpers/validator.php';
+require_once __DIR__ . '/../helpers/sanitizer.php';
 
 require_method(['POST', 'PATCH', 'PUT']);
 
 $admin = require_admin_auth();
 $input = get_json_input();
 
-$voterId = (int) ($input['voter_id'] ?? 0);
+$voterUserId = (int) ($input['voter_user_id'] ?? ($input['user_id'] ?? 0));
+$voterRegistrationId = sanitize_nullable_string($input['voter_id'] ?? '', 80);
 $status = strtolower(trim((string) ($input['status'] ?? '')));
 
 $errors = [];
-if ($voterId <= 0) {
-    $errors['voter_id'] = 'voter_id is required and must be an integer';
+if ($voterUserId <= 0 && ($voterRegistrationId === null || $voterRegistrationId === '')) {
+    $errors['voter_id'] = 'Provide voter_user_id (or user_id) or voter_id';
 }
 
 $statusError = validate_enum_value($status, [USER_STATUS_ACTIVE, USER_STATUS_INACTIVE, USER_STATUS_SUSPENDED], 'status');
@@ -29,8 +31,13 @@ if (!empty($errors)) {
 try {
     $pdo = db();
 
-    $stmt = $pdo->prepare("SELECT id, role, status FROM users WHERE id = :id AND role = 'voter' LIMIT 1");
-    $stmt->execute(['id' => $voterId]);
+    if ($voterUserId > 0) {
+        $stmt = $pdo->prepare("SELECT id, role, status, voter_id FROM users WHERE id = :id AND role = 'voter' LIMIT 1");
+        $stmt->execute(['id' => $voterUserId]);
+    } else {
+        $stmt = $pdo->prepare("SELECT id, role, status, voter_id FROM users WHERE voter_id = :voter_id AND role = 'voter' LIMIT 1");
+        $stmt->execute(['voter_id' => (string) $voterRegistrationId]);
+    }
     $voter = $stmt->fetch();
 
     if (!$voter) {
@@ -40,17 +47,19 @@ try {
     $updateStmt = $pdo->prepare('UPDATE users SET status = :status, updated_at = CURRENT_TIMESTAMP WHERE id = :id');
     $updateStmt->execute([
         'status' => $status,
-        'id' => $voterId,
+        'id' => (int) $voter['id'],
     ]);
 
     audit_log('admin.update_voter_status', (int) $admin['id'], [
-        'voter_id' => $voterId,
+        'voter_id' => (int) $voter['id'],
+        'voter_registration_id' => $voter['voter_id'] ?? null,
         'from' => $voter['status'],
         'to' => $status,
     ]);
 
     json_success([
-        'voter_id' => $voterId,
+        'voter_id' => (int) $voter['id'],
+        'voter_registration_id' => $voter['voter_id'] ?? null,
         'status' => $status,
     ], 'Voter status updated successfully');
 } catch (Throwable $e) {
