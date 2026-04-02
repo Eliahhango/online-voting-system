@@ -1,6 +1,10 @@
 (function () {
   "use strict";
 
+  if (document.body) {
+    document.body.classList.add("ovs-voter-loading");
+  }
+
   function ovsUtils() {
     return window.OVSUtils || {};
   }
@@ -1597,10 +1601,19 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    initVoterPages().catch(function (err) {
-      var main = getMain();
-      if (!main) return;
-      showError(main, "Voter page initialization failed: " + (err && err.message ? err.message : "Unknown error"));
-    });
+    (async function () {
+      try {
+        await initVoterPages();
+      } catch (err) {
+        var main = getMain();
+        if (main) {
+          showError(main, "Voter page initialization failed: " + (err && err.message ? err.message : "Unknown error"));
+        }
+      } finally {
+        if (document.body) {
+          document.body.classList.remove("ovs-voter-loading");
+        }
+      }
+    })();
   });
 })();

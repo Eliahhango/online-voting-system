@@ -1,3 +1,7 @@
+body.ovs-voter-loading {
+  visibility: hidden;
+}
+
 body.ovs-section-voter {
   background:
     radial-gradient(circle at 8% 0%, rgba(15, 78, 207, 0.08), transparent 28%),
