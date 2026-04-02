@@ -1,4 +1,8 @@
 ﻿(function () {
+  if (document.body) {
+    document.body.classList.add("ovs-pending-auth");
+  }
+
   function textOf(el) {
     return (el && el.textContent ? el.textContent : "").trim().toLowerCase();
   }

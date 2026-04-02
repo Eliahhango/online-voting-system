@@ -89,24 +89,7 @@
 <link rel="stylesheet" href="../assets/css/components.css"/>
 <link rel="stylesheet" href="../assets/css/public.css"/>
 </head>
-<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
-<!-- TopNavBar Component -->
-<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-white shadow-[0_4px_20px_-10px_rgba(11,28,48,0.1)]">
-<div class="flex items-center gap-8">
-<span class="text-2xl font-black text-[#0037b0]">Civic Ledger</span>
-<nav class="hidden md:flex items-center gap-6">
-<a class="text-[#1d4ed8] border-b-2 border-[#1d4ed8] font-bold text-sm tracking-wider uppercase font-label" href="#">Elections</a>
-<a class="text-[#5a6b87] hover:text-[#0b1c30] transition-transform duration-200 hover:translate-y-[-2px] text-sm tracking-wider uppercase font-label" href="#">Security</a>
-<a class="text-[#5a6b87] hover:text-[#0b1c30] transition-transform duration-200 hover:translate-y-[-2px] text-sm tracking-wider uppercase font-label" href="#">Help</a>
-</nav>
-</div>
-<div class="flex items-center gap-4">
-<button class="bg-[#1d4ed8] text-white px-6 py-2 rounded-lg font-bold text-sm hover:translate-y-[-2px] transition-all active:scale-95">
-                Voter Login
-            </button>
-<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="account_circle">account_circle</span>
-</div>
-</header>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col ovs-pending-auth">
 <main class="flex-grow pt-16">
 <!-- Hero Section -->
 <section class="max-w-7xl mx-auto px-8 py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -233,23 +216,6 @@
 </div>
 </section>
 </main>
-<!-- Footer Component -->
-<footer class="w-full py-8 px-8 flex flex-col md:flex-row justify-between items-center gap-4 mt-auto bg-[#f8f9ff] border-t border-[#c4c5d7]/15">
-<div class="flex flex-col items-center md:items-start">
-<span class="font-bold text-[#0b1c30] mb-1">Civic Ledger</span>
-<p class="text-[#5a6b87] text-xs font-medium tracking-tight">Â© 2024 National Election Authority. Secure Blockchain Verification Active.</p>
-</div>
-<div class="flex flex-wrap justify-center gap-6">
-<a class="text-[#5a6b87] hover:text-[#1d4ed8] transition-colors text-xs font-medium tracking-tight" href="#">Accessibility Statement</a>
-<a class="text-[#5a6b87] hover:text-[#1d4ed8] transition-colors text-xs font-medium tracking-tight" href="#">Privacy Policy</a>
-<a class="text-[#5a6b87] hover:text-[#1d4ed8] transition-colors text-xs font-medium tracking-tight" href="#">Terms of Service</a>
-<a class="text-[#5a6b87] hover:text-[#1d4ed8] transition-colors text-xs font-medium tracking-tight" href="#">Contact Support</a>
-</div>
-<div class="flex gap-4">
-<span class="material-symbols-outlined text-on-surface-variant text-xl" data-icon="language">language</span>
-<span class="material-symbols-outlined text-on-surface-variant text-xl" data-icon="shield_with_house">shield_with_house</span>
-</div>
-</footer>
 <!-- OVS_SCRIPTS_START -->
 <script defer src="../assets/js/utils.js"></script>
 <script defer src="../assets/js/main.js"></script>
