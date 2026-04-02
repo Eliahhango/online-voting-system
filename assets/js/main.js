@@ -307,31 +307,8 @@
 
   function headerTemplate(info, state) {
     var section = info.section;
-    var isAuthPage = !!info.isAuthPage;
     var nav = "";
     var right = "";
-
-    if (isAuthPage) {
-      var authTitle = String(info.file || "").toLowerCase() === "admin-login.html" ? "Administrative Access Gateway" : "Voter Access Portal";
-      var authBadge = String(info.file || "").toLowerCase() === "admin-login.html" ? "Admin Portal" : "Secure Sign In";
-      var authAccentClass = String(info.file || "").toLowerCase() === "admin-login.html" ? "ovs-header-auth-admin" : "ovs-header-auth-voter";
-      right =
-        '<a class="ovs-nav-link" href="' + toPath("index.html") + '">Home</a>' +
-        '<a class="ovs-nav-link" href="' + toPath("contact.html") + '">Support</a>';
-
-      return (
-        '<header class="ovs-header ovs-header-auth ' + authAccentClass + '">' +
-        '<div class="ovs-header-inner">' +
-        '<a class="ovs-brand" href="' + toPath("index.html") + '">Civic Ledger</a>' +
-        '<div class="ovs-header-auth-copy">' +
-        '<span class="ovs-header-auth-badge">' + authBadge + "</span>" +
-        '<span class="ovs-header-auth-title">' + authTitle + "</span>" +
-        '</div>' +
-        '<div class="ovs-header-right">' + right + "</div>" +
-        '</div>' +
-        '</header>'
-      );
-    }
 
     if (section === "voter") {
       nav = [
