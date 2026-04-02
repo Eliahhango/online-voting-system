@@ -42,9 +42,9 @@
 <link rel="stylesheet" href="../../assets/css/components.css"/>
 <link rel="stylesheet" href="../../assets/css/voter.css"/>
 </head>
-<body class="min-h-screen text-[#0b1c30] ovs-section-voter ovs-voter-no-side">
-<header class="fixed top-0 left-0 z-50 h-16 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/80">
-<div class="mx-auto flex h-full max-w-[1600px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+<body class="min-h-screen text-[#0b1c30] ovs-section-voter ovs-voter-no-side bg-slate-50">
+<header class="fixed top-0 left-0 z-50 h-16 w-full border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/90">
+<div class="flex h-full items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
 <a class="flex items-center gap-3" href="../index.html">
 <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#123b8a] text-white shadow-lg shadow-blue-950/20">
 <span class="material-symbols-outlined" aria-hidden="true">how_to_vote</span>
@@ -70,248 +70,197 @@
 </div>
 </div>
 </header>
-<aside class="fixed top-16 hidden h-[calc(100vh-4rem)] w-72 flex-col border-r border-slate-200/80 bg-[#081529] text-white md:flex">
-<div class="px-6 py-6">
-<div class="rounded-3xl border border-white/10 bg-white/5 p-5 ovs-panel">
-<p class="text-xs font-bold uppercase tracking-[0.28em] text-slate-300">Citizen workspace</p>
-<div class="mt-4 flex items-center gap-3">
-<div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-white">
-<span class="material-symbols-outlined" aria-hidden="true">shield</span>
-</div>
+<main class="relative min-h-screen pt-20">
+<div class="bg-white">
+<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+<section class="mb-10">
+<div class="rounded-2xl bg-gradient-to-br from-[#123b8a] to-[#0f766e] overflow-hidden shadow-lg">
+<div class="grid gap-8 px-6 py-10 sm:px-8 sm:py-12 lg:grid-cols-2 lg:gap-12">
 <div>
-<p class="text-sm font-bold">Verified voter</p>
-<p class="text-xs text-slate-300">Ballot history, receipts, and support in one place.</p>
-</div>
-</div>
-<div class="mt-4 grid grid-cols-2 gap-3 text-xs">
-<div class="rounded-2xl bg-white/5 p-3">
-<p class="text-slate-400">Status</p>
-<p class="mt-1 font-bold text-emerald-300">Ready to vote</p>
-</div>
-<div class="rounded-2xl bg-white/5 p-3">
-<p class="text-slate-400">Help line</p>
-<p class="mt-1 font-bold text-white">Open 24/7</p>
-</div>
-</div>
-</div>
-</div>
-<nav class="flex-1 space-y-1 px-4 pb-4">
-<a class="flex items-center gap-3 rounded-2xl border border-transparent bg-white/10 px-4 py-3 text-sm font-bold text-white" href="dashboard.html">
-<span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
-<span>Dashboard</span>
+<p class="text-sm font-semibold uppercase tracking-wider text-blue-100">Welcome to Your Portal</p>
+<h1 class="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-white">Welcome back, Citizen</h1>
+<p class="mt-4 text-base leading-8 text-blue-50">Track your elections, cast your vote when polling opens, and safely review your voting records all in one secure place.</p>
+<div class="mt-8 flex flex-wrap gap-3">
+<a class="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-bold text-[#123b8a] hover:bg-blue-50 transition-colors" href="elections.html">
+<span class="material-symbols-outlined text-lg" aria-hidden="true">campaign</span>
+<span>View Elections</span>
 </a>
-<a class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold text-slate-300 transition-colors hover:bg-white/10 hover:text-white" href="elections.html">
-<span class="material-symbols-outlined" aria-hidden="true">ballot</span>
-<span>Active Ballots</span>
+<a class="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white px-6 py-3 text-sm font-bold text-white hover:bg-white/10 transition-colors" href="results.html">
+<span class="material-symbols-outlined text-lg" aria-hidden="true">bar_chart</span>
+<span>View Results</span>
 </a>
-<a class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold text-slate-300 transition-colors hover:bg-white/10 hover:text-white" href="results.html">
-<span class="material-symbols-outlined" aria-hidden="true">analytics</span>
-<span>Results</span>
-</a>
-<a class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold text-slate-300 transition-colors hover:bg-white/10 hover:text-white" href="profile.html">
-<span class="material-symbols-outlined" aria-hidden="true">person</span>
-<span>Profile</span>
-</a>
-<a class="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold text-slate-300 transition-colors hover:bg-white/10 hover:text-white" href="settings.html">
-<span class="material-symbols-outlined" aria-hidden="true">settings</span>
-<span>Settings</span>
-</a>
-</nav>
-<div class="px-4 pb-6">
-<a class="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#22c55e] px-4 py-3 text-sm font-extrabold text-[#052b14] transition-transform hover:-translate-y-0.5" href="ballot.html">
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<div class="rounded-lg bg-white/10 backdrop-blur border border-white/20 p-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xl text-blue-100" aria-hidden="true">verified</span>
+<p class="text-xs font-bold text-blue-100 uppercase tracking-wide">Session Status</p>
+</div>
+<p class="mt-2 text-xl font-bold text-white">Secure & Active</p>
+<p class="text-sm text-blue-50 mt-1">Your account is protected</p>
+</div>
+<div class="rounded-lg bg-white/10 backdrop-blur border border-white/20 p-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xl text-emerald-200" aria-hidden="true">check_circle</span>
+<p class="text-xs font-bold text-blue-100 uppercase tracking-wide">Ballot Status</p>
+</div>
+<p class="mt-2 text-xl font-bold text-white">Ready to Vote</p>
+<p class="text-sm text-blue-50 mt-1">Open when elections start</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div id="ovs-dashboard-alert" class="mb-8 rounded-lg border-l-4 border-amber-500 bg-amber-50 p-4 sm:p-5 shadow-sm">
+<div class="flex gap-4 items-start">
+<span class="mt-0.5 material-symbols-outlined text-2xl text-amber-600" aria-hidden="true">info</span>
+<div class="flex-1">
+<p id="ovs-dashboard-alert-text" class="text-sm font-semibold text-amber-900">Action Required: Complete your ballot for the active election before the voting window closes.</p>
+<a class="mt-3 inline-flex items-center gap-2 text-sm font-bold text-amber-700 hover:text-amber-900" href="elections.html">Check Elections <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span></a>
+</div>
+</div>
+</div>
+
+<section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-10">
+<div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-500">Voter ID</p>
+<p class="mt-3 text-2xl font-bold text-[#123b8a]">CL-2048-1187</p>
+<p class="mt-2 text-sm text-slate-600">Use this code when verifying your account</p>
+</div>
+<div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-500">Verification</p>
+<p class="mt-3 text-2xl font-bold text-[#0f766e]">Verified</p>
+<p class="mt-2 text-sm text-slate-600">Your account is verified and ready</p>
+</div>
+<div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-500">Ballots Cast</p>
+<p class="mt-3 text-2xl font-bold text-slate-900">0</p>
+<p class="mt-2 text-sm text-slate-600">Your voting history starts here</p>
+</div>
+<div class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-500">Account Status</p>
+<p class="mt-3 text-2xl font-bold text-emerald-600">Active</p>
+<p class="mt-2 text-sm text-slate-600">Your access is fully active</p>
+</div>
+</section>
+
+<div class="grid gap-6 lg:grid-cols-3">
+<section class="lg:col-span-2 rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+<div class="mb-6">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-500">Current Election</p>
+<h2 class="mt-2 text-2xl font-bold text-slate-900">City Council Leadership Vote</h2>
+<p class="mt-2 text-sm text-slate-600">Vote for your preferred city council candidates in this open election.</p>
+</div>
+<div class="grid gap-4 sm:grid-cols-2">
+<div class="rounded-lg bg-blue-50 p-4 border border-blue-100">
+<p class="text-xs font-bold uppercase text-blue-600 tracking-wide">Election Type</p>
+<p class="mt-2 font-semibold text-slate-900">Municipal</p>
+</div>
+<div class="rounded-lg bg-emerald-50 p-4 border border-emerald-100">
+<p class="text-xs font-bold uppercase text-emerald-600 tracking-wide">Status</p>
+<p class="mt-2 font-semibold text-slate-900">Open</p>
+</div>
+</div>
+<div class="mt-6 flex flex-wrap gap-3">
+<a class="inline-flex items-center justify-center gap-2 rounded-lg bg-[#123b8a] text-white px-6 py-3 font-bold hover:bg-blue-900 transition-colors" href="ballot.html">
 <span class="material-symbols-outlined" aria-hidden="true">how_to_vote</span>
 <span>Open Ballot</span>
 </a>
-<a class="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl border border-white/15 px-4 py-3 text-sm font-semibold text-slate-100 transition-colors hover:bg-white/10" href="../../backend/auth/logout.php">
-<span class="material-symbols-outlined" aria-hidden="true">logout</span>
-<span>Sign Out</span>
+<a class="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-slate-300 text-slate-900 px-6 py-3 font-bold hover:bg-slate-50 transition-colors" href="elections.html">
+<span class="material-symbols-outlined" aria-hidden="true">info</span>
+<span>Election Details</span>
 </a>
-</div>
-</aside>
-<main class="relative min-h-screen pt-20 md:pl-72">
-<div class="ovs-grid absolute inset-0 -z-10 opacity-60"></div>
-<div class="mx-auto max-w-[1600px] px-4 pb-12 sm:px-6 lg:px-8">
-<section class="mb-6 overflow-hidden rounded-[2rem] border border-slate-200/70 bg-[#081529] text-white ovs-panel">
-<div class="grid gap-8 px-6 py-8 lg:grid-cols-[1.3fr_0.9fr] lg:px-8 lg:py-9">
-<div>
-<p class="text-xs font-bold uppercase tracking-[0.32em] text-slate-300">Citizen overview</p>
-<h1 class="mt-3 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Welcome back</h1>
-<p class="mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">Track your elections, open your ballot when voting is live, and review every receipt from one secure dashboard.</p>
-<div class="mt-6 flex flex-wrap gap-3">
-<a class="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-extrabold text-[#081529] transition-transform hover:-translate-y-0.5" href="elections.html">
-<span class="material-symbols-outlined" aria-hidden="true">campaign</span>
-<span>Browse elections</span>
-</a>
-<a class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10" href="results.html">
-<span class="material-symbols-outlined" aria-hidden="true">bar_chart</span>
-<span>View results</span>
-</a>
-</div>
-</div>
-<div class="rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
-<div class="flex items-start justify-between gap-4">
-<div>
-<p class="text-xs font-bold uppercase tracking-[0.28em] text-slate-300">Session health</p>
-<p class="mt-2 text-2xl font-extrabold text-white">Protected and active</p>
-</div>
-<span class="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-bold text-emerald-300">Live</span>
-</div>
-<div class="mt-6 grid grid-cols-2 gap-3 text-sm">
-<div class="rounded-2xl bg-white/5 p-4">
-<p class="text-slate-400">Ballot access</p>
-<p class="mt-2 font-bold text-white">Open when eligible</p>
-</div>
-<div class="rounded-2xl bg-white/5 p-4">
-<p class="text-slate-400">Receipts</p>
-<p class="mt-2 font-bold text-white">Download anytime</p>
-</div>
-<div class="rounded-2xl bg-white/5 p-4">
-<p class="text-slate-400">Support</p>
-<p class="mt-2 font-bold text-white">Help center ready</p>
-</div>
-<div class="rounded-2xl bg-white/5 p-4">
-<p class="text-slate-400">Verification</p>
-<p class="mt-2 font-bold text-white">Account secured</p>
-</div>
-</div>
-</div>
 </div>
 </section>
-<div id="ovs-dashboard-alert" class="ovs-panel mb-6 rounded-3xl border border-amber-200 bg-amber-500 px-5 py-4 text-white shadow-lg shadow-amber-500/10">
-<div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-<div class="flex items-start gap-3">
-<span class="mt-0.5 material-symbols-outlined" aria-hidden="true">notifications_active</span>
-<p id="ovs-dashboard-alert-text" class="text-sm font-semibold leading-6">Action Required: Complete your ballot for the active election before the voting window closes.</p>
-</div>
-<a class="inline-flex items-center justify-center gap-2 rounded-2xl bg-white/15 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-white/25" href="elections.html">
-<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-<span>Check elections</span>
-</a>
-</div>
-</div>
-<section class="mb-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-<article class="ovs-panel rounded-3xl border border-slate-200 bg-white p-5">
-<p class="text-xs font-bold uppercase tracking-[0.28em] text-slate-500">Voter ID</p>
-<p class="mt-3 text-2xl font-extrabold tracking-tight text-[#081529]">CL-2048-1187</p>
-<p class="mt-2 text-sm leading-6 text-slate-600">Use this code when verifying your account or requesting support.</p>
-</article>
-<article class="ovs-panel rounded-3xl border border-slate-200 bg-white p-5">
-<p class="text-xs font-bold uppercase tracking-[0.28em] text-slate-500">Verification</p>
-<p class="mt-3 text-2xl font-extrabold tracking-tight text-[#081529]">Pending review</p>
-<p class="mt-2 text-sm leading-6 text-slate-600">Keep your profile details current so your ballot remains accessible.</p>
-</article>
-<article class="ovs-panel rounded-3xl border border-slate-200 bg-white p-5">
-<p class="text-xs font-bold uppercase tracking-[0.28em] text-slate-500">Ballots submitted</p>
-<p class="mt-3 text-2xl font-extrabold tracking-tight text-[#081529]">0</p>
-<p class="mt-2 text-sm leading-6 text-slate-600">Your voting history will appear here after you cast your first ballot.</p>
-</article>
-<article class="ovs-panel rounded-3xl border border-slate-200 bg-[#0f766e] p-5 text-white">
-<p class="text-xs font-bold uppercase tracking-[0.28em] text-emerald-100">Ballot readiness</p>
-<p class="mt-3 text-2xl font-extrabold tracking-tight">Ready when live</p>
-<p class="mt-2 text-sm leading-6 text-emerald-50">The portal will switch to the active election as soon as polling opens.</p>
-</article>
-</section>
-<div class="grid gap-6 xl:grid-cols-[1.5fr_0.9fr]">
-<section class="ovs-panel rounded-[2rem] border border-slate-200 bg-white p-6 lg:p-7">
-<div class="flex flex-col gap-4 border-b border-slate-200 pb-5 sm:flex-row sm:items-start sm:justify-between">
-<div>
-<p class="text-xs font-bold uppercase tracking-[0.28em] text-slate-500">Featured election</p>
-<h2 class="mt-2 text-3xl font-extrabold tracking-tight text-[#081529]">City Council Leadership Vote</h2>
-<p class="mt-3 max-w-2xl text-sm leading-7 text-slate-600">A live election card sits here for the currently available ballot. Review the window, understand the issue, and open the ballot when your voting period is active.</p>
-</div>
-<div class="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.24em] text-slate-500">
-<span class="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-2 text-emerald-700">Active</span>
-<span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-2">Verified access</span>
-</div>
-</div>
-<div class="mt-6 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-<div class="rounded-[1.5rem] bg-[#f4f8ff] p-5">
-<div class="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.22em] text-slate-500">
-<span class="rounded-full bg-white px-3 py-2 text-[#123b8a]">National</span>
-<span class="rounded-full bg-white px-3 py-2 text-[#123b8a]">Open ballot</span>
-<span class="rounded-full bg-white px-3 py-2 text-[#123b8a]">Mobile friendly</span>
-</div>
-<ul class="mt-5 space-y-3 text-sm text-slate-700">
-<li class="flex gap-3"><span class="mt-0.5 text-[#0f766e] material-symbols-outlined" aria-hidden="true">check_circle</span><span>Review the candidate list before you continue.</span></li>
-<li class="flex gap-3"><span class="mt-0.5 text-[#0f766e] material-symbols-outlined" aria-hidden="true">check_circle</span><span>Your vote is recorded only after final confirmation.</span></li>
-<li class="flex gap-3"><span class="mt-0.5 text-[#0f766e] material-symbols-outlined" aria-hidden="true">check_circle</span><span>Receipts are available in your history after submission.</span></li>
-</ul>
-</div>
-<div class="rounded-[1.5rem] border border-slate-200 bg-[#081529] p-5 text-white">
-<p class="text-xs font-bold uppercase tracking-[0.28em] text-slate-300">Next step</p>
-<p class="mt-3 text-xl font-extrabold tracking-tight">Open the ballot when voting starts</p>
-<p class="mt-3 text-sm leading-7 text-slate-300">The dashboard will route you straight into the ballot flow. Keep this page open and your session active.</p>
-<button class="mt-5 inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-extrabold text-[#081529] transition-transform hover:-translate-y-0.5" type="button">Open Ballot <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></button>
-</div>
-</div>
-</section>
+
 <aside class="space-y-6">
-<section class="ovs-panel rounded-[2rem] border border-slate-200 bg-white p-6">
-<div class="flex items-start justify-between gap-3">
+<section class="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+<div class="flex items-start gap-3 mb-4">
+<span class="material-symbols-outlined text-2xl text-[#0f766e]" aria-hidden="true">security</span>
 <div>
-<p class="text-xs font-bold uppercase tracking-[0.28em] text-slate-500">Security center</p>
-<h3 class="mt-2 text-xl font-extrabold tracking-tight text-[#081529]">Keep your vote private</h3>
+<p class="text-xs font-bold uppercase tracking-widest text-slate-500">Quick Actions</p>
+<h3 class="mt-1 text-lg font-bold text-slate-900">Fast Access</h3>
 </div>
-<span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">Protected</span>
 </div>
-<div class="mt-5 space-y-3 text-sm text-slate-700">
-<div class="flex gap-3 rounded-2xl bg-slate-50 p-4"><span class="material-symbols-outlined mt-0.5 text-[#123b8a]" aria-hidden="true">lock</span><p>Always sign out on shared devices after voting.</p></div>
-<div class="flex gap-3 rounded-2xl bg-slate-50 p-4"><span class="material-symbols-outlined mt-0.5 text-[#123b8a]" aria-hidden="true">verified_user</span><p>Check the browser address before entering your credentials.</p></div>
-<div class="flex gap-3 rounded-2xl bg-slate-50 p-4"><span class="material-symbols-outlined mt-0.5 text-[#123b8a]" aria-hidden="true">support_agent</span><p>Need help? Use the support link in the top bar or contact page.</p></div>
+<div class="space-y-2">
+<a class="block rounded-lg border border-slate-200 px-4 py-3 font-semibold text-slate-900 hover:bg-slate-50 transition-colors text-sm" href="profile.html">
+<span>Profile & Settings</span>
+<span class="material-symbols-outlined text-lg float-right" aria-hidden="true">arrow_forward</span>
+</a>
+<a class="block rounded-lg border border-slate-200 px-4 py-3 font-semibold text-slate-900 hover:bg-slate-50 transition-colors text-sm" href="results.html">
+<span>View Results</span>
+<span class="material-symbols-outlined text-lg float-right" aria-hidden="true">arrow_forward</span>
+</a>
+<a class="block rounded-lg border border-slate-200 px-4 py-3 font-semibold text-slate-900 hover:bg-slate-50 transition-colors text-sm" href="../contact.html">
+<span>Get Support</span>
+<span class="material-symbols-outlined text-lg float-right" aria-hidden="true">arrow_forward</span>
+</a>
 </div>
 </section>
-<section class="ovs-panel rounded-[2rem] border border-slate-200 bg-white p-6">
-<p class="text-xs font-bold uppercase tracking-[0.28em] text-slate-500">Quick links</p>
-<div class="mt-4 grid gap-3">
-<a class="flex items-center justify-between rounded-2xl border border-slate-200 px-4 py-3 transition-colors hover:border-[#123b8a] hover:bg-[#f4f8ff]" href="elections.html"><span class="font-semibold text-[#081529]">Active ballots</span><span class="material-symbols-outlined text-[#123b8a]" aria-hidden="true">arrow_outward</span></a>
-<a class="flex items-center justify-between rounded-2xl border border-slate-200 px-4 py-3 transition-colors hover:border-[#123b8a] hover:bg-[#f4f8ff]" href="results.html"><span class="font-semibold text-[#081529]">Results archive</span><span class="material-symbols-outlined text-[#123b8a]" aria-hidden="true">arrow_outward</span></a>
-<a class="flex items-center justify-between rounded-2xl border border-slate-200 px-4 py-3 transition-colors hover:border-[#123b8a] hover:bg-[#f4f8ff]" href="profile.html"><span class="font-semibold text-[#081529]">Profile details</span><span class="material-symbols-outlined text-[#123b8a]" aria-hidden="true">arrow_outward</span></a>
-<a class="flex items-center justify-between rounded-2xl border border-slate-200 px-4 py-3 transition-colors hover:border-[#123b8a] hover:bg-[#f4f8ff]" href="settings.html"><span class="font-semibold text-[#081529]">Portal settings</span><span class="material-symbols-outlined text-[#123b8a]" aria-hidden="true">arrow_outward</span></a>
+
+<section class="rounded-lg border border-slate-200 bg-emerald-50 p-6 shadow-sm">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-2xl text-emerald-700" aria-hidden="true">verified_user</span>
+<div>
+<p class="text-xs font-bold uppercase tracking-widest text-emerald-700">Security Tips</p>
+<p class="mt-2 text-sm font-semibold text-slate-900">Always sign out on shared devices</p>
+<p class="text-xs text-slate-600 mt-1">Protect your voting privacy</p>
+</div>
 </div>
 </section>
 </aside>
 </div>
-<section class="mt-6 overflow-hidden rounded-[2rem] border border-slate-200 bg-white ovs-panel">
-<div class="flex flex-col gap-4 border-b border-slate-200 px-6 py-5 sm:flex-row sm:items-center sm:justify-between lg:px-7">
+
+<section class="rounded-lg border border-slate-200 bg-white shadow-sm overflow-hidden">
+<div class="px-6 py-5 sm:px-8 border-b border-slate-200">
+<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
 <div>
-<p class="text-xs font-bold uppercase tracking-[0.28em] text-slate-500">Voting history</p>
-<h3 class="mt-2 text-2xl font-extrabold tracking-tight text-[#081529]">Download and review every receipt</h3>
+<p class="text-xs font-bold uppercase tracking-widest text-slate-500">Voting History</p>
+<h3 class="mt-2 text-xl font-bold text-slate-900">Your Ballots & Receipts</h3>
 </div>
-<button class="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-300 px-4 py-3 text-sm font-bold text-[#081529] transition-colors hover:bg-slate-50" type="button">Download All Receipts <span class="material-symbols-outlined" aria-hidden="true">download</span></button>
+<button class="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-slate-300 px-5 py-2 text-sm font-bold text-slate-900 hover:bg-slate-50 transition-colors" type="button">
+<span class="material-symbols-outlined" aria-hidden="true">download</span>
+<span>Download All Receipts</span>
+</button>
+</div>
 </div>
 <div class="overflow-x-auto">
-<table class="min-w-full text-left text-sm">
-<thead class="bg-slate-50/80 text-xs font-bold uppercase tracking-[0.24em] text-slate-500">
+<table class="w-full text-sm">
+<thead class="bg-slate-50 text-xs font-bold uppercase tracking-wide text-slate-600">
 <tr>
-<th class="px-6 py-4 lg:px-7">Date</th>
-<th class="px-6 py-4 lg:px-7">Election</th>
-<th class="px-6 py-4 lg:px-7">Status</th>
-<th class="px-6 py-4 lg:px-7">Receipt</th>
+<th class="px-6 py-4 text-left">Date</th>
+<th class="px-6 py-4 text-left">Election</th>
+<th class="px-6 py-4 text-left">Status</th>
+<th class="px-6 py-4 text-left">Action</th>
 </tr>
 </thead>
 <tbody class="divide-y divide-slate-100">
 <tr>
-<td class="px-6 py-5 lg:px-7 text-slate-600">No ballots submitted yet</td>
-<td class="px-6 py-5 lg:px-7 text-slate-600">Your first vote will appear here</td>
-<td class="px-6 py-5 lg:px-7 text-slate-600">Pending</td>
-<td class="px-6 py-5 lg:px-7 text-slate-600">-</td>
+<td class="px-6 py-5 text-slate-600">-</td>
+<td class="px-6 py-5 text-slate-600">No ballots submitted yet</td>
+<td class="px-6 py-5"><span class="inline-flex rounded-full bg-slate-100 text-slate-700 px-3 py-1 text-xs font-bold">Pending</span></td>
+<td class="px-6 py-5"><button class="text-[#123b8a] hover:underline font-semibold text-sm">View</button></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<footer class="mt-8 border-t border-slate-200 px-1 pt-6 pb-2 text-sm text-slate-500 md:ml-0">
-<div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-<p>© 2024 Civic Ledger. Secure voting for schools, councils, organizations, and national elections.</p>
-<div class="flex flex-wrap gap-5">
-<a class="transition-colors hover:text-[#123b8a]" href="../contact.html">Support</a>
-<a class="transition-colors hover:text-[#123b8a]" href="../how-it-works.html">How it works</a>
-<a class="transition-colors hover:text-[#123b8a]" href="../index.html">Home</a>
+</div>
+</div>
+</main>
+
+<footer class="border-t border-slate-200 bg-white mt-8">
+<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8">
+<div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+<p class="text-sm text-slate-600">© 2026 Civic Ledger. Secure voting for schools, councils, organizations, and national elections.</p>
+<div class="flex flex-wrap gap-6 text-sm">
+<a class="text-slate-600 hover:text-[#123b8a] font-semibold" href="../contact.html">Support</a>
+<a class="text-slate-600 hover:text-[#123b8a] font-semibold" href="../how-it-works.html">How it works</a>
+<a class="text-slate-600 hover:text-[#123b8a] font-semibold" href="../index.html">Home</a>
 </div>
 </div>
 </footer>
-</div>
-</main>
 <script defer src="../../assets/js/utils.js"></script>
 <script defer src="../../assets/js/voter.js"></script>
 <script defer src="../../assets/js/charts.js"></script>
