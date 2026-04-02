@@ -26,6 +26,7 @@ body.ovs-section-public form {
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 18px 36px -30px rgba(15, 35, 74, 0.75);
+  backdrop-filter: blur(2px);
 }
 
 body.ovs-section-public form input,
@@ -46,6 +47,7 @@ body.ovs-section-public form textarea:focus {
 body.ovs-section-public form button[type="submit"] {
   min-height: 44px;
   font-weight: 800;
+  letter-spacing: 0.02em;
 }
 
 [data-auth-message] {
@@ -67,5 +69,16 @@ body.ovs-section-public form button[type="submit"] {
 @media (max-width: 768px) {
   body.ovs-section-public form {
     box-shadow: none;
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  body.ovs-section-public h1,
+  body.ovs-section-public h2 {
+    letter-spacing: -0.01em;
+  }
+
+  body.ovs-section-public form button[type="submit"] {
+    width: 100%;
   }
 }

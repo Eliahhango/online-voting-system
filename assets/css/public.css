@@ -6,6 +6,12 @@ body.ovs-section-public {
 }
 
 body.ovs-section-public main {
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.ovs-section-public main {
   min-height: calc(100vh - 144px);
 }
 
@@ -27,6 +33,16 @@ body.ovs-section-public .grid > article,
 body.ovs-section-public .grid > .card,
 body.ovs-section-public .grid > div[class*="bg-surface-container-lowest"] {
   border-radius: 8px;
+  border: 1px solid rgba(15, 35, 74, 0.08);
+  box-shadow: 0 14px 30px -26px rgba(15, 35, 74, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.ovs-section-public .grid > article:hover,
+body.ovs-section-public .grid > .card:hover,
+body.ovs-section-public .grid > div[class*="bg-surface-container-lowest"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 34px -28px rgba(15, 35, 74, 0.7);
 }
 
 body.ovs-section-public a[href*="login.html"],
@@ -45,5 +61,10 @@ body.ovs-section-public .material-symbols-outlined {
 
   body.ovs-section-public main {
     padding-bottom: 18px;
+  }
+
+  body.ovs-section-public section {
+    border-radius: 10px;
+    overflow: hidden;
   }
 }

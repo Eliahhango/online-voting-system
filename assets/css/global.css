@@ -19,6 +19,12 @@ body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  line-height: 1.5;
 }
 
 img,
@@ -405,6 +411,15 @@ body.ovs-section-voter.ovs-voter-shell main.ovs-voter-main {
   color: var(--color-primary);
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(29, 78, 216, 0.35);
+  outline-offset: 2px;
+}
+
 @media (min-width: 1025px) {
   body.ovs-section-voter .ovs-side-toggle-wrap {
     display: block;
@@ -592,22 +607,22 @@ button {
 }
 
 @media (max-width: 1200px) {
-  .px-8 {
+  body.ovs-section-public .px-8 {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
 
-  .px-10 {
+  body.ovs-section-public .px-10 {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
 
-  .py-24 {
+  body.ovs-section-public .py-24 {
     padding-top: 3rem !important;
     padding-bottom: 3rem !important;
   }
 
-  .py-20 {
+  body.ovs-section-public .py-20 {
     padding-top: 2.5rem !important;
     padding-bottom: 2.5rem !important;
   }
@@ -669,49 +684,56 @@ button {
 }
 
 @media (max-width: 768px) {
-  .grid-cols-4,
-  .grid-cols-3,
-  .grid-cols-2 {
+  body.ovs-section-public .grid-cols-4,
+  body.ovs-section-public .grid-cols-3,
+  body.ovs-section-public .grid-cols-2 {
     grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
   }
 
-  .text-7xl {
+  body.ovs-section-admin .grid-cols-4,
+  body.ovs-section-admin .grid-cols-3,
+  body.ovs-section-voter .grid-cols-4,
+  body.ovs-section-voter .grid-cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.ovs-section-public .text-7xl {
     font-size: 2.25rem !important;
     line-height: 1.1 !important;
   }
 
-  .text-6xl {
+  body.ovs-section-public .text-6xl {
     font-size: 2rem !important;
     line-height: 1.1 !important;
   }
 
-  .text-5xl {
+  body.ovs-section-public .text-5xl {
     font-size: 1.75rem !important;
     line-height: 1.15 !important;
   }
 
-  .text-4xl {
+  body.ovs-section-public .text-4xl {
     font-size: 1.5rem !important;
     line-height: 1.2 !important;
   }
 
-  .p-8 {
+  body.ovs-section-public .p-8 {
     padding: 1rem !important;
   }
 
-  .p-12 {
+  body.ovs-section-public .p-12 {
     padding: 1rem !important;
   }
 
-  .gap-12 {
+  body.ovs-section-public .gap-12 {
     gap: 1rem !important;
   }
 
-  .gap-10 {
+  body.ovs-section-public .gap-10 {
     gap: 0.875rem !important;
   }
 
-  .gap-8 {
+  body.ovs-section-public .gap-8 {
     gap: 0.75rem !important;
   }
 
@@ -727,6 +749,15 @@ button {
 }
 
 @media (max-width: 480px) {
+  body.ovs-section-admin .grid-cols-4,
+  body.ovs-section-admin .grid-cols-3,
+  body.ovs-section-admin .grid-cols-2,
+  body.ovs-section-voter .grid-cols-4,
+  body.ovs-section-voter .grid-cols-3,
+  body.ovs-section-voter .grid-cols-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+
   input,
   select,
   textarea {
