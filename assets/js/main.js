@@ -15,7 +15,10 @@
     if (typeof utils().pageInfo === "function") {
       return utils().pageInfo();
     }
-    return { section: "public", file: "", isAuthPage: false };
+    var path = String(window.location.pathname || "").replace(/\\/g, "/").toLowerCase();
+    var file = path.split("/").pop() || "";
+    var section = path.indexOf("/admin/") !== -1 ? "admin" : path.indexOf("/voter/") !== -1 ? "voter" : "public";
+    return { section: section, file: file, isAuthPage: false };
   }
 
   function toPath(target) {
