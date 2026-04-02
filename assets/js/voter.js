@@ -21,10 +21,6 @@
     document.body.classList.add("ovs-voter-loading");
   }
 
-  function ovsUtils() {
-    return window.OVSUtils || {};
-  }
-
   function toBackend(target) {
     if (typeof ovsUtils().toBackendPath === "function") {
       return ovsUtils().toBackendPath(target);
@@ -37,15 +33,6 @@
       return ovsUtils().toFrontendPath(target);
     }
     return target;
-  }
-
-  function pageInfo() {
-    if (typeof ovsUtils().pageInfo === "function") {
-      return ovsUtils().pageInfo();
-    }
-    var path = String(window.location.pathname || "").replace(/\\/g, "/").toLowerCase();
-    var file = path.split("/").pop() || "";
-    return { section: "public", file: file };
   }
 
   function getMain() {
@@ -338,7 +325,7 @@
   function dashboardBannerTone(featured) {
     if (!featured) return "neutral";
     var phase = String(featured.phase || "").toLowerCase();
-    if (phase === "active" && !boolish(featured.has_voted)) return "warning";
+    if (phase === "active" && !boolish(featured.has_voted)) return "info";
     if (phase === "active" && boolish(featured.has_voted)) return "success";
     if (phase === "upcoming") return "info";
     if (phase === "closed") return "neutral";
@@ -346,17 +333,15 @@
   }
 
   function stitchBannerClassByTone(tone) {
-    if (tone === "warning") return "bg-[#F59E0B]";
-    if (tone === "success") return "bg-[#10B981]";
-    if (tone === "info") return "bg-[#1D4ED8]";
-    return "bg-slate-600";
+    if (tone === "success") return "bg-blue-700";
+    if (tone === "info") return "bg-blue-600";
+    return "bg-blue-800";
   }
 
   function fallbackBannerClassByTone(tone) {
-    if (tone === "warning") return "bg-amber-500";
-    if (tone === "success") return "bg-emerald-500";
+    if (tone === "success") return "bg-blue-600";
     if (tone === "info") return "bg-blue-600";
-    return "bg-slate-600";
+    return "bg-blue-800";
   }
 
   function downloadCsv(filename, rows) {
@@ -406,13 +391,7 @@
   }
 
   function isStitchDashboard(main) {
-    if (!main) return false;
-    var heading = main.querySelector("h1");
-    var openBallotBtn = Array.prototype.find.call(main.querySelectorAll("button"), function (btn) {
-      return String(btn.textContent || "").toLowerCase().indexOf("open ballot") !== -1;
-    });
-    var historyTable = main.querySelector("table tbody");
-    return !!(heading && openBallotBtn && historyTable);
+    return !!(main && main.hasAttribute("data-ovs-dashboard-shell"));
   }
 
   function attachDownloadTextFile(filename, content) {
@@ -452,26 +431,46 @@
     var action = electionAction(featured);
     var bannerTone = dashboardBannerTone(featured);
 
-    var banner = main.querySelector("#ovs-dashboard-alert-text") || main.querySelector("div.bg\\[\\#F59E0B\\] p");
+    var title = main.querySelector("#ovs-dashboard-title");
+    if (title) {
+      title.textContent = "Welcome back, " + (profile.full_name || "Citizen");
+    }
+
+    var banner = main.querySelector("#ovs-dashboard-alert-text");
     if (banner) {
       banner.textContent = dashboardBannerText(featured);
     }
-    var bannerShell = main.querySelector("#ovs-dashboard-alert") || (banner ? banner.parentElement : null);
+    var bannerShell = main.querySelector("#ovs-dashboard-alert");
     if (bannerShell) {
-      bannerShell.classList.remove("bg-[#F59E0B]", "bg-[#10B981]", "bg-[#1D4ED8]", "bg-slate-600");
+      bannerShell.classList.remove("border-emerald-200", "bg-emerald-50", "border-amber-200", "bg-amber-50", "border-blue-200", "bg-blue-50", "border-slate-200", "bg-slate-50");
       bannerShell.classList.add(stitchBannerClassByTone(bannerTone));
     }
 
-    var heading = main.querySelector("header h1");
-    if (heading) {
-      heading.innerHTML = "Welcome back, <br/>" + escapeHtml(profile.full_name || "Citizen");
+    var voterId = main.querySelector("#ovs-dashboard-voter-id");
+    if (voterId) {
+      voterId.textContent = profile.voter_id || "-";
     }
 
-    var electionTitle = main.querySelector("section h2");
+    var verification = main.querySelector("#ovs-dashboard-verification");
+    if (verification) {
+      verification.textContent = boolish(profile.is_verified) ? "Verified" : "Pending review";
+    }
+
+    var ballotCount = main.querySelector("#ovs-dashboard-ballots");
+    if (ballotCount) {
+      ballotCount.textContent = String(history.length || 0);
+    }
+
+    var accountStatus = main.querySelector("#ovs-dashboard-status");
+    if (accountStatus) {
+      accountStatus.textContent = String(profile.status || "Active").replace(/^\w/, function (c) { return c.toUpperCase(); });
+    }
+
+    var electionTitle = main.querySelector("#ovs-dashboard-election-title");
     if (electionTitle) {
       electionTitle.textContent = featured ? String(featured.title || "Current Election") : "No Active Election";
     }
-    var electionDesc = electionTitle && electionTitle.parentElement ? electionTitle.parentElement.querySelector("p") : null;
+    var electionDesc = main.querySelector("#ovs-dashboard-election-desc");
     if (electionDesc) {
       electionDesc.textContent = featured
         ? String(featured.description || (phaseLabel(featured.phase) + " election window: " + formatDate(featured.start_at) + " - " + formatDate(featured.end_at)))
@@ -488,36 +487,20 @@
       });
     }
 
-    var statsCards = main.querySelectorAll(".grid.grid-cols-1.md\\:grid-cols-2.gap-6.mb-12 > div");
-    if (statsCards.length > 0) {
-      var identityValue = statsCards[0].querySelector("p.font-headline");
-      if (identityValue) {
-        identityValue.textContent = boolish(profile.is_verified) ? "Blockchain Verified" : "Verification Pending";
-      }
-    }
-    if (statsCards.length > 1) {
-      var renewalValue = statsCards[1].querySelector("p.font-headline");
-      if (renewalValue) {
-        var renewal = new Date();
-        renewal.setFullYear(renewal.getFullYear() + 2);
-        renewalValue.textContent = renewal.toLocaleString(undefined, { month: "long", year: "numeric" });
-      }
-    }
-
-    var tableBody = main.querySelector("table tbody");
+    var tableBody = main.querySelector("#ovs-dashboard-history-body");
     if (tableBody) {
       if (!history.length) {
-        tableBody.innerHTML = '<tr><td class="p-4 text-sm text-slate-500" colspan="4">No ballots submitted yet.</td></tr>';
+        tableBody.innerHTML = '<tr><td class="px-6 py-5 text-slate-500" colspan="4">No ballots submitted yet.</td></tr>';
       } else {
         tableBody.innerHTML = history
           .slice(0, 8)
           .map(function (row) {
             return (
-              '<tr class="hover:bg-surface-container-low transition-colors group">' +
-              '<td class="p-4 text-sm font-medium">' + escapeHtml(formatDate(row.submitted_at)) + "</td>" +
-              '<td class="p-4 text-sm font-bold text-[#0B1F3B]">' + escapeHtml(row.election_title || "-") + "</td>" +
-              '<td class="p-4"><div class="flex items-center gap-2 text-[#10B981]"><span class="material-symbols-outlined text-lg">check_circle</span><span class="text-xs font-bold uppercase tracking-tighter">Verified</span></div></td>' +
-              '<td class="p-4 text-right"><button class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors ovs-receipt-btn" data-receipt="' + escapeHtml(row.receipt_code || "") + '" data-election="' + escapeHtml(row.election_title || "") + '" data-date="' + escapeHtml(formatDateTime(row.submitted_at)) + '">description</button></td>' +
+              '<tr>' +
+              '<td class="px-6 py-5 text-slate-600">' + escapeHtml(formatDate(row.submitted_at)) + "</td>" +
+              '<td class="px-6 py-5 font-semibold text-slate-900">' + escapeHtml(row.election_title || "-") + "</td>" +
+              '<td class="px-6 py-5"><span class="inline-flex rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">Verified</span></td>' +
+              '<td class="px-6 py-5 text-slate-600">' + escapeHtml(row.receipt_code || "-") + "</td>" +
               "</tr>"
             );
           })
@@ -525,9 +508,7 @@
       }
     }
 
-    var downloadAllBtn = Array.prototype.find.call(main.querySelectorAll("button"), function (btn) {
-      return String(btn.textContent || "").toLowerCase().indexOf("download all receipts") !== -1;
-    });
+    var downloadAllBtn = main.querySelector("#ovs-dashboard-download");
     if (downloadAllBtn) {
       downloadAllBtn.addEventListener("click", function () {
         var rows = [["Date", "Election", "Receipt Code", "Status", "Vote Items"]];
@@ -548,15 +529,18 @@
       });
     }
 
-    main.addEventListener("click", function (event) {
-      var receiptBtn = event.target.closest(".ovs-receipt-btn");
-      if (!receiptBtn) return;
-      var content =
-        "Civic Ledger Receipt\n" +
-        "Election: " + (receiptBtn.getAttribute("data-election") || "") + "\n" +
-        "Receipt Code: " + (receiptBtn.getAttribute("data-receipt") || "") + "\n" +
-        "Submitted At: " + (receiptBtn.getAttribute("data-date") || "") + "\n";
-      attachDownloadTextFile("vote-receipt.txt", content);
+    var historyLinks = main.querySelectorAll("#ovs-dashboard-history-body tr");
+    Array.prototype.forEach.call(historyLinks, function (row, index) {
+      row.addEventListener("click", function () {
+        var item = history[index];
+        if (!item) return;
+        var content =
+          "Civic Ledger Receipt\n" +
+          "Election: " + (item.election_title || "") + "\n" +
+          "Receipt Code: " + (item.receipt_code || "") + "\n" +
+          "Submitted At: " + formatDateTime(item.submitted_at) + "\n";
+        attachDownloadTextFile("vote-receipt.txt", content);
+      });
     });
   }
 
