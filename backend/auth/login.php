@@ -38,7 +38,9 @@ if ($email !== '') {
     }
 }
 
-if ($expectedRole !== '' && !in_array($expectedRole, [USER_ROLE_ADMIN, USER_ROLE_VOTER], true)) {
+if ($expectedRole === '') {
+    $errors['expected_role'] = 'expected_role is required';
+} elseif (!in_array($expectedRole, [USER_ROLE_ADMIN, USER_ROLE_VOTER], true)) {
     $errors['expected_role'] = 'expected_role must be admin or voter';
 }
 
@@ -71,7 +73,7 @@ try {
         json_error('Account is not active', 403);
     }
 
-    if ($expectedRole !== '' && (string) ($user['role'] ?? '') !== $expectedRole) {
+    if ((string) ($user['role'] ?? '') !== $expectedRole) {
         json_error('This account is not allowed in the selected portal', 403, [
             'expected_role' => 'Use the correct login portal for this account role',
         ]);
