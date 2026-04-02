@@ -18,7 +18,7 @@ It is built with plain HTML/CSS/JavaScript on the frontend and PHP APIs on the b
 - `backend/`
   PHP endpoints for authentication, voter actions, and admin actions.
 - `database/`
-  SQL schema/seed files and SQLite database file.
+  SQL schema/seed files for MySQL.
 - `docs/`
   Project notes and documentation.
 
@@ -41,11 +41,10 @@ It is built with plain HTML/CSS/JavaScript on the frontend and PHP APIs on the b
 
 ## Database behavior
 
-- Default DB driver is SQLite (`database/app.sqlite`).
-- On first backend call, the app auto-loads:
-  - `database/schema.sql`
-  - `database/seed.sql`
-- MySQL is also supported through environment variables in `backend/config/config.php`.
+- Default DB driver is MySQL.
+- On first backend call, the app auto-loads the MySQL schema/seed files:
+  - `database/schema-mysql.sql`
+  - `database/seed-mysql.sql`
 
 ## Security and access
 

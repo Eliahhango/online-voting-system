@@ -35,14 +35,13 @@ function app_config(): array
         'session_secure' => env_value('SESSION_SECURE', 'auto'),
         'session_samesite' => env_value('SESSION_SAMESITE', 'Lax'),
 
-        'db_driver' => env_value('DB_DRIVER', 'sqlite'),
+        'db_driver' => env_value('DB_DRIVER', 'mysql'),
         'db_host' => env_value('DB_HOST', '127.0.0.1'),
         'db_port' => env_value('DB_PORT', '3306'),
         'db_name' => env_value('DB_NAME', 'online_voting_system'),
         'db_user' => env_value('DB_USER', 'root'),
         'db_pass' => env_value('DB_PASS', ''),
         'db_charset' => env_value('DB_CHARSET', 'utf8mb4'),
-        'db_path' => env_value('DB_PATH', $root . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'app.sqlite'),
 
         'cors_allow_origin' => env_value('CORS_ALLOW_ORIGIN', '*'),
         'cors_allow_methods' => env_value('CORS_ALLOW_METHODS', 'GET, POST, PUT, PATCH, DELETE, OPTIONS'),

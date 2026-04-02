@@ -77,7 +77,6 @@ function is_unique_constraint_violation(Throwable $e): bool
 
 try {
     $pdo = db();
-    $manualSqliteTxn = false;
     $txnStarted = false;
 
     $electionStmt = $pdo->prepare('SELECT id, title, start_at, end_at, status FROM elections WHERE id = :id LIMIT 1');
@@ -141,15 +140,8 @@ try {
         }
     }
 
-    $driver = strtolower((string) $pdo->getAttribute(PDO::ATTR_DRIVER_NAME));
-    if ($driver === 'sqlite') {
-        $pdo->exec('BEGIN IMMEDIATE TRANSACTION');
-        $manualSqliteTxn = true;
-        $txnStarted = true;
-    } else {
-        $pdo->beginTransaction();
-        $txnStarted = true;
-    }
+    $pdo->beginTransaction();
+    $txnStarted = true;
 
     $existingBallotStmt = $pdo->prepare('SELECT id FROM ballots WHERE election_id = :election_id AND voter_id = :voter_id LIMIT 1');
     $existingBallotStmt->execute([
@@ -157,10 +149,7 @@ try {
         'voter_id' => (int) $user['id'],
     ]);
     if ($existingBallotStmt->fetch()) {
-        if ($manualSqliteTxn && $txnStarted) {
-            $pdo->exec('ROLLBACK');
-            $txnStarted = false;
-        } elseif ($pdo->inTransaction()) {
+        if ($pdo->inTransaction()) {
             $pdo->rollBack();
             $txnStarted = false;
         }
@@ -193,10 +182,7 @@ try {
         ]);
     }
 
-    if ($manualSqliteTxn && $txnStarted) {
-        $pdo->exec('COMMIT');
-        $txnStarted = false;
-    } else {
+    if ($txnStarted) {
         $pdo->commit();
         $txnStarted = false;
     }
@@ -214,13 +200,7 @@ try {
     ], 'Vote submitted successfully', 201);
 } catch (Throwable $e) {
     if (isset($pdo) && $pdo instanceof PDO) {
-        if (isset($manualSqliteTxn, $txnStarted) && $manualSqliteTxn === true && $txnStarted === true) {
-            try {
-                $pdo->exec('ROLLBACK');
-            } catch (Throwable $rollbackErr) {
-                /* ignore rollback failure */
-            }
-        } elseif ($pdo->inTransaction()) {
+        if ($pdo->inTransaction()) {
             $pdo->rollBack();
         }
     }

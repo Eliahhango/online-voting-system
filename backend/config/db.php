@@ -12,54 +12,21 @@ function db(): PDO
     }
 
     $cfg = app_config();
-    $driver = strtolower((string) $cfg['db_driver']);
+    $pdo = connect_mysql($cfg);
 
-    if ($driver === 'mysql') {
-        $dsn = sprintf(
-            'mysql:host=%s;port=%s;dbname=%s;charset=%s',
-            $cfg['db_host'],
-            $cfg['db_port'],
-            $cfg['db_name'],
-            $cfg['db_charset']
-        );
-
-        $pdo = new PDO($dsn, $cfg['db_user'], $cfg['db_pass'], [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false,
-        ]);
-
-        return $pdo;
-    }
-
-    $dbPath = (string) $cfg['db_path'];
-    $dbDir = dirname($dbPath);
-    if (!is_dir($dbDir)) {
-        mkdir($dbDir, 0777, true);
-    }
-
-    $pdo = new PDO('sqlite:' . $dbPath, null, null, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES => false,
-    ]);
-
-    $pdo->exec('PRAGMA foreign_keys = ON');
-
-    initialize_sqlite_if_needed($pdo);
-    ensure_sqlite_schema_migrations($pdo);
+    initialize_mysql_if_needed($pdo);
 
     return $pdo;
 }
 
-function initialize_sqlite_if_needed(PDO $pdo): void
+function initialize_mysql_if_needed(PDO $pdo): void
 {
-    if (sqlite_table_exists($pdo, 'users')) {
+    if (mysql_table_exists($pdo, 'users')) {
         return;
     }
 
-    $schemaPath = app_root() . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'schema.sql';
-    $seedPath = app_root() . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'seed.sql';
+    $schemaPath = app_root() . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'schema-mysql.sql';
+    $seedPath = app_root() . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'seed-mysql.sql';
 
     if (is_file($schemaPath)) {
         $schemaSql = file_get_contents($schemaPath);
@@ -76,36 +43,73 @@ function initialize_sqlite_if_needed(PDO $pdo): void
     }
 }
 
-function sqlite_table_exists(PDO $pdo, string $table): bool
+function connect_mysql(array $cfg): PDO
 {
-    $stmt = $pdo->prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name = :name");
+    try {
+        $dsn = sprintf(
+            'mysql:host=%s;port=%s;dbname=%s;charset=%s',
+            $cfg['db_host'],
+            $cfg['db_port'],
+            $cfg['db_name'],
+            $cfg['db_charset']
+        );
+
+        return new PDO($dsn, $cfg['db_user'], $cfg['db_pass'], [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ]);
+    } catch (PDOException $e) {
+        if ((int) $e->getCode() !== 1049) {
+            throw $e;
+        }
+
+        $serverDsn = sprintf(
+            'mysql:host=%s;port=%s;charset=%s',
+            $cfg['db_host'],
+            $cfg['db_port'],
+            $cfg['db_charset']
+        );
+
+        $serverPdo = new PDO($serverDsn, $cfg['db_user'], $cfg['db_pass'], [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ]);
+
+        $databaseName = trim((string) $cfg['db_name']);
+        if ($databaseName === '' || !preg_match('/^[A-Za-z0-9_]+$/', $databaseName)) {
+            throw new RuntimeException('Invalid MySQL database name');
+        }
+
+        $serverPdo->exec(sprintf(
+            'CREATE DATABASE IF NOT EXISTS `%s` CHARACTER SET %s COLLATE utf8mb4_unicode_ci',
+            str_replace('`', '``', $databaseName),
+            $cfg['db_charset']
+        ));
+
+        $dsn = sprintf(
+            'mysql:host=%s;port=%s;dbname=%s;charset=%s',
+            $cfg['db_host'],
+            $cfg['db_port'],
+            $databaseName,
+            $cfg['db_charset']
+        );
+
+        return new PDO($dsn, $cfg['db_user'], $cfg['db_pass'], [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ]);
+    }
+}
+
+function mysql_table_exists(PDO $pdo, string $table): bool
+{
+    $stmt = $pdo->prepare(
+        'SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name = :name'
+    );
     $stmt->execute(['name' => $table]);
 
-    return (bool) $stmt->fetchColumn();
-}
-
-function sqlite_column_exists(PDO $pdo, string $table, string $column): bool
-{
-    $stmt = $pdo->query('PRAGMA table_info(' . $table . ')');
-    $rows = $stmt ? $stmt->fetchAll() : [];
-    foreach ($rows as $row) {
-        if (isset($row['name']) && strcasecmp((string) $row['name'], $column) === 0) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-function ensure_sqlite_schema_migrations(PDO $pdo): void
-{
-    if (!sqlite_table_exists($pdo, 'positions')) {
-        return;
-    }
-
-    if (!sqlite_column_exists($pdo, 'positions', 'parent_position_id')) {
-        $pdo->exec('ALTER TABLE positions ADD COLUMN parent_position_id INTEGER');
-    }
-
-    $pdo->exec('CREATE INDEX IF NOT EXISTS idx_positions_parent_position_id ON positions(parent_position_id)');
+    return (int) $stmt->fetchColumn() > 0;
 }

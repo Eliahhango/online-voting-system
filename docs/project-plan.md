@@ -3,7 +3,7 @@
 ## Completed
 - Frontend directory scaffolding and page mapping from Stitch exports
 - Backend API scaffolding replaced with functional endpoints
-- SQLite schema and seed data implemented
+- MySQL schema and seed data implemented
 - Session-based auth and role middleware implemented
 - Voter and admin workflows wired to database
 
