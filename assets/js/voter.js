@@ -408,10 +408,7 @@
   async function hydrateStitchDashboard() {
     var main = getMain();
     if (!main) return;
-    if (!isStitchDashboard(main)) {
-      await renderDashboard();
-      return;
-    }
+    if (!isStitchDashboard(main)) return;
 
     var responses = await Promise.all([
       apiGet("voters/get-profile.php"),
