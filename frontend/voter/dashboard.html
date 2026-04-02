@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
@@ -84,7 +84,7 @@
 <link rel="stylesheet" href="../../assets/css/components.css"/>
 <link rel="stylesheet" href="../../assets/css/voter.css"/>
 </head>
-<body class="bg-background text-on-surface font-body">
+<body class="bg-background text-on-surface font-body ovs-section-voter ovs-voter-no-side">
 <!-- TopNavBar -->
 <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-white dark:bg-[#0b1c30] shadow-[0_4px_20px_-10px_rgba(11,28,48,0.1)]">
 <div class="flex items-center gap-2">
@@ -141,9 +141,9 @@
 <main class="lg:ml-64 pt-16 min-h-screen">
 <div class="max-w-[800px] mx-auto px-6 py-8">
 <!-- Status Banner -->
-<div class="bg-[#F59E0B] text-white p-4 mb-10 flex items-center gap-4 rounded shadow-sm">
+<div class="bg-[#F59E0B] text-white p-4 mb-10 flex items-center gap-4 rounded shadow-sm" id="ovs-dashboard-alert">
 <span class="material-symbols-outlined flex-shrink-0" data-icon="priority_high">priority_high</span>
-<p class="font-bold text-sm tracking-tight">Action Required: Complete your municipal ballot by Nov 5.</p>
+<p class="font-bold text-sm tracking-tight" id="ovs-dashboard-alert-text">Loading election status...</p>
 </div>
 <!-- Dashboard Hero Section -->
 <header class="mb-12">
@@ -277,7 +277,7 @@
 <footer class="w-full py-8 px-8 flex flex-col md:flex-row justify-between items-center gap-4 mt-auto bg-[#f8f9ff] dark:bg-[#08121f] border-t border-[#c4c5d7]/15">
 <div class="flex flex-col items-center md:items-start gap-1">
 <span class="font-bold text-[#0b1c30] text-sm">Civic Ledger</span>
-<p class="font-body text-xs font-medium tracking-tight text-[#5a6b87]">Â© 2024 National Election Authority. Secure Blockchain Verification Active.</p>
+<p class="font-body text-xs font-medium tracking-tight text-[#5a6b87]">© 2024 National Election Authority. Secure Blockchain Verification Active.</p>
 </div>
 <div class="flex gap-6">
 <a class="font-body text-xs font-medium tracking-tight text-[#5a6b87] hover:text-[#1d4ed8] transition-colors" href="#">Privacy Policy</a>

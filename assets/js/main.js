@@ -269,11 +269,14 @@
     if (section === "voter") {
       nav = [
         link("Dashboard", toPath("voter/dashboard.html")),
-        link("Elections", toPath("voter/elections.html")),
+        link("Active Ballots", toPath("voter/elections.html")),
         link("Ballot", toPath("voter/ballot.html")),
         link("Results", toPath("voter/results.html")),
+        link("History", toPath("voter/results.html")),
         link("Profile", toPath("voter/profile.html")),
-        link("Settings", toPath("voter/settings.html"))
+        link("Settings", toPath("voter/settings.html")),
+        link("Security Center", toPath("voter/settings.html")),
+        link("Support", toPath("contact.html"))
       ].join("");
       right = '<button type="button" class="ovs-btn-link" data-ovs-logout>Logout</button>';
     } else if (section === "admin") {
@@ -337,6 +340,90 @@
       "</div>" +
       "</footer>"
     );
+  }
+
+  function voterActiveTab(file) {
+    var f = String(file || "").toLowerCase();
+    if (f === "dashboard.html") return "dashboard";
+    if (f === "elections.html" || f === "election-details.html") return "elections";
+    if (f === "ballot.html" || f === "vote-success.html") return "ballot";
+    if (f === "results.html") return "results";
+    if (f === "profile.html") return "profile";
+    if (f === "settings.html") return "settings";
+    return "dashboard";
+  }
+
+  function voterSideLink(label, href, active) {
+    return '<a class="ovs-voter-side-link' + (active ? " is-active" : "") + '" href="' + href + '">' + label + "</a>";
+  }
+
+  function voterSideTemplate(info, state) {
+    var active = voterActiveTab(info.file);
+    var userName = state && state.user ? state.user.full_name || state.user.email || "Voter" : "Voter";
+    var voterId = state && state.user && state.user.voter_id ? String(state.user.voter_id) : "";
+
+    return (
+      '<aside class="ovs-voter-side">' +
+      '<div class="ovs-voter-side-head">' +
+      '<div class="ovs-voter-side-title">Voter Portal</div>' +
+      '<div class="ovs-voter-side-subtitle">' + escapeHtml(voterId ? ("ID: " + voterId) : "Verified Citizen") + "</div>" +
+      '<div class="ovs-voter-side-user">' + escapeHtml(userName) + "</div>" +
+      '<button type="button" class="ovs-side-toggle" data-ovs-side-toggle aria-expanded="true" aria-label="Toggle voter sidebar">Hide Panel</button>' +
+      "</div>" +
+      '<nav class="ovs-voter-side-nav">' +
+      voterSideLink("Dashboard", toPath("voter/dashboard.html"), active === "dashboard") +
+      voterSideLink("Active Ballots", toPath("voter/elections.html"), active === "elections") +
+      voterSideLink("Ballot", toPath("voter/ballot.html"), active === "ballot") +
+      voterSideLink("Results", toPath("voter/results.html"), active === "results") +
+      voterSideLink("History", toPath("voter/results.html"), active === "results") +
+      voterSideLink("Profile", toPath("voter/profile.html"), active === "profile") +
+      voterSideLink("Settings", toPath("voter/settings.html"), active === "settings") +
+      voterSideLink("Security Center", toPath("voter/settings.html"), active === "security") +
+      voterSideLink("Support", toPath("contact.html"), false) +
+      "</nav>" +
+      '<div class="ovs-voter-side-foot">' +
+      '<button type="button" class="ovs-voter-logout-btn" data-ovs-logout>Log Out</button>' +
+      "</div>" +
+      "</aside>"
+    );
+  }
+
+  function applyVoterLayout(info, state) {
+    var children = Array.prototype.slice.call(document.body.children || []);
+    children.forEach(function (node) {
+      var tag = String(node.tagName || "").toUpperCase();
+      if (tag !== "ASIDE") {
+        return;
+      }
+      if (node.classList.contains("ovs-voter-side") || node.classList.contains("ovs-admin-side")) {
+        return;
+      }
+      node.remove();
+    });
+
+    var oldSide = document.querySelector(".ovs-voter-side");
+    if (oldSide) {
+      oldSide.remove();
+    }
+
+    var side = createElement(voterSideTemplate(info, state));
+    var header = document.querySelector(".ovs-header");
+    if (header && header.nextSibling) {
+      document.body.insertBefore(side, header.nextSibling);
+    } else if (header) {
+      document.body.appendChild(side);
+    } else if (document.body.firstChild) {
+      document.body.insertBefore(side, document.body.firstChild);
+    } else {
+      document.body.appendChild(side);
+    }
+
+    var main = document.querySelector("main");
+    if (main) {
+      main.classList.add("ovs-voter-main");
+    }
+
+    document.body.classList.add("ovs-voter-shell");
   }
 
   function adminActiveTab(file) {
@@ -413,6 +500,7 @@
       '<div class="ovs-admin-side-head">' +
       '<div class="ovs-admin-side-title">ELECTION COMMAND</div>' +
       '<div class="ovs-admin-side-subtitle">OFFICIAL LEDGER NODE</div>' +
+      '<button type="button" class="ovs-admin-side-toggle" data-ovs-admin-side-toggle aria-expanded="true" aria-label="Toggle admin sidebar">Hide Panel</button>' +
       "</div>" +
       '<nav class="ovs-admin-side-nav">' +
       adminSideLink("dashboard", "Dashboard", toPath("admin/dashboard.html"), dashboardActive) +
@@ -438,6 +526,75 @@
       "</div>" +
       "</aside>"
     );
+  }
+
+  function bindDesktopSidebarToggle(info) {
+    function persistedFlag(key) {
+      try {
+        return window.localStorage && window.localStorage.getItem(key) === "1";
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function saveFlag(key, value) {
+      try {
+        if (!window.localStorage) return;
+        window.localStorage.setItem(key, value ? "1" : "0");
+      } catch (e) {
+        /* ignore storage write errors */
+      }
+    }
+
+    function isDesktop() {
+      return window.innerWidth > 1024;
+    }
+
+    var section = String(info.section || "").toLowerCase();
+
+    if (section === "voter") {
+      return;
+    }
+
+    if (section === "admin") {
+      var adminBtn = document.querySelector(".ovs-admin-side [data-ovs-admin-side-toggle]");
+      var adminSide = document.querySelector(".ovs-admin-side");
+      if (!adminBtn || !adminSide) {
+        return;
+      }
+
+      var adminKey = "ovs_admin_side_collapsed";
+      var adminBodyClass = "ovs-admin-side-collapsed";
+
+      var applyAdmin = function (collapsed) {
+        if (!isDesktop()) {
+          document.body.classList.remove(adminBodyClass);
+          adminBtn.textContent = "Hide Panel";
+          adminBtn.setAttribute("aria-expanded", "true");
+          return;
+        }
+        document.body.classList.toggle(adminBodyClass, !!collapsed);
+        adminBtn.textContent = collapsed ? "Show Panel" : "Hide Panel";
+        adminBtn.setAttribute("aria-expanded", collapsed ? "false" : "true");
+      };
+
+      applyAdmin(persistedFlag(adminKey));
+
+      adminBtn.addEventListener("click", function () {
+        if (!isDesktop()) return;
+        var nextCollapsed = !document.body.classList.contains(adminBodyClass);
+        applyAdmin(nextCollapsed);
+        saveFlag(adminKey, nextCollapsed);
+      });
+
+      window.addEventListener("resize", function () {
+        if (isDesktop()) {
+          applyAdmin(persistedFlag(adminKey));
+        } else {
+          applyAdmin(false);
+        }
+      });
+    }
   }
 
   function applyAdminLayout(info, state) {
@@ -477,6 +634,33 @@
     document.body.classList.add("ovs-admin-shell");
   }
 
+  function stripVoterLeftPanels() {
+    if (!document.body) {
+      return;
+    }
+
+    var children = Array.prototype.slice.call(document.body.children || []);
+    children.forEach(function (node) {
+      if (String(node.tagName || "").toUpperCase() === "ASIDE") {
+        node.remove();
+      }
+    });
+
+    var reopenButton = document.querySelector("[data-ovs-side-reopen]");
+    if (reopenButton) {
+      reopenButton.remove();
+    }
+
+    var main = document.querySelector("main");
+    if (main) {
+      main.classList.remove("ovs-voter-main");
+    }
+
+    document.body.classList.add("ovs-voter-no-side");
+    document.body.classList.remove("ovs-voter-shell");
+    document.body.classList.remove("ovs-voter-side-collapsed");
+  }
+
   function applySharedLayout(info, state) {
     if (info.section === "admin") {
       applyAdminLayout(info, state);
@@ -502,6 +686,10 @@
     }
 
     removeLegacyTopBars(newHeader);
+
+    if (info.section === "voter") {
+      stripVoterLeftPanels();
+    }
   }
 
   function resolvePlaceholderLink(label, section) {
@@ -619,23 +807,76 @@
     });
   }
 
+  function pruneLegacyVoterSidebarActions(info) {
+    if (String(info.section || "").toLowerCase() !== "voter") {
+      return;
+    }
+
+    var aside = document.querySelector("aside");
+    if (!aside) {
+      return;
+    }
+
+    var controls = aside.querySelectorAll("button, a");
+    controls.forEach(function (node) {
+      var label = textOf(node).replace(/\s+/g, " ").trim();
+      if (label === "cast ballot") {
+        var parent = node.parentElement;
+        node.remove();
+        if (parent && !parent.children.length) {
+          parent.remove();
+        }
+      }
+    });
+  }
+
   function bindResponsiveMenus(info) {
     var publicToggle = document.querySelector("[data-ovs-nav-toggle]");
     var publicHeader = document.querySelector(".ovs-header");
     if (publicToggle && publicHeader) {
       var closePublicMenu = function () {
         publicHeader.classList.remove("is-menu-open");
+        document.body.classList.remove("ovs-public-menu-open");
         publicToggle.setAttribute("aria-expanded", "false");
       };
 
+      var openPublicMenu = function () {
+        publicHeader.classList.add("is-menu-open");
+        document.body.classList.add("ovs-public-menu-open");
+        publicToggle.setAttribute("aria-expanded", "true");
+      };
+
       publicToggle.addEventListener("click", function () {
-        var open = publicHeader.classList.toggle("is-menu-open");
-        publicToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        if (publicHeader.classList.contains("is-menu-open")) {
+          closePublicMenu();
+        } else {
+          openPublicMenu();
+        }
       });
 
       publicHeader.addEventListener("click", function (event) {
         var target = event.target;
         if (target && target.closest && target.closest("a")) {
+          closePublicMenu();
+        }
+      });
+
+      document.addEventListener("click", function (event) {
+        if (!publicHeader.classList.contains("is-menu-open")) {
+          return;
+        }
+        var menu = publicHeader.querySelector("[data-ovs-header-menu]");
+        if (menu && menu.contains(event.target)) {
+          return;
+        }
+        if (publicToggle && publicToggle.contains(event.target)) {
+          return;
+        }
+        closePublicMenu();
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
           closePublicMenu();
         }
       });
@@ -690,6 +931,12 @@
 
     window.addEventListener("resize", function () {
       if (window.innerWidth > 1024) {
+        closeAdminMenu();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
         closeAdminMenu();
       }
     });
@@ -883,8 +1130,10 @@
 
     applySharedLayout(info, guarded.state);
     bindResponsiveMenus(info);
+    bindDesktopSidebarToggle(info);
     wirePlaceholderAnchors(info);
     wireSafeButtons(info);
+    pruneLegacyVoterSidebarActions(info);
     await hydrateIndexUpcomingElections(info);
     applyDynamicCopyrightYear();
     bindLogout();

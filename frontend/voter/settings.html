@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
@@ -88,7 +88,7 @@
 <link rel="stylesheet" href="../../assets/css/components.css"/>
 <link rel="stylesheet" href="../../assets/css/voter.css"/>
 </head>
-<body class="bg-surface text-on-surface">
+<body class="bg-surface text-on-surface ovs-section-voter ovs-voter-no-side">
 <!-- TopNavBar Shell -->
 <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 shadow-sm">
 <div class="flex items-center gap-8">
@@ -109,51 +109,8 @@
 </div>
 </header>
 <div class="flex min-h-screen pt-16">
-<!-- SideNavBar Shell -->
-<aside class="fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 flex flex-col py-4 bg-slate-50 dark:bg-slate-950 tonal-shift bg-slate-50 dark:bg-slate-900 border-r border-slate-100">
-<div class="px-6 mb-8">
-<div class="flex items-center gap-3 mb-4">
-<img alt="Voter Profile" class="w-10 h-10 rounded-lg object-cover" data-alt="professional portrait of a middle-aged voter with a warm smile, soft natural lighting in a clean indoor setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3rI7-hMw3MRQldRwHNGVCWIp5A8M_vImVabwjh7lwL24MwJIJo0bou8KN8xsnzdCVpRq9x_uzyZ2JY0PdJr--_Xato7Dv_sw4OBS2JaqGfJIiAV4khJ4KaQgALv_LvjK9t0sRhG_5M07sLRdu1Tdo09LSm0TEoP3RU_5U6Iteb47LxAG4DnXeaPBkpJAkqqiGuH2J9ZWjImIisBXemyKHEYQCmw8GotyBnnJIWibE90yuJIdMAVg8eiI4jT25d4J9vMEV_C1dJ-8"/>
-<div>
-<p class="text-sm font-bold text-on-surface">Verified Citizen</p>
-<p class="text-xs text-on-surface-variant">Voter Portal</p>
-</div>
-</div>
-<button class="w-full py-2 bg-primary-container text-white font-bold rounded-lg shadow-sm hover:translate-y-[-1px] transition-transform">
-                    Cast Ballot
-                </button>
-</div>
-<nav class="flex-1">
-<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-transform" href="#">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-<span class="font-body">Dashboard</span>
-</a>
-<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-transform" href="#">
-<span class="material-symbols-outlined" data-icon="ballot">ballot</span>
-<span class="font-body">Active Ballots</span>
-</a>
-<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-transform" href="#">
-<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
-<span class="font-body">Results</span>
-</a>
-<a class="flex items-center gap-3 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-transform" href="#">
-<span class="material-symbols-outlined" data-icon="person">person</span>
-<span class="font-body">Profile</span>
-</a>
-<a class="flex items-center gap-3 px-6 py-3 bg-white dark:bg-slate-800 text-blue-700 dark:text-blue-400 font-bold border-l-4 border-blue-700 translate-x-1 transition-transform duration-200" href="#">
-<span class="material-symbols-outlined" data-icon="settings">settings</span>
-<span class="font-body">Settings</span>
-</a>
-</nav>
-<div class="px-6 py-4 border-t border-slate-100">
-<a class="flex items-center gap-3 py-2 text-slate-500 dark:text-slate-400 hover:text-error transition-colors" href="#">
-<span class="material-symbols-outlined" data-icon="logout">logout</span>
-<span class="font-body">Log Out</span>
-</a>
-</div>
-</aside>
 <!-- Main Content Canvas -->
-<main class="ml-64 flex-1 p-12 bg-surface">
+<main class="flex-1 p-12 bg-surface">
 <div class="max-w-4xl">
 <header class="mb-12">
 <span class="label-md uppercase tracking-[0.05em] font-bold text-primary mb-2 block">Account Security</span>
@@ -178,15 +135,15 @@
 <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="col-span-2">
 <label class="block text-sm font-bold mb-2 text-on-surface">Current Password</label>
-<input class="w-full bg-surface-container-low border-0 rounded p-3 focus:ring-2 focus:ring-primary-container outline-none transition-all" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" type="password"/>
+<input class="w-full bg-surface-container-low border-0 rounded p-3 focus:ring-2 focus:ring-primary-container outline-none transition-all" placeholder="••••••••" type="password"/>
 </div>
 <div>
 <label class="block text-sm font-bold mb-2 text-on-surface">New Password</label>
-<input class="w-full bg-surface-container-low border-0 rounded p-3 focus:ring-2 focus:ring-primary-container outline-none transition-all" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" type="password"/>
+<input class="w-full bg-surface-container-low border-0 rounded p-3 focus:ring-2 focus:ring-primary-container outline-none transition-all" placeholder="••••••••" type="password"/>
 </div>
 <div>
 <label class="block text-sm font-bold mb-2 text-on-surface">Confirm New Password</label>
-<input class="w-full bg-surface-container-low border-0 rounded p-3 focus:ring-2 focus:ring-primary-container outline-none transition-all" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" type="password"/>
+<input class="w-full bg-surface-container-low border-0 rounded p-3 focus:ring-2 focus:ring-primary-container outline-none transition-all" placeholder="••••••••" type="password"/>
 </div>
 <div class="col-span-2 flex justify-end">
 <button class="px-6 py-2 bg-primary-container text-white font-bold rounded-lg hover:-translate-y-0.5 transition-transform" type="submit">
@@ -301,7 +258,7 @@
 </div>
 <div>
 <p class="font-bold text-on-surface">Chrome on Windows 11 <span class="ml-2 text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full uppercase">Current</span></p>
-<p class="text-xs text-on-surface-variant">Washington, D.C. â€¢ 10.0.0.12</p>
+<p class="text-xs text-on-surface-variant">Washington, D.C. • 10.0.0.12</p>
 </div>
 </div>
 <span class="text-xs text-on-surface-variant italic">Active Now</span>
@@ -313,7 +270,7 @@
 </div>
 <div>
 <p class="font-bold text-on-surface">Civic Ledger Mobile App (iOS)</p>
-<p class="text-xs text-on-surface-variant">iPhone 14 Pro â€¢ 172.16.2.8</p>
+<p class="text-xs text-on-surface-variant">iPhone 14 Pro • 172.16.2.8</p>
 </div>
 </div>
 <button class="text-xs font-bold text-error hover:underline">Revoke</button>
@@ -325,7 +282,7 @@
 </div>
 <div>
 <p class="font-bold text-on-surface">Safari on iPadOS</p>
-<p class="text-xs text-on-surface-variant">New York, NY â€¢ 192.168.1.5</p>
+<p class="text-xs text-on-surface-variant">New York, NY • 192.168.1.5</p>
 </div>
 </div>
 <button class="text-xs font-bold text-error hover:underline">Revoke</button>
@@ -340,7 +297,7 @@
 <!-- Footer Shell -->
 <footer class="w-full py-8 px-6 flex flex-col md:flex-row justify-between items-center ml-64 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
 <div class="text-slate-500 dark:text-slate-400 text-sm font-body mb-4 md:mb-0">
-            Â© 2024 Civic Ledger Platform. All rights reserved.
+            © 2024 Civic Ledger Platform. All rights reserved.
         </div>
 <div class="flex gap-6">
 <a class="text-sm font-body text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300" href="#">Legal</a>

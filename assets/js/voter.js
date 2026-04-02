@@ -291,6 +291,54 @@
     return list[0] || null;
   }
 
+  function dashboardBannerText(featured) {
+    if (!featured) {
+      return "No active elections at the moment. Check upcoming elections.";
+    }
+
+    var phase = String(featured.phase || "").toLowerCase();
+    var title = String(featured.title || "this election");
+
+    if (phase === "active" && !boolish(featured.has_voted)) {
+      return "Action Required: Complete your ballot for " + title + " by " + formatDate(featured.end_at) + ".";
+    }
+    if (phase === "active" && boolish(featured.has_voted)) {
+      return "Ballot submitted for " + title + ". Results will be visible after the election window closes.";
+    }
+    if (phase === "upcoming") {
+      return "Upcoming election: " + title + " starts on " + formatDate(featured.start_at) + ".";
+    }
+    if (phase === "closed") {
+      return title + " is closed. Final results are available.";
+    }
+
+    return "No active elections at the moment. Check upcoming elections.";
+  }
+
+  function dashboardBannerTone(featured) {
+    if (!featured) return "neutral";
+    var phase = String(featured.phase || "").toLowerCase();
+    if (phase === "active" && !boolish(featured.has_voted)) return "warning";
+    if (phase === "active" && boolish(featured.has_voted)) return "success";
+    if (phase === "upcoming") return "info";
+    if (phase === "closed") return "neutral";
+    return "neutral";
+  }
+
+  function stitchBannerClassByTone(tone) {
+    if (tone === "warning") return "bg-[#F59E0B]";
+    if (tone === "success") return "bg-[#10B981]";
+    if (tone === "info") return "bg-[#1D4ED8]";
+    return "bg-slate-600";
+  }
+
+  function fallbackBannerClassByTone(tone) {
+    if (tone === "warning") return "bg-amber-500";
+    if (tone === "success") return "bg-emerald-500";
+    if (tone === "info") return "bg-blue-600";
+    return "bg-slate-600";
+  }
+
   function downloadCsv(filename, rows) {
     var csv = rows
       .map(function (row) {
@@ -366,31 +414,32 @@
       return;
     }
 
-    var profileRes = await apiGet("voters/get-profile.php");
-    if (!profileRes.ok || !profileRes.json || !profileRes.json.success) {
-      return;
-    }
+    var responses = await Promise.all([
+      apiGet("voters/get-profile.php"),
+      apiGet("voters/get-elections.php", { status: "all", limit: 100 }),
+      apiGet("voters/get-voting-history.php", { limit: 100 })
+    ]);
+    var profileRes = responses[0];
+    var electionsRes = responses[1];
+    var historyRes = responses[2];
 
-    var electionsRes = await apiGet("voters/get-elections.php", { status: "all", limit: 100 });
-    var historyRes = await apiGet("voters/get-voting-history.php", { limit: 100 });
-
-    var profile = (profileRes.json.data && profileRes.json.data.profile) || {};
+    var profile = profileRes.ok && profileRes.json && profileRes.json.success
+      ? ((profileRes.json.data && profileRes.json.data.profile) || {})
+      : {};
     var elections = electionsRes.ok && electionsRes.json && electionsRes.json.data ? electionsRes.json.data.items || [] : [];
     var history = historyRes.ok && historyRes.json && historyRes.json.data ? historyRes.json.data.items || [] : [];
     var featured = pickFeaturedElection(elections);
     var action = electionAction(featured);
+    var bannerTone = dashboardBannerTone(featured);
 
-    var banner = main.querySelector("div.bg\\[\\#F59E0B\\] p");
+    var banner = main.querySelector("#ovs-dashboard-alert-text") || main.querySelector("div.bg\\[\\#F59E0B\\] p");
     if (banner) {
-      if (featured && String(featured.phase || "").toLowerCase() === "active" && !boolish(featured.has_voted)) {
-        banner.textContent = "Action Required: Complete your municipal ballot by " + formatDate(featured.end_at) + ".";
-      } else if (featured && String(featured.phase || "").toLowerCase() === "active" && boolish(featured.has_voted)) {
-        banner.textContent = "Ballot submitted. Results will be visible after the election window closes.";
-      } else if (featured && String(featured.phase || "").toLowerCase() === "upcoming") {
-        banner.textContent = "Upcoming election starts on " + formatDate(featured.start_at) + ".";
-      } else {
-        banner.textContent = "No active elections at the moment. Check upcoming elections.";
-      }
+      banner.textContent = dashboardBannerText(featured);
+    }
+    var bannerShell = main.querySelector("#ovs-dashboard-alert") || (banner ? banner.parentElement : null);
+    if (bannerShell) {
+      bannerShell.classList.remove("bg-[#F59E0B]", "bg-[#10B981]", "bg-[#1D4ED8]", "bg-slate-600");
+      bannerShell.classList.add(stitchBannerClassByTone(bannerTone));
     }
 
     var heading = main.querySelector("header h1");
@@ -511,19 +560,8 @@
     var featured = pickFeaturedElection(elections);
     var action = electionAction(featured);
 
-    var bannerText = "No active elections at the moment. Check upcoming elections.";
-    if (featured) {
-      var phase = String(featured.phase || "").toLowerCase();
-      if (phase === "active" && !boolish(featured.has_voted)) {
-        bannerText = "Action required: Cast your ballot for " + featured.title + " before " + formatDate(featured.end_at) + ".";
-      } else if (phase === "active" && boolish(featured.has_voted)) {
-        bannerText = "Ballot submitted for " + featured.title + ". Results will be available after election close.";
-      } else if (phase === "upcoming") {
-        bannerText = "Upcoming election: " + featured.title + " starts on " + formatDate(featured.start_at) + ".";
-      } else {
-        bannerText = featured.title + " is closed. You can view final results.";
-      }
-    }
+    var bannerText = dashboardBannerText(featured);
+    var bannerTone = dashboardBannerTone(featured);
 
     main.innerHTML =
       '<div class="max-w-6xl mx-auto p-6 space-y-6">' +
@@ -531,7 +569,7 @@
       '<p class="text-xs font-bold uppercase tracking-widest text-primary mb-1">Citizen Overview</p>' +
       '<h1 class="text-3xl md:text-4xl font-extrabold text-on-surface">Welcome, ' + escapeHtml(profile.full_name || "Voter") + "</h1>" +
       "</section>" +
-      '<section class="bg-amber-500 text-white rounded p-4 text-sm font-semibold">' + escapeHtml(bannerText) + "</section>" +
+      '<section class="' + fallbackBannerClassByTone(bannerTone) + ' text-white rounded p-4 text-sm font-semibold">' + escapeHtml(bannerText) + "</section>" +
       '<section class="bg-white border border-slate-200 rounded p-6">' +
       '<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">' +
       '<div>' +

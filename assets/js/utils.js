@@ -1,15 +1,37 @@
 (function () {
+  function isLocalHost() {
+    if (typeof window === "undefined" || !window.location) return false;
+    var host = String(window.location.hostname || "").toLowerCase();
+    return host === "localhost" || host === "127.0.0.1";
+  }
+
+  function storageKeyScoped() {
+    if (typeof window === "undefined" || !window.location) {
+      return "ovs_api_base";
+    }
+    return "ovs_api_base::" + String(window.location.host || "default");
+  }
+
   function configuredApiBase() {
     var candidates = [];
     try {
       if (typeof window !== "undefined" && window.location && window.location.search) {
         var params = new URLSearchParams(window.location.search);
         var queryValue = String(params.get("api_base") || "").trim();
-        if (queryValue) {
-          candidates.push(queryValue);
-          if (window.localStorage) {
-            window.localStorage.setItem("ovs_api_base", queryValue);
+        if (window.localStorage) {
+          var scopedKey = storageKeyScoped();
+          if (queryValue.toLowerCase() === "auto") {
+            window.localStorage.removeItem(scopedKey);
+            window.localStorage.removeItem("ovs_api_base");
+          } else if (queryValue) {
+            window.localStorage.setItem(scopedKey, queryValue);
+            if (!isLocalHost()) {
+              window.localStorage.setItem("ovs_api_base", queryValue);
+            }
           }
+        }
+        if (queryValue && queryValue.toLowerCase() !== "auto") {
+          candidates.push(queryValue);
         }
       }
     } catch (e) {
@@ -27,8 +49,12 @@
     }
     try {
       if (typeof window !== "undefined" && window.localStorage) {
-        var stored = window.localStorage.getItem("ovs_api_base");
-        if (stored) candidates.push(stored);
+        var scoped = window.localStorage.getItem(storageKeyScoped());
+        if (scoped) candidates.push(scoped);
+        if (!isLocalHost()) {
+          var stored = window.localStorage.getItem("ovs_api_base");
+          if (stored) candidates.push(stored);
+        }
       }
     } catch (e) {
       /* ignore storage access errors */

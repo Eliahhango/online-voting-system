@@ -8,6 +8,14 @@ body.ovs-section-admin.ovs-admin-shell {
   color: #0b1f3b;
 }
 
+body.ovs-section-admin.ovs-admin-shell.ovs-admin-menu-open::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.45);
+  z-index: 135;
+}
+
 .ovs-admin-top {
   position: fixed;
   top: 0;
@@ -17,6 +25,7 @@ body.ovs-section-admin.ovs-admin-shell {
   background: #ffffff;
   border-bottom: 1px solid #d7deea;
   z-index: 120;
+  transition: left 0.24s ease;
 }
 
 .ovs-admin-top-inner {
@@ -54,6 +63,32 @@ body.ovs-section-admin.ovs-admin-shell {
 
 .ovs-admin-menu-toggle:hover,
 .ovs-admin-menu-toggle:focus {
+  border-color: #94a3b8;
+  background: #f8fafc;
+  outline: none;
+}
+
+.ovs-admin-side-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 6px;
+  min-height: 34px;
+  padding: 0 10px;
+  font-family: Manrope, Arial, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.ovs-admin-side-toggle:hover,
+.ovs-admin-side-toggle:focus {
   border-color: #94a3b8;
   background: #f8fafc;
   outline: none;
@@ -145,6 +180,8 @@ body.ovs-section-admin.ovs-admin-shell {
   display: flex;
   flex-direction: column;
   z-index: 130;
+  transition: transform 0.24s ease;
+  will-change: transform;
 }
 
 .ovs-admin-side-head {
@@ -292,6 +329,22 @@ body.ovs-section-admin.ovs-admin-shell main.ovs-admin-main {
   width: calc(100% - var(--ovs-admin-side-width)) !important;
   min-height: 100vh;
   padding-top: calc(var(--ovs-admin-top-height) + 20px) !important;
+  transition: margin-left 0.24s ease, width 0.24s ease;
+}
+
+@media (min-width: 1025px) {
+  body.ovs-section-admin.ovs-admin-shell.ovs-admin-side-collapsed .ovs-admin-side {
+    transform: translateX(calc(-1 * var(--ovs-admin-side-width)));
+  }
+
+  body.ovs-section-admin.ovs-admin-shell.ovs-admin-side-collapsed .ovs-admin-top {
+    left: 0;
+  }
+
+  body.ovs-section-admin.ovs-admin-shell.ovs-admin-side-collapsed main.ovs-admin-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -331,6 +384,10 @@ body.ovs-section-admin.ovs-admin-shell main.ovs-admin-main {
     justify-content: center;
   }
 
+  .ovs-admin-side-toggle {
+    display: none;
+  }
+
   .ovs-admin-top-nav {
     display: none;
   }
@@ -360,7 +417,7 @@ body.ovs-section-admin.ovs-admin-shell main.ovs-admin-main {
   .ovs-admin-side {
     top: var(--ovs-admin-top-height);
     width: 100%;
-    height: calc(100vh - var(--ovs-admin-top-height));
+    height: calc(100dvh - var(--ovs-admin-top-height));
     position: fixed;
     left: 0;
     right: 0;

@@ -10,7 +10,7 @@ function app_log(string $level, string $message, array $context = []): void
     $logFile = $cfg['log_file'];
     $dir = dirname($logFile);
     if (!is_dir($dir)) {
-        mkdir($dir, 0777, true);
+        @mkdir($dir, 0777, true);
     }
 
     $entry = [
@@ -20,7 +20,12 @@ function app_log(string $level, string $message, array $context = []): void
         'context' => $context,
     ];
 
-    file_put_contents($logFile, json_encode($entry, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . PHP_EOL, FILE_APPEND);
+    $line = json_encode($entry, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . PHP_EOL;
+    $written = @file_put_contents($logFile, $line, FILE_APPEND);
+    if ($written === false) {
+        // Fallback for read-only environments (for example, some serverless deployments).
+        error_log(trim($line));
+    }
 }
 
 function audit_log(string $action, ?int $userId = null, array $meta = []): void
