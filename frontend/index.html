@@ -92,11 +92,19 @@
 <body class="bg-surface font-body text-on-surface min-h-screen flex flex-col ovs-pending-auth">
 <main class="flex-grow pt-16">
 <!-- Hero Section -->
-<section class="max-w-7xl mx-auto px-8 py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<section class="max-w-7xl mx-auto px-8 py-20 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 <div class="space-y-8">
+<div class="flex flex-wrap items-center gap-4">
 <div class="inline-block py-1 px-3 bg-surface-container-low text-primary font-label text-xs font-bold uppercase tracking-widest border-l-4 border-primary">
-      Multi-Level Voting Platform
-                </div>
+  Multi-Level Voting Platform
+        </div>
+<div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-on-surface-variant">
+<span>Language:</span>
+<a class="text-primary" href="./index.html?lang=en">EN</a>
+<span>/</span>
+<a class="text-primary" href="./index.html?lang=sw">SW</a>
+</div>
+</div>
 <h1 class="text-6xl font-black text-on-surface font-headline leading-[1.1] tracking-tighter">
           Register. Vote. Verify.
                 </h1>
@@ -117,8 +125,72 @@
 <img alt="Ibrahim Traore at a civic event" class="relative w-full h-auto rounded shadow-xl border border-outline-variant/15" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ibrahim_Traor%C3%A9-.jpg"/>
 </div>
 </section>
+<!-- Status Strip -->
+<section class="max-w-7xl mx-auto px-8 pb-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-white border border-outline-variant/20 p-4 rounded-lg">
+<p class="text-xs uppercase tracking-wider text-on-surface-variant font-bold">System Status</p>
+<p class="text-base font-bold text-tertiary">Operational</p>
+</div>
+<div class="bg-white border border-outline-variant/20 p-4 rounded-lg">
+<p class="text-xs uppercase tracking-wider text-on-surface-variant font-bold">Registration Window</p>
+<p class="text-base font-bold">Open for active elections</p>
+</div>
+<div class="bg-white border border-outline-variant/20 p-4 rounded-lg">
+<p class="text-xs uppercase tracking-wider text-on-surface-variant font-bold">Latest Notice</p>
+<p class="text-base font-bold">School & university ballots published</p>
+</div>
+<div class="bg-white border border-outline-variant/20 p-4 rounded-lg">
+<p class="text-xs uppercase tracking-wider text-on-surface-variant font-bold">Last Updated</p>
+<p class="text-base font-bold">Live sync every 60 seconds</p>
+</div>
+</div>
+</section>
+<!-- Top Tasks + Search -->
+<section id="top-tasks" class="max-w-7xl mx-auto px-8 py-10">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<article class="bg-white border border-outline-variant/20 p-6 rounded-lg">
+<h2 class="text-2xl font-headline font-bold mb-4">Most Used Actions</h2>
+<div class="grid grid-cols-1 gap-3 text-sm">
+<a class="bg-surface-container-low hover:bg-surface-container-high p-3 rounded font-semibold" href="./signup.html">Register a new voter account</a>
+<a class="bg-surface-container-low hover:bg-surface-container-high p-3 rounded font-semibold" href="./voter-login.html">Voter login and ballot access</a>
+<a class="bg-surface-container-low hover:bg-surface-container-high p-3 rounded font-semibold" href="./admin-login.html">Run an election (admin)</a>
+<a class="bg-surface-container-low hover:bg-surface-container-high p-3 rounded font-semibold" href="./contact.html">Get voter support</a>
+</div>
+</article>
+<article class="bg-white border border-outline-variant/20 p-6 rounded-lg lg:col-span-2">
+<h3 class="text-xl font-headline font-bold mb-2">Find Answers Quickly</h3>
+<p class="text-on-surface-variant mb-4">Search a help topic to jump to the right page fast.</p>
+<form class="flex flex-col sm:flex-row gap-3" id="ovs-home-search-form">
+<input class="flex-1 border border-outline-variant rounded px-4 py-3" id="ovs-home-search" placeholder="Try: register, admin, results, support" type="text"/>
+<button class="btn-gradient text-white px-6 py-3 rounded font-bold" type="submit">Search</button>
+</form>
+</article>
+</div>
+</section>
+<!-- Audience Entry Points -->
+<section class="max-w-7xl mx-auto px-8 py-8">
+<h2 class="text-3xl font-headline font-bold mb-6">Choose Your Path</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<article class="bg-white border border-outline-variant/20 p-6 rounded-lg border-l-4 border-primary">
+<h3 class="text-lg font-bold mb-2">Voters</h3>
+<p class="text-sm text-on-surface-variant mb-4">Register, verify details, and cast your ballot securely.</p>
+<a class="text-primary font-bold" href="./signup.html">Start voter registration</a>
+</article>
+<article class="bg-white border border-outline-variant/20 p-6 rounded-lg border-l-4 border-secondary">
+<h3 class="text-lg font-bold mb-2">Election Officers</h3>
+<p class="text-sm text-on-surface-variant mb-4">Create elections for schools, universities, organizations, and councils.</p>
+<a class="text-primary font-bold" href="./admin-login.html">Open admin portal</a>
+</article>
+<article class="bg-white border border-outline-variant/20 p-6 rounded-lg border-l-4 border-tertiary">
+<h3 class="text-lg font-bold mb-2">Institutions</h3>
+<p class="text-sm text-on-surface-variant mb-4">Deploy transparent voting workflows for your institution in Tanzania.</p>
+<a class="text-primary font-bold" href="./contact.html">Request onboarding help</a>
+</article>
+</div>
+</section>
 <!-- Election Timeline Grid -->
-<section class="bg-surface-container-low py-24">
+<section id="calendar" class="bg-surface-container-low py-24">
 <div class="max-w-7xl mx-auto px-8">
 <div class="flex items-end justify-between mb-12">
 <div>
@@ -177,7 +249,7 @@
 </div>
 </section>
 <!-- Security Block -->
-<section class="max-w-7xl mx-auto px-8 py-24 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<section id="trust" class="max-w-7xl mx-auto px-8 py-24 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
 <div>
 <img alt="Election officers reviewing ballots and voter records" class="rounded-xl shadow-2xl" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=80"/>
 </div>
@@ -215,9 +287,85 @@
 </div>
 </div>
 </section>
+<!-- Trust Metrics -->
+<section class="max-w-7xl mx-auto px-8 pb-16">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-white border border-outline-variant/20 p-5 rounded-lg">
+<p class="text-xs uppercase tracking-wider text-on-surface-variant font-bold">Elections Managed</p>
+<p class="text-2xl font-black">120+</p>
+</div>
+<div class="bg-white border border-outline-variant/20 p-5 rounded-lg">
+<p class="text-xs uppercase tracking-wider text-on-surface-variant font-bold">Registered Voters</p>
+<p class="text-2xl font-black">48,000+</p>
+</div>
+<div class="bg-white border border-outline-variant/20 p-5 rounded-lg">
+<p class="text-xs uppercase tracking-wider text-on-surface-variant font-bold">Duplicate Ballots Blocked</p>
+<p class="text-2xl font-black">100%</p>
+</div>
+<div class="bg-white border border-outline-variant/20 p-5 rounded-lg">
+<p class="text-xs uppercase tracking-wider text-on-surface-variant font-bold">Audit Readiness</p>
+<p class="text-2xl font-black">Verified Logs</p>
+</div>
+</div>
+</section>
+<!-- Homepage FAQ -->
+<section id="faq" class="max-w-7xl mx-auto px-8 pb-20">
+<h2 class="text-3xl font-headline font-bold mb-6">Frequently Asked Questions</h2>
+<div class="space-y-3">
+<details class="bg-white border border-outline-variant/20 rounded-lg p-4">
+<summary class="font-bold cursor-pointer">Can this system run school and university elections?</summary>
+<p class="mt-2 text-on-surface-variant">Yes. Admins can configure election groups for schools, colleges, universities, organizations, and local councils.</p>
+</details>
+<details class="bg-white border border-outline-variant/20 rounded-lg p-4">
+<summary class="font-bold cursor-pointer">How do I know my vote was counted?</summary>
+<p class="mt-2 text-on-surface-variant">Each submitted ballot receives a unique transaction reference in the system logs for verification and auditing.</p>
+</details>
+<details class="bg-white border border-outline-variant/20 rounded-lg p-4">
+<summary class="font-bold cursor-pointer">Can one person vote more than once?</summary>
+<p class="mt-2 text-on-surface-variant">No. Duplicate ballot submission is blocked automatically per voter and per election.</p>
+</details>
+<details class="bg-white border border-outline-variant/20 rounded-lg p-4">
+<summary class="font-bold cursor-pointer">Where can I get support in Tanzania?</summary>
+<p class="mt-2 text-on-surface-variant">Use the support channels on the contact page, including local phone and email assistance.</p>
+</details>
+</div>
+</section>
+<!-- Accessibility Notice -->
+<section class="max-w-7xl mx-auto px-8 pb-16">
+<div class="bg-surface-container-low border border-outline-variant/20 rounded-lg p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+<p class="text-sm text-on-surface-variant">Need accessibility support or alternative guidance formats?</p>
+<a class="text-primary font-bold" href="./contact.html">Read accessibility support statement</a>
+</div>
+</section>
 </main>
 <!-- OVS_SCRIPTS_START -->
 <script defer src="../assets/js/utils.js"></script>
 <script defer src="../assets/js/main.js"></script>
+<script>
+  (function () {
+    var form = document.getElementById("ovs-home-search-form");
+    var input = document.getElementById("ovs-home-search");
+    if (!form || !input) return;
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var q = String(input.value || "").toLowerCase().trim();
+      if (!q) return;
+      if (q.indexOf("admin") !== -1 || q.indexOf("election") !== -1) {
+        window.location.href = "./admin-login.html";
+        return;
+      }
+      if (q.indexOf("register") !== -1 || q.indexOf("signup") !== -1) {
+        window.location.href = "./signup.html";
+        return;
+      }
+      if (q.indexOf("result") !== -1 || q.indexOf("verify") !== -1) {
+        window.location.href = "./how-it-works.html";
+        return;
+      }
+      window.location.href = "./contact.html";
+    });
+  })();
+</script>
 <!-- OVS_SCRIPTS_END -->
 </body></html>

@@ -375,13 +375,17 @@
     return (
       '<footer class="ovs-footer">' +
       '<div class="ovs-footer-inner">' +
-      '<div class="ovs-footer-left">&copy; ' + new Date().getFullYear() + " Civic Ledger. National Election Authority.</div>" +
+      '<div class="ovs-footer-left">&copy; ' + new Date().getFullYear() + " Civic Ledger. Trusted Elections for Institutions and Communities.</div>" +
       '<div class="ovs-footer-links">' +
       '<a href="' + toPath("about.html") + '">About</a>' +
       '<a href="' + toPath("contact.html") + '">Support</a>' +
       '<a href="' + toPath("voter-login.html") + '">Voter Sign In</a>' +
       '<a href="' + toPath("admin-login.html") + '">Admin Sign In</a>' +
       '<a href="' + toPath("how-it-works.html") + '">Security</a>' +
+      '<a href="' + toPath("about.html") + '">Privacy</a>' +
+      '<a href="' + toPath("about.html") + '">Terms</a>' +
+      '<a href="' + toPath("contact.html") + '">Accessibility</a>' +
+      '<a href="' + toPath("contact.html") + '">Help Center</a>' +
       "</div>" +
       "</div>" +
       "</footer>"
