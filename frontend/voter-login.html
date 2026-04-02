@@ -11,23 +11,28 @@
 <link rel="stylesheet" href="../assets/css/auth.css"/>
 </head>
 <body class="bg-surface text-on-surface font-body min-h-screen flex flex-col auth-shell">
-<main class="flex-grow flex items-center justify-center px-4 py-10">
-  <section class="w-full max-w-[520px] auth-card bg-white border rounded-xl overflow-hidden">
-    <header class="pt-10 px-8 pb-4 text-center auth-card-head voter-theme">
-      <h1 class="font-headline text-5xl font-black tracking-tight mb-2">Civic Ledger</h1>
+<header class="auth-page-brand">
+  <div class="auth-page-brand-inner">
+    <div>
+      <h1 class="font-headline text-4xl font-black tracking-tight mb-1">Civic Ledger</h1>
       <p class="font-label text-xs uppercase tracking-[0.2em]">Voter Access Portal</p>
-    </header>
+    </div>
+  </div>
+</header>
 
-    <div class="px-8 pb-10">
+<main class="flex-grow flex items-start justify-center px-4 py-8">
+  <section class="w-full max-w-[520px] auth-card bg-white border rounded-xl overflow-hidden auth-plain-panel">
+
+    <div class="px-8 py-10">
       <div class="mb-7">
         <h2 class="font-headline text-3xl font-extrabold mb-2">Sign In to Vote</h2>
-        <p class="text-on-surface-variant text-[0.96rem]">Enter your voter credentials to access your secure ballot dashboard.</p>
+        <p class="text-on-surface-variant text-[0.96rem]">Enter your government-issued credentials to access your secure ballot dashboard.</p>
       </div>
 
       <form class="space-y-5" novalidate>
         <div class="space-y-2">
           <label class="block font-label text-[0.78rem] font-bold uppercase tracking-[0.08em] text-on-surface" for="identifier">Email or Registration ID</label>
-          <input class="w-full h-12 border border-outline-variant rounded-md px-4 text-on-surface font-inter font-medium outline-none" id="identifier" name="identifier" autocomplete="username" placeholder="voter@ovs.local or 123456789" type="text"/>
+          <input class="w-full h-12 border border-outline-variant rounded-md px-4 text-on-surface font-inter font-medium outline-none" id="identifier" name="identifier" autocomplete="username" placeholder="Email or Registration ID" type="text"/>
           <a class="auth-inline-link text-[0.82rem]" href="./how-it-works.html">How to find your Registration ID</a>
         </div>
 
