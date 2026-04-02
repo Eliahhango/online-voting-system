@@ -1,7 +1,23 @@
 (function () {
   "use strict";
 
-  if (document.body) {
+  function ovsUtils() {
+    return window.OVSUtils || {};
+  }
+
+  function pageInfo() {
+    if (typeof ovsUtils().pageInfo === "function") {
+      return ovsUtils().pageInfo();
+    }
+    var path = String(window.location.pathname || "").replace(/\\/g, "/").toLowerCase();
+    var file = path.split("/").pop() || "";
+    return { section: "public", file: file };
+  }
+
+  var info = pageInfo();
+  var isDashboard = String(info.file || "").toLowerCase() === "dashboard.html";
+
+  if (document.body && !isDashboard) {
     document.body.classList.add("ovs-voter-loading");
   }
 
@@ -1610,7 +1626,7 @@
           showError(main, "Voter page initialization failed: " + (err && err.message ? err.message : "Unknown error"));
         }
       } finally {
-        if (document.body) {
+        if (document.body && !isDashboard) {
           document.body.classList.remove("ovs-voter-loading");
         }
       }

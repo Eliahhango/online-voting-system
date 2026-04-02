@@ -1268,7 +1268,11 @@
       return;
     }
 
-    applySharedLayout(info, guarded.state);
+    var isDashboard = String(info.file || "").toLowerCase() === "dashboard.html";
+    if (!isDashboard) {
+      applySharedLayout(info, guarded.state);
+    }
+    
     bindResponsiveMenus(info);
     bindDesktopSidebarToggle(info);
     wirePlaceholderAnchors(info);
