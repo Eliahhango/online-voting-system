@@ -1183,7 +1183,7 @@
       return /view full calendar/i.test(String(a.textContent || ""));
     });
     if (fullCalendarLink) {
-      fullCalendarLink.setAttribute("href", toPath("voter/elections.html"));
+      fullCalendarLink.setAttribute("href", toPath("how-it-works.html"));
     }
 
     var grid = section.querySelector(".grid.grid-cols-1.md\\:grid-cols-3.gap-6") || section.querySelector(".grid");
