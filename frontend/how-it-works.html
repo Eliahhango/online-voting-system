@@ -148,7 +148,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="bg-surface-container-low p-6 rounded-lg">
 <span class="font-bold text-primary mb-2 block">Eligibility Check</span>
-<p class="text-sm">Automated cross-referencing with national voter rolls to confirm your active status.</p>
+<p class="text-sm">Automated checks confirm your eligibility against the active voter list for your institution or election category.</p>
 </div>
 <div class="bg-surface-container-low p-6 rounded-lg">
 <span class="font-bold text-primary mb-2 block">Encryption Pair</span>
@@ -173,7 +173,7 @@
 <span class="material-symbols-outlined text-4xl text-primary" data-icon="ballot">ballot</span>
 <h2 class="font-headline text-3xl font-bold">3. Select Ballot</h2>
 </div>
-<p class="text-on-surface-variant text-lg mb-6 leading-relaxed">You only see ballots for your constituency. Candidate profiles and referendum summaries help you make an informed choice before submission.</p>
+<p class="text-on-surface-variant text-lg mb-6 leading-relaxed">You only see ballots assigned to your election group, such as school, university, community, cooperative, or public constituency.</p>
 <ul class="space-y-4">
 <li class="flex items-center gap-3 bg-surface-container-low p-4 rounded">
 <span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
@@ -238,29 +238,29 @@
 <div class="space-y-4">
 <details class="group bg-white rounded-lg shadow-sm">
 <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-<span class="font-bold">Is my vote really secret?</span>
+<span class="font-bold">Can this system be used in schools and universities?</span>
 <span class="material-symbols-outlined group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
 </summary>
 <div class="p-6 pt-0 border-t border-outline-variant/15 text-on-surface-variant">
-                                Yes. Civic Ledger uses cryptographic blinding. The authority can verify that you are a registered voter who has cast one ballot, but they have no technical way to link your identity to the specific choices inside that ballot.
+                Yes. Civic Ledger supports multi-level elections including schools, universities, associations, cooperatives, local councils, and national elections. Admins can create election categories, positions, and voter groups for each level.
                             </div>
 </details>
 <details class="group bg-white rounded-lg shadow-sm">
 <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-<span class="font-bold">What if I lose my private key?</span>
+<span class="font-bold">Is my vote really secret and protected?</span>
 <span class="material-symbols-outlined group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
 </summary>
 <div class="p-6 pt-0 border-t border-outline-variant/15 text-on-surface-variant">
-                                During registration, you are provided with a recovery phrase. If both are lost, you must visit a local verification center in person to reset your biometric profile.
+                Yes. Your identity is verified before voting, but your ballot content is encrypted and stored separately. The system can verify that you voted once without exposing who you voted for.
                             </div>
 </details>
 <details class="group bg-white rounded-lg shadow-sm">
 <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-<span class="font-bold">Can I change my vote after submitting?</span>
+<span class="font-bold">Can an admin run more than one election at the same time?</span>
 <span class="material-symbols-outlined group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
 </summary>
 <div class="p-6 pt-0 border-t border-outline-variant/15 text-on-surface-variant">
-                                No. To maintain the integrity of the ledger, once a block is confirmed, it is permanent. This prevents "vote manipulation" and ensures the count is final.
+                Yes. Multiple elections can run in parallel for different groups or levels. For example, a university can run student union elections while a department runs class representative voting.
                             </div>
 </details>
 </div>
