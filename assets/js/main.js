@@ -223,6 +223,10 @@
       return false;
     }
 
+    if (node.classList && node.classList.contains("ovs-voter-dashboard-header")) {
+      return false;
+    }
+
     var tag = String(node.tagName || "").toLowerCase();
     if (tag !== "header" && tag !== "nav") {
       return false;
@@ -289,6 +293,12 @@
     if (!document.body) {
       return;
     }
+
+    var info = pageInfo();
+    if (info.section === "voter") {
+      return;
+    }
+
     removeLegacyTopBars(null);
     removeLegacyFooters(null);
   }

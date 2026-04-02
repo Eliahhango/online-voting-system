@@ -474,14 +474,13 @@
         : "No election is currently available for your account.";
     }
 
-    var openBallotButton = Array.prototype.find.call(main.querySelectorAll("button"), function (btn) {
-      return String(btn.textContent || "").toLowerCase().indexOf("open ballot") !== -1;
-    });
+    var openBallotButton = main.querySelector("#ovs-dashboard-open-ballot");
     if (openBallotButton) {
-      openBallotButton.firstChild.nodeValue = action.label + " ";
-      openBallotButton.addEventListener("click", function () {
-        window.location.href = action.href;
-      });
+      openBallotButton.setAttribute("href", action.href);
+      var label = openBallotButton.querySelector("span:last-child");
+      if (label) {
+        label.textContent = action.label;
+      }
     }
 
     var tableBody = main.querySelector("#ovs-dashboard-history-body");
