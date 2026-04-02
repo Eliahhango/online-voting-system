@@ -585,8 +585,8 @@ textarea:focus-visible {
 
 /* Hide legacy stitched top shell from first paint (prevents reload flash). */
 body > nav[class*="fixed"],
-body > header[class*="fixed"]:not(.ovs-header),
-body > header[class*="sticky"]:not(.ovs-header) {
+body > header[class*="fixed"]:not(.ovs-header):not(.ovs-voter-dashboard-header),
+body > header[class*="sticky"]:not(.ovs-header):not(.ovs-voter-dashboard-header) {
   display: none !important;
 }
 
@@ -597,8 +597,8 @@ body > footer:not(.ovs-footer) {
 
 /* Keep compatibility for pages that add ovs-auth-ready after shared hydration. */
 body.ovs-auth-ready > nav[class*="fixed"],
-body.ovs-auth-ready > header[class*="fixed"]:not(.ovs-header),
-body.ovs-auth-ready > header[class*="sticky"]:not(.ovs-header),
+body.ovs-auth-ready > header[class*="fixed"]:not(.ovs-header):not(.ovs-voter-dashboard-header),
+body.ovs-auth-ready > header[class*="sticky"]:not(.ovs-header):not(.ovs-voter-dashboard-header),
 body.ovs-auth-ready > footer:not(.ovs-footer) {
   display: none !important;
 }

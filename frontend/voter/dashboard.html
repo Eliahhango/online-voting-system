@@ -44,8 +44,12 @@
 </div>
 </a>
 <nav class="hidden items-center gap-6 md:flex">
+<a class="text-sm font-semibold text-slate-600 transition-colors hover:text-[#123b8a]" href="dashboard.html">Dashboard</a>
 <a class="text-sm font-semibold text-slate-600 transition-colors hover:text-[#123b8a]" href="elections.html">Elections</a>
+<a class="text-sm font-semibold text-slate-600 transition-colors hover:text-[#123b8a]" href="ballot.html">Ballot</a>
 <a class="text-sm font-semibold text-slate-600 transition-colors hover:text-[#123b8a]" href="results.html">Results</a>
+<a class="text-sm font-semibold text-slate-600 transition-colors hover:text-[#123b8a]" href="profile.html">Profile</a>
+<a class="text-sm font-semibold text-slate-600 transition-colors hover:text-[#123b8a]" href="settings.html">Settings</a>
 <a class="text-sm font-semibold text-slate-600 transition-colors hover:text-[#123b8a]" href="../contact.html">Support</a>
 </nav>
 <div class="flex items-center gap-2">
@@ -100,10 +104,10 @@
 
 <div id="ovs-dashboard-alert" class="mb-8 rounded-lg border-l-4 border-amber-500 bg-amber-50 p-4 sm:p-5 shadow-sm">
 <div class="flex gap-4 items-start">
-<span class="mt-0.5 material-symbols-outlined text-2xl text-amber-600" aria-hidden="true">info</span>
+<span id="ovs-dashboard-alert-icon" class="mt-0.5 material-symbols-outlined text-2xl text-amber-600" aria-hidden="true">info</span>
 <div class="flex-1">
 <p id="ovs-dashboard-alert-text" class="text-sm font-semibold text-amber-900">Action Required: Complete your ballot for the active election before the voting window closes.</p>
-<a class="mt-3 inline-flex items-center gap-2 text-sm font-bold text-amber-700 hover:text-amber-900" href="elections.html">Check elections <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span></a>
+<a id="ovs-dashboard-alert-link" class="mt-3 inline-flex items-center gap-2 text-sm font-bold text-amber-700 hover:text-amber-900" href="elections.html">Check elections <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span></a>
 </div>
 </div>
 </div>
@@ -160,7 +164,8 @@
 </div>
 </div>
 <div class="space-y-2">
-<a class="block rounded-lg border border-slate-200 px-4 py-3 font-semibold text-slate-900 hover:bg-slate-50 transition-colors text-sm" href="profile.html">Profile & Settings</a>
+<a class="block rounded-lg border border-slate-200 px-4 py-3 font-semibold text-slate-900 hover:bg-slate-50 transition-colors text-sm" href="profile.html">Profile</a>
+<a class="block rounded-lg border border-slate-200 px-4 py-3 font-semibold text-slate-900 hover:bg-slate-50 transition-colors text-sm" href="settings.html">Settings</a>
 <a class="block rounded-lg border border-slate-200 px-4 py-3 font-semibold text-slate-900 hover:bg-slate-50 transition-colors text-sm" href="results.html">View Results</a>
 <a class="block rounded-lg border border-slate-200 px-4 py-3 font-semibold text-slate-900 hover:bg-slate-50 transition-colors text-sm" href="../contact.html">Get Support</a>
 </div>

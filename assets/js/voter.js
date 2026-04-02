@@ -333,15 +333,33 @@
   }
 
   function stitchBannerClassByTone(tone) {
-    if (tone === "success") return "bg-blue-700";
-    if (tone === "info") return "bg-blue-600";
-    return "bg-blue-800";
+    if (tone === "success") return "border-emerald-500 bg-emerald-50";
+    if (tone === "info") return "border-blue-500 bg-blue-50";
+    return "border-slate-300 bg-slate-50";
+  }
+
+  function stitchBannerTextClassByTone(tone) {
+    if (tone === "success") return "text-emerald-900";
+    if (tone === "info") return "text-blue-900";
+    return "text-slate-900";
+  }
+
+  function stitchBannerLinkClassByTone(tone) {
+    if (tone === "success") return "text-emerald-700 hover:text-emerald-900";
+    if (tone === "info") return "text-blue-700 hover:text-blue-900";
+    return "text-slate-700 hover:text-slate-900";
+  }
+
+  function stitchBannerIconClassByTone(tone) {
+    if (tone === "success") return "text-emerald-600";
+    if (tone === "info") return "text-blue-600";
+    return "text-slate-600";
   }
 
   function fallbackBannerClassByTone(tone) {
-    if (tone === "success") return "bg-blue-600";
-    if (tone === "info") return "bg-blue-600";
-    return "bg-blue-800";
+    if (tone === "success") return "bg-emerald-50 border border-emerald-200 text-emerald-900";
+    if (tone === "info") return "bg-blue-50 border border-blue-200 text-blue-900";
+    return "bg-slate-50 border border-slate-200 text-slate-900";
   }
 
   function downloadCsv(filename, rows) {
@@ -437,10 +455,31 @@
     if (banner) {
       banner.textContent = dashboardBannerText(featured);
     }
+    var bannerLink = main.querySelector("#ovs-dashboard-alert-link");
+    var bannerIcon = main.querySelector("#ovs-dashboard-alert-icon");
     var bannerShell = main.querySelector("#ovs-dashboard-alert");
     if (bannerShell) {
-      bannerShell.classList.remove("border-emerald-200", "bg-emerald-50", "border-amber-200", "bg-amber-50", "border-blue-200", "bg-blue-50", "border-slate-200", "bg-slate-50");
-      bannerShell.classList.add(stitchBannerClassByTone(bannerTone));
+      bannerShell.classList.remove("border-emerald-200", "bg-emerald-50", "border-amber-200", "bg-amber-50", "border-blue-200", "bg-blue-50", "border-slate-200", "bg-slate-50", "border-emerald-500", "border-amber-500", "border-blue-500", "border-slate-300", "bg-blue-600", "bg-blue-700", "bg-blue-800");
+      stitchBannerClassByTone(bannerTone).split(" ").forEach(function (cls) {
+        if (cls) bannerShell.classList.add(cls);
+      });
+    }
+
+    if (banner) {
+      banner.classList.remove("text-amber-900", "text-blue-900", "text-emerald-900", "text-slate-900");
+      banner.classList.add(stitchBannerTextClassByTone(bannerTone));
+    }
+
+    if (bannerLink) {
+      bannerLink.classList.remove("text-amber-700", "hover:text-amber-900", "text-blue-700", "hover:text-blue-900", "text-emerald-700", "hover:text-emerald-900", "text-slate-700", "hover:text-slate-900");
+      stitchBannerLinkClassByTone(bannerTone).split(" ").forEach(function (cls) {
+        if (cls) bannerLink.classList.add(cls);
+      });
+    }
+
+    if (bannerIcon) {
+      bannerIcon.classList.remove("text-amber-600", "text-blue-600", "text-emerald-600", "text-slate-600");
+      bannerIcon.classList.add(stitchBannerIconClassByTone(bannerTone));
     }
 
     var voterId = main.querySelector("#ovs-dashboard-voter-id");
@@ -569,7 +608,7 @@
       '<p class="text-xs font-bold uppercase tracking-widest text-primary mb-1">Citizen Overview</p>' +
       '<h1 class="text-3xl md:text-4xl font-extrabold text-on-surface">Welcome, ' + escapeHtml(profile.full_name || "Voter") + "</h1>" +
       "</section>" +
-      '<section class="' + fallbackBannerClassByTone(bannerTone) + ' text-white rounded p-4 text-sm font-semibold">' + escapeHtml(bannerText) + "</section>" +
+      '<section class="' + fallbackBannerClassByTone(bannerTone) + ' rounded p-4 text-sm font-semibold">' + escapeHtml(bannerText) + "</section>" +
       '<section class="bg-white border border-slate-200 rounded p-6">' +
       '<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">' +
       '<div>' +
