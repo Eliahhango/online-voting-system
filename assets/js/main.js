@@ -124,11 +124,9 @@
   }
 
   function redirectToLoginWithNext(info) {
-    var loginUrl = new URL(toPath("login.html"), window.location.href);
+    var loginTarget = info && info.section === "admin" ? "admin-login.html" : "voter-login.html";
+    var loginUrl = new URL(toPath(loginTarget), window.location.href);
     loginUrl.searchParams.set("next", window.location.pathname + window.location.search);
-    if (info && (info.section === "admin" || info.section === "voter")) {
-      loginUrl.searchParams.set("portal", info.section);
-    }
     window.location.replace(loginUrl.toString());
   }
 
@@ -357,7 +355,7 @@
           link("Dashboard", roleDashboard(state.role || "voter")) +
           '<button type="button" class="ovs-btn-link" data-ovs-logout>Logout</button>';
       } else {
-        right = link("Login", toPath("login.html")) + link("Sign Up", toPath("signup.html"));
+        right = link("Voter Login", toPath("voter-login.html")) + link("Admin Login", toPath("admin-login.html"));
       }
     }
 
@@ -388,6 +386,8 @@
       '<div class="ovs-footer-links">' +
       '<a href="' + toPath("about.html") + '">About</a>' +
       '<a href="' + toPath("contact.html") + '">Support</a>' +
+      '<a href="' + toPath("voter-login.html") + '">Voter Sign In</a>' +
+      '<a href="' + toPath("admin-login.html") + '">Admin Sign In</a>' +
       '<a href="' + toPath("how-it-works.html") + '">Security</a>' +
       "</div>" +
       "</div>" +
@@ -775,7 +775,8 @@
     if (/full voter guide|how to find your voter id/.test(label)) return "how-it-works.html";
     if (/contact system administrator|contact registry support/.test(label)) return "contact.html";
 
-    if (/voter login|\blogin\b|sign in/.test(label)) return "login.html";
+    if (/admin login|administrator sign in|admin sign in/.test(label)) return "admin-login.html";
+    if (/voter login|\blogin\b|sign in/.test(label)) return "voter-login.html";
     if (/sign up|signup|register/.test(label)) return "signup.html";
     if (/forgot password/.test(label)) return "forgot-password.html";
     if (/reset password/.test(label)) return "reset-password.html";
@@ -819,7 +820,8 @@
     }
 
     if (/register to vote|register now|create account|sign up|signup/.test(label)) return "signup.html";
-    if (/login|sign in/.test(label)) return "login.html";
+    if (/admin login|administrator sign in|admin sign in/.test(label)) return "admin-login.html";
+    if (/login|sign in/.test(label)) return "voter-login.html";
     if (/view elections|active ballots/.test(label)) return "voter/elections.html";
     if (/open ballot|begin voting|start ballot/.test(label)) return "voter/ballot.html";
     if (/history/.test(label)) return "voter/results.html";
@@ -1094,7 +1096,8 @@
         } catch (e) {
           /* ignore */
         }
-        window.location.href = toPath("login.html");
+        var info = pageInfo();
+        window.location.href = toPath(info.section === "admin" ? "admin-login.html" : "voter-login.html");
       });
     });
   }

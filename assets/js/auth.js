@@ -147,6 +147,15 @@
   }
 
   function loginPortal() {
+    var info = pageInfo();
+    var file = String(info && info.file ? info.file : "").toLowerCase();
+    if (file === "admin-login.html") {
+      return "admin";
+    }
+    if (file === "voter-login.html") {
+      return "voter";
+    }
+
     var params = new URLSearchParams(window.location.search || "");
     var portal = String(params.get("portal") || "").toLowerCase();
     if (portal === "admin" || portal === "voter") {
@@ -415,7 +424,7 @@
         : "Account created successfully. Redirecting to login...";
       showMessage(form, successText, "success");
       setTimeout(function () {
-        window.location.href = toPath("login.html");
+        window.location.href = toPath("voter-login.html");
       }, 1000);
     });
   }
@@ -524,7 +533,7 @@
       localStorage.removeItem("ovs_reset_token");
       showMessage(form, "Password reset successful. Redirecting to login...", "success");
       setTimeout(function () {
-        window.location.href = toPath("login.html");
+        window.location.href = toPath("voter-login.html");
       }, 1000);
     });
   }
@@ -535,7 +544,7 @@
       return;
     }
 
-    if (info.file === "login.html") {
+    if (info.file === "login.html" || info.file === "admin-login.html" || info.file === "voter-login.html") {
       initLoginPage();
       return;
     }

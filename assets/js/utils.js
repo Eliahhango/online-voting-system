@@ -120,7 +120,7 @@
       parts: parts,
       section: section,
       file: parts.length ? parts[parts.length - 1] : "",
-      isAuthPage: ["login.html", "signup.html", "forgot-password.html", "reset-password.html"].indexOf(parts[parts.length - 1] || "") !== -1
+      isAuthPage: ["login.html", "voter-login.html", "admin-login.html", "signup.html", "forgot-password.html", "reset-password.html"].indexOf(parts[parts.length - 1] || "") !== -1
     };
   }
 
