@@ -4,46 +4,49 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Civic Ledger | Admin Login</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Public+Sans:wght@400;700&family=Manrope:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Public+Sans:wght@400;700&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
 <link rel="stylesheet" href="../assets/css/global.css"/>
 <link rel="stylesheet" href="../assets/css/components.css"/>
 <link rel="stylesheet" href="../assets/css/auth.css"/>
-<style>
-  .admin-btn-gradient { background: linear-gradient(to bottom right, #7f1d1d, #b91c1c); }
-</style>
 </head>
-<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col">
-<main class="flex-grow flex items-center justify-center px-4 py-12">
-  <div class="w-full max-w-[500px] bg-surface-container-lowest shadow-[0_4px_20px_-10px_rgba(11,28,48,0.1)] border border-outline-variant/15 rounded-lg overflow-hidden">
-    <div class="pt-10 px-8 pb-4 text-center">
-      <h1 class="font-headline text-3xl font-black text-[#7f1d1d] tracking-tight mb-2">Civic Ledger</h1>
-      <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2">Administrative Access Gateway</p>
-    </div>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col auth-shell">
+<main class="flex-grow flex items-center justify-center px-4 py-10">
+  <section class="w-full max-w-[520px] auth-card bg-white border rounded-xl overflow-hidden">
+    <header class="pt-10 px-8 pb-4 text-center auth-card-head admin-theme">
+      <h1 class="font-headline text-5xl font-black tracking-tight mb-2">Civic Ledger</h1>
+      <p class="font-label text-xs uppercase tracking-[0.2em]">Administrative Access Gateway</p>
+    </header>
+
     <div class="px-8 pb-10">
-      <div class="mb-8">
-        <h2 class="font-headline text-xl font-bold mb-2">Administrator Sign In</h2>
-        <p class="text-on-surface-variant text-sm">Authorized election officers only.</p>
+      <div class="mb-7">
+        <h2 class="font-headline text-3xl font-extrabold mb-2">Administrator Sign In</h2>
+        <p class="text-on-surface-variant text-[0.96rem]">Use your administrator credentials to access election control tools.</p>
       </div>
-      <form class="space-y-6">
+
+      <form class="space-y-5" novalidate>
         <div class="space-y-2">
-          <label class="block font-label text-sm font-bold uppercase tracking-tight text-on-surface" for="voter-id">Admin Email or Registration ID</label>
-          <input class="w-full h-14 bg-surface-container-low border-outline-variant border rounded px-4 text-on-surface font-inter font-medium focus:ring-0 focus:border-on-surface focus:bg-surface-container-lowest transition-all duration-200 outline-none" id="voter-id" placeholder="e.g. admin@ovs.local or ADM-0001" type="text"/>
-          <div class="pt-1">
-            <a class="text-primary-container text-sm font-semibold underline hover:text-primary transition-colors decoration-2 underline-offset-4" href="./how-it-works.html">Security and access policy</a>
-          </div>
+          <label class="block font-label text-[0.78rem] font-bold uppercase tracking-[0.08em] text-on-surface" for="identifier">Admin Email or Registration ID</label>
+          <input class="w-full h-12 border border-outline-variant rounded-md px-4 text-on-surface font-inter font-medium outline-none" id="identifier" name="identifier" autocomplete="username" placeholder="admin@ovs.local or ADM-0001" type="text"/>
+          <p class="text-[0.78rem] text-on-surface-variant">Only authorized election officers can sign in here.</p>
         </div>
-        <button class="w-full h-14 admin-btn-gradient text-white font-headline font-bold uppercase tracking-widest rounded-lg shadow-sm hover:-translate-y-0.5 active:scale-95 transition-all duration-200" type="submit">
-          Sign In as Admin
-        </button>
+
+        <div class="space-y-2">
+          <label class="block font-label text-[0.78rem] font-bold uppercase tracking-[0.08em] text-on-surface" for="password">Password</label>
+          <input class="w-full h-12 border border-outline-variant rounded-md px-4 text-on-surface font-inter font-medium outline-none" id="password" name="password" autocomplete="current-password" placeholder="Enter your password" type="password"/>
+        </div>
+
+        <button class="w-full h-12 text-white font-headline font-bold uppercase tracking-[0.08em] rounded-md auth-submit-admin" type="submit">Sign In as Admin</button>
       </form>
-      <div class="mt-8 pt-8 border-t border-outline-variant/15 flex flex-col gap-4">
-        <p class="text-xs text-on-surface-variant leading-relaxed">Need voter access? <a class="underline font-semibold" href="./voter-login.html">Go to Voter Login</a></p>
+
+      <div class="mt-7 pt-6 border-t border-outline-variant/20 flex flex-col gap-3 text-sm">
+        <a class="auth-inline-link" href="./how-it-works.html">Security and access policy</a>
+        <p class="text-on-surface-variant">Need voter access? <a class="auth-inline-link" href="./voter-login.html">Go to Voter Login</a></p>
       </div>
     </div>
-  </div>
+  </section>
 </main>
+
 <script defer src="../assets/js/utils.js"></script>
 <script defer src="../assets/js/auth.js"></script>
 <script defer src="../assets/js/main.js"></script>

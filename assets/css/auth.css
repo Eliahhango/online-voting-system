@@ -3,6 +3,79 @@ body.ovs-section-public {
   --auth-bg-b: rgba(11, 158, 133, 0.12);
 }
 
+.auth-shell .auth-card {
+  border: 1px solid #cfdaea;
+  border-radius: 14px;
+  box-shadow: 0 24px 44px -30px rgba(15, 35, 74, 0.62);
+}
+
+.auth-shell .auth-card-head {
+  border-bottom: 1px solid #e2e8f2;
+}
+
+.auth-shell .auth-card-head.admin-theme h1 {
+  color: #8f1f1f;
+}
+
+.auth-shell .auth-card-head.admin-theme p {
+  color: #7a1e1e;
+}
+
+.auth-shell .auth-card-head.voter-theme h1 {
+  color: #0f4ecf;
+}
+
+.auth-shell .auth-card-head.voter-theme p {
+  color: #2454a8;
+}
+
+.auth-shell input[type="text"],
+.auth-shell input[type="email"],
+.auth-shell input[type="tel"],
+.auth-shell input[type="password"] {
+  background: #fff;
+  border-color: #c4cfdd;
+}
+
+.auth-shell input:focus {
+  border-color: #0f4ecf;
+  outline: 3px solid rgba(15, 78, 207, 0.24);
+  outline-offset: 1px;
+}
+
+.auth-inline-link {
+  color: #0f4ecf;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.auth-inline-link:hover,
+.auth-inline-link:focus {
+  color: #0b3ea8;
+}
+
+.auth-submit-admin {
+  background: linear-gradient(180deg, #bc2121 0%, #941717 100%);
+}
+
+.auth-submit-admin:hover,
+.auth-submit-admin:focus {
+  background: linear-gradient(180deg, #a91e1e 0%, #7e1414 100%);
+  transform: translateY(-1px);
+}
+
+.auth-submit-voter {
+  background: linear-gradient(180deg, #1a5ce0 0%, #0f4ecf 100%);
+}
+
+.auth-submit-voter:hover,
+.auth-submit-voter:focus {
+  background: linear-gradient(180deg, #1450c9 0%, #0b3ea8 100%);
+  transform: translateY(-1px);
+}
+
 body.ovs-section-public main {
   position: relative;
 }

@@ -1,207 +1,78 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
+<html class="light" lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Sign Up - Civic Ledger</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&amp;family=Public+Sans:wght@400;600;700&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "error-container": "#ffdad6",
-                        "on-background": "#0b1c30",
-                        "outline-variant": "#c4c5d7",
-                        "surface-dim": "#cbdbf5",
-                        "surface-bright": "#f8f9ff",
-                        "on-tertiary": "#ffffff",
-                        "surface-container-lowest": "#ffffff",
-                        "secondary-fixed-dim": "#a2c9ff",
-                        "on-secondary-fixed-variant": "#004881",
-                        "on-primary": "#ffffff",
-                        "secondary-fixed": "#d3e4ff",
-                        "inverse-surface": "#213145",
-                        "primary-container": "#1d4ed8",
-                        "on-secondary-container": "#004378",
-                        "on-primary-fixed-variant": "#0039b5",
-                        "error": "#ba1a1a",
-                        "background": "#f8f9ff",
-                        "on-error-container": "#93000a",
-                        "on-tertiary-container": "#8ce8a7",
-                        "inverse-primary": "#b7c4ff",
-                        "surface-tint": "#2151da",
-                        "on-primary-container": "#cad3ff",
-                        "tertiary-container": "#006a38",
-                        "on-error": "#ffffff",
-                        "surface": "#f8f9ff",
-                        "surface-container": "#e5eeff",
-                        "primary-fixed-dim": "#b7c4ff",
-                        "primary": "#0037b0",
-                        "on-surface-variant": "#434655",
-                        "on-secondary": "#ffffff",
-                        "inverse-on-surface": "#eaf1ff",
-                        "tertiary-fixed": "#9af6b5",
-                        "surface-container-high": "#dce9ff",
-                        "on-tertiary-fixed-variant": "#00522a",
-                        "surface-container-low": "#eff4ff",
-                        "surface-variant": "#d3e4fe",
-                        "tertiary": "#004f29",
-                        "outline": "#747686",
-                        "primary-fixed": "#dce1ff",
-                        "on-secondary-fixed": "#001c38",
-                        "on-surface": "#0b1c30",
-                        "tertiary-fixed-dim": "#7eda9a",
-                        "surface-container-highest": "#d3e4fe",
-                        "on-tertiary-fixed": "#00210e",
-                        "secondary": "#0760a7",
-                        "secondary-container": "#72b1fe",
-                        "on-primary-fixed": "#001551"
-                    },
-                    fontFamily: {
-                        "headline": ["Poppins"],
-                        "editorial": ["Public Sans"],
-                        "body": ["Manrope"],
-                        "label": ["Inter"]
-                    },
-                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
-                },
-            },
-        }
-    </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .editorial-kicker {
-            letter-spacing: 0.05em;
-        }
-        .ledger-shadow {
-            box-shadow: 0 32px 64px -12px rgba(11, 28, 48, 0.04);
-        }
-        .custom-focus:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px #ffffff, 0 0 0 5px #1d4ed8;
-            background-color: #ffffff !important;
-        }
-    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Civic Ledger | Voter Registration</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Public+Sans:wght@400;700&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
 <link rel="stylesheet" href="../assets/css/global.css"/>
 <link rel="stylesheet" href="../assets/css/components.css"/>
 <link rel="stylesheet" href="../assets/css/auth.css"/>
 </head>
-<body class="bg-background font-body text-on-background min-h-screen flex flex-col">
-<!-- Branding Header (Suppressed Navigation) -->
-<header class="w-full px-8 py-6 flex justify-center lg:justify-start">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
-<span class="font-headline font-black text-2xl tracking-tight text-primary">Civic Ledger</span>
-</div>
-</header>
-<main class="flex-grow flex items-center justify-center px-4 py-12">
-<!-- Auth Card -->
-<div class="w-full max-w-[520px] bg-surface-container-lowest ledger-shadow border-l-4 border-primary p-8 md:p-12">
-<header class="mb-10">
-<span class="font-editorial font-bold text-xs uppercase editorial-kicker text-primary block mb-2">Registration Portal</span>
-<h1 class="font-headline font-extrabold text-4xl tracking-tight text-on-background mb-4">Create Account</h1>
-<p class="text-on-surface-variant text-sm leading-relaxed max-w-sm">
-                    Join the national secure blockchain verification system to participate in upcoming civic processes.
-                </p>
-</header>
-<form class="space-y-6">
-<!-- Full Name -->
-<div class="space-y-2">
-<label class="font-editorial font-bold text-xs uppercase editorial-kicker text-on-background" for="full_name">Full Name</label>
-<input class="w-full bg-surface-container-low border border-on-background px-4 py-3 text-sm custom-focus transition-all duration-200" id="full_name" placeholder="Johnathan Doe" type="text"/>
-</div>
-<!-- Email & Phone Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="space-y-2">
-<label class="font-editorial font-bold text-xs uppercase editorial-kicker text-on-background" for="email">Email</label>
-<input class="w-full bg-surface-container-low border border-on-background px-4 py-3 text-sm custom-focus transition-all duration-200" id="email" placeholder="name@domain.gov" type="email"/>
-</div>
-<div class="space-y-2">
-<label class="font-editorial font-bold text-xs uppercase editorial-kicker text-on-background" for="phone">Phone</label>
-<input class="w-full bg-surface-container-low border border-on-background px-4 py-3 text-sm custom-focus transition-all duration-200" id="phone" placeholder="+1 (555) 000-0000" type="tel"/>
-</div>
-</div>
-<!-- Voter ID -->
-<div class="space-y-2">
-<label class="font-editorial font-bold text-xs uppercase editorial-kicker text-on-background" for="voter_id">Voter ID</label>
-<div class="relative">
-<input class="w-full bg-surface-container-low border border-on-background px-4 py-3 text-sm custom-focus transition-all duration-200" id="voter_id" maxlength="9" placeholder="9-digit Voter Identification Number" type="text"/>
-<span class="absolute right-3 top-3 text-[10px] font-bold text-outline uppercase tracking-widest">Required</span>
-</div>
-</div>
-<!-- Password Fields -->
-<div class="space-y-4">
-<div class="space-y-2">
-<label class="font-editorial font-bold text-xs uppercase editorial-kicker text-on-background" for="password">Password</label>
-<input class="w-full bg-surface-container-low border border-on-background px-4 py-3 text-sm custom-focus transition-all duration-200" id="password" placeholder="************" type="password"/>
-<p class="text-[11px] font-medium text-on-surface-variant flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">info</span>
-                            Strength requirement: at least 12 chars
-                        </p>
-</div>
-<div class="space-y-2">
-<label class="font-editorial font-bold text-xs uppercase editorial-kicker text-on-background" for="confirm_password">Confirm Password</label>
-<input class="w-full bg-surface-container-low border border-on-background px-4 py-3 text-sm custom-focus transition-all duration-200" id="confirm_password" placeholder="************" type="password"/>
-</div>
-</div>
-<!-- Terms -->
-<div class="flex items-start gap-3 py-2">
-<div class="flex items-center h-5">
-<input class="w-4 h-4 border-on-background text-primary focus:ring-primary-container rounded-sm" id="terms" type="checkbox"/>
-</div>
-<label class="text-xs text-on-surface-variant leading-tight" for="terms">
-                        I agree to the <a class="text-primary font-bold hover:underline" href="#">Accessibility Statement</a> and <a class="text-primary font-bold hover:underline" href="#">Privacy Policy</a> of the National Election Authority.
-                    </label>
-</div>
-<!-- Actions -->
-<div class="pt-4 space-y-4">
-<button class="w-full bg-gradient-to-r from-primary to-primary-container text-white font-editorial font-bold text-sm uppercase editorial-kicker py-4 hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98]" type="submit">
-                        Create Account
-                    </button>
-<div class="flex justify-center items-center gap-2 text-sm">
-<span class="text-on-surface-variant">Already have an account?</span>
-<a class="text-primary font-bold hover:underline" href="login.html">Login</a>
-</div>
-</div>
-</form>
-</div>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col auth-shell">
+<main class="flex-grow flex items-center justify-center px-4 py-10">
+    <section class="w-full max-w-[620px] auth-card bg-white border rounded-xl overflow-hidden">
+        <header class="pt-10 px-8 pb-4 text-center auth-card-head voter-theme">
+            <h1 class="font-headline text-5xl font-black tracking-tight mb-2">Civic Ledger</h1>
+            <p class="font-label text-xs uppercase tracking-[0.2em]">Voter Registration Portal</p>
+        </header>
+
+        <div class="px-8 pb-10">
+            <div class="mb-7">
+                <h2 class="font-headline text-3xl font-extrabold mb-2">Create Voter Account</h2>
+                <p class="text-on-surface-variant text-[0.96rem]">Register once to securely access upcoming elections and your ballot dashboard.</p>
+            </div>
+
+            <form class="space-y-5" novalidate>
+                <div class="space-y-2">
+                    <label class="block font-label text-[0.78rem] font-bold uppercase tracking-[0.08em] text-on-surface" for="full_name">Full Name</label>
+                    <input class="w-full h-12 border border-outline-variant rounded-md px-4 text-on-surface font-inter font-medium outline-none" id="full_name" name="full_name" placeholder="John Doe" type="text"/>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="block font-label text-[0.78rem] font-bold uppercase tracking-[0.08em] text-on-surface" for="email">Email</label>
+                        <input class="w-full h-12 border border-outline-variant rounded-md px-4 text-on-surface font-inter font-medium outline-none" id="email" name="email" placeholder="name@example.com" type="email"/>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block font-label text-[0.78rem] font-bold uppercase tracking-[0.08em] text-on-surface" for="phone">Phone (Optional)</label>
+                        <input class="w-full h-12 border border-outline-variant rounded-md px-4 text-on-surface font-inter font-medium outline-none" id="phone" name="phone" placeholder="+1 555 000 0000" type="tel"/>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="block font-label text-[0.78rem] font-bold uppercase tracking-[0.08em] text-on-surface" for="voter_id">Registration ID</label>
+                    <input class="w-full h-12 border border-outline-variant rounded-md px-4 text-on-surface font-inter font-medium outline-none" id="voter_id" name="voter_id" placeholder="Auto-generated after signup" type="text" readonly/>
+                    <p class="text-[0.78rem] text-on-surface-variant">This ID is generated automatically after successful account creation.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="block font-label text-[0.78rem] font-bold uppercase tracking-[0.08em] text-on-surface" for="password">Password</label>
+                        <input class="w-full h-12 border border-outline-variant rounded-md px-4 text-on-surface font-inter font-medium outline-none" id="password" name="password" placeholder="Create a strong password" type="password"/>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block font-label text-[0.78rem] font-bold uppercase tracking-[0.08em] text-on-surface" for="confirm_password">Confirm Password</label>
+                        <input class="w-full h-12 border border-outline-variant rounded-md px-4 text-on-surface font-inter font-medium outline-none" id="confirm_password" name="confirm_password" placeholder="Repeat your password" type="password"/>
+                    </div>
+                </div>
+
+                <label class="flex items-start gap-3 text-sm text-on-surface-variant">
+                    <input class="mt-1 h-4 w-4" id="terms" name="terms" type="checkbox"/>
+                    <span>I agree to the <a class="auth-inline-link" href="#">Privacy Policy</a> and <a class="auth-inline-link" href="#">Terms of Use</a>.</span>
+                </label>
+
+                <button class="w-full h-12 text-white font-headline font-bold uppercase tracking-[0.08em] rounded-md auth-submit-voter" type="submit">Create Account</button>
+
+                <p class="text-sm text-on-surface-variant text-center">Already have an account? <a class="auth-inline-link" href="voter-login.html">Sign in to voter portal</a></p>
+            </form>
+        </div>
+    </section>
 </main>
-<!-- Footer -->
-<footer class="w-full py-8 px-8 flex flex-col md:flex-row justify-between items-center gap-4 mt-auto border-t border-outline-variant/15 bg-surface-container-low">
-<div class="flex items-center gap-2">
-<span class="font-headline font-bold text-on-background text-sm">Civic Ledger</span>
-<span class="text-[10px] font-bold text-outline-variant uppercase editorial-kicker px-2 py-0.5 border border-outline-variant/30">Secure</span>
-</div>
-<p class="font-body text-xs font-medium tracking-tight text-on-surface-variant text-center md:text-left">
-            © 2024 National Election Authority. Secure Blockchain Verification Active.
-        </p>
-<div class="flex gap-6">
-<a class="font-body text-xs font-medium tracking-tight text-outline hover:text-primary transition-colors" href="#">Privacy Policy</a>
-<a class="font-body text-xs font-medium tracking-tight text-outline hover:text-primary transition-colors" href="#">Support</a>
-</div>
-</footer>
-<!-- Verification Badge (Decorative) -->
-<div class="fixed bottom-8 right-8 hidden lg:block">
-<div class="bg-white/80 backdrop-blur-md p-4 flex items-center gap-3 border border-outline-variant/20 ledger-shadow">
-<div class="w-10 h-10 bg-tertiary-container/20 rounded-full flex items-center justify-center text-tertiary-container">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
-</div>
-<div>
-<p class="text-[10px] font-editorial font-bold uppercase editorial-kicker text-on-background leading-none">AES-256 Encrypted</p>
-<p class="text-[9px] text-on-surface-variant font-medium">Federal Security Standard v4.2</p>
-</div>
-</div>
-</div>
-<!-- OVS_SCRIPTS_START -->
+
 <script defer src="../assets/js/utils.js"></script>
 <script defer src="../assets/js/auth.js"></script>
 <script defer src="../assets/js/main.js"></script>
-<!-- OVS_SCRIPTS_END -->
-</body></html>
+</body>
+</html>
