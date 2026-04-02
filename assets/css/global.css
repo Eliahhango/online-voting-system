@@ -546,10 +546,23 @@ body.ovs-section-voter.ovs-voter-shell main.ovs-voter-main {
   }
 }
 
-/* Hide legacy generated fixed nav/header once shared layout is ready */
+/* Hide legacy stitched top shell from first paint (prevents reload flash). */
+body > nav[class*="fixed"],
+body > header[class*="fixed"]:not(.ovs-header),
+body > header[class*="sticky"]:not(.ovs-header) {
+  display: none !important;
+}
+
+/* Hide page-authored footers so only the shared footer is shown. */
+body > footer:not(.ovs-footer) {
+  display: none !important;
+}
+
+/* Keep compatibility for pages that add ovs-auth-ready after shared hydration. */
 body.ovs-auth-ready > nav[class*="fixed"],
 body.ovs-auth-ready > header[class*="fixed"]:not(.ovs-header),
-body.ovs-auth-ready > header[class*="sticky"]:not(.ovs-header) {
+body.ovs-auth-ready > header[class*="sticky"]:not(.ovs-header),
+body.ovs-auth-ready > footer:not(.ovs-footer) {
   display: none !important;
 }
 

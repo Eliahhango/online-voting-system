@@ -12,6 +12,7 @@ $identifier = sanitize_string($input['identifier'] ?? '', 150);
 $email = sanitize_email($input['email'] ?? '');
 $voterId = sanitize_nullable_string($input['voter_id'] ?? '', 80);
 $password = (string) ($input['password'] ?? '');
+$expectedRole = strtolower(trim((string) ($input['expected_role'] ?? '')));
 
 if ($identifier !== '') {
     if (strpos($identifier, '@') !== false) {
@@ -35,6 +36,10 @@ if ($email !== '') {
     if ($emailError !== null) {
         $errors['email'] = $emailError;
     }
+}
+
+if ($expectedRole !== '' && !in_array($expectedRole, [USER_ROLE_ADMIN, USER_ROLE_VOTER], true)) {
+    $errors['expected_role'] = 'expected_role must be admin or voter';
 }
 
 if (!empty($errors)) {
@@ -64,6 +69,12 @@ try {
 
     if (($user['status'] ?? '') !== USER_STATUS_ACTIVE) {
         json_error('Account is not active', 403);
+    }
+
+    if ($expectedRole !== '' && (string) ($user['role'] ?? '') !== $expectedRole) {
+        json_error('This account is not allowed in the selected portal', 403, [
+            'expected_role' => 'Use the correct login portal for this account role',
+        ]);
     }
 
     login_user($user);

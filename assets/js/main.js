@@ -62,6 +62,30 @@
     }
   }
 
+  async function postJson(endpoint, payload, includeCredentials) {
+    var absolute = new URL(toBackend(endpoint), window.location.href);
+    try {
+      var res = await fetch(absolute.toString(), {
+        method: "POST",
+        credentials: includeCredentials ? "include" : "same-origin",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload || {})
+      });
+      var json = null;
+      try {
+        json = await res.json();
+      } catch (e) {
+        json = null;
+      }
+      return { ok: res.ok, status: res.status, json: json };
+    } catch (err) {
+      return { ok: false, status: 0, json: null };
+    }
+  }
+
   async function fetchSession() {
     try {
       var res = await fetch(toBackend("auth/get-session.php"), {
@@ -248,6 +272,31 @@
         node.remove();
       }
     });
+  }
+
+  function removeLegacyFooters(activeFooter) {
+    if (!document.body) {
+      return;
+    }
+
+    var children = Array.prototype.slice.call(document.body.children || []);
+    children.forEach(function (node) {
+      if (node === activeFooter) {
+        return;
+      }
+      var tag = String(node.tagName || "").toUpperCase();
+      if (tag === "FOOTER") {
+        node.remove();
+      }
+    });
+  }
+
+  function pruneInitialLegacyShell() {
+    if (!document.body) {
+      return;
+    }
+    removeLegacyTopBars(null);
+    removeLegacyFooters(null);
   }
 
   function createElement(html) {
@@ -605,10 +654,10 @@
     var children = Array.prototype.slice.call(document.body.children || []);
     children.forEach(function (node) {
       var tag = String(node.tagName || "").toUpperCase();
-      if (tag !== "HEADER" && tag !== "NAV" && tag !== "ASIDE") {
+      if (tag !== "HEADER" && tag !== "NAV" && tag !== "ASIDE" && tag !== "FOOTER") {
         return;
       }
-      if (node.classList.contains("ovs-admin-top") || node.classList.contains("ovs-admin-side")) {
+      if (node.classList.contains("ovs-admin-top") || node.classList.contains("ovs-admin-side") || node.classList.contains("ovs-footer")) {
         return;
       }
       node.remove();
@@ -616,11 +665,18 @@
 
     var oldAdminTop = document.querySelector(".ovs-admin-top");
     var oldAdminSide = document.querySelector(".ovs-admin-side");
+    var oldFooter = document.querySelector("footer");
     if (oldAdminTop) oldAdminTop.remove();
     if (oldAdminSide) oldAdminSide.remove();
+    if (oldFooter && !oldFooter.classList.contains("ovs-footer")) oldFooter.remove();
 
     var top = createElement(adminTopTemplate(info, state));
     var side = createElement(adminSideTemplate(info));
+    var footer = document.querySelector(".ovs-footer");
+    if (!footer) {
+      footer = createElement(footerTemplate());
+      document.body.appendChild(footer);
+    }
 
     if (document.body.firstChild) {
       document.body.insertBefore(side, document.body.firstChild);
@@ -635,6 +691,7 @@
       main.classList.add("ovs-admin-main");
     }
 
+    removeLegacyFooters(footer);
     document.body.classList.add("ovs-admin-shell");
   }
 
@@ -684,12 +741,14 @@
       document.body.appendChild(newHeader);
     }
 
-    // Keep page-specific Stitch footer when present.
-    if (!oldFooter) {
+    if (oldFooter) {
+      oldFooter.replaceWith(newFooter);
+    } else {
       document.body.appendChild(newFooter);
     }
 
     removeLegacyTopBars(newHeader);
+    removeLegacyFooters(newFooter);
 
     if (info.section === "voter") {
       stripVoterLeftPanels();
@@ -808,6 +867,82 @@
         event.preventDefault();
         window.location.href = toPath(target);
       });
+    });
+  }
+
+  function bindContactForm(info) {
+    if (String(info.section || "").toLowerCase() !== "public" || String(info.file || "").toLowerCase() !== "contact.html") {
+      return;
+    }
+
+    var form = document.querySelector("[data-ovs-contact-form]") || document.querySelector("form");
+    if (!form) {
+      return;
+    }
+
+    var nameInput = form.querySelector('[name="full_name"]');
+    var emailInput = form.querySelector('[name="email"]');
+    var topicInput = form.querySelector('[name="topic"]');
+    var messageInput = form.querySelector('[name="message"]');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var notice = document.getElementById("ovs-contact-notice");
+
+    function setNotice(message, type) {
+      if (!notice) {
+        return;
+      }
+      notice.textContent = String(message || "");
+      notice.className = "text-sm rounded p-3";
+      if (!message) {
+        notice.classList.add("hidden");
+        return;
+      }
+      notice.classList.remove("hidden");
+      if (type === "success") {
+        notice.classList.add("bg-emerald-50", "text-emerald-700", "border", "border-emerald-200");
+      } else if (type === "error") {
+        notice.classList.add("bg-red-50", "text-red-700", "border", "border-red-200");
+      } else {
+        notice.classList.add("bg-slate-50", "text-slate-700", "border", "border-slate-200");
+      }
+    }
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      var payload = {
+        full_name: (nameInput && nameInput.value ? nameInput.value : "").trim(),
+        email: (emailInput && emailInput.value ? emailInput.value : "").trim(),
+        topic: (topicInput && topicInput.value ? topicInput.value : "").trim(),
+        message: (messageInput && messageInput.value ? messageInput.value : "").trim()
+      };
+
+      if (!payload.full_name || !payload.email || !payload.topic || !payload.message) {
+        setNotice("Please complete all fields before submitting.", "error");
+        return;
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+      }
+      setNotice("Submitting your inquiry...", "info");
+
+      var res = await postJson("public/contact-support.php", payload, false);
+      if (!res.ok || !res.json || !res.json.success) {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+        }
+        setNotice((res.json && res.json.message) || "Unable to submit inquiry right now.", "error");
+        return;
+      }
+
+      if (typeof form.reset === "function") {
+        form.reset();
+      }
+      if (submitBtn) {
+        submitBtn.disabled = false;
+      }
+      setNotice((res.json && res.json.message) || "Inquiry submitted successfully.", "success");
     });
   }
 
@@ -1123,6 +1258,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", async function () {
+    pruneInitialLegacyShell();
     var info = pageInfo();
     document.body.classList.add("ovs-pending-auth");
     document.body.classList.add("ovs-section-" + info.section);
@@ -1137,6 +1273,7 @@
     bindDesktopSidebarToggle(info);
     wirePlaceholderAnchors(info);
     wireSafeButtons(info);
+    bindContactForm(info);
     pruneLegacyVoterSidebarActions(info);
     await hydrateIndexUpcomingElections(info);
     applyDynamicCopyrightYear();

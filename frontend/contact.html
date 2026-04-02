@@ -88,22 +88,7 @@
 <link rel="stylesheet" href="../assets/css/components.css"/>
 <link rel="stylesheet" href="../assets/css/public.css"/>
 </head>
-<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-white">
-<!-- TopNavBar -->
-<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-16 bg-white shadow-[0_4px_20px_-10px_rgba(11,28,48,0.1)]">
-<div class="flex items-center gap-2">
-<span class="text-2xl font-black text-[#0037b0] font-headline tracking-tight">Civic Ledger</span>
-</div>
-<div class="hidden md:flex items-center gap-8">
-<a class="text-[#5a6b87] hover:text-[#0b1c30] font-label text-sm uppercase tracking-wider hover:translate-y-[-2px] transition-transform duration-200" href="#">Elections</a>
-<a class="text-[#5a6b87] hover:text-[#0b1c30] font-label text-sm uppercase tracking-wider hover:translate-y-[-2px] transition-transform duration-200" href="#">About</a>
-<a class="text-[#5a6b87] hover:text-[#0b1c30] font-label text-sm uppercase tracking-wider hover:translate-y-[-2px] transition-transform duration-200" href="#">How It Works</a>
-<a class="text-[#1d4ed8] border-b-2 border-[#1d4ed8] font-bold font-label text-sm uppercase tracking-wider" href="#">Contact</a>
-</div>
-<button class="btn-primary-gradient text-white px-6 py-2 rounded-lg font-bold text-sm hover:translate-y-[-2px] active:scale-[0.98] transition-all duration-200">
-            Voter Login
-        </button>
-</nav>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-white ovs-pending-auth">
 <main class="pt-24 pb-16 px-4 md:px-8 max-w-7xl mx-auto">
 <!-- Hero Section -->
 <header class="mb-16">
@@ -121,30 +106,31 @@
 <!-- Contact Form Section -->
 <section class="lg:col-span-7 bg-surface-container-lowest p-8 md:p-12 border-l-4 border-primary">
 <h2 class="font-headline text-2xl font-bold mb-8">Send a Secure Message</h2>
-<form class="space-y-6">
+<form class="space-y-6" data-ovs-contact-form>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="flex flex-col gap-2">
 <label class="font-label text-xs font-bold uppercase text-on-surface-variant">Full Name</label>
-<input class="bg-surface-container-low border-none p-4 rounded focus-ring font-body text-on-surface" placeholder="John Doe" type="text"/>
+<input class="bg-surface-container-low border-none p-4 rounded focus-ring font-body text-on-surface" name="full_name" placeholder="John Doe" required="" type="text"/>
 </div>
 <div class="flex flex-col gap-2">
 <label class="font-label text-xs font-bold uppercase text-on-surface-variant">Email Address</label>
-<input class="bg-surface-container-low border-none p-4 rounded focus-ring font-body text-on-surface" placeholder="john@example.com" type="email"/>
+<input class="bg-surface-container-low border-none p-4 rounded focus-ring font-body text-on-surface" name="email" placeholder="john@example.com" required="" type="email"/>
 </div>
 </div>
 <div class="flex flex-col gap-2">
 <label class="font-label text-xs font-bold uppercase text-on-surface-variant">Support Topic</label>
-<select class="bg-surface-container-low border-none p-4 rounded focus-ring font-body text-on-surface appearance-none">
-<option>Voter Registration Inquiry</option>
-<option>Ballot Security Verification</option>
-<option>Technical Portal Support</option>
-<option>Accessibility Assistance</option>
+<select class="bg-surface-container-low border-none p-4 rounded focus-ring font-body text-on-surface appearance-none" name="topic" required="">
+<option value="Voter Registration Inquiry">Voter Registration Inquiry</option>
+<option value="Ballot Security Verification">Ballot Security Verification</option>
+<option value="Technical Portal Support">Technical Portal Support</option>
+<option value="Accessibility Assistance">Accessibility Assistance</option>
 </select>
 </div>
 <div class="flex flex-col gap-2">
 <label class="font-label text-xs font-bold uppercase text-on-surface-variant">Your Message</label>
-<textarea class="bg-surface-container-low border-none p-4 rounded focus-ring font-body text-on-surface" placeholder="How can we assist you today?" rows="5"></textarea>
+<textarea class="bg-surface-container-low border-none p-4 rounded focus-ring font-body text-on-surface" name="message" placeholder="How can we assist you today?" required="" rows="5"></textarea>
 </div>
+<div class="hidden" id="ovs-contact-notice"></div>
 <button class="w-full btn-primary-gradient text-white py-4 font-bold rounded-lg hover:translate-y-[-2px] active:scale-[0.98] transition-all duration-200" type="submit">
                         Submit Verified Inquiry
                     </button>
@@ -202,19 +188,6 @@
 </aside>
 </div>
 </main>
-<!-- Footer -->
-<footer class="w-full py-8 px-8 flex flex-col md:flex-row justify-between items-center gap-4 mt-auto bg-[#f8f9ff] border-t border-[#c4c5d7]/15">
-<div class="flex flex-col gap-1">
-<span class="font-bold text-[#0b1c30] font-headline uppercase tracking-tighter">Civic Ledger</span>
-<p class="text-[#5a6b87] font-body text-xs font-medium tracking-tight">Â© 2024 National Election Authority. Secure Blockchain Verification Active.</p>
-</div>
-<div class="flex gap-6">
-<a class="text-[#5a6b87] hover:text-[#1d4ed8] transition-colors font-body text-xs font-medium tracking-tight" href="#">Accessibility Statement</a>
-<a class="text-[#5a6b87] hover:text-[#1d4ed8] transition-colors font-body text-xs font-medium tracking-tight" href="#">Privacy Policy</a>
-<a class="text-[#5a6b87] hover:text-[#1d4ed8] transition-colors font-body text-xs font-medium tracking-tight" href="#">Terms of Service</a>
-<a class="underline text-[#1d4ed8] transition-colors font-body text-xs font-medium tracking-tight" href="#">Contact Support</a>
-</div>
-</footer>
 <!-- OVS_SCRIPTS_START -->
 <script defer src="../assets/js/utils.js"></script>
 <script defer src="../assets/js/main.js"></script>

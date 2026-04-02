@@ -268,6 +268,7 @@
       }
 
       var payload = { password: passValue };
+      payload.expected_role = portal;
       if (idValue.indexOf("@") !== -1) {
         payload.email = idValue;
       } else {
@@ -298,7 +299,22 @@
       var adminTarget = portal === "admin" || (next && next.indexOf("/frontend/admin/") !== -1);
 
       if (adminTarget && role !== "admin") {
+        try {
+          await postJson("auth/logout.php", {});
+        } catch (logoutErr) {
+          /* ignore logout failures */
+        }
         showMessage(form, "This account does not have admin access.", "error");
+        return;
+      }
+
+      if (!adminTarget && role !== "voter") {
+        try {
+          await postJson("auth/logout.php", {});
+        } catch (logoutErr2) {
+          /* ignore logout failures */
+        }
+        showMessage(form, "This account is not allowed in voter portal.", "error");
         return;
       }
 
