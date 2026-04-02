@@ -1,6 +1,6 @@
 body.ovs-section-public {
-  --auth-bg-a: rgba(29, 78, 216, 0.12);
-  --auth-bg-b: rgba(16, 185, 129, 0.1);
+  --auth-bg-a: rgba(15, 78, 207, 0.14);
+  --auth-bg-b: rgba(11, 158, 133, 0.12);
 }
 
 body.ovs-section-public main {
@@ -22,25 +22,25 @@ body.ovs-section-public main > * {
 }
 
 body.ovs-section-public form {
-  border: 1px solid #dbe4f2;
+  border: 1px solid #cfdaea;
   background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 18px 36px -30px rgba(15, 35, 74, 0.75);
+  border-radius: 12px;
+  box-shadow: 0 22px 38px -28px rgba(15, 35, 74, 0.6);
   backdrop-filter: blur(2px);
 }
 
 body.ovs-section-public form input,
 body.ovs-section-public form select,
 body.ovs-section-public form textarea {
-  border-radius: 6px;
-  border-color: #cbd5e1;
+  border-radius: 8px;
+  border-color: #c4cfdd;
 }
 
 body.ovs-section-public form input:focus,
 body.ovs-section-public form select:focus,
 body.ovs-section-public form textarea:focus {
-  border-color: #1d4ed8;
-  outline: 3px solid rgba(29, 78, 216, 0.26);
+  border-color: #0f4ecf;
+  outline: 3px solid rgba(15, 78, 207, 0.24);
   outline-offset: 1px;
 }
 
@@ -48,6 +48,7 @@ body.ovs-section-public form button[type="submit"] {
   min-height: 44px;
   font-weight: 800;
   letter-spacing: 0.02em;
+  border-radius: 8px;
 }
 
 [data-auth-message] {

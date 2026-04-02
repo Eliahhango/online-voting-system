@@ -1,8 +1,16 @@
 :root {
-  --color-primary: #1d4ed8;
-  --color-bg: #f8fafc;
+  --color-primary: #0f4ecf;
+  --color-primary-strong: #0b3ea8;
+  --color-accent: #0b9e85;
+  --color-bg: #f4f7fc;
+  --color-surface: #ffffff;
   --color-text: #0b1f3b;
-  --color-border: #e2e8f0;
+  --color-muted: #516484;
+  --color-border: #d8e0ec;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-soft: 0 14px 34px -24px rgba(12, 28, 60, 0.42);
   --ovs-voter-side-width: 16rem;
 }
 
@@ -14,7 +22,10 @@
 
 html,
 body {
-  background: var(--color-bg);
+  background:
+    radial-gradient(circle at 9% 0%, rgba(15, 78, 207, 0.08), transparent 30%),
+    radial-gradient(circle at 92% 8%, rgba(11, 158, 133, 0.08), transparent 28%),
+    var(--color-bg);
   color: var(--color-text);
   width: 100%;
   max-width: 100%;
@@ -25,6 +36,16 @@ body {
 
 body {
   line-height: 1.5;
+  font-family: "Public Sans", Manrope, "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition: color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
 img,
@@ -46,7 +67,8 @@ body.ovs-auth-ready {
 
 .ovs-header {
   border-bottom: 1px solid var(--color-border);
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
   position: sticky;
   top: 0;
   z-index: 90;
@@ -174,10 +196,10 @@ body.ovs-public-menu-open::before {
 .ovs-nav-link {
   font-family: Manrope, Arial, sans-serif;
   font-size: 0.9rem;
-  color: #334155;
+  color: #2f4466;
   text-decoration: none;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   padding: 6px 10px;
 }
 
@@ -185,7 +207,7 @@ body.ovs-public-menu-open::before {
 .ovs-nav-link:focus {
   color: var(--color-text);
   border-color: var(--color-border);
-  background: #eff6ff;
+  background: #edf3ff;
   outline: none;
 }
 
@@ -214,10 +236,10 @@ body.ovs-public-menu-open::before {
 
 .ovs-btn-link {
   appearance: none;
-  border: 1px solid #bfdbfe;
-  background: #dbeafe;
-  color: #1e3a8a;
-  border-radius: 4px;
+  border: 1px solid #bfd3ff;
+  background: #e9f0ff;
+  color: #0f3ea8;
+  border-radius: var(--radius-sm);
   padding: 6px 10px;
   font-family: Manrope, Arial, sans-serif;
   font-size: 0.85rem;
@@ -226,7 +248,7 @@ body.ovs-public-menu-open::before {
 
 .ovs-btn-link:hover,
 .ovs-btn-link:focus {
-  background: #bfdbfe;
+  background: #d5e2ff;
   outline: none;
 }
 

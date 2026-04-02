@@ -1,12 +1,12 @@
 :root {
-  --ovs-radius-sm: 4px;
-  --ovs-radius-md: 8px;
-  --ovs-shadow-soft: 0 10px 26px -18px rgba(15, 35, 74, 0.55);
+  --ovs-radius-sm: 6px;
+  --ovs-radius-md: 12px;
+  --ovs-shadow-soft: 0 14px 34px -24px rgba(12, 28, 60, 0.42);
 }
 
 .ovs-card {
   background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #d8e0ec;
   border-radius: var(--ovs-radius-md);
   box-shadow: var(--ovs-shadow-soft);
 }
@@ -25,9 +25,9 @@
   gap: 6px;
   padding: 4px 10px;
   border-radius: 999px;
-  border: 1px solid #dbeafe;
-  background: #eff6ff;
-  color: #1d4ed8;
+  border: 1px solid #c9d8ff;
+  background: #edf3ff;
+  color: #0f4ecf;
   font-size: 0.72rem;
   font-weight: 700;
   line-height: 1;
@@ -37,7 +37,7 @@
 
 .ovs-btn {
   appearance: none;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #c4cfdd;
   background: #ffffff;
   color: #0f172a;
   border-radius: var(--ovs-radius-sm);
@@ -52,21 +52,22 @@
 
 .ovs-btn:hover,
 .ovs-btn:focus {
-  border-color: #94a3b8;
-  background: #f8fafc;
+  border-color: #9fb0c8;
+  background: #f4f8ff;
   outline: none;
+  transform: translateY(-1px);
 }
 
 .ovs-btn-primary {
-  border-color: #1d4ed8;
-  background: #1d4ed8;
+  border-color: #0f4ecf;
+  background: linear-gradient(180deg, #1a5ce0 0%, #0f4ecf 100%);
   color: #ffffff;
 }
 
 .ovs-btn-primary:hover,
 .ovs-btn-primary:focus {
-  border-color: #1e40af;
-  background: #1e40af;
+  border-color: #0b3ea8;
+  background: linear-gradient(180deg, #1450c9 0%, #0b3ea8 100%);
 }
 
 .ovs-btn-danger {
@@ -85,7 +86,7 @@
 .ovs-select,
 .ovs-textarea {
   width: 100%;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #c4cfdd;
   border-radius: var(--ovs-radius-sm);
   background: #ffffff;
   color: #0f172a;
@@ -98,9 +99,9 @@
 .ovs-input:focus,
 .ovs-select:focus,
 .ovs-textarea:focus {
-  outline: 3px solid rgba(29, 78, 216, 0.35);
+  outline: 3px solid rgba(15, 78, 207, 0.26);
   outline-offset: 1px;
-  border-color: #1d4ed8;
+  border-color: #0f4ecf;
 }
 
 .ovs-field {
@@ -129,7 +130,7 @@
 
 .ovs-kpi {
   background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #d8e0ec;
   border-radius: var(--ovs-radius-md);
   padding: 14px;
 }

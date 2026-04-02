@@ -4,7 +4,10 @@
 }
 
 body.ovs-section-admin.ovs-admin-shell {
-  background: #e5e8ef;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(15, 78, 207, 0.08), transparent 28%),
+    radial-gradient(circle at 92% 10%, rgba(11, 158, 133, 0.08), transparent 26%),
+    #e9edf5;
   color: #0b1f3b;
 }
 
@@ -22,7 +25,8 @@ body.ovs-section-admin.ovs-admin-shell.ovs-admin-menu-open::before {
   left: var(--ovs-admin-side-width);
   right: 0;
   height: var(--ovs-admin-top-height);
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
   border-bottom: 1px solid #d7deea;
   z-index: 120;
   transition: left 0.24s ease;
@@ -124,9 +128,9 @@ body.ovs-section-admin.ovs-admin-shell.ovs-admin-menu-open::before {
 }
 
 .ovs-admin-top-link.is-active {
-  color: #0f43c8;
+  color: #0d46c5;
   border-color: #bfd3ff;
-  background: #eff4ff;
+  background: #eaf1ff;
 }
 
 .ovs-admin-top-right {
@@ -176,7 +180,7 @@ body.ovs-section-admin.ovs-admin-shell.ovs-admin-menu-open::before {
   width: var(--ovs-admin-side-width);
   height: 100vh;
   border-right: 1px solid #d7deea;
-  background: #eef1f7;
+  background: linear-gradient(180deg, #f2f5fb 0%, #e9eef7 100%);
   display: flex;
   flex-direction: column;
   z-index: 130;
@@ -223,7 +227,7 @@ body.ovs-section-admin.ovs-admin-shell.ovs-admin-menu-open::before {
   text-decoration: none;
   color: #334e73;
   padding: 12px 12px;
-  border-radius: 0;
+  border-radius: 8px;
   border-left: 4px solid transparent;
   font-family: Manrope, Arial, sans-serif;
   font-size: 0.95rem;
@@ -242,9 +246,10 @@ body.ovs-section-admin.ovs-admin-shell.ovs-admin-menu-open::before {
 }
 
 .ovs-admin-side-link.is-active {
-  border-left-color: #1d4ed8;
+  border-left-color: #0f4ecf;
   color: #1246cb;
   background: #ffffff;
+  box-shadow: 0 10px 24px -20px rgba(10, 32, 74, 0.7);
 }
 
 .ovs-admin-side-foot {
@@ -279,8 +284,8 @@ body.ovs-section-admin.ovs-admin-shell.ovs-admin-menu-open::before {
 
 .ovs-admin-cycle-card {
   margin-top: 14px;
-  background: linear-gradient(180deg, #1e4fd6 0%, #1240be 100%);
-  border-radius: 2px;
+  background: linear-gradient(180deg, #2060e3 0%, #0f4ecf 100%);
+  border-radius: 10px;
   color: #ffffff;
   padding: 14px 12px 12px;
 }

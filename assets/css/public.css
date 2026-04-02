@@ -1,8 +1,8 @@
 body.ovs-section-public {
   background:
-    radial-gradient(circle at 8% 0%, rgba(29, 78, 216, 0.08), transparent 38%),
-    radial-gradient(circle at 92% 10%, rgba(16, 185, 129, 0.08), transparent 34%),
-    #f8fafc;
+    radial-gradient(circle at 8% 0%, rgba(15, 78, 207, 0.11), transparent 36%),
+    radial-gradient(circle at 92% 10%, rgba(11, 158, 133, 0.1), transparent 34%),
+    #f4f7fc;
 }
 
 body.ovs-section-public main {
@@ -32,17 +32,17 @@ body.ovs-section-public section {
 body.ovs-section-public .grid > article,
 body.ovs-section-public .grid > .card,
 body.ovs-section-public .grid > div[class*="bg-surface-container-lowest"] {
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid rgba(15, 35, 74, 0.08);
-  box-shadow: 0 14px 30px -26px rgba(15, 35, 74, 0.6);
+  box-shadow: 0 16px 34px -26px rgba(15, 35, 74, 0.5);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 body.ovs-section-public .grid > article:hover,
 body.ovs-section-public .grid > .card:hover,
 body.ovs-section-public .grid > div[class*="bg-surface-container-lowest"]:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 20px 34px -28px rgba(15, 35, 74, 0.7);
+  transform: translateY(-3px);
+  box-shadow: 0 24px 40px -30px rgba(15, 35, 74, 0.62);
 }
 
 body.ovs-section-public a[href*="login.html"],
